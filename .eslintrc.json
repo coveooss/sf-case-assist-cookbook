@@ -1,0 +1,12 @@
+{
+  "extends": ["@salesforce/eslint-config-lwc/recommended"],
+  "root": true,
+  "rules": {
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "info"]
+      }
+    ]
+  }
+}

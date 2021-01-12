@@ -420,6 +420,7 @@ describe('c-case-assist-flow', () => {
 
       const testSubject = 'This is a test subject';
       const testDescription = 'This is a test description long enough';
+      const testFieldName = 'Reason';
       const testReason = 'foo';
       const testConfidence = 123;
       // Update the Subject and Description and emit the change events
@@ -443,7 +444,7 @@ describe('c-case-assist-flow', () => {
       );
       const selectedEvent = new CustomEvent('selected', {
         detail: {
-          fieldName: 'Reason',
+          fieldName: testFieldName,
           value: testReason,
           confidence: testConfidence
         }
@@ -467,6 +468,7 @@ describe('c-case-assist-flow', () => {
       const expectedTicketClassificationClickPayload = {
         classificationId: undefined,
         responseId: undefined,
+        fieldName: testFieldName,
         classification: {
           confidence: testConfidence,
           value: testReason

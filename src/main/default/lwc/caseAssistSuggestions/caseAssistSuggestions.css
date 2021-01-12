@@ -1,8 +1,0 @@
-.suggestions__container {
-  flex-wrap: wrap;
-}
-
-.suggestions__container > lightning-badge {
-  cursor: pointer;
-  margin: 0.25rem;
-}

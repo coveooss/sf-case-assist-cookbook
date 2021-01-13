@@ -169,6 +169,7 @@ export default class CaseAssistFlow extends LightningElement {
     coveoua('svc:setAction', analyticsActionNames.TICKET_CLASSIFICATION_CLICK, {
       classificationId: data.classificationId,
       responseId: this.lastResponseId,
+      fieldName: data.fieldName,
       classification: {
         value: data.value,
         confidence: data.confidence

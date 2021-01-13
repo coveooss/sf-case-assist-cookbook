@@ -14,3 +14,6 @@
 **/aura/**/*.xml
 **/staticresources/**
 .sfdx
+
+.prettierrc.js
+jest.config.js

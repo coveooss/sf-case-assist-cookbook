@@ -39,4 +39,4 @@ $RECYCLE.BIN/
 .vscode
 
 # static resources
-src/main/default/staticResources/coveoua
+src/main/default/staticresources/coveoua

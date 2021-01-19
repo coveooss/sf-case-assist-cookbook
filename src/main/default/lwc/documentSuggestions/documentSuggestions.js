@@ -57,8 +57,7 @@ export default class DocumentSuggestions extends LightningElement {
         Array.isArray(docSuggestionsResponse) &&
         docSuggestionsResponse.length > 0
       ) {
-        // TODO: store the lastResponseID from the API response.
-        // this.lastResponseId = docSuggestionsResponse.responseId;
+        this.lastResponseId = docSuggestionsResponse.responseId;
         this.suggestedDocuments = docSuggestionsResponse;
       } else {
         this.showCaseDataErrorToast();

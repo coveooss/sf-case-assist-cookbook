@@ -141,12 +141,23 @@ describe('c-document-suggestions', () => {
         Subject: 'foo',
         Description: 'bar'
       };
+
+      const expectedResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
+
       const element = createComponent((elem) => {
         elem.caseData = JSON.stringify(caseData);
+
+        CaseAssistEndpoint.mock.instances[0].fetchDocSuggestions.mockReturnValue(
+          {
+            documents: [MOCK_RESULT],
+            responseId: expectedResponseId
+          }
+        );
       });
 
       // Flush microtasks
       await flushPromises();
+
       const documentResultListNode = element.shadowRoot.querySelector(
         'c-documents-result-list'
       );
@@ -163,7 +174,7 @@ describe('c-document-suggestions', () => {
         analyticsActionNames.SUGGESTION_CLICK,
         {
           suggestionId: MOCK_RESULT.fields.permanentid,
-          responseId: undefined,
+          responseId: expectedResponseId,
           suggestion: {
             documentUri: MOCK_RESULT.clickUri,
             documentUriHash: MOCK_RESULT.fields.urihash,

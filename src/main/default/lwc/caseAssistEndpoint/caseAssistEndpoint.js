@@ -12,12 +12,14 @@ export default class CaseAssistEndpoint {
    * @typedef {Object} Prediction
    * @property {Number} confidence A number between 0 and 1 representing the confidence of the prediction
    * @property {String} value The predicted value
+   * @property {String} id The unique ID of the prediction
    */
 
   /**
    * An object representing the CaseClassifications predictions response
    * @typedef {Object} PredictionResponse
-   * @property {Prediction[]} predictions And array of predicted values for a field.
+   * @property {Prediction[]} predictions An array of predicted values for a field.
+   * @property {String} responseId The ID of the response provided by the API.
    */
 
   /**
@@ -59,12 +61,19 @@ export default class CaseAssistEndpoint {
    */
 
   /**
+   * An object representing the document suggestions response
+   * @typedef {Object} DocumentSuggestionsResponse
+   * @property {Document[]} documents An array of suggested documents.
+   * @property {String} responseId The ID of the response provided by the API.
+   */
+
+  /**
    * Async method to call an Apex class to obtain Document Suggestions.
    * @param {String} subject The subject of the case being created
    * @param {String} description The description of the case being created.
    * @param {String} visitorId The visitorId to link the visit together for analytics reporting.
    *
-   * @return {Document[]} docSuggestionsData An array of documents returned as suggestions.
+   * @return {DocumentSuggestionsResponse} docSuggestionsData An array of documents returned as suggestions.
    */
   async fetchDocSuggestions(subject, description, visitorId) {
     try {

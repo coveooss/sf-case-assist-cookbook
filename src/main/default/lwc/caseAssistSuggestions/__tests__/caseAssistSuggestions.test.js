@@ -129,10 +129,12 @@ describe('c-case-assist-suggestions', () => {
     const handler = jest.fn();
     const expectedFieldName = 'bar';
     const expectedLabel = 'foo';
+    const expectedId = 'b84ed8ed-a7b1-502f-83f6-90132e68adef';
     const suggestions = [
       {
         label: expectedLabel,
-        value: 'foo'
+        value: 'foo',
+        id: expectedId
       }
     ];
 
@@ -148,7 +150,9 @@ describe('c-case-assist-suggestions', () => {
     const suggestionBadge = containerElement.querySelector('lightning-badge');
     suggestionBadge.dispatchEvent(new CustomEvent('click'));
     expect(handler).toHaveBeenCalled();
-    expect(handler.mock.calls[0][0].detail.fieldName).toBe(expectedFieldName);
-    expect(handler.mock.calls[0][0].detail.value).toBe(suggestions[0].label);
+    const eventDetail = handler.mock.calls[0][0].detail;
+    expect(eventDetail.fieldName).toBe(expectedFieldName);
+    expect(eventDetail.value).toBe(suggestions[0].label);
+    expect(eventDetail.id).toBe(suggestions[0].id);
   });
 });

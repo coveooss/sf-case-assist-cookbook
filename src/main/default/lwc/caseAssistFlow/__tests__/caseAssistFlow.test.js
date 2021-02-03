@@ -422,11 +422,38 @@ describe('c-case-assist-flow', () => {
       const testDescription = 'This is a test description long enough';
       const testFieldName = 'Reason';
       const testReason = 'foo';
-      const testConfidence = 123;
+      const testConfidence = 0.123;
+      const testClassificationId = 'b84ed8ed-a7b1-502f-83f6-90132e68adef';
+      const testResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
       // Update the Subject and Description and emit the change events
       setSubjectAndDescriptionValues(element, testSubject, testDescription);
 
+      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
+      mockEndpoint.fetchCaseClassifications.mockReturnValue({
+        fields: {
+          [testFieldName]: {
+            predictions: [
+              {
+                value: testReason,
+                confidence: testConfidence,
+                id: testClassificationId
+              }
+            ]
+          }
+        },
+        responseId: testResponseId
+      });
+
+      expect(mockEndpoint.fetchCaseClassifications).not.toHaveBeenCalled();
+
+      // Fast-forward until all timers have been executed.
+      // Ensures debounce fires and classifications are fetched from the API.
+      jest.runAllTimers();
+
+      expect(mockEndpoint.fetchCaseClassifications).toHaveBeenCalled();
+
       // Flush microtasks
+      // Allows the markup to update once classifications are received from the API.
       await flushPromises();
 
       const fieldSectionContainer = element.shadowRoot.querySelector(
@@ -446,7 +473,8 @@ describe('c-case-assist-flow', () => {
         detail: {
           fieldName: testFieldName,
           value: testReason,
-          confidence: testConfidence
+          confidence: testConfidence,
+          id: testClassificationId
         }
       });
       suggestionsFieldNode.dispatchEvent(selectedEvent);
@@ -464,10 +492,11 @@ describe('c-case-assist-flow', () => {
         }
       ];
       expect(coveoua.mock.calls[0]).toEqual(expectedSetTicketParams);
+
       // expect coveoua to have been called with TICKET_CLASSIFICATION_CLICK next
       const expectedTicketClassificationClickPayload = {
-        classificationId: undefined,
-        responseId: undefined,
+        classificationId: testClassificationId,
+        responseId: testResponseId,
         fieldName: testFieldName,
         classification: {
           confidence: testConfidence,
@@ -482,6 +511,7 @@ describe('c-case-assist-flow', () => {
       expect(coveoua.mock.calls[1]).toEqual(
         expectedTicketClassificationClickParams
       );
+
       // expect to send the event with coveoua
       expect(coveoua.mock.calls[2]).toEqual(EXPECTED_SEND_EVENT_PARAMS);
     });

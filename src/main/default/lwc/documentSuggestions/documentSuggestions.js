@@ -48,22 +48,23 @@ export default class DocumentSuggestions extends LightningElement {
 
   async fetchDocumentSuggestions() {
     try {
-      const docSuggestionsResponse = await this.endpoint.fetchDocSuggestions(
+      const docSuggestionsResponse = (await this.endpoint.fetchDocSuggestions(
         this._caseData.Subject,
         this._caseData.Description,
         this._caseData.visitorId || 'foo'
-      );
+      )) || { responseId: '', documents: [] };
+
+      this.lastResponseId = docSuggestionsResponse.responseId;
       if (
-        Array.isArray(docSuggestionsResponse) &&
-        docSuggestionsResponse.length > 0
+        Array.isArray(docSuggestionsResponse.documents) &&
+        docSuggestionsResponse.documents.length > 0
       ) {
-        // TODO: store the lastResponseID from the API response.
-        // this.lastResponseId = docSuggestionsResponse.responseId;
-        this.suggestedDocuments = docSuggestionsResponse;
+        this.suggestedDocuments = docSuggestionsResponse.documents;
       } else {
         this.showCaseDataErrorToast();
       }
     } catch (err) {
+      this.lastResponseId = '';
       this.suggestedDocuments = [];
       this.showCaseDataErrorToast();
       console.error(err);

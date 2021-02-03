@@ -29,7 +29,7 @@ export default class CaseAssistFlow extends LightningElement {
   @api subHeading = 'Select related categories';
 
   @track theCase = {};
-  @track fieldSuggestions = [];
+  @track fieldSuggestions = {};
 
   constructor() {
     super();
@@ -83,9 +83,9 @@ export default class CaseAssistFlow extends LightningElement {
 
   // Parse the data from the suggestions
   parseFieldSuggestions(suggestionsData) {
-    // TODO: store the lastResponseID from the API response.
-    // this.lastResponseId = suggestionsData.responseId?
-    this.fieldSuggestions = suggestionsData || {};
+    const data = suggestionsData || { responseId: '', fields: {} };
+    this.lastResponseId = data.responseId || '';
+    this.fieldSuggestions = data.fields || {};
   }
 
   // Returns the field suggestions specific to the reason field.
@@ -167,7 +167,7 @@ export default class CaseAssistFlow extends LightningElement {
   sendTicketClassificationClick(data) {
     this.analyticsUpdateTicketData();
     coveoua('svc:setAction', analyticsActionNames.TICKET_CLASSIFICATION_CLICK, {
-      classificationId: data.classificationId,
+      classificationId: data.id,
       responseId: this.lastResponseId,
       fieldName: data.fieldName,
       classification: {

@@ -13,7 +13,8 @@ export default class CaseAssistSuggestions extends LightningElement {
     const eventData = {
       fieldName: this.fieldName,
       value: event.target.label,
-      confidence: event.target.dataset.confidence
+      confidence: event.target.dataset.confidence,
+      id: event.target.dataset.id
     };
     this.dispatchEvent(new CustomEvent('selected', { detail: eventData }));
   }

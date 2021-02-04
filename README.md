@@ -65,6 +65,20 @@ When working with source-tracked orgs, use the commands `SFDX: Push Source to Or
 
 TBD
 
+### 3. How to enable the Case Flow in your community
+
+1. In the class CaseAssistEndpoint. Change this line to add your case assist ID: 
+  `public static final String CASE_ASSIST_ID = 'YOUR_CASE_ASSIST_ID';`
+1. In your Salesforce community, drag the Lightning Flow component onto a Community page and select the Case_Assist_Demo_Flow shipped with this repository.
+1. In the published version of your community, fill in the subject and description fields **(minimum of 10 characters in the description)** in the first screen to see the Related Category section appear and get predictions for the Case Reason field.
+
+### 4. Sending analytics with the Case Flow
+
+Make sure you drag and drop the component AnalyticsBeacon somewhere in your community in order for the Case Flow to send analytics events.
+We recommend dropping it in your community header or footer region (It is invisible to the end user).
+
+If you do not have it you will see that error in the console : `Analytics Beacon cannot be found, include the component in your page to send events.`.
+
 ## Dev, Build and Test
 
 1. Run `npm i`

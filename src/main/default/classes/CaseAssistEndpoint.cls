@@ -81,7 +81,7 @@ public with sharing class CaseAssistEndpoint {
                         'fields' => fieldsMap
                     }
                 );
-            return JSON.serialize((List<Object>) result.get('documents'));
+            return JSON.serialize(result);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

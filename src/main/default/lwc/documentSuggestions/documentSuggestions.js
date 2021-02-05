@@ -48,10 +48,14 @@ export default class DocumentSuggestions extends LightningElement {
 
   async fetchDocumentSuggestions() {
     try {
+      // If you have the AnalyticsBeacon LWC in your community, it will have generated a visitorId for you by now.
+      const visitorId = localStorage.getItem('visitorId');
+      if (!visitorId) console.warn('Cannot find visitorId from the community');
+
       const docSuggestionsResponse = (await this.endpoint.fetchDocSuggestions(
         this._caseData.Subject,
         this._caseData.Description,
-        this._caseData.visitorId || 'foo'
+        visitorId || 'default'
       )) || { responseId: '', documents: [] };
 
       this.lastResponseId = docSuggestionsResponse.responseId;

@@ -40,10 +40,15 @@ export default class CaseAssistFlow extends LightningElement {
     // Debounce function for "search-as-you-type" it will trigger when there is no key stroke for 500ms.
     this.debounceHandler = debounce(async () => {
       try {
+        // If you have the AnalyticsBeacon LWC in your community, it will have generated a visitorId for you by now.
+        const visitorId = localStorage.getItem('visitorId');
+        if (!visitorId)
+          console.warn('Cannot find visitorId from the community');
+
         const classificationData = await this.endpoint.fetchCaseClassifications(
           this.theCase.Subject,
           this.theCase.Description,
-          this.theCase.visitorId || 'foo' //TODO: Get the VisitorId from the community.
+          visitorId || 'default'
         );
         this.parseFieldSuggestions(classificationData);
       } catch (err) {

@@ -18,9 +18,12 @@ export function getVisitorId() {
     }
 
     if (!visitorId) {
+      // Try to read it directly from localStorage.
       visitorId = localStorage.getItem('visitorId');
     }
-    if (!visitorId) console.warn('Cannot find visitorId from the community');
+    if (!visitorId) {
+      console.warn('Cannot find visitorId from the community');
+    }
   } catch (err) {
     console.warn('Cannot find visitorId from the community');
   }

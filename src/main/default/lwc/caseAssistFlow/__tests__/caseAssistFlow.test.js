@@ -182,6 +182,9 @@ describe('c-case-assist-flow', () => {
       const element = createComponent();
       expect(CaseAssistEndpoint).toHaveBeenCalledTimes(1);
 
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
+
       const testSubject = 'This is a test subject';
       const testDescription = 'This is a test description long enough';
       const mockCaseAssistEndpointInstance =
@@ -207,10 +210,34 @@ describe('c-case-assist-flow', () => {
       ).toBe(testDescription);
     });
 
+    it('should get the visitorId value from localStorage', () => {
+      const element = createComponent();
+      expect(CaseAssistEndpoint).toHaveBeenCalledTimes(1);
+
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
+
+      const testSubject = 'This is a test subject';
+      const testDescription = 'This is a test description long enough';
+      const mockCaseAssistEndpointInstance =
+        CaseAssistEndpoint.mock.instances[0];
+
+      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+
+      // Fast-forward until all timers have been executed
+      jest.runAllTimers();
+      expect(
+        mockCaseAssistEndpointInstance.fetchCaseClassifications.mock.calls[0][2]
+      ).toBe(testVisitorId);
+    });
+
     it('should emit the FlowAttributeChangeEvent', () => {
       const element = createComponent();
       const handler = jest.fn();
       element.addEventListener(FlowAttributeChangeEventName, handler);
+
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
 
       const testSubject = 'This is a test subject';
       const testDescription = 'This is a test description long enough';
@@ -241,6 +268,9 @@ describe('c-case-assist-flow', () => {
 
       // Clear the mock after the initial creation
       coveoua.mockClear();
+
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
 
       const testSubject = 'This is a test subject';
 

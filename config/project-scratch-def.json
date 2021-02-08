@@ -1,5 +1,17 @@
 {
   "orgName": "coveodemo company",
   "edition": "Developer",
-  "features": []
+  "features": ["Communities", "ServiceCloud", "Knowledge"],
+  "settings": {
+    "knowledgeSettings": {
+      "enableKnowledge": true,
+      "showArticleSummariesCustomerPortal": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    }
+  }
 }

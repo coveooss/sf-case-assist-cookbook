@@ -5,6 +5,7 @@ import { FlowNavigationNextEvent } from 'lightning/flowSupport';
 import CaseAssistEndpoint from 'c/caseAssistEndpoint';
 import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
+import { getVisitorId } from 'c/utils';
 
 /**
  * This component is a wrapper around the caseAssistResultList component.
@@ -48,10 +49,12 @@ export default class DocumentSuggestions extends LightningElement {
 
   async fetchDocumentSuggestions() {
     try {
+      const visitorId = getVisitorId();
+
       const docSuggestionsResponse = (await this.endpoint.fetchDocSuggestions(
         this._caseData.Subject,
         this._caseData.Description,
-        this._caseData.visitorId || 'foo'
+        visitorId || 'default'
       )) || { responseId: '', documents: [] };
 
       this.lastResponseId = docSuggestionsResponse.responseId;

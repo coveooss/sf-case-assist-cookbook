@@ -96,6 +96,9 @@ describe('c-document-suggestions', () => {
         Description: 'bar'
       };
 
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
+
       const element = createComponent((elem) => {
         elem.caseData = JSON.stringify(caseData);
       });
@@ -118,6 +121,9 @@ describe('c-document-suggestions', () => {
         Description: 'bar'
       };
 
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
+
       createComponent((elem) => {
         elem.caseData = JSON.stringify(caseData);
       });
@@ -133,6 +139,30 @@ describe('c-document-suggestions', () => {
         caseData.Description
       );
     });
+
+    it('should send the expected visitorId with a request to Document Suggestion', () => {
+      expect(CaseAssistEndpoint).not.toHaveBeenCalled();
+
+      const caseData = {
+        Subject: 'foo',
+        Description: 'bar'
+      };
+
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
+
+      createComponent((elem) => {
+        elem.caseData = JSON.stringify(caseData);
+      });
+      expect(CaseAssistEndpoint).toHaveBeenCalledTimes(1);
+
+      const mockCaseAssistEndpointInstance =
+        CaseAssistEndpoint.mock.instances[0];
+      const mockFetchDocSuggestions =
+        mockCaseAssistEndpointInstance.fetchDocSuggestions;
+
+      expect(mockFetchDocSuggestions.mock.calls[0][2]).toBe(testVisitorId);
+    });
   });
 
   describe('when a document suggestion is clicked', () => {
@@ -143,6 +173,9 @@ describe('c-document-suggestions', () => {
       };
 
       const expectedResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
+
+      const testVisitorId = 'test-visitor-id';
+      localStorage.setItem('visitorId', testVisitorId);
 
       const element = createComponent((elem) => {
         elem.caseData = JSON.stringify(caseData);

@@ -5,6 +5,7 @@ import { FlowNavigationNextEvent } from 'lightning/flowSupport';
 import CaseAssistEndpoint from 'c/caseAssistEndpoint';
 import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
+import { getVisitorId } from 'c/utils';
 
 /**
  * This component is a wrapper around the caseAssistResultList component.
@@ -48,9 +49,7 @@ export default class DocumentSuggestions extends LightningElement {
 
   async fetchDocumentSuggestions() {
     try {
-      // If you have the AnalyticsBeacon LWC in your community, it will have generated a visitorId for you by now.
-      const visitorId = localStorage.getItem('visitorId');
-      if (!visitorId) console.warn('Cannot find visitorId from the community');
+      const visitorId = getVisitorId();
 
       const docSuggestionsResponse = (await this.endpoint.fetchDocSuggestions(
         this._caseData.Subject,

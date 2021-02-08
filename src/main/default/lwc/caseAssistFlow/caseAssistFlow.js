@@ -5,7 +5,7 @@ import {
 } from 'lightning/flowSupport';
 
 import CaseAssistEndpoint from 'c/caseAssistEndpoint';
-import { debounce } from 'c/utils';
+import { debounce, getVisitorId } from 'c/utils';
 import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
 
@@ -40,10 +40,7 @@ export default class CaseAssistFlow extends LightningElement {
     // Debounce function for "search-as-you-type" it will trigger when there is no key stroke for 500ms.
     this.debounceHandler = debounce(async () => {
       try {
-        // If you have the AnalyticsBeacon LWC in your community, it will have generated a visitorId for you by now.
-        const visitorId = localStorage.getItem('visitorId');
-        if (!visitorId)
-          console.warn('Cannot find visitorId from the community');
+        const visitorId = getVisitorId();
 
         const classificationData = await this.endpoint.fetchCaseClassifications(
           this.theCase.Subject,

@@ -417,17 +417,24 @@ describe('c-case-assist-flow', () => {
   });
 
   describe('when a suggestion is selected', () => {
-    it('should emit the FlowAttributeChangeEvent', async () => {
-      const element = createComponent();
-      const handler = jest.fn();
-      const expectedAttributeName = 'caseData';
+    const MOCK_DATA = {
+      FIELD_NAME: 'Reason',
+      CONFIDENCE: 0.123,
+      CLASSIFICATION_ID: 'b84ed8ed-a7b1-502f-83f6-90132e68adef',
+      RESPONSE_ID: '24a729a0-5a0d-45e5-b6c8-5425627d90a5'
+    };
 
+    const fillCaseFormFields = async (element) => {
       // Update the Subject and Description and emit the change events
       setSubjectAndDescriptionValues(
         element,
         TEST_CASE.subject,
         TEST_CASE.description
       );
+
+      // Fast-forward until all timers have been executed.
+      // Ensures debounce fires and classifications are fetched from the API.
+      jest.runAllTimers();
 
       // Flush microtasks
       await flushPromises();
@@ -438,21 +445,58 @@ describe('c-case-assist-flow', () => {
       if (fieldSectionContainer === null) {
         throw new Error('Cannot find a field section to test');
       }
+      return fieldSectionContainer;
+    };
 
+    const clickOnCaseClassification = (element) => {
       // Expect at least 1 suggestion row for a field
-      const suggestionsFieldNode = fieldSectionContainer.querySelector(
+      const suggestionsFieldNode = element.querySelector(
         'c-case-assist-suggestions'
       );
-      expect(suggestionsFieldNode).not.toBeNull();
-      // Trigger the suggestion clicked event
-      element.addEventListener(FlowAttributeChangeEventName, handler);
+      if (suggestionsFieldNode === null) {
+        throw new Error('Cannot find case assist suggestions to test');
+      }
       const selectedEvent = new CustomEvent('selected', {
         detail: {
-          fieldName: 'Reason',
-          value: 'foo'
+          fieldName: MOCK_DATA.FIELD_NAME,
+          value: TEST_CASE.reason,
+          confidence: MOCK_DATA.CONFIDENCE,
+          id: MOCK_DATA.CLASSIFICATION_ID
         }
       });
       suggestionsFieldNode.dispatchEvent(selectedEvent);
+    };
+
+    const setupMockCaseAssistEndpoint = () => {
+      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
+      mockEndpoint.fetchCaseClassifications.mockReturnValue({
+        fields: {
+          [MOCK_DATA.FIELD_NAME]: {
+            predictions: [
+              {
+                value: TEST_CASE.reason,
+                confidence: MOCK_DATA.CONFIDENCE,
+                id: MOCK_DATA.CLASSIFICATION_ID
+              }
+            ]
+          }
+        },
+        responseId: MOCK_DATA.RESPONSE_ID
+      });
+    };
+
+    it('should emit the FlowAttributeChangeEvent', async () => {
+      const expectedAttributeName = 'caseData';
+      const handler = jest.fn();
+      const element = createComponent();
+
+      const fieldSectionContainer = await fillCaseFormFields(element);
+
+      // Trigger the suggestion clicked event
+      element.addEventListener(FlowAttributeChangeEventName, handler);
+
+      clickOnCaseClassification(fieldSectionContainer);
+
       // Should've called the FlowAttributeChangeEventName once
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler.mock.calls[0][0].detail.attributeName).toBe(
@@ -463,74 +507,25 @@ describe('c-case-assist-flow', () => {
     it('should send the TICKET_CLASSIFICATION_CLICK event with coveoua', async () => {
       const element = createComponent();
 
-      const testFieldName = 'Reason';
-      const testConfidence = 0.123;
-      const testClassificationId = 'b84ed8ed-a7b1-502f-83f6-90132e68adef';
-      const testResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
-      // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(
-        element,
-        TEST_CASE.subject,
-        TEST_CASE.description
-      );
+      setupMockCaseAssistEndpoint();
 
-      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
-      mockEndpoint.fetchCaseClassifications.mockReturnValue({
-        fields: {
-          [testFieldName]: {
-            predictions: [
-              {
-                value: TEST_CASE.reason,
-                confidence: testConfidence,
-                id: testClassificationId
-              }
-            ]
-          }
-        },
-        responseId: testResponseId
-      });
-
-      // Fast-forward until all timers have been executed.
-      // Ensures debounce fires and classifications are fetched from the API.
-      jest.runAllTimers();
-
-      // Flush microtasks
-      // Allows the markup to update once classifications are received from the API.
-      await flushPromises();
-
-      const fieldSectionContainer = element.shadowRoot.querySelector(
-        'div.div_field-section'
-      );
-      if (fieldSectionContainer === null) {
-        throw new Error('Cannot find a field section to test');
-      }
+      const fieldSectionContainer = await fillCaseFormFields(element);
 
       // Clear the mock because the events before that are not the target of this test.
       coveoua.mockClear();
 
-      const suggestionsFieldNode = fieldSectionContainer.querySelector(
-        'c-case-assist-suggestions'
-      );
-      const selectedEvent = new CustomEvent('selected', {
-        detail: {
-          fieldName: testFieldName,
-          value: TEST_CASE.reason,
-          confidence: testConfidence,
-          id: testClassificationId
-        }
-      });
-      suggestionsFieldNode.dispatchEvent(selectedEvent);
+      clickOnCaseClassification(fieldSectionContainer);
 
       // expect coveoua to have been called first with svc:setTicket
       expect(coveoua).toHaveBeenCalledTimes(3);
 
       // expect coveoua to have been called with TICKET_CLASSIFICATION_CLICK next
       const expectedTicketClassificationClickPayload = {
-        classificationId: testClassificationId,
-        responseId: testResponseId,
-        fieldName: testFieldName,
+        classificationId: MOCK_DATA.CLASSIFICATION_ID,
+        responseId: MOCK_DATA.RESPONSE_ID,
+        fieldName: MOCK_DATA.FIELD_NAME,
         classification: {
-          confidence: testConfidence,
+          confidence: MOCK_DATA.CONFIDENCE,
           value: TEST_CASE.reason
         }
       };
@@ -550,66 +545,14 @@ describe('c-case-assist-flow', () => {
     it('should NOT send the TICKET_FIELD_UPDATE event with coveoua', async () => {
       const element = createComponent();
 
-      const testFieldName = 'Reason';
-      const testConfidence = 0.123;
-      const testClassificationId = 'b84ed8ed-a7b1-502f-83f6-90132e68adef';
-      const testResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
-      // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(
-        element,
-        TEST_CASE.subject,
-        TEST_CASE.description
-      );
+      setupMockCaseAssistEndpoint();
 
-      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
-      mockEndpoint.fetchCaseClassifications.mockReturnValue({
-        fields: {
-          [testFieldName]: {
-            predictions: [
-              {
-                value: TEST_CASE.reason,
-                confidence: testConfidence,
-                id: testClassificationId
-              }
-            ]
-          }
-        },
-        responseId: testResponseId
-      });
-
-      // Fast-forward until all timers have been executed.
-      // Ensures debounce fires and classifications are fetched from the API.
-      jest.runAllTimers();
-
-      // Flush microtasks
-      // Allows the markup to update once classifications are received from the API.
-      await flushPromises();
-
-      const fieldSectionContainer = element.shadowRoot.querySelector(
-        'div.div_field-section'
-      );
-      if (fieldSectionContainer === null) {
-        throw new Error('Cannot find a field section to test');
-      }
+      const fieldSectionContainer = await fillCaseFormFields(element);
 
       // Clear the mock because the events before that are not the target of this test.
       coveoua.mockClear();
 
-      const suggestionsFieldNode = fieldSectionContainer.querySelector(
-        'c-case-assist-suggestions'
-      );
-      if (suggestionsFieldNode === null) {
-        throw new Error('Cannot find a suggestion node to test');
-      }
-      const selectedEvent = new CustomEvent('selected', {
-        detail: {
-          fieldName: testFieldName,
-          value: TEST_CASE.reason,
-          confidence: testConfidence,
-          id: testClassificationId
-        }
-      });
-      suggestionsFieldNode.dispatchEvent(selectedEvent);
+      clickOnCaseClassification(fieldSectionContainer);
 
       // With the lightning component in use changing programmatically the value of the picklist
       // when a suggestion is clicked also dispatches a change event from the picklist.

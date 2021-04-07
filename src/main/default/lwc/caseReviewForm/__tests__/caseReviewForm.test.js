@@ -60,7 +60,6 @@ describe('c-case-review-form', () => {
 
     element.caseData = '{}';
 
-    // Flush microtasks
     await flushPromises();
     const recordEditForm = element.shadowRoot.querySelector(
       'lightning-record-edit-form'
@@ -76,7 +75,6 @@ describe('c-case-review-form', () => {
     element.caseData = '{}';
     element.heading = expectedHeading;
 
-    // Flush microtasks
     await flushPromises();
     const headingElement = element.shadowRoot.querySelector(
       'h1.slds-text-heading_large'
@@ -92,7 +90,6 @@ describe('c-case-review-form', () => {
 
     element.subHeading = expectedSubText;
 
-    // Flush microtasks
     await flushPromises();
     const subTextElement = element.shadowRoot.querySelector(
       'h2.slds-text-heading_large'

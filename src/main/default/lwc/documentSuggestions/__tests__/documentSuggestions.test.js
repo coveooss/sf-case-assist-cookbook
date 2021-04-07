@@ -58,7 +58,6 @@ describe('c-document-suggestions', () => {
       const expectedHeading = 'Expected Heading';
       element.heading = expectedHeading;
 
-      // Flush microtasks
       await flushPromises();
       // Expect console.error to have been called.
       expect(spy).toHaveBeenCalledTimes(1); // But the component should still display!
@@ -77,7 +76,6 @@ describe('c-document-suggestions', () => {
       const expectedHeading = 'Expected Heading';
       element.heading = expectedHeading;
 
-      // Flush microtasks
       await flushPromises();
       // Expect console.error to have been called.
       expect(spy).toHaveBeenCalledTimes(1);
@@ -103,7 +101,6 @@ describe('c-document-suggestions', () => {
         elem.caseData = JSON.stringify(caseData);
       });
 
-      // Flush microtasks
       await flushPromises();
       // Expect console.error to not have been called.
       expect(spy).not.toHaveBeenCalled();
@@ -188,7 +185,6 @@ describe('c-document-suggestions', () => {
         );
       });
 
-      // Flush microtasks
       await flushPromises();
 
       const documentResultListNode = element.shadowRoot.querySelector(

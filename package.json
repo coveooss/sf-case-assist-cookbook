@@ -28,7 +28,7 @@
     "lint-staged": "^10.0.7",
     "ncp": "^2.0.0",
     "prettier": "^2.2.0",
-    "prettier-plugin-apex": "^1.7.0",
+    "prettier-plugin-apex": "^1.8.0",
     "rimraf": "^3.0.2"
   },
   "husky": {
@@ -41,6 +41,6 @@
     "*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": "prettier --write"
   },
   "dependencies": {
-    "coveo.analytics": "^2.16.0"
+    "coveo.analytics": "^2.18.9"
   }
 }

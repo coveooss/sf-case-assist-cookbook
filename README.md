@@ -67,8 +67,8 @@ TBD
 
 ### 3. How to enable the Case Flow in your community
 
-1. In the class CaseAssistEndpoint. Change this line to add your case assist ID: 
-  `public static final String CASE_ASSIST_ID = 'YOUR_CASE_ASSIST_ID';`
+1. In the class CaseAssistEndpoint. Change this line to add your case assist ID:
+   `public static final String CASE_ASSIST_ID = 'YOUR_CASE_ASSIST_ID';`
 1. In your Salesforce community, drag the Lightning Flow component onto a Community page and select the Case_Assist_Demo_Flow shipped with this repository.
 1. In the published version of your community, fill in the subject and description fields **(minimum of 10 characters in the description)** in the first screen to see the Related Category section appear and get predictions for the Case Reason field.
 

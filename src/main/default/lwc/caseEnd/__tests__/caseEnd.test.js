@@ -37,7 +37,6 @@ describe('c-case-end', () => {
     const expectedTitle = 'Expected Title';
     element.heading = expectedTitle;
 
-    // Flush microtasks
     await flushPromises();
     const titleNode = element.shadowRoot.querySelector(
       'div.slds-text-heading_large'
@@ -52,7 +51,6 @@ describe('c-case-end', () => {
     const expectedSubText = 'Expected Sub Text';
     element.subText = expectedSubText;
 
-    // Flush microtasks
     await flushPromises();
     const subTextNode = element.shadowRoot.querySelector(
       'div.slds-text-body_regular'

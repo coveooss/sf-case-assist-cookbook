@@ -13,6 +13,11 @@ jest.mock('c/caseAssistEndpoint');
 jest.useFakeTimers();
 
 const EXPECTED_SEND_EVENT_PARAMS = ['send', 'event', 'svc', 'click'];
+const TEST_CASE = {
+  subject: 'This is a test subject',
+  description: 'This is a test description long enough',
+  reason: 'foo'
+};
 
 function createComponent(beforeAddFn = () => {}) {
   const element = createElement('c-case-assist-flow', {
@@ -139,12 +144,12 @@ describe('c-case-assist-flow', () => {
     it('should render the fields section', async () => {
       const element = createComponent();
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
-
-      // Flush microtasks
       await flushPromises();
       const subHeadingNode = element.shadowRoot.querySelector(
         'h1.h1_sub-heading'
@@ -165,12 +170,14 @@ describe('c-case-assist-flow', () => {
       const element = createComponent();
       expect(CaseAssistEndpoint).toHaveBeenCalledTimes(1);
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       const mockCaseAssistEndpointInstance =
         CaseAssistEndpoint.mock.instances[0];
 
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
       // Should not have called the endpoint before the debounce timer.
       expect(
@@ -185,12 +192,14 @@ describe('c-case-assist-flow', () => {
       const testVisitorId = 'test-visitor-id';
       localStorage.setItem('visitorId', testVisitorId);
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       const mockCaseAssistEndpointInstance =
         CaseAssistEndpoint.mock.instances[0];
 
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
       expect(
         mockCaseAssistEndpointInstance.fetchCaseClassifications
@@ -204,10 +213,10 @@ describe('c-case-assist-flow', () => {
       ).toHaveBeenCalledTimes(1);
       expect(
         mockCaseAssistEndpointInstance.fetchCaseClassifications.mock.calls[0][0]
-      ).toBe(testSubject);
+      ).toBe(TEST_CASE.subject);
       expect(
         mockCaseAssistEndpointInstance.fetchCaseClassifications.mock.calls[0][1]
-      ).toBe(testDescription);
+      ).toBe(TEST_CASE.description);
     });
 
     it('should get the visitorId value from localStorage', () => {
@@ -217,12 +226,14 @@ describe('c-case-assist-flow', () => {
       const testVisitorId = 'test-visitor-id';
       localStorage.setItem('visitorId', testVisitorId);
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       const mockCaseAssistEndpointInstance =
         CaseAssistEndpoint.mock.instances[0];
 
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
       // Fast-forward until all timers have been executed
       jest.runAllTimers();
@@ -239,14 +250,16 @@ describe('c-case-assist-flow', () => {
       const testVisitorId = 'test-visitor-id';
       localStorage.setItem('visitorId', testVisitorId);
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       const expectedCaseData = {
-        Subject: testSubject,
-        Description: testDescription
+        Subject: TEST_CASE.subject,
+        Description: TEST_CASE.description
       };
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
       const expectedAttributeName = 'caseData';
 
@@ -272,10 +285,7 @@ describe('c-case-assist-flow', () => {
       const testVisitorId = 'test-visitor-id';
       localStorage.setItem('visitorId', testVisitorId);
 
-      const testSubject = 'This is a test subject';
-
-      setSubject(element, testSubject);
-      // Flush microtasks
+      setSubject(element, TEST_CASE.subject);
       await flushPromises();
 
       expect(coveoua).toHaveBeenCalledTimes(3);
@@ -283,7 +293,7 @@ describe('c-case-assist-flow', () => {
       const expectedTicketDataCallParams = [
         'svc:setTicket',
         {
-          subject: testSubject,
+          subject: TEST_CASE.subject,
           custom: {
             reason: undefined
           }
@@ -310,20 +320,20 @@ describe('c-case-assist-flow', () => {
       const element = createComponent();
       const flowAttributeChangeEventHandler = jest.fn();
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
-      const testReason = 'foo';
       const expectedAttributeName = 'caseData';
       const expectedFlowAttributeChangeBody = JSON.stringify({
-        Subject: testSubject,
-        Description: testDescription,
-        Reason: testReason
+        Subject: TEST_CASE.subject,
+        Description: TEST_CASE.description,
+        Reason: TEST_CASE.reason
       });
 
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      // Flush microtasks
       await flushPromises();
 
       const reasonPicklist = element.shadowRoot.querySelector(
@@ -333,7 +343,7 @@ describe('c-case-assist-flow', () => {
         throw new Error('Cannot find a reason picklist to test on');
       }
 
-      reasonPicklist.value = testReason;
+      reasonPicklist.value = TEST_CASE.reason;
       element.addEventListener(
         FlowAttributeChangeEventName,
         flowAttributeChangeEventHandler
@@ -354,14 +364,13 @@ describe('c-case-assist-flow', () => {
     it('should set the ticket data on coveoua and then send the TICKET_FIELD_UPDATE event', async () => {
       const element = createComponent();
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
-      const testReason = 'foo';
-
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      // Flush microtasks
       await flushPromises();
 
       coveoua.mockClear();
@@ -373,7 +382,7 @@ describe('c-case-assist-flow', () => {
         throw new Error('Cannot find a reason picklist to test on');
       }
 
-      reasonPicklist.value = testReason;
+      reasonPicklist.value = TEST_CASE.reason;
       const changeEvent = new CustomEvent('change');
       reasonPicklist.dispatchEvent(changeEvent);
 
@@ -382,10 +391,10 @@ describe('c-case-assist-flow', () => {
       const expectedSetTicketParams = [
         'svc:setTicket',
         {
-          subject: testSubject,
-          description: testDescription,
+          subject: TEST_CASE.subject,
+          description: TEST_CASE.description,
           custom: {
-            reason: testReason
+            reason: TEST_CASE.reason
           }
         }
       ];
@@ -404,17 +413,25 @@ describe('c-case-assist-flow', () => {
   });
 
   describe('when a suggestion is selected', () => {
-    it('should emit the FlowAttributeChangeEvent', async () => {
-      const element = createComponent();
-      const handler = jest.fn();
-      const expectedAttributeName = 'caseData';
+    const MOCK_DATA = {
+      FIELD_NAME: 'Reason',
+      CONFIDENCE: 0.123,
+      CLASSIFICATION_ID: 'b84ed8ed-a7b1-502f-83f6-90132e68adef',
+      RESPONSE_ID: '24a729a0-5a0d-45e5-b6c8-5425627d90a5'
+    };
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
+    const fillCaseFormFields = async (element) => {
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      // Flush microtasks
+      // Fast-forward until all timers have been executed.
+      // Ensures debounce fires and classifications are fetched from the API.
+      jest.runAllTimers();
+
       await flushPromises();
       const fieldSectionContainer = element.shadowRoot.querySelector(
         'div.div_field-section'
@@ -423,21 +440,58 @@ describe('c-case-assist-flow', () => {
       if (fieldSectionContainer === null) {
         throw new Error('Cannot find a field section to test');
       }
+      return fieldSectionContainer;
+    };
 
+    const clickOnCaseClassification = (element) => {
       // Expect at least 1 suggestion row for a field
-      const suggestionsFieldNode = fieldSectionContainer.querySelector(
+      const suggestionsFieldNode = element.querySelector(
         'c-case-assist-suggestions'
       );
-      expect(suggestionsFieldNode).not.toBeNull();
-      // Trigger the suggestion clicked event
-      element.addEventListener(FlowAttributeChangeEventName, handler);
+      if (suggestionsFieldNode === null) {
+        throw new Error('Cannot find case assist suggestions to test');
+      }
       const selectedEvent = new CustomEvent('selected', {
         detail: {
-          fieldName: 'Reason',
-          value: 'foo'
+          fieldName: MOCK_DATA.FIELD_NAME,
+          value: TEST_CASE.reason,
+          confidence: MOCK_DATA.CONFIDENCE,
+          id: MOCK_DATA.CLASSIFICATION_ID
         }
       });
       suggestionsFieldNode.dispatchEvent(selectedEvent);
+    };
+
+    const setupMockCaseAssistEndpoint = () => {
+      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
+      mockEndpoint.fetchCaseClassifications.mockReturnValue({
+        fields: {
+          [MOCK_DATA.FIELD_NAME]: {
+            predictions: [
+              {
+                value: TEST_CASE.reason,
+                confidence: MOCK_DATA.CONFIDENCE,
+                id: MOCK_DATA.CLASSIFICATION_ID
+              }
+            ]
+          }
+        },
+        responseId: MOCK_DATA.RESPONSE_ID
+      });
+    };
+
+    it('should emit the FlowAttributeChangeEvent', async () => {
+      const expectedAttributeName = 'caseData';
+      const handler = jest.fn();
+      const element = createComponent();
+
+      const fieldSectionContainer = await fillCaseFormFields(element);
+
+      // Trigger the suggestion clicked event
+      element.addEventListener(FlowAttributeChangeEventName, handler);
+
+      clickOnCaseClassification(fieldSectionContainer);
+
       // Should've called the FlowAttributeChangeEventName once
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler.mock.calls[0][0].detail.attributeName).toBe(
@@ -448,89 +502,26 @@ describe('c-case-assist-flow', () => {
     it('should send the TICKET_CLASSIFICATION_CLICK event with coveoua', async () => {
       const element = createComponent();
 
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
-      const testFieldName = 'Reason';
-      const testReason = 'foo';
-      const testConfidence = 0.123;
-      const testClassificationId = 'b84ed8ed-a7b1-502f-83f6-90132e68adef';
-      const testResponseId = '24a729a0-5a0d-45e5-b6c8-5425627d90a5';
-      // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setupMockCaseAssistEndpoint();
 
-      const mockEndpoint = CaseAssistEndpoint.mock.instances[0];
-      mockEndpoint.fetchCaseClassifications.mockReturnValue({
-        fields: {
-          [testFieldName]: {
-            predictions: [
-              {
-                value: testReason,
-                confidence: testConfidence,
-                id: testClassificationId
-              }
-            ]
-          }
-        },
-        responseId: testResponseId
-      });
-
-      expect(mockEndpoint.fetchCaseClassifications).not.toHaveBeenCalled();
-
-      // Fast-forward until all timers have been executed.
-      // Ensures debounce fires and classifications are fetched from the API.
-      jest.runAllTimers();
-
-      expect(mockEndpoint.fetchCaseClassifications).toHaveBeenCalled();
-
-      // Flush microtasks
-      // Allows the markup to update once classifications are received from the API.
-      await flushPromises();
-
-      const fieldSectionContainer = element.shadowRoot.querySelector(
-        'div.div_field-section'
-      );
-      if (fieldSectionContainer === null) {
-        throw new Error('Cannot find a field section to test');
-      }
+      const fieldSectionContainer = await fillCaseFormFields(element);
 
       // Clear the mock because the events before that are not the target of this test.
       coveoua.mockClear();
 
-      const suggestionsFieldNode = fieldSectionContainer.querySelector(
-        'c-case-assist-suggestions'
-      );
-      const selectedEvent = new CustomEvent('selected', {
-        detail: {
-          fieldName: testFieldName,
-          value: testReason,
-          confidence: testConfidence,
-          id: testClassificationId
-        }
-      });
-      suggestionsFieldNode.dispatchEvent(selectedEvent);
+      clickOnCaseClassification(fieldSectionContainer);
 
       // expect coveoua to have been called first with svc:setTicket
       expect(coveoua).toHaveBeenCalledTimes(3);
-      const expectedSetTicketParams = [
-        'svc:setTicket',
-        {
-          subject: testSubject,
-          description: testDescription,
-          custom: {
-            reason: testReason
-          }
-        }
-      ];
-      expect(coveoua.mock.calls[0]).toEqual(expectedSetTicketParams);
 
       // expect coveoua to have been called with TICKET_CLASSIFICATION_CLICK next
       const expectedTicketClassificationClickPayload = {
-        classificationId: testClassificationId,
-        responseId: testResponseId,
-        fieldName: testFieldName,
+        classificationId: MOCK_DATA.CLASSIFICATION_ID,
+        responseId: MOCK_DATA.RESPONSE_ID,
+        fieldName: MOCK_DATA.FIELD_NAME,
         classification: {
-          confidence: testConfidence,
-          value: testReason
+          confidence: MOCK_DATA.CONFIDENCE,
+          value: TEST_CASE.reason
         }
       };
       const expectedTicketClassificationClickParams = [
@@ -545,18 +536,55 @@ describe('c-case-assist-flow', () => {
       // expect to send the event with coveoua
       expect(coveoua.mock.calls[2]).toEqual(EXPECTED_SEND_EVENT_PARAMS);
     });
+
+    it('should NOT send the TICKET_FIELD_UPDATE event with coveoua', async () => {
+      const element = createComponent();
+
+      setupMockCaseAssistEndpoint();
+
+      const fieldSectionContainer = await fillCaseFormFields(element);
+
+      // Clear the mock because the events before that are not the target of this test.
+      coveoua.mockClear();
+
+      clickOnCaseClassification(fieldSectionContainer);
+
+      // With the lightning component in use changing programmatically the value of the picklist
+      // when a suggestion is clicked also dispatches a change event from the picklist.
+      const reasonPicklist = element.shadowRoot.querySelector(
+        'lightning-input-field[data-field-name="Reason"]'
+      );
+      if (reasonPicklist === null) {
+        throw new Error('Cannot find a reason picklist to test on');
+      }
+
+      reasonPicklist.value = TEST_CASE.reason;
+      const changeEvent = new CustomEvent('change');
+      reasonPicklist.dispatchEvent(changeEvent);
+
+      // This picklist change event should not be sending an additional coveoua call, so we should see
+      // 3 and ONLY 3 calls to coveoua. If it is not correctly ignored we should see 6 calls.
+
+      // expect coveoua to have been called 3 times
+      expect(coveoua).toHaveBeenCalledTimes(3);
+
+      expect(coveoua.mock.calls[1][1]).toEqual(
+        analyticsActionNames.TICKET_CLASSIFICATION_CLICK
+      );
+    });
   });
 
   describe('when the next button is clicked', () => {
     it('should send the TICKET_NEXT_STAGE event with coveoua', async () => {
       const element = createComponent();
       element.availableActions = ['NEXT'];
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      // Flush microtasks
       await flushPromises();
       // Clear the mock because the events before that are not the target of this test.
       coveoua.mockClear();
@@ -584,12 +612,13 @@ describe('c-case-assist-flow', () => {
     it('should send the FlowNavigationNextEvent if the next action is there', async () => {
       const element = createComponent();
       element.availableActions = ['NEXT'];
-      const testSubject = 'This is a test subject';
-      const testDescription = 'This is a test description long enough';
       // Update the Subject and Description and emit the change events
-      setSubjectAndDescriptionValues(element, testSubject, testDescription);
+      setSubjectAndDescriptionValues(
+        element,
+        TEST_CASE.subject,
+        TEST_CASE.description
+      );
 
-      // Flush microtasks
       await flushPromises();
       const flowNavigationHandler = jest.fn();
 

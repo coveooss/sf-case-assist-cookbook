@@ -41,7 +41,6 @@ describe('c-documents-result-list', () => {
     const expectedResult = { ...MOCK_RESULT };
     element.results = [expectedResult];
 
-    // Flush microtasks
     await flushPromises();
     const titleNode = element.shadowRoot.querySelector(
       'div[data-ut-role="resultListContainer"]'
@@ -58,7 +57,6 @@ describe('c-documents-result-list', () => {
     }));
     element.results = expectedResults;
 
-    // Flush microtasks
     await flushPromises();
     const resultContainerNodes = Array.from(
       element.shadowRoot.querySelectorAll(
@@ -75,7 +73,6 @@ describe('c-documents-result-list', () => {
     const expectedResult = { ...MOCK_RESULT, rank: 0 };
     element.results = [expectedResult];
 
-    // Flush microtasks
     await flushPromises();
 
     element.addEventListener('resultclicked', resultClickedHandler);

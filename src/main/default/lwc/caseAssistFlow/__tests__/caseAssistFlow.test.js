@@ -150,7 +150,6 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
-      // Flush microtasks
       await flushPromises();
       const subHeadingNode = element.shadowRoot.querySelector(
         'h1.h1_sub-heading'
@@ -287,7 +286,6 @@ describe('c-case-assist-flow', () => {
       localStorage.setItem('visitorId', testVisitorId);
 
       setSubject(element, TEST_CASE.subject);
-      // Flush microtasks
       await flushPromises();
 
       expect(coveoua).toHaveBeenCalledTimes(3);
@@ -336,7 +334,6 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
-      // Flush microtasks
       await flushPromises();
 
       const reasonPicklist = element.shadowRoot.querySelector(
@@ -374,7 +371,6 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
-      // Flush microtasks
       await flushPromises();
 
       coveoua.mockClear();
@@ -436,7 +432,6 @@ describe('c-case-assist-flow', () => {
       // Ensures debounce fires and classifications are fetched from the API.
       jest.runAllTimers();
 
-      // Flush microtasks
       await flushPromises();
       const fieldSectionContainer = element.shadowRoot.querySelector(
         'div.div_field-section'
@@ -590,7 +585,6 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
-      // Flush microtasks
       await flushPromises();
       // Clear the mock because the events before that are not the target of this test.
       coveoua.mockClear();
@@ -625,7 +619,6 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
-      // Flush microtasks
       await flushPromises();
       const flowNavigationHandler = jest.fn();
 

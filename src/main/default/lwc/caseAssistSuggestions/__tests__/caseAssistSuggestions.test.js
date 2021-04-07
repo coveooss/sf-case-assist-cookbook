@@ -63,7 +63,6 @@ describe('c-case-assist-suggestions', () => {
 
     element.suggestions = suggestions;
 
-    // Flush microtasks
     await flushPromises();
     const containerElement = element.shadowRoot.querySelector(
       'div.suggestions__container'
@@ -86,7 +85,6 @@ describe('c-case-assist-suggestions', () => {
 
     element.suggestions = suggestions;
 
-    // Flush microtasks
     await flushPromises();
     const containerElement = element.shadowRoot.querySelector(
       'div.suggestions__container'
@@ -111,7 +109,6 @@ describe('c-case-assist-suggestions', () => {
 
     element.suggestions = suggestions;
 
-    // Flush microtasks
     await flushPromises();
     const containerElement = element.shadowRoot.querySelector(
       'div.suggestions__container'
@@ -142,7 +139,6 @@ describe('c-case-assist-suggestions', () => {
     element.suggestions = suggestions;
     element.addEventListener('selected', handler);
 
-    // Flush microtasks
     await flushPromises();
     const containerElement = element.shadowRoot.querySelector(
       'div.suggestions__container'

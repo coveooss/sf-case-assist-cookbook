@@ -104,3 +104,5 @@ This cookbook uses the [coveo.analytics.js](https://www.npmjs.com/package/coveo.
 It is included as a dependency in this project and served via a static resource within the different components of this repository.
 
 ## Description of Files and Directories
+
+## Adding a New Field to Predict

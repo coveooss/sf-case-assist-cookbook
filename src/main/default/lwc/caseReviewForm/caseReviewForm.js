@@ -86,7 +86,7 @@ export default class CaseReviewForm extends LightningElement {
       subject: this._caseData.Subject,
       description: this._caseData.Description,
       custom: {
-        reason: this._caseData.Reason
+        reason: this._caseData.Reason //Repeat for every field in the case form.
       }
     });
     coveoua('svc:setAction', analyticsActionNames.TICKET_FIELD_UPDATE, {

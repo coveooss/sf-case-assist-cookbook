@@ -113,7 +113,7 @@ export default class CaseAssistFlow extends LightningElement {
 
   // get <FIELDLABEL>Suggestions() {
   //   const COVEO_<FIELDLABEL>_FIELD_NAME = '<COVEOFIELDLABEL>'; 
-  //   let FIELDLABELSuggestions = [];
+  //   let <FIELDLABEL>Suggestions = [];
   //   if (
   //     this.fieldSuggestions &&
   //     this.fieldSuggestions[COVEO_<FIELDLABEL>_FIELD_NAME]

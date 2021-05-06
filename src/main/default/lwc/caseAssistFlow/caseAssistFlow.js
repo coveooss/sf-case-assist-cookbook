@@ -220,7 +220,7 @@ export default class CaseAssistFlow extends LightningElement {
       subject: this.theCase.Subject,
       description: this.theCase.Description,
       custom: {
-        reason: this.theCase.Reason
+        reason: this.theCase.Reason //Repeat for every field in the case form.
       }
     });
   }

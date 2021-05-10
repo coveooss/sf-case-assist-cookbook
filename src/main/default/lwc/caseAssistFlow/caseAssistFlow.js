@@ -106,7 +106,7 @@ export default class CaseAssistFlow extends LightningElement {
 
 
   /* 
-  This is a sample field prediction component. Copy as many times as the number fields you wish to predict. Replace <FIELDLABEL> 
+  This sample component lets you specify a field for classification. Copy it every time you want to add a new field for classification. Replace <FIELDLABEL> 
   with the label you plan to give to the field that you are configuring and <COVEOFIELDLABEL> with the Coveo field label 
   configured in your Case Assist configuration in the Coveo Cloud Platform. 
   */

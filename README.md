@@ -105,6 +105,6 @@ It is included as a dependency in this project and served via a static resource 
 
 ## Description of Files and Directories
 
-## Adding a New Field to Predict
+## Add New Fields for Classification
 
 Using this cookbook as-is includes predicting values for the standard case field "reason". To add other fields to predict, copy the components that are commented out in the HTML and JS files in the [caseAssistFlow folder](src/main/default/lwc/caseAssistFlow). If you are using the Case Review Form, also copy the components that are commented out in the HTML and JS files in the [caseReviewForm folder](src/main/default/lwc/caseReviewForm). Don't forget that you must also configure those same fields to predict in your Case Assist configuration in the Coveo Cloud Platform. 

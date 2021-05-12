@@ -38,7 +38,7 @@ export default class CaseAssistFlow extends LightningElement {
     this.endpoint = new CaseAssistEndpoint();
 
     // Debounce function for "search-as-you-type" it will trigger when there is no key stroke for 500ms.
-    this.debounceHandler = debounce(async () => {
+    this.debounceSearch = debounce(async () => {
       try {
         const visitorId = getVisitorId();
 
@@ -52,6 +52,9 @@ export default class CaseAssistFlow extends LightningElement {
         console.error(err);
       }
     }, 500);
+
+    // Debounce function to not send an event every letter typed.
+    this.debounceTicketUpdate = debounce(this.sendTicketFieldUpdated, 200);
   }
 
   /**
@@ -75,11 +78,12 @@ export default class CaseAssistFlow extends LightningElement {
   // When the subject/description of the case changes.
   handleFormInputChange(event) {
     this.theCase[event.target.fieldName] = event.target.value;
-    this.sendTicketFieldUpdated(event.target.fieldName);
+    // this.sendTicketFieldUpdated(event.target.fieldName);
+    this.debounceTicketUpdate(event.target.fieldName);
     this.updateFlowState();
     if (this.shouldShowSuggestions) {
       // Trigger the API call to get field suggestions.
-      this.debounceHandler();
+      this.debounceSearch();
     }
   }
 

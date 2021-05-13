@@ -107,7 +107,7 @@ export default class CaseAssistFlow extends LightningElement {
 
   /* 
   This sample component lets you specify a field for classification. Copy it every time you want to add a new field for classification. Replace <FIELDLABEL> 
-  with the label you plan to give to the field that you are configuring and <COVEOFIELDLABEL> with the Coveo field label 
+  with the label you plan to give to the field that you are configuring and <COVEOFIELDLABEL> with the field name you plan to add to your Case Classification Configuration using the Coveo Administration Console.
   configured in your Case Assist configuration in the Coveo Cloud Platform. 
   */
 

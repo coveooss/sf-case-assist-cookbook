@@ -261,6 +261,9 @@ describe('c-case-assist-flow', () => {
         TEST_CASE.description
       );
 
+      // Fast-forward until all timers have been executed
+      jest.runAllTimers();
+
       const expectedAttributeName = 'caseData';
 
       // Should have dispatched the FlowAttributeChangeEvent once per changed field.
@@ -287,6 +290,9 @@ describe('c-case-assist-flow', () => {
 
       setSubject(element, TEST_CASE.subject);
       await flushPromises();
+
+      // Fast-forward until all timers have been executed
+      jest.runAllTimers();
 
       expect(coveoua).toHaveBeenCalledTimes(3);
       // Expect the updated ticket data in coveoua

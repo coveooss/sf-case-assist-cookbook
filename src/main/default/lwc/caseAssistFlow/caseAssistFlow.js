@@ -28,6 +28,11 @@ export default class CaseAssistFlow extends LightningElement {
    */
   @api subHeading = 'Select related categories';
 
+  /**
+   * This is the delay before sending a query and analytics events on user typing.
+   */
+  @api caseEditDelayMs = 500;
+
   @track theCase = {};
   @track fieldSuggestions = {};
 
@@ -36,22 +41,6 @@ export default class CaseAssistFlow extends LightningElement {
 
     // Case Assist Endpoint
     this.endpoint = new CaseAssistEndpoint();
-
-    // Debounce function for "search-as-you-type" it will trigger when there is no key stroke for 500ms.
-    this.debounceHandler = debounce(async () => {
-      try {
-        const visitorId = getVisitorId();
-
-        const classificationData = await this.endpoint.fetchCaseClassifications(
-          this.theCase.Subject,
-          this.theCase.Description,
-          visitorId || 'default'
-        );
-        this.parseFieldSuggestions(classificationData);
-      } catch (err) {
-        console.error(err);
-      }
-    }, 500);
   }
 
   /**
@@ -68,6 +57,28 @@ export default class CaseAssistFlow extends LightningElement {
   }
 
   connectedCallback() {
+    // Debounce function for "search-as-you-type" it will trigger when there is no key stroke for 500ms.
+    this.debounceSearch = debounce(async () => {
+      try {
+        const visitorId = getVisitorId();
+
+        const classificationData = await this.endpoint.fetchCaseClassifications(
+          this.theCase.Subject,
+          this.theCase.Description,
+          visitorId || 'default'
+        );
+        this.parseFieldSuggestions(classificationData);
+      } catch (err) {
+        console.error(err);
+      }
+    }, this.caseEditDelayMs);
+
+    // Debounce function to not send an event every letter typed.
+    this.debounceTicketUpdate = debounce(
+      this.sendTicketFieldUpdated,
+      this.caseEditDelayMs
+    );
+
     // On component connect, send a ticket_create_start since this is the first screen.
     this.sendTicketCreateStart();
   }
@@ -75,11 +86,11 @@ export default class CaseAssistFlow extends LightningElement {
   // When the subject/description of the case changes.
   handleFormInputChange(event) {
     this.theCase[event.target.fieldName] = event.target.value;
-    this.sendTicketFieldUpdated(event.target.fieldName);
+    this.debounceTicketUpdate(event.target.fieldName);
     this.updateFlowState();
     if (this.shouldShowSuggestions) {
       // Trigger the API call to get field suggestions.
-      this.debounceHandler();
+      this.debounceSearch();
     }
   }
 

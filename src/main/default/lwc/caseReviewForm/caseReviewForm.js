@@ -6,6 +6,7 @@ import {
 
 import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
+import { debounce } from 'c/utils';
 
 export default class CaseReviewForm extends LightningElement {
   /**
@@ -22,6 +23,11 @@ export default class CaseReviewForm extends LightningElement {
    * The title of the sub-section which contains additional fields.
    */
   @api subHeading = 'Select related categories';
+
+  /**
+   * This is the delay before sending a query and analytics events on user typing.
+   */
+  @api caseEditDelayMs = 500;
 
   /**
    * An output variable to use in Salesforce flows will be the newly created case Id.
@@ -41,6 +47,11 @@ export default class CaseReviewForm extends LightningElement {
   }
 
   connectedCallback() {
+    // Debounce function to not send an event every letter typed.
+    this.debounceTicketUpdate = debounce(
+      this.sendTicketFieldUpdated,
+      this.caseEditDelayMs
+    );
     // We want this to potentially throw on purpose. If this fails it means we did not get the case data from the
     // previous screens which would leave this screen as a blank case creation form and force the user to re-submit all
     // his case information. You can choose to handle it differently.
@@ -53,7 +64,7 @@ export default class CaseReviewForm extends LightningElement {
 
   handleFormInputChange(event) {
     this._caseData[event.target.fieldName] = event.detail.value;
-    this.sendTicketFieldUpdated(event.target.fieldName);
+    this.debounceTicketUpdate(event.target.fieldName);
   }
 
   handleButtonCancel() {

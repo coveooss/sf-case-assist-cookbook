@@ -9,6 +9,7 @@ import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
 
 jest.mock('c/analyticsBeacon');
+jest.useFakeTimers();
 
 const EXPECTED_SEND_EVENT_PARAMS = ['send', 'event', 'svc', 'click'];
 
@@ -105,6 +106,10 @@ describe('c-case-review-form', () => {
       setSubject(element, testSubject);
 
       await flushPromises();
+
+      // Fast-forward until all timers have been executed
+      jest.runAllTimers();
+
       expect(coveoua).toHaveBeenCalledTimes(3);
       // Expect the updated ticket data in coveoua
       const expectedTicketDataCallParams = [

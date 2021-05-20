@@ -9,7 +9,7 @@ import { debounce, getVisitorId } from 'c/utils';
 import { analyticsActionNames } from 'c/analyticsActionNames';
 import { coveoua } from 'c/analyticsBeacon';
 
-const COVEO_REASON_FIELD_NAME = 'sfreason';
+
 
 export default class CaseAssistFlow extends LightningElement {
   /**
@@ -103,6 +103,7 @@ export default class CaseAssistFlow extends LightningElement {
 
   // Returns the field suggestions specific to the reason field.
   get reasonSuggestions() {
+    const COVEO_REASON_FIELD_NAME = 'sfreason'; 
     let reasonSuggestions = [];
     if (
       this.fieldSuggestions &&
@@ -113,6 +114,26 @@ export default class CaseAssistFlow extends LightningElement {
     }
     return reasonSuggestions;
   }
+
+
+  /* 
+  This sample component lets you specify a field for classification. Copy it every time you want to add a new field for classification. Replace <FIELDLABEL> 
+  with the label you plan to give to the field that you are configuring and <COVEOFIELDLABEL> with the field name you plan to add to your Case Classification Configuration using the Coveo Administration Console. 
+  */
+
+  // get <FIELDLABEL>Suggestions() {
+  //   const COVEO_<FIELDLABEL>_FIELD_NAME = '<COVEOFIELDLABEL>'; 
+  //   let <FIELDLABEL>Suggestions = [];
+  //   if (
+  //     this.fieldSuggestions &&
+  //     this.fieldSuggestions[COVEO_<FIELDLABEL>_FIELD_NAME]
+  //   ) {
+  //     reasonSuggestions = this.fieldSuggestions[COVEO_<FIELDLABEL>_FIELD_NAME]
+  //       .predictions;
+  //   }
+  //   return <FIELDLABEL>Suggestions;
+  // }
+
 
   // Specific rule to hide the field section of the UI until the user has entered enough information in the text fields.
   get shouldShowSuggestions() {
@@ -209,7 +230,7 @@ export default class CaseAssistFlow extends LightningElement {
       subject: this.theCase.Subject,
       description: this.theCase.Description,
       custom: {
-        reason: this.theCase.Reason
+        reason: this.theCase.Reason //Repeat for every field in the case form.
       }
     });
   }

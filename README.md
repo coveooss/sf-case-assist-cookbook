@@ -104,3 +104,7 @@ This cookbook uses the [coveo.analytics.js](https://www.npmjs.com/package/coveo.
 It is included as a dependency in this project and served via a static resource within the different components of this repository.
 
 ## Description of Files and Directories
+
+## Add New Fields for Classification
+
+This cookbook suggests classifications for the standard case  field `reason`. To specify additional fields for classification, access the [caseAssistFlow folder](src/main/default/lwc/caseAssistFlow) and copy the sample components that are commented out in the `caseAssistFlow.html` and `caseAssistFlow.js` files as many times as necessary. If you are using the Case Review Form,  access the [caseReviewForm folder](src/main/default/lwc/caseReviewForm) and copy the sample components that are commented out in the `caseReviewForm.html` and `caseReviewForm.js` files as well. After modifying these files, access the Coveo Administration Console to update your Case Classification configuration accordingly. Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality. 

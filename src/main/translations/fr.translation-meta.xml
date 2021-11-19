@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customLabels>
-        <label>Titre de la section</label>
-        <name>cookbook_SectionTitle</name>
-    </customLabels>
+  <customLabels>
+    <label>Titre de la section</label>
+    <name>cookbook_SectionTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>A aidé {{0}} utilisateur</label>
+    <name>cookbook_HelpedUsers</name>
+  </customLabels>
+  <customLabels>
+    <label>A aidé {{0}} utilisateurs</label>
+    <name>cookbook_HelpedUsers_plural</name>
+  </customLabels>
+  <customLabels>
+    <label>N'a aidé aucun utilisateur</label>
+    <name>cookbook_HelpedUsers_zero</name>
+  </customLabels>
 </Translations>

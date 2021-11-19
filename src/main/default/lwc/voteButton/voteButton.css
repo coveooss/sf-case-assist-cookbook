@@ -1,0 +1,16 @@
+.clickable {
+  cursor: pointer;
+}
+.vote-button {
+  display: flex;
+  align-items: center;
+}
+.text-color_initial {
+  color: #0176d3;
+}
+.icon-color_initial {
+  --sds-c-icon-color-foreground-default: #0176d3;
+}
+.label_small {
+  font-size: 12px;
+}

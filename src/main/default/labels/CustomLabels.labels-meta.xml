@@ -28,4 +28,11 @@
     <protected>false</protected>
     <shortDescription>Helped no one</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_Yes</fullName>
+    <value>Yes</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Yes</shortDescription>
+  </labels>
 </CustomLabels>

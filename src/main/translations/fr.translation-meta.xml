@@ -16,4 +16,8 @@
     <label>N'a aidé aucun utilisateur</label>
     <name>cookbook_HelpedUsers_zero</name>
   </customLabels>
+  <customLabels>
+    <label>Oui</label>
+    <name>cookbook_Yes</name>
+  </customLabels>
 </Translations>

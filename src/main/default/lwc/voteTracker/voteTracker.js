@@ -49,6 +49,12 @@ export default class VoteTracker extends LightningElement {
   @api abandonLabel = 'Abandon request';
 
   /**
+   * The timeout to wait before showing the final state after voting.
+   * @type {number}
+   */
+  timeout = 2000;
+
+  /**
    * Tells if the component is on the final state that appear after voting.
    * @type {boolean}
    */
@@ -65,12 +71,6 @@ export default class VoteTracker extends LightningElement {
    * @type {'initial'|'selected'|'neutral'}
    */
   _negativeState = 'initial';
-
-  /**
-   * The timeout to wait before showing the final state.
-   * @type {number}
-   */
-  _timeout = 2000;
 
   /**
    * Returns the css class to be given to the question.
@@ -94,6 +94,7 @@ export default class VoteTracker extends LightningElement {
    * Tells if the component is in the final state.
    * @returns {boolean}
    */
+  @api
   get finalState() {
     return this._finalState;
   }
@@ -133,7 +134,7 @@ export default class VoteTracker extends LightningElement {
       // eslint-disable-next-line @lwc/lwc/no-async-operation
       setTimeout(() => {
         this._finalState = true;
-      }, this._timeout);
+      }, this.timeout);
     }
   }
 
@@ -148,7 +149,7 @@ export default class VoteTracker extends LightningElement {
       // eslint-disable-next-line @lwc/lwc/no-async-operation
       setTimeout(() => {
         this._finalState = true;
-      }, this._timeout);
+      }, this.timeout);
     }
   }
 

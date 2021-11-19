@@ -1,0 +1,54 @@
+<template>
+  <div>
+    <template if:true={finalState}>
+      <template if:true={isBig}>
+        <c-section-title title={finalText}></c-section-title>
+      </template>
+      <template if:false={isBig}>
+        <h3 class="slds-text-title_bold slds-m-vertical_xxx-small">
+          {finalText}
+        </h3>
+      </template>
+      <template if:true={showAbandonRequest}>
+        <div class="slds-m-top_xx-small">
+          <lightning-button
+            onclick={handleAbandon}
+            variant="brand-outline"
+            label={abandonLabel}
+          ></lightning-button>
+        </div>
+      </template>
+    </template>
+    <template if:false={finalState}>
+      <template if:true={isBig}>
+        <c-section-title title={label}></c-section-title>
+      </template>
+      <template if:false={isBig}>
+        <h3 class="slds-text-title_bold slds-m-vertical_xxx-small">{label}</h3>
+      </template>
+      <div class="row slds-m-top_xx-small">
+        <div class={questionClass}>{question}</div>
+        <div class="slds-grid slds-m-left_large">
+          <c-vote-button
+            state={positiveState}
+            onclick={positiveVote}
+            class="slds-m-right_medium"
+            type="positive"
+            id="yes"
+            label="Yes"
+            size={size}
+          ></c-vote-button>
+          <c-vote-button
+            state={negativeState}
+            onclick={negativeVote}
+            type="negative"
+            id="no"
+            label="No"
+            size={size}
+          >
+          </c-vote-button>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

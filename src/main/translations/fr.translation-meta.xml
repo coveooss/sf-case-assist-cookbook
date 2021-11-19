@@ -20,4 +20,16 @@
     <label>Oui</label>
     <name>cookbook_Yes</name>
   </customLabels>
+  <customLabels>
+    <label>Est-ce que cela a été utile?</label>
+    <name>cookbook_VoteQuestion</name>
+  </customLabels>
+  <customLabels>
+    <label>Votre avis peut aider les autres</label>
+    <name>cookbook_VoteLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci pour votre retour!</label>
+    <name>cookbook_VoteFinalText</name>
+  </customLabels>
 </Translations>

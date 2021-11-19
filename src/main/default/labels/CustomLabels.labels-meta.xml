@@ -35,4 +35,25 @@
     <protected>false</protected>
     <shortDescription>Yes</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_VoteQuestion</fullName>
+    <value>Was this helpful?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Was this helpful?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_VoteFinalText</fullName>
+    <value>Thank you for the feedback!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you for the feedback!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_VoteLabel</fullName>
+    <value>Your opinion can help others</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your opinion can help others</shortDescription>
+  </labels>
 </CustomLabels>

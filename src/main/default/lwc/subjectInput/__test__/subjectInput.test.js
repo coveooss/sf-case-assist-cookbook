@@ -74,9 +74,9 @@ describe('c-subject-input', () => {
   });
   it('should respect the max lenght of the input', async () => {
     const element = createTestComponent();
-    const longValue = 'The value should end here. and not here.';
-    const expectedValue = 'The value should end here.';
     const maxLength = 26;
+    const longValue = 'The value should end here. and not here.';
+    const expectedValue = longValue.substring(0, maxLength);
     element.maxLength = maxLength;
 
     await flushPromises();

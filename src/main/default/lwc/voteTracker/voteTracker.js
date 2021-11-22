@@ -46,6 +46,7 @@ export default class VoteTracker extends LightningElement {
 
   /**
    * The label to be shown in the button to abandon a request.
+   * @api
    * @type {string}
    */
   @api abandonLabel = this.labels.abandonRequestText;
@@ -57,7 +58,7 @@ export default class VoteTracker extends LightningElement {
   timeout = 2000;
 
   /**
-   * Tells if the component is on the final state that appear after voting.
+   * Tells if the component is on the final state that appears after voting.
    * @type {boolean}
    */
   _finalState = false;

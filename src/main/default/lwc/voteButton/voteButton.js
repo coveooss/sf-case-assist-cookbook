@@ -15,6 +15,7 @@ export default class VoteButton extends LightningElement {
    * The label of the button.
    * @api
    * @type {string}
+   * @defaultValue `'Yes'`
    */
   @api label = this.labels.yes;
 
@@ -35,7 +36,7 @@ export default class VoteButton extends LightningElement {
   @api size = 'small';
 
   /**
-   * The state of the button. initial / neutral / selected
+   * The state of the button.
    * @api
    * @type {'initial'|'neutral'|'selected'}
    * @defaultValue `'initial'`
@@ -43,7 +44,7 @@ export default class VoteButton extends LightningElement {
   @api state = 'initial';
 
   /**
-   * The name of the icon to be in the button.
+   * The name of the icon to be shown in the button.
    * @api
    * @type {string}
    */

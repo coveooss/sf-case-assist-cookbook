@@ -56,4 +56,11 @@
     <protected>false</protected>
     <shortDescription>Your opinion can help others</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_AbandonRequest</fullName>
+    <value>Abandon Request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Abandon Request</shortDescription>
+  </labels>
 </CustomLabels>

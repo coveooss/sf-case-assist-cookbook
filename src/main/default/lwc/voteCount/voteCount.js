@@ -7,7 +7,7 @@ import { I18nUtils } from 'c/quanticUtils';
 /**
  * The `voteCount` component is an indicator of how many people said that a document was helpful.
  * @example
- * <c-vote-count></c-vote-count>
+ * <c-vote-count active="true" count="102"></c-vote-count>
  */
 export default class VoteCount extends LightningElement {
   labels = {
@@ -43,7 +43,7 @@ export default class VoteCount extends LightningElement {
   get label() {
     const labelName = I18nUtils.getLabelNameWithCount(
       'helpedUsers',
-      this.count
+      parseInt(this.count, 10)
     );
     return I18nUtils.format(this.labels[labelName], this.count);
   }

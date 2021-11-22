@@ -319,7 +319,7 @@ describe('c-vote-tracker', () => {
       expect(finalTextNode).not.toBeNull();
       expect(finalTextNode.textContent).toBe(expectedText);
     });
-    it('should show the abandon button request', async () => {
+    it('should not show the abandon button request', async () => {
       const element = createTestComponent();
       element.size = 'big';
 
@@ -334,7 +334,7 @@ describe('c-vote-tracker', () => {
       await jest.runAllTimers();
       const buttonNode = element.shadowRoot.querySelector('lightning-button');
 
-      expect(buttonNode).not.toBeNull();
+      expect(buttonNode).toBeNull();
     });
   });
 });

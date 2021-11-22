@@ -2,17 +2,19 @@ import { LightningElement, api } from 'lwc';
 import voteQuestion from '@salesforce/label/c.cookbook_VoteQuestion';
 import voteLabel from '@salesforce/label/c.cookbook_VoteLabel';
 import voteFinalText from '@salesforce/label/c.cookbook_VoteFinalText';
+import abandonRequestText from '@salesforce/label/c.cookbook_AbandonRequest';
 
 /**
  * The `voteTracker` component is a button to share whether a document was helpful or not. Also sends a signal to Coveo platform for ML.
  * @example
- * <c-vote-tracker></c-vote-tracker>
+ * <c-vote-tracker size="small" label="Your feedback can help others" question="Did you find this helpful?" final-nessage="Thank you" abandon-label="Abandon request" timeout="2000"></c-vote-tracker>
  */
 export default class VoteTracker extends LightningElement {
   labels = {
     voteFinalText,
     voteLabel,
-    voteQuestion
+    voteQuestion,
+    abandonRequestText
   };
   /**
    * The label to be shown to the user.
@@ -46,7 +48,7 @@ export default class VoteTracker extends LightningElement {
    * The label to be shown in the button to abandon a request.
    * @type {string}
    */
-  @api abandonLabel = 'Abandon request';
+  @api abandonLabel = this.labels.abandonRequestText;
 
   /**
    * The timeout to wait before showing the final state after voting.
@@ -87,7 +89,7 @@ export default class VoteTracker extends LightningElement {
    * @returns {boolean}
    */
   get showAbandonRequest() {
-    return this.size === 'big';
+    return this.size === 'big' && this._positiveState === 'selected';
   }
 
   /**

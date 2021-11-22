@@ -32,4 +32,8 @@
     <label>Merci pour votre retour!</label>
     <name>cookbook_VoteFinalText</name>
   </customLabels>
+  <customLabels>
+    <label>Abandonner la demande</label>
+    <name>cookbook_AbandonRequest</name>
+  </customLabels>
 </Translations>

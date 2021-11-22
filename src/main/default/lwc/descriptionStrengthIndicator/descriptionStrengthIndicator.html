@@ -1,0 +1,49 @@
+<template>
+  <div class="slds-grid">
+    <div class="slds-p-top_x-small">
+      <template if:true={isFull}>
+        <lightning-progress-ring
+          size="large"
+          value={progress}
+          variant="base-autocomplete"
+        ></lightning-progress-ring>
+      </template>
+      <template if:false={isFull}>
+        <div
+          class="slds-progress-ring slds-progress-ring_large slds-progress-ring_warning"
+        >
+          <div
+            class="slds-progress-ring__progress"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="95"
+          >
+            <svg viewBox="-1 -1 2 2">
+              <path
+                class="slds-progress-ring__path"
+                id="slds-progress-ring-path-47"
+                d={progressPath}
+              ></path>
+            </svg>
+          </div>
+          <div class="slds-progress-ring__content"></div>
+        </div>
+      </template>
+    </div>
+    <div class="slds-col">
+      <h3 class="slds-text-title_bold slds-p-left_small">{message}</h3>
+      <lightning-accordion allow-multiple-sections-open class="accordion">
+        <lightning-accordion-section label={helpLabel}>
+          <div class="slds-m-left_large">
+            <slot name="content">
+              Since when is this problem affecting you?<br />
+              Is it the first time it is affecting you?<br />
+              What is it preventing you to achieve?
+            </slot>
+          </div>
+        </lightning-accordion-section>
+      </lightning-accordion>
+    </div>
+  </div>
+</template>

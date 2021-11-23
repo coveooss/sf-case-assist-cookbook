@@ -76,6 +76,11 @@ export default class VoteTracker extends LightningElement {
   _negativeState = 'initial';
 
   /**
+   * Preperty used to store the timeouts to give the possiblity of clearing them.
+   */
+  _timer = null;
+
+  /**
    * Returns the css class to be given to the question.
    * @returns {string}
    */
@@ -131,14 +136,13 @@ export default class VoteTracker extends LightningElement {
    * @returns {void}
    */
   positiveVote() {
-    if (this._positiveState === 'initial') {
-      this._positiveState = 'selected';
-      this._negativeState = 'neutral';
-      // eslint-disable-next-line @lwc/lwc/no-async-operation
-      setTimeout(() => {
-        this._finalState = true;
-      }, this.timeout);
-    }
+    this._positiveState = 'selected';
+    this._negativeState = 'neutral';
+    clearTimeout(this._timer);
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    this._timer = setTimeout(() => {
+      this._finalState = true;
+    }, this.timeout);
   }
 
   /**
@@ -146,14 +150,13 @@ export default class VoteTracker extends LightningElement {
    * @returns {void}
    */
   negativeVote() {
-    if (this._negativeState === 'initial') {
-      this._negativeState = 'selected';
-      this._positiveState = 'neutral';
-      // eslint-disable-next-line @lwc/lwc/no-async-operation
-      setTimeout(() => {
-        this._finalState = true;
-      }, this.timeout);
-    }
+    this._negativeState = 'selected';
+    this._positiveState = 'neutral';
+    clearTimeout(this._timer);
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    this._timer = setTimeout(() => {
+      this._finalState = true;
+    }, this.timeout);
   }
 
   /**

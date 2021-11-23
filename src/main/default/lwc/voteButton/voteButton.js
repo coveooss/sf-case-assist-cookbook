@@ -104,7 +104,7 @@ export default class VoteButton extends LightningElement {
   }
 
   /**
-   * Returns the css class of the container.
+   * Returns the CSS class of the container.
    * @returns {string}
    */
   get containerClass() {

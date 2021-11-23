@@ -236,7 +236,7 @@ describe('c-vote-tracker', () => {
       await positiveButtonNode.dispatchEvent(clickEvent);
 
       await jest.runAllTimers();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
 
       expect(buttonNode).not.toBeNull();
     });
@@ -333,7 +333,7 @@ describe('c-vote-tracker', () => {
       await negativeButtonNode.dispatchEvent(clickEvent);
 
       await jest.runAllTimers();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
 
       expect(buttonNode).toBeNull();
     });

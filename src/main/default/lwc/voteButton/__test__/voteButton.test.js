@@ -16,8 +16,8 @@ const iconVariants = {
   selectedNegative: 'error'
 };
 const iconClasses = {
-  big: 'slds-m-right_x-small',
-  small: 'slds-m-right_xx-small',
+  big: 'slds-var-m-right_x-small',
+  small: 'slds-var-m-right_xx-small',
   initial: 'icon-color_initial'
 };
 

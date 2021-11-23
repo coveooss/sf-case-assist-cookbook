@@ -92,7 +92,7 @@ export default class VoteTracker extends LightningElement {
    * @returns {boolean}
    */
   get showAbandonRequest() {
-    return this.size === 'big' && this._positiveState === 'selected';
+    return this.size === 'big' && this._votingState === 'positive';
   }
 
   /**
@@ -172,13 +172,5 @@ export default class VoteTracker extends LightningElement {
     this._timer = setTimeout(() => {
       this._finalState = true;
     }, this.timeout);
-  }
-
-  /**
-   * Handles the click on the abandon request button.
-   * @returns {void}
-   */
-  handleAbandon() {
-    this.dispatchEvent(new CustomEvent('abandon'));
   }
 }

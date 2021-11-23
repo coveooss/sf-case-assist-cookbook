@@ -11,11 +11,7 @@
       </template>
       <template if:true={showAbandonRequest}>
         <div class="slds-var-m-top_x-small">
-          <lightning-button
-            onclick={handleAbandon}
-            variant="brand-outline"
-            label={abandonLabel}
-          ></lightning-button>
+          <c-abandon-request></c-abandon-request>
         </div>
       </template>
     </template>

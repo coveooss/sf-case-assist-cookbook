@@ -66,7 +66,7 @@ describe('c-vote-button', () => {
     expect(labelNode.textContent).toBe(expectedLabel);
   });
 
-  it('should render the default localizzed label', async () => {
+  it('should render the default localized label', async () => {
     const element = createTestComponent();
 
     const expectedLabel = 'Yes';

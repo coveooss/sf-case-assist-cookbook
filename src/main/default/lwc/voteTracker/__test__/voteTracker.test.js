@@ -99,9 +99,9 @@ describe('c-vote-tracker', () => {
     const expectedType = 'positive';
 
     await flushPromises();
-    const positiveButtonNode = element.shadowRoot.querySelectorAll(
-      'c-vote-button'
-    )[0];
+    const positiveButtonNode = element.shadowRoot.querySelector(
+      '.vote-tracker__positive-button'
+    );
     expect(positiveButtonNode).not.toBeNull();
     expect(positiveButtonNode.type).toBe(expectedType);
   });
@@ -110,9 +110,10 @@ describe('c-vote-tracker', () => {
     const expectedType = 'negative';
 
     await flushPromises();
-    const negativeButtonNode = element.shadowRoot.querySelectorAll(
-      'c-vote-button'
-    )[1];
+    const negativeButtonNode = element.shadowRoot.querySelector(
+      '.vote-tracker__negative-button'
+    );
+
     expect(negativeButtonNode).not.toBeNull();
     expect(negativeButtonNode.type).toBe(expectedType);
   });
@@ -149,12 +150,12 @@ describe('c-vote-tracker', () => {
       const expectedNegativeState = 'neutral';
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[1];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await positiveButtonNode.dispatchEvent(clickEvent);
@@ -167,9 +168,9 @@ describe('c-vote-tracker', () => {
       const element = createTestComponent();
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await positiveButtonNode.dispatchEvent(clickEvent);
@@ -185,9 +186,9 @@ describe('c-vote-tracker', () => {
       element.finalText = expectedText;
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await positiveButtonNode.dispatchEvent(clickEvent);
@@ -206,9 +207,9 @@ describe('c-vote-tracker', () => {
       const expectedText = 'Thank you for the feedback!';
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await positiveButtonNode.dispatchEvent(clickEvent);
@@ -227,9 +228,9 @@ describe('c-vote-tracker', () => {
       element.size = 'big';
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await positiveButtonNode.dispatchEvent(clickEvent);
@@ -247,12 +248,12 @@ describe('c-vote-tracker', () => {
       const expectedNegativeState = 'selected';
 
       await flushPromises();
-      const positiveButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[1];
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await negativeButtonNode.dispatchEvent(clickEvent);
@@ -265,9 +266,9 @@ describe('c-vote-tracker', () => {
       const element = createTestComponent();
 
       await flushPromises();
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[1];
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await negativeButtonNode.dispatchEvent(clickEvent);
@@ -283,9 +284,9 @@ describe('c-vote-tracker', () => {
       element.finalText = expectedText;
 
       await flushPromises();
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await negativeButtonNode.dispatchEvent(clickEvent);
@@ -304,9 +305,9 @@ describe('c-vote-tracker', () => {
       const expectedText = 'Thank you for the feedback!';
 
       await flushPromises();
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[0];
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await negativeButtonNode.dispatchEvent(clickEvent);
@@ -324,9 +325,9 @@ describe('c-vote-tracker', () => {
       element.size = 'big';
 
       await flushPromises();
-      const negativeButtonNode = element.shadowRoot.querySelectorAll(
-        'c-vote-button'
-      )[1];
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
 
       const clickEvent = new CustomEvent('click');
       await negativeButtonNode.dispatchEvent(clickEvent);

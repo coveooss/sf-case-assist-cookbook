@@ -32,7 +32,7 @@
           <c-vote-button
             state={positiveState}
             onclick={positiveVote}
-            class="slds-m-right_medium"
+            class="slds-m-right_medium vote-tracker__positive-button"
             type="positive"
             label={yesLabel}
             size={size}
@@ -40,6 +40,7 @@
           <c-vote-button
             state={negativeState}
             onclick={negativeVote}
+            class="vote-tracker__negative-button"
             type="negative"
             label={noLabel}
             size={size}

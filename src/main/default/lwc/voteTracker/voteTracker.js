@@ -127,7 +127,7 @@ export default class VoteTracker extends LightningElement {
   }
 
   /**
-   * Hamdles the click on the positive vote button.
+   * Handles the click on the positive vote button.
    * @returns {void}
    */
   positiveVote() {

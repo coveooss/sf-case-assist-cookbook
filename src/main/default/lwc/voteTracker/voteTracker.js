@@ -3,6 +3,8 @@ import voteQuestion from '@salesforce/label/c.cookbook_VoteQuestion';
 import voteLabel from '@salesforce/label/c.cookbook_VoteLabel';
 import voteFinalText from '@salesforce/label/c.cookbook_VoteFinalText';
 import abandonRequestText from '@salesforce/label/c.cookbook_AbandonRequest';
+import yesLabel from '@salesforce/label/c.cookbook_Yes';
+import noLabel from '@salesforce/label/c.cookbook_No';
 
 /**
  * The `voteTracker` component is a button to share whether a document was helpful or not. Also sends a signal to Coveo platform for ML.
@@ -14,7 +16,9 @@ export default class VoteTracker extends LightningElement {
     voteFinalText,
     voteLabel,
     voteQuestion,
-    abandonRequestText
+    abandonRequestText,
+    yesLabel,
+    noLabel
   };
   /**
    * The label to be shown to the user.
@@ -129,6 +133,20 @@ export default class VoteTracker extends LightningElement {
    */
   get negativeState() {
     return this._negativeState;
+  }
+
+  /**
+   * Returns the localized yes label.
+   */
+  get yesLabel() {
+    return this.labels.yesLabel;
+  }
+
+  /**
+   * Returns the localized no label.
+   */
+  get noLabel() {
+    return this.labels.noLabel;
   }
 
   /**

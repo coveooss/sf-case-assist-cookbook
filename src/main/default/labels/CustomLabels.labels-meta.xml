@@ -36,6 +36,13 @@
     <shortDescription>Yes</shortDescription>
   </labels>
   <labels>
+    <fullName>cookbook_No</fullName>
+    <value>No</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>No</shortDescription>
+  </labels>
+  <labels>
     <fullName>cookbook_VoteQuestion</fullName>
     <value>Was this helpful?</value>
     <language>en_US</language>

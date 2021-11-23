@@ -21,6 +21,10 @@
     <name>cookbook_Yes</name>
   </customLabels>
   <customLabels>
+    <label>Non</label>
+    <name>cookbook_No</name>
+  </customLabels>
+  <customLabels>
     <label>Est-ce que cela a été utile?</label>
     <name>cookbook_VoteQuestion</name>
   </customLabels>

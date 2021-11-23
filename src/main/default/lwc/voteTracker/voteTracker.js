@@ -68,16 +68,9 @@ export default class VoteTracker extends LightningElement {
   _finalState = false;
 
   /**
-   * The state of the positive vote button.
-   * @type {'initial'|'selected'|'neutral'}
+   * @type {'initial'|'positive'|'negative'}
    */
-  _positiveState = 'initial';
-
-  /**
-   * The state of the negative vote button.
-   * @type {'initial'|'selected'|'neutral'}
-   */
-  _negativeState = 'initial';
+  _votingState = 'initial';
 
   /**
    * Preperty used to store the timeouts to give the possiblity of clearing them.
@@ -124,7 +117,10 @@ export default class VoteTracker extends LightningElement {
    * @returns {'initial'|'selected'|'neutral'}
    */
   get positiveState() {
-    return this._positiveState;
+    if (this._votingState === 'initial') {
+      return this._votingState;
+    }
+    return this._votingState === 'positive' ? 'selected' : 'neutral';
   }
 
   /**
@@ -132,7 +128,10 @@ export default class VoteTracker extends LightningElement {
    * @returns {'initial'|'selected'|'neutral'}
    */
   get negativeState() {
-    return this._negativeState;
+    if (this._votingState === 'initial') {
+      return this._votingState;
+    }
+    return this._votingState === 'negative' ? 'selected' : 'neutral';
   }
 
   /**
@@ -154,8 +153,7 @@ export default class VoteTracker extends LightningElement {
    * @returns {void}
    */
   positiveVote() {
-    this._positiveState = 'selected';
-    this._negativeState = 'neutral';
+    this._votingState = 'positive';
     clearTimeout(this._timer);
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this._timer = setTimeout(() => {
@@ -168,8 +166,7 @@ export default class VoteTracker extends LightningElement {
    * @returns {void}
    */
   negativeVote() {
-    this._negativeState = 'selected';
-    this._positiveState = 'neutral';
+    this._votingState = 'negative';
     clearTimeout(this._timer);
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this._timer = setTimeout(() => {

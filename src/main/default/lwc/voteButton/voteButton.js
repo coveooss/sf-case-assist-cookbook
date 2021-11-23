@@ -76,18 +76,21 @@ export default class VoteButton extends LightningElement {
    * @returns {string}
    */
   get labelClass() {
-    let className =
-      this.size === 'big' ? 'slds-text-heading_small ' : 'label_small ';
+    let classNames = [
+      this.size === 'big' ? 'slds-text-heading_small' : 'label_small'
+    ];
+    
     if (this.state === 'neutral') {
-      className += 'slds-text-color_weak';
+      classNames.push('slds-text-color_weak');
     } else if (this.state === 'initial') {
-      className += 'text-color_initial';
+      classNames.push('text-color_initial');
     } else if (this.type === 'positive') {
-      className += 'slds-text-color_success';
+      classNames.push('slds-text-color_success');
     } else {
-      className += 'slds-text-color_error';
+      classNames.push('slds-text-color_error');
     }
-    return className;
+    
+    return classNames.join(' ');
   }
 
   /**

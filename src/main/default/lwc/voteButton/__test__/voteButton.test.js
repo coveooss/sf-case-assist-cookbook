@@ -111,7 +111,7 @@ describe('c-vote-button', () => {
     expect(iconNode.classList.contains(iconClasses.small)).toBe(true);
   });
 
-  it('should render the a voteButton in the initial state', async () => {
+  it('should render the voteButton in the initial state', async () => {
     const element = createTestComponent();
 
     element.state = 'initial';

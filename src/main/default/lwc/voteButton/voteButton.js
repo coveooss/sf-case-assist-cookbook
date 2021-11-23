@@ -95,12 +95,10 @@ export default class VoteButton extends LightningElement {
    * @returns {string}
    */
   get iconVariant() {
-    if (this.state !== 'selected') {
-      return '';
-    } else if (this.type === 'positive') {
-      return 'success';
+    if (this.state === 'selected') {
+      return this.type === 'positive' ? 'success' : 'error';
     }
-    return 'error';
+    return '';
   }
 
   /**

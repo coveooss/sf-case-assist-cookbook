@@ -5,12 +5,12 @@
         <c-section-title title={finalText}></c-section-title>
       </template>
       <template if:false={isBig}>
-        <h3 class="slds-text-title_bold slds-m-vertical_xxx-small">
+        <h3 class="slds-text-title_bold slds-var-m-vertical_xxx-small">
           {finalText}
         </h3>
       </template>
       <template if:true={showAbandonRequest}>
-        <div class="slds-m-top_x-small">
+        <div class="slds-var-m-top_x-small">
           <lightning-button
             onclick={handleAbandon}
             variant="brand-outline"
@@ -24,15 +24,17 @@
         <c-section-title title={label}></c-section-title>
       </template>
       <template if:false={isBig}>
-        <h3 class="slds-text-title_bold slds-m-vertical_xxx-small">{label}</h3>
+        <h3 class="slds-text-title_bold slds-var-m-vertical_xxx-small">
+          {label}
+        </h3>
       </template>
-      <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+      <div class="slds-grid slds-align_absolute-center slds-var-m-top_x-small">
         <span class={questionClass}>{question}</span>
-        <div class="slds-grid slds-m-left_large">
+        <div class="slds-grid slds-var-m-left_large">
           <c-vote-button
             state={positiveState}
             onclick={positiveVote}
-            class="slds-m-right_medium vote-tracker__positive-button"
+            class="slds-var-m-right_medium vote-tracker__positive-button"
             type="positive"
             label={yesLabel}
             size={size}

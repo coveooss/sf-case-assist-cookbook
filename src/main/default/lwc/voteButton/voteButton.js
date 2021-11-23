@@ -64,7 +64,9 @@ export default class VoteButton extends LightningElement {
    */
   get iconClass() {
     let className =
-      this.size === 'big' ? 'slds-m-right_x-small' : 'slds-m-right_xx-small';
+      this.size === 'big'
+        ? 'slds-var-m-right_x-small'
+        : 'slds-var-m-right_xx-small';
     if (this.state === 'initial') {
       className += ' icon-color_initial';
     }
@@ -79,7 +81,7 @@ export default class VoteButton extends LightningElement {
     let classNames = [
       this.size === 'big' ? 'slds-text-heading_small' : 'label_small'
     ];
-    
+
     if (this.state === 'neutral') {
       classNames.push('slds-text-color_weak');
     } else if (this.state === 'initial') {
@@ -89,7 +91,7 @@ export default class VoteButton extends LightningElement {
     } else {
       classNames.push('slds-text-color_error');
     }
-    
+
     return classNames.join(' ');
   }
 

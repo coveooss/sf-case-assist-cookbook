@@ -86,7 +86,7 @@ export default class VoteTracker extends LightningElement {
   }
 
   /**
-   * Tells if the abandon request button should be shown.c/exampleCaseAssist
+   * Tells if the abandon request button should be shown.
    * @returns {boolean}
    */
   get showAbandonRequest() {

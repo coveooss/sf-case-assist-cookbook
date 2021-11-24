@@ -59,7 +59,7 @@ export default class VoteButton extends LightningElement {
   }
 
   /**
-   * Returns the css class of the icon.
+   * Returns the CSS class of the icon.
    * @returns {string}
    */
   get iconClass() {
@@ -74,7 +74,7 @@ export default class VoteButton extends LightningElement {
   }
 
   /**
-   * Returns the css class of the label.
+   * Returns the CSS class of the label.
    * @returns {string}
    */
   get labelClass() {
@@ -82,6 +82,7 @@ export default class VoteButton extends LightningElement {
       this.size === 'big' ? 'slds-text-heading_small' : 'label_small'
     ];
 
+    classNames.push('vote-button__label');
     if (this.state === 'neutral') {
       classNames.push('slds-text-color_weak');
     } else if (this.state === 'initial') {
@@ -104,13 +105,5 @@ export default class VoteButton extends LightningElement {
       return this.type === 'positive' ? 'success' : 'error';
     }
     return '';
-  }
-
-  /**
-   * Returns the CSS class of the container.
-   * @returns {string}
-   */
-  get containerClass() {
-    return this.state === 'initial' ? 'vote-button clickable' : 'vote-button';
   }
 }

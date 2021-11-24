@@ -61,7 +61,7 @@ describe('c-vote-button', () => {
     element.label = expectedLabel;
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     expect(labelNode).not.toBeNull();
     expect(labelNode.textContent).toBe(expectedLabel);
   });
@@ -72,7 +72,7 @@ describe('c-vote-button', () => {
     const expectedLabel = 'Yes';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     expect(labelNode).not.toBeNull();
     expect(labelNode.textContent).toBe(expectedLabel);
   });
@@ -84,7 +84,7 @@ describe('c-vote-button', () => {
     element.size = 'big';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.size).toBe(expectedIconSize);
@@ -101,7 +101,7 @@ describe('c-vote-button', () => {
     element.size = 'small';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.size).toBe(expectedIconSize);
@@ -117,7 +117,7 @@ describe('c-vote-button', () => {
     element.state = 'initial';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.variant).toBe(iconVariants.initial);
@@ -137,7 +137,7 @@ describe('c-vote-button', () => {
     element.state = 'neutral';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.variant).toBe(iconVariants.neutral);
@@ -159,7 +159,7 @@ describe('c-vote-button', () => {
     element.state = 'selected';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.variant).toBe(iconVariants.selectedPositive);
@@ -180,7 +180,7 @@ describe('c-vote-button', () => {
     element.state = 'selected';
 
     await flushPromises();
-    const labelNode = element.shadowRoot.querySelector('span');
+    const labelNode = element.shadowRoot.querySelector('.vote-button__label');
     const iconNode = element.shadowRoot.querySelector('lightning-icon');
 
     expect(iconNode.variant).toBe(iconVariants.selectedNegative);

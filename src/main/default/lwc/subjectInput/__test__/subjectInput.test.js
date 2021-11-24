@@ -88,4 +88,20 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
+  it('should show an error when the value is empty and the imput is required ', async () => {
+    const element = createTestComponent();
+    const expectedErrorMEssage = 'Expected Error Message';
+    element.required = true;
+    element.messageWhenValueMissing = expectedErrorMEssage;
+    element.reportValidity();
+
+    await flushPromises();
+    const errorNode = element.shadowRoot.querySelector(
+      '.slds-form-element__help'
+    );
+
+    expect(element.hasError).toBe(true);
+    expect(errorNode).not.toBeNull();
+    expect(errorNode.textContent).toBe(expectedErrorMEssage);
+  });
 });

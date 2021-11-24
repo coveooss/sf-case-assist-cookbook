@@ -14,4 +14,25 @@
     <protected>false</protected>
     <shortDescription>Write a descriptive title</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_ValueMissing</fullName>
+    <value>Complete this field</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Complete this field</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ValueTooShort</fullName>
+    <value>Your entry is too short.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your entry is too short.</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ValueTooLong</fullName>
+    <value>Your entry is too long.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your entry is too long.</shortDescription>
+  </labels>
 </CustomLabels>

@@ -1,5 +1,8 @@
 import { LightningElement, api } from 'lwc';
 import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputLabel';
+import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
+import valueTooShort from '@salesforce/label/c.cookbook_ValueTooShort';
+import valueTooLong from '@salesforce/label/c.cookbook_ValueTooLong';
 
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
@@ -8,7 +11,10 @@ import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputLabe
  */
 export default class SubjectInput extends LightningElement {
   labels = {
-    writeDescriptiveTitle
+    writeDescriptiveTitle,
+    errorValueMissing,
+    valueTooLong,
+    valueTooShort
   };
   /**
    * The label of the input.
@@ -46,25 +52,25 @@ export default class SubjectInput extends LightningElement {
    * The error message to show when the value is missing.
    * @api
    * @type {string}
-   * @defaultValue `false`
+   * @defaultValue `'Complete this field.`
    */
-  @api messageWhenValueMissing = 'empty';
+  @api messageWhenValueMissing = errorValueMissing;
 
   /**
    * The error message to show when the value is too short.
    * @api
    * @type {string}
-   * @defaultValue `''`
+   * @defaultValue `'Your entry is too short.'`
    */
-  @api messageWhenTooShort = 'too short';
+  @api messageWhenTooShort = valueTooShort;
 
   /**
    * The error message to show when the value is too long.
    * @api
    * @type {string}
-   * @defaultValue `''`
+   * @defaultValue `'Your entry is too long.'`
    */
-  @api messageWhenTooLong = 'too long';
+  @api messageWhenTooLong = valueTooLong;
 
   /** @type {string} */
   _value = '';

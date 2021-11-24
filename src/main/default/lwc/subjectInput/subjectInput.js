@@ -1,11 +1,11 @@
 import { LightningElement, api } from 'lwc';
-import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputLabel';
+import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInput';
 import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
 
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
  * @example
- * <c-subject-input label="Write a descriptive title" maxLength="50" ></c-subject-input>
+ * <c-subject-input label="Write a descriptive title" maxLength="50" message-when-value-missing="Complete this field."></c-subject-input>
  */
 export default class SubjectInput extends LightningElement {
   labels = {

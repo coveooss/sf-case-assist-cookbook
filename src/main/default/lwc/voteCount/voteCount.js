@@ -57,7 +57,7 @@ export default class VoteCount extends LightningElement {
   }
 
   /**
-   * Returns the css class of the label.
+   * Returns the CSS class of the label.
    * @returns {string}
    */
   get labelClass() {

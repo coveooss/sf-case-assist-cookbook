@@ -1,10 +1,10 @@
 import { LightningElement, api } from 'lwc';
 import voteQuestion from '@salesforce/label/c.cookbook_VoteQuestion';
-import voteLabel from '@salesforce/label/c.cookbook_VoteLabel';
+import vote from '@salesforce/label/c.cookbook_VoteLabel';
 import voteFinalText from '@salesforce/label/c.cookbook_VoteFinalText';
 import abandonRequestText from '@salesforce/label/c.cookbook_AbandonRequest';
-import yesLabel from '@salesforce/label/c.cookbook_Yes';
-import noLabel from '@salesforce/label/c.cookbook_No';
+import yes from '@salesforce/label/c.cookbook_Yes';
+import no from '@salesforce/label/c.cookbook_No';
 
 /**
  * The `voteTracker` component is a button to share whether a document was helpful or not. Also sends a signal to Coveo platform for ML.
@@ -14,18 +14,18 @@ import noLabel from '@salesforce/label/c.cookbook_No';
 export default class VoteTracker extends LightningElement {
   labels = {
     voteFinalText,
-    voteLabel,
+    vote,
     voteQuestion,
     abandonRequestText,
-    yesLabel,
-    noLabel
+    yes,
+    no
   };
   /**
    * The label to be shown to the user.
    * @api
    * @type {string}
    */
-  @api label = this.labels.voteLabel;
+  @api label = this.labels.vote;
 
   /**
    * The question to be shown to the user.
@@ -78,7 +78,7 @@ export default class VoteTracker extends LightningElement {
   _timer = null;
 
   /**
-   * Returns the css class to be given to the question.
+   * Returns the CSS class to be given to the question.
    * @returns {string}
    */
   get questionClass() {
@@ -132,20 +132,6 @@ export default class VoteTracker extends LightningElement {
       return this._votingState;
     }
     return this._votingState === 'negative' ? 'selected' : 'neutral';
-  }
-
-  /**
-   * Returns the localized yes label.
-   */
-  get yesLabel() {
-    return this.labels.yesLabel;
-  }
-
-  /**
-   * Returns the localized no label.
-   */
-  get noLabel() {
-    return this.labels.noLabel;
   }
 
   /**

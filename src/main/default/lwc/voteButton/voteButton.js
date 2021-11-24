@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import yes from '@salesforce/label/c.cookbook_Yes';
 
 /**
- * The `voteButton` component is a button containing an icon and a label, this component can have diffrent states.
+ * The `voteButton` component is a button containing an icon and a label, this component can have different states.
  * @example
  * <c-vote-button state="initial" size="small" type="positive" label="Yes" icon-name="utility:success"></c-vote-button>
  */

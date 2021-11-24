@@ -32,16 +32,18 @@
             onclick={positiveVote}
             class="slds-var-m-right_medium vote-tracker__positive-button"
             type="positive"
-            label={yesLabel}
+            label={labels.yes}
             size={size}
+            icon-name="utility:success"
           ></c-vote-button>
           <c-vote-button
             state={negativeState}
             onclick={negativeVote}
             class="vote-tracker__negative-button"
             type="negative"
-            label={noLabel}
+            label={labels.no}
             size={size}
+            icon-name="utility:clear"
           >
           </c-vote-button>
         </div>

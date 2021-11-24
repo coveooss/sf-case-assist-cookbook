@@ -77,7 +77,7 @@ describe('c-vote-button', () => {
     expect(labelNode.textContent).toBe(expectedLabel);
   });
 
-  it('should render the a big voteButton', async () => {
+  it('should render a big voteButton', async () => {
     const element = createTestComponent();
 
     const expectedIconSize = 'x-small';
@@ -94,7 +94,7 @@ describe('c-vote-button', () => {
     expect(iconNode.classList.contains(iconClasses.small)).toBe(false);
   });
 
-  it('should render the a small voteButton', async () => {
+  it('should render a small voteButton', async () => {
     const element = createTestComponent();
 
     const expectedIconSize = 'xx-small';
@@ -111,7 +111,7 @@ describe('c-vote-button', () => {
     expect(iconNode.classList.contains(iconClasses.small)).toBe(true);
   });
 
-  it('should render the voteButton in the initial state', async () => {
+  it('should render a voteButton in the initial state', async () => {
     const element = createTestComponent();
 
     element.state = 'initial';
@@ -131,7 +131,7 @@ describe('c-vote-button', () => {
       false
     );
   });
-  it('should render the a voteButton in the neutral state', async () => {
+  it('should render a voteButton in the neutral state', async () => {
     const element = createTestComponent();
 
     element.state = 'neutral';
@@ -152,7 +152,7 @@ describe('c-vote-button', () => {
     );
   });
 
-  it('should render the a positive voteButton in the selected state', async () => {
+  it('should render a positive voteButton in the selected state', async () => {
     const element = createTestComponent();
 
     element.type = 'positive';
@@ -173,7 +173,7 @@ describe('c-vote-button', () => {
       false
     );
   });
-  it('should render the a negative voteButton in the selected state', async () => {
+  it('should render a negative voteButton in the selected state', async () => {
     const element = createTestComponent();
 
     element.type = 'negative';

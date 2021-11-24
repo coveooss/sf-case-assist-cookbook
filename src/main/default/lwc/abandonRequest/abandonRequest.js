@@ -4,7 +4,7 @@ import abandonRequestText from '@salesforce/label/c.cookbook_AbandonRequest';
 /**
  * The `abandonRequest` component is a button to abandon a case creation request.
  * @example
- * <c-abandon-request  label="Abandon request" timeout="2000"></c-abandon-request>
+ * <c-abandon-request  label="Abandon request"></c-abandon-request>
  */
 export default class AbandonRequest extends LightningElement {
   labels = {

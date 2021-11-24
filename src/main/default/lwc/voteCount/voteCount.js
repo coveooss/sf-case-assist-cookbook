@@ -5,7 +5,7 @@ import helpedUsers_zero from '@salesforce/label/c.cookbook_HelpedUsers_zero';
 import { I18nUtils } from 'c/quanticUtils';
 
 /**
- * The `voteCount` component is an indicator of how many people said that a document was helpful.
+ * The `voteCount` component is an indicator of how many people reported that a document was helpful.
  * @example
  * <c-vote-count active="true" count="102"></c-vote-count>
  */

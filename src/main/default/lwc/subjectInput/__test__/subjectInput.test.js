@@ -23,6 +23,13 @@ jest.mock(
     virtual: true
   }
 );
+jest.mock(
+  '@salesforce/label/c.cookbook_ValueMissing',
+  () => ({ default: 'Complete this field.' }),
+  {
+    virtual: true
+  }
+);
 
 describe('c-subject-input', () => {
   afterEach(() => {
@@ -88,16 +95,35 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
-  it('should show an error when the value is empty and the imput is required ', async () => {
+  it('should show an error when the value is empty and the imput is required', async () => {
     const element = createTestComponent();
     const expectedErrorMEssage = 'Expected Error Message';
     element.required = true;
     element.messageWhenValueMissing = expectedErrorMEssage;
-    element.reportValidity();
 
     await flushPromises();
+    const inputNode = element.shadowRoot.querySelector('input');
+    inputNode.value = '';
+    await element.reportValidity();
     const errorNode = element.shadowRoot.querySelector(
-      '.slds-form-element__help'
+      'div.slds-form-element__help'
+    );
+
+    expect(element.hasError).toBe(true);
+    expect(errorNode).not.toBeNull();
+    expect(errorNode.textContent).toBe(expectedErrorMEssage);
+  });
+  it('should show the default error message when the value is empty and the imput is required', async () => {
+    const element = createTestComponent();
+    const expectedErrorMEssage = 'Complete this field.';
+    element.required = true;
+
+    await flushPromises();
+    const inputNode = element.shadowRoot.querySelector('input');
+    inputNode.value = '';
+    await element.reportValidity();
+    const errorNode = element.shadowRoot.querySelector(
+      'div.slds-form-element__help'
     );
 
     expect(element.hasError).toBe(true);

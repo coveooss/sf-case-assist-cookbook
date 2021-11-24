@@ -9,7 +9,7 @@
           class="slds-input"
           oninput={handleChange}
           maxlength={maxLength}
-          minlength="10"
+          minlength={minLength}
           required={required}
         />
         <template if:true={hasError}>

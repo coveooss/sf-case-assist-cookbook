@@ -1,8 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputLabel';
 import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
-import valueTooShort from '@salesforce/label/c.cookbook_ValueTooShort';
-import valueTooLong from '@salesforce/label/c.cookbook_ValueTooLong';
 
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
@@ -12,9 +10,7 @@ import valueTooLong from '@salesforce/label/c.cookbook_ValueTooLong';
 export default class SubjectInput extends LightningElement {
   labels = {
     writeDescriptiveTitle,
-    errorValueMissing,
-    valueTooLong,
-    valueTooShort
+    errorValueMissing
   };
   /**
    * The label of the input.
@@ -33,14 +29,6 @@ export default class SubjectInput extends LightningElement {
   @api maxLength = 100;
 
   /**
-   * The minimum length of the string to be written in the input.
-   * @api
-   * @type {number}
-   * @defaultValue `0`
-   */
-  @api minLength = 10;
-
-  /**
    * Tells if the input is required.
    * @api
    * @type {boolean}
@@ -55,22 +43,6 @@ export default class SubjectInput extends LightningElement {
    * @defaultValue `'Complete this field.`
    */
   @api messageWhenValueMissing = errorValueMissing;
-
-  /**
-   * The error message to show when the value is too short.
-   * @api
-   * @type {string}
-   * @defaultValue `'Your entry is too short.'`
-   */
-  @api messageWhenTooShort = valueTooShort;
-
-  /**
-   * The error message to show when the value is too long.
-   * @api
-   * @type {string}
-   * @defaultValue `'Your entry is too long.'`
-   */
-  @api messageWhenTooLong = valueTooLong;
 
   /** @type {string} */
   _value = '';
@@ -141,7 +113,7 @@ export default class SubjectInput extends LightningElement {
   }
 
   /**
-   * Tells if thers is an error in the input.
+   * Tells if ther is an error in the input.
    * @returns {boolean}
    */
   @api get hasError() {
@@ -150,21 +122,14 @@ export default class SubjectInput extends LightningElement {
 
   /**
    * @api
-   * Shows error messages in the componets if there is some.
+   * Shows an error message in the componets if there an error.
    * @returns {void}
    */
   @api reportValidity() {
     const input = this.template.querySelector('input');
-    const { valid, valueMissing, tooShort, tooLong } = input.validity;
-    if (!valid) {
+    if (input.validity.valueMissing) {
       this._hasError = true;
-      if (valueMissing) {
-        this._errorMessage = this.messageWhenValueMissing;
-      } else if (tooShort) {
-        this._errorMessage = this.messageWhenTooShort;
-      } else if (tooLong) {
-        this._errorMessage = this.messageWhenTooLong;
-      }
+      this._errorMessage = this.messageWhenValueMissing;
     }
   }
 }

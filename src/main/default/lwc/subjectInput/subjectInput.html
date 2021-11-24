@@ -1,7 +1,7 @@
 <template>
   <c-section-title title={label}></c-section-title>
   <div class="slds-is-relative">
-    <div class="slds-form-element">
+    <div class={formClass}>
       <div class="slds-form-element__control">
         <input
           value={value}
@@ -9,9 +9,18 @@
           class="slds-input"
           oninput={handleChange}
           maxlength={maxLength}
+          minlength="10"
+          required={required}
         />
+        <template if:true={hasError}>
+          <div class="slds-form-element__help" id="error-message-id-49">
+            {errorMessage}
+          </div>
+        </template>
       </div>
     </div>
-    <span class="slds-is-absolute input_count">{length}/{maxLength}</span>
+    <span class="slds-is-absolute input_count slds-align_absolute-center"
+      >{length}/{maxLength}</span
+    >
   </div>
 </template>

@@ -48,7 +48,7 @@ describe('c-vote-tracker', () => {
     }
   });
 
-  it('should display the correct label', async () => {
+  it('should display the correct label when the component is small', async () => {
     const element = createTestComponent();
     const expectedLabel = `Expected Label`;
     element.label = expectedLabel;
@@ -59,6 +59,17 @@ describe('c-vote-tracker', () => {
     );
     expect(labelNode).not.toBeNull();
     expect(labelNode.textContent).toBe(expectedLabel);
+  });
+  it('should display the correct label when the component is big', async () => {
+    const element = createTestComponent();
+    const expectedLabel = `Expected Label`;
+    element.label = expectedLabel;
+    element.size = 'big';
+
+    await flushPromises();
+    const labelNode = element.shadowRoot.querySelector('c-section-title');
+    expect(labelNode).not.toBeNull();
+    expect(labelNode.title).toBe(expectedLabel);
   });
 
   it('should display the default localized label', async () => {
@@ -71,6 +82,16 @@ describe('c-vote-tracker', () => {
     );
     expect(labelNode).not.toBeNull();
     expect(labelNode.textContent).toBe(expectedLabel);
+  });
+  it('should display the default localized label when the component is big', async () => {
+    const element = createTestComponent();
+    const expectedLabel = `Your opinion can help others`;
+    element.size = 'big';
+
+    await flushPromises();
+    const labelNode = element.shadowRoot.querySelector('c-section-title');
+    expect(labelNode).not.toBeNull();
+    expect(labelNode.title).toBe(expectedLabel);
   });
 
   it('should display the correct question', async () => {
@@ -202,6 +223,27 @@ describe('c-vote-tracker', () => {
       expect(finalTextNode.textContent).toBe(expectedText);
     });
 
+    it('should display the correct final text when the component is big', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Final Text';
+      element.finalText = expectedText;
+      element.size = 'big';
+
+      await flushPromises();
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await positiveButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const finalTextNode = element.shadowRoot.querySelector('c-section-title');
+
+      expect(finalTextNode).not.toBeNull();
+      expect(finalTextNode.title).toBe(expectedText);
+    });
+
     it('should display the correct default localized final text', async () => {
       const element = createTestComponent();
       const expectedText = 'Thank you for the feedback!';
@@ -222,8 +264,27 @@ describe('c-vote-tracker', () => {
       expect(finalTextNode).not.toBeNull();
       expect(finalTextNode.textContent).toBe(expectedText);
     });
+    it('should display the correct default localized final text when the component is big', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Thank you for the feedback!';
+      element.size = 'big';
 
-    it('should show the abandon button request', async () => {
+      await flushPromises();
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await positiveButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const finalTextNode = element.shadowRoot.querySelector('c-section-title');
+
+      expect(finalTextNode).not.toBeNull();
+      expect(finalTextNode.title).toBe(expectedText);
+    });
+
+    it('should show the abandon button request when the component is big', async () => {
       const element = createTestComponent();
       element.size = 'big';
 
@@ -239,6 +300,22 @@ describe('c-vote-tracker', () => {
       const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
 
       expect(buttonNode).not.toBeNull();
+    });
+    it('should not show the abandon button request when the component is small', async () => {
+      const element = createTestComponent();
+
+      await flushPromises();
+      const positiveButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__positive-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await positiveButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
+
+      expect(buttonNode).toBeNull();
     });
   });
   describe('when the negative voteButton is clicked', () => {
@@ -299,6 +376,26 @@ describe('c-vote-tracker', () => {
       expect(finalTextNode).not.toBeNull();
       expect(finalTextNode.textContent).toBe(expectedText);
     });
+    it('should display the correct final text when the component is big', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Final Text';
+      element.finalText = expectedText;
+      element.size = 'big';
+
+      await flushPromises();
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await negativeButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const finalTextNode = element.shadowRoot.querySelector('c-section-title');
+
+      expect(finalTextNode).not.toBeNull();
+      expect(finalTextNode.title).toBe(expectedText);
+    });
 
     it('should display the correct default localized final text', async () => {
       const element = createTestComponent();
@@ -320,9 +417,44 @@ describe('c-vote-tracker', () => {
       expect(finalTextNode).not.toBeNull();
       expect(finalTextNode.textContent).toBe(expectedText);
     });
-    it('should not show the abandon button request', async () => {
+    it('should display the correct default localized final text when the component is big', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Thank you for the feedback!';
+      element.size = 'big';
+
+      await flushPromises();
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await negativeButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const finalTextNode = element.shadowRoot.querySelector('c-section-title');
+
+      expect(finalTextNode).not.toBeNull();
+      expect(finalTextNode.title).toBe(expectedText);
+    });
+    it('should not show the abandon button request when the component is big', async () => {
       const element = createTestComponent();
       element.size = 'big';
+
+      await flushPromises();
+      const negativeButtonNode = element.shadowRoot.querySelector(
+        '.vote-tracker__negative-button'
+      );
+
+      const clickEvent = new CustomEvent('click');
+      await negativeButtonNode.dispatchEvent(clickEvent);
+
+      await jest.runAllTimers();
+      const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
+
+      expect(buttonNode).toBeNull();
+    });
+    it('should not show the abandon button request when the component is small', async () => {
+      const element = createTestComponent();
 
       await flushPromises();
       const negativeButtonNode = element.shadowRoot.querySelector(

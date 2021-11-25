@@ -25,7 +25,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * The label to be shown to the user.
-   * @api
    * @type {string}
    * @defaultValue `'Don't know what to write?'`
    */
@@ -33,7 +32,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * The initial message to be shown to the user.
-   * @api
    * @type {string}
    * @defaultValue `'Provide details'`
    */
@@ -41,7 +39,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * The message to be shown to encourage the user to keep going.
-   * @api
    * @type {string}
    * @defaultValue `'Provide more details'`
    */
@@ -49,7 +46,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * The progress value from where the keepGoingMessage will be shown.
-   * @api
    * @type {number}
    * @defaultValue `75`
    */
@@ -57,7 +53,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * The final message to be shown to the user when the progress indicator is full.
-   * @api
    * @type {string}
    * @defaultValue `'Thank you!'`
    */
@@ -84,7 +79,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * Set the progress value.
-   * @api
    * @param {number} progress - the progress value to be set.
    * @returns {void}
    */
@@ -94,7 +88,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * Returns the progress value.
-   * @api
    * @returns {number}
    */
   get progress() {
@@ -103,7 +96,6 @@ export default class DescriptionStrengthIndicator extends LightningElement {
 
   /**
    * Tells if the progress indicator is full.
-   * @api
    * @returns {boolean}
    */
   @api get isFull() {

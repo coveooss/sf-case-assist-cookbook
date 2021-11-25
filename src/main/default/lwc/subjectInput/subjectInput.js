@@ -82,17 +82,6 @@ export default class SubjectInput extends LightningElement {
   get length() {
     return this._value.length;
   }
-
-  /**
-   * Tells if the value of the input is valid.
-   * @api
-   * @type {boolean}
-   */
-  @api get valid() {
-    const input = this.template.querySelector('input');
-    return input.validity.valid;
-  }
-
   /**
    * Returns the error message to be shown.
    * @type {string}

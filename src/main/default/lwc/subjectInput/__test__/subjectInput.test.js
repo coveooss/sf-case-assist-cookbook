@@ -46,7 +46,7 @@ describe('c-subject-input', () => {
 
     await flushPromises();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
-    expect(labelNode).not.toBeNull();
+    expect(labelNode).toBeDefined();
     expect(labelNode.title).toBe(expectedLabel);
   });
 

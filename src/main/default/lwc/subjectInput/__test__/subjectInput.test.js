@@ -67,6 +67,7 @@ describe('c-subject-input', () => {
     const inputNode = element.shadowRoot.querySelector('input');
     expect(inputNode).not.toBeNull();
   });
+  
   it('should display the correct value in the input', async () => {
     const element = createTestComponent();
     const expectedValue = 'Expected Value';

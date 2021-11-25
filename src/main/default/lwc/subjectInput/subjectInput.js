@@ -14,7 +14,6 @@ export default class SubjectInput extends LightningElement {
   };
   /**
    * The label of the input.
-   * @api
    * @type {string}
    * @defaultValue `'Write a descriptive title'`
    */
@@ -22,7 +21,6 @@ export default class SubjectInput extends LightningElement {
 
   /**
    * The maximum length of the string to be written in the input.
-   * @api
    * @type {number}
    * @defaultValue `100`
    */
@@ -30,7 +28,6 @@ export default class SubjectInput extends LightningElement {
 
   /**
    * Tells if the input is required.
-   * @api
    * @type {boolean}
    * @defaultValue `false`
    */
@@ -38,7 +35,6 @@ export default class SubjectInput extends LightningElement {
 
   /**
    * The error message to be shown when the value is missing.
-   * @api
    * @type {string}
    * @defaultValue `'Complete this field.`
    */
@@ -50,15 +46,11 @@ export default class SubjectInput extends LightningElement {
   /** @type {string} */
   _errorMessage = '';
 
-  /** @type {boolean} */
-  _hasError = false;
-
   /**
    * Handles the changes in the input.
    * @return {void}
    */
   handleChange = (e) => {
-    this._hasError = false;
     this._errorMessage = '';
     this._value =
       e.target.value.length <= this.maxLength
@@ -95,7 +87,7 @@ export default class SubjectInput extends LightningElement {
    * @returns {string}
    */
   get formClass() {
-    return this._hasError
+    return this.hasError
       ? 'slds-form-element slds-has-error'
       : 'slds-form-element';
   }
@@ -105,18 +97,16 @@ export default class SubjectInput extends LightningElement {
    * @returns {boolean}
    */
   @api get hasError() {
-    return this._hasError;
+    return !!this._errorMessage.length;
   }
 
   /**
-   * @api
    * Shows an error message in the componet if there is an error.
    * @returns {void}
    */
   @api reportValidity() {
     const input = this.template.querySelector('input');
     if (input.validity.valueMissing) {
-      this._hasError = true;
       this._errorMessage = this.messageWhenValueMissing;
     }
   }

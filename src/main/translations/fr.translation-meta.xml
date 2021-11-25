@@ -6,7 +6,7 @@
   </customLabels>
   <customLabels>
     <label>Écrivez un titre descriptif</label>
-    <name>cookbook_SubjectInput</name>
+    <name>cookbook_SubjectInputTitle</name>
   </customLabels>
   <customLabels>
     <label>Remplissez ce champ.</label>

@@ -1,5 +1,7 @@
 <template>
-  <c-section-title title={label}></c-section-title>
+  <label for="subject-input">
+    <c-section-title title={label}></c-section-title>
+  </label>
   <div class="slds-is-relative">
     <div class={formClass}>
       <div class="slds-form-element__control">
@@ -11,9 +13,11 @@
           maxlength={maxLength}
           minlength={minLength}
           required={required}
+          id="subject-input"
+          aria-describedby="subject-error-message"
         />
         <template if:true={hasError}>
-          <div class="slds-form-element__help" id="error-message-id-49">
+          <div class="slds-form-element__help" id="subject-error-message">
             {errorMessage}
           </div>
         </template>

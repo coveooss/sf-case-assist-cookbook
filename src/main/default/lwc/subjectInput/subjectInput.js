@@ -5,7 +5,7 @@ import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
  * @example
- * <c-subject-input label="Write a descriptive title" maxLength="50" message-when-value-missing="Complete this field."></c-subject-input>
+ * <c-subject-input label="Write a descriptive title" maxLength="50" message-when-value-missing="Complete this field." required></c-subject-input>
  */
 export default class SubjectInput extends LightningElement {
   labels = {
@@ -37,12 +37,12 @@ export default class SubjectInput extends LightningElement {
   @api required = false;
 
   /**
-   * The error message to show when the value is missing.
+   * The error message to be shown when the value is missing.
    * @api
    * @type {string}
    * @defaultValue `'Complete this field.`
    */
-  @api messageWhenValueMissing = errorValueMissing;
+  @api messageWhenValueMissing = this.labels.errorValueMissing;
 
   /** @type {string} */
   _value = '';
@@ -60,11 +60,10 @@ export default class SubjectInput extends LightningElement {
   handleChange = (e) => {
     this._hasError = false;
     this._errorMessage = '';
-    if (e.target.value.length <= this.maxLength) {
-      this._value = e.target.value;
-    } else {
-      this._value = e.target.value.substring(0, this.maxLength);
-    }
+    this._value =
+      e.target.value.length <= this.maxLength
+        ? e.target.value
+        : e.target.value.substring(0, this.maxLength);
   };
 
   /**
@@ -113,7 +112,7 @@ export default class SubjectInput extends LightningElement {
   }
 
   /**
-   * Tells if ther is an error in the input.
+   * Tells if there is an error in the input.
    * @returns {boolean}
    */
   @api get hasError() {
@@ -122,7 +121,7 @@ export default class SubjectInput extends LightningElement {
 
   /**
    * @api
-   * Shows an error message in the componets if there an error.
+   * Shows an error message in the componet if there is an error.
    * @returns {void}
    */
   @api reportValidity() {

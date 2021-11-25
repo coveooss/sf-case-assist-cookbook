@@ -17,7 +17,7 @@ function flushPromises() {
 }
 
 jest.mock(
-  '@salesforce/label/c.cookbook_SubjectInputLabel',
+  '@salesforce/label/c.cookbook_SubjectInputTitle',
   () => ({ default: 'Write a descriptive title' }),
   {
     virtual: true
@@ -79,7 +79,7 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
-  it('should respect the max lenght of the input', async () => {
+  it('should respect the max length of the input', async () => {
     const element = createTestComponent();
     const maxLength = 26;
     const longValue = 'The value should end here. and not here.';
@@ -95,11 +95,11 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
-  it('should show an error when the value is empty and the imput is required', async () => {
+  it('should show an error when the value is empty and the input is required', async () => {
     const element = createTestComponent();
-    const expectedErrorMEssage = 'Expected Error Message';
+    const expectedErrorMessage = 'Expected Error Message';
     element.required = true;
-    element.messageWhenValueMissing = expectedErrorMEssage;
+    element.messageWhenValueMissing = expectedErrorMessage;
 
     await flushPromises();
     const inputNode = element.shadowRoot.querySelector('input');
@@ -111,11 +111,11 @@ describe('c-subject-input', () => {
 
     expect(element.hasError).toBe(true);
     expect(errorNode).not.toBeNull();
-    expect(errorNode.textContent).toBe(expectedErrorMEssage);
+    expect(errorNode.textContent).toBe(expectedErrorMessage);
   });
-  it('should show the default error message when the value is empty and the imput is required', async () => {
+  it('should show the default localized error message when the value is empty and the input is required', async () => {
     const element = createTestComponent();
-    const expectedErrorMEssage = 'Complete this field.';
+    const expectedErrorMessage = 'Complete this field.';
     element.required = true;
 
     await flushPromises();
@@ -128,6 +128,6 @@ describe('c-subject-input', () => {
 
     expect(element.hasError).toBe(true);
     expect(errorNode).not.toBeNull();
-    expect(errorNode.textContent).toBe(expectedErrorMEssage);
+    expect(errorNode.textContent).toBe(expectedErrorMessage);
   });
 });

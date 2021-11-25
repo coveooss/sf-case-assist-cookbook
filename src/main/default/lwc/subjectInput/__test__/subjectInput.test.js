@@ -59,6 +59,7 @@ describe('c-subject-input', () => {
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
   });
+  
   it('should display the input', async () => {
     const element = createTestComponent();
 

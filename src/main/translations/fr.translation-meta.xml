@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customLabels>
-        <label>Titre de la section</label>
-        <name>cookbook_SectionTitle</name>
-    </customLabels>
+  <customLabels>
+    <label>Titre de la section</label>
+    <name>cookbook_SectionTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>A aidé {{0}} utilisateur</label>
+    <name>cookbook_HelpedUsers</name>
+  </customLabels>
+  <customLabels>
+    <label>A aidé {{0}} utilisateurs</label>
+    <name>cookbook_HelpedUsers_plural</name>
+  </customLabels>
+  <customLabels>
+    <label>Soyez le premier à évaluer ce document</label>
+    <name>cookbook_HelpedUsers_zero</name>
+  </customLabels>
+  <customLabels>
+    <label>Oui</label>
+    <name>cookbook_Yes</name>
+  </customLabels>
+  <customLabels>
+    <label>Non</label>
+    <name>cookbook_No</name>
+  </customLabels>
+  <customLabels>
+    <label>Est-ce que cela a été utile?</label>
+    <name>cookbook_VoteQuestion</name>
+  </customLabels>
+  <customLabels>
+    <label>Votre avis peut aider les autres</label>
+    <name>cookbook_VoteLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci pour votre collaboration!</label>
+    <name>cookbook_VoteFinalText</name>
+  </customLabels>
+  <customLabels>
+    <label>Abandonner la demande</label>
+    <name>cookbook_AbandonRequest</name>
+  </customLabels>
 </Translations>

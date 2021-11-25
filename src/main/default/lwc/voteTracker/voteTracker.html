@@ -1,0 +1,53 @@
+<template>
+  <div>
+    <template if:true={finalState}>
+      <template if:true={isBig}>
+        <c-section-title title={finalText}></c-section-title>
+      </template>
+      <template if:false={isBig}>
+        <h3 class="slds-text-title_bold slds-var-m-vertical_xxx-small">
+          {finalText}
+        </h3>
+      </template>
+      <template if:true={showAbandonRequest}>
+        <div class="slds-var-m-top_x-small">
+          <c-abandon-request></c-abandon-request>
+        </div>
+      </template>
+    </template>
+    <template if:false={finalState}>
+      <template if:true={isBig}>
+        <c-section-title title={label}></c-section-title>
+      </template>
+      <template if:false={isBig}>
+        <h3 class="slds-text-title_bold slds-var-m-vertical_xxx-small">
+          {label}
+        </h3>
+      </template>
+      <div class="slds-grid slds-var-m-top_x-small">
+        <span class={questionClass}>{question}</span>
+        <div class="slds-grid slds-var-m-left_large">
+          <c-vote-button
+            state={positiveState}
+            onclick={positiveVote}
+            class="slds-var-m-right_medium vote-tracker__positive-button"
+            type="positive"
+            label={labels.yes}
+            size={size}
+            icon-name="utility:success"
+          ></c-vote-button>
+          <c-vote-button
+            state={negativeState}
+            onclick={negativeVote}
+            class="vote-tracker__negative-button"
+            type="negative"
+            label={labels.no}
+            size={size}
+            icon-name="utility:clear"
+          >
+          </c-vote-button>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

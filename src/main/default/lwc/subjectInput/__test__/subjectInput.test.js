@@ -81,6 +81,7 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
+  
   it('should respect the max length of the input', async () => {
     const element = createTestComponent();
     const maxLength = 26;

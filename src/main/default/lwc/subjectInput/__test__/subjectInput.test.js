@@ -96,6 +96,7 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
+  
   it('should show an error when the value is empty and the input is required', async () => {
     const element = createTestComponent();
     const expectedErrorMessage = 'Expected Error Message';

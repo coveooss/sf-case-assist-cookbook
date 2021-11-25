@@ -3,6 +3,9 @@ import thankYou from '@salesforce/label/c.cookbook_ThankYou';
 import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
 import provideMoreDetails from '@salesforce/label/c.cookbook_ProvideMoreDetails';
 import dontKnowWhatToWrite from '@salesforce/label/c.cookbook_DontKnowWhatToWrite';
+import descriptionHintOne from '@salesforce/label/c.cookbook_DescriptionHintOne';
+import descriptionHintTwo from '@salesforce/label/c.cookbook_DescriptionHintTwo';
+import descriptionHintThree from '@salesforce/label/c.cookbook_DescriptionHintThree';
 
 /**
  * The `descriptionStrengthIndicator` component is a dynamic indicator that shows the user if their case description has enough details so far. It also give hints to the user as to what information they show include in the description.
@@ -14,7 +17,10 @@ export default class DescriptionStrengthIndicator extends LightningElement {
     thankYou,
     provideDetails,
     provideMoreDetails,
-    dontKnowWhatToWrite
+    dontKnowWhatToWrite,
+    descriptionHintOne,
+    descriptionHintTwo,
+    descriptionHintThree
   };
 
   /**

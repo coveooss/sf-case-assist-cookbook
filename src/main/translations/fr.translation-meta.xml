@@ -20,4 +20,16 @@
     <label>Vous ne savez pas quoi écrire?</label>
     <name>cookbook_DontKnowWhatToWrite</name>
   </customLabels>
+  <customLabels>
+    <label>Depuis quand ce problème vous affecte-t-il?</label>
+    <name>cookbook_DescriptionHintOne</name>
+  </customLabels>
+  <customLabels>
+    <label>Est-ce la première fois que cela vous affecte?</label>
+    <name>cookbook_DescriptionHintTwo</name>
+  </customLabels>
+  <customLabels>
+    <label>Qu'est-ce que cela vous empêche de réaliser?</label>
+    <name>cookbook_DescriptionHintThree</name>
+  </customLabels>
 </Translations>

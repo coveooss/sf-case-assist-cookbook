@@ -35,4 +35,27 @@
       <protected>false</protected>
       <shortDescription>Don't know what to write?</shortDescription>
     </labels>
+    <labels>
+      <fullName>cookbook_DescriptionHintOne</fullName>
+      <value>Since when is this problem affecting you?</value>
+      <language>en_US</language>
+      <protected>false</protected>
+      <shortDescription
+        >Since when is this problem affecting you?</shortDescription>
+    </labels>
+    <labels>
+      <fullName>cookbook_DescriptionHintTwo</fullName>
+      <value>Is it the first time it is affecting you?</value>
+      <language>en_US</language>
+      <protected>false</protected>
+      <shortDescription
+        >Is it the first time it is affecting you?</shortDescription>
+    </labels>
+    <labels>
+      <fullName>cookbook_DescriptionHintThree</fullName>
+      <value>What is it preventing you to achieve?</value>
+      <language>en_US</language>
+      <protected>false</protected>
+      <shortDescription>What is it preventing you to achieve?</shortDescription>
+    </labels>
 </CustomLabels>

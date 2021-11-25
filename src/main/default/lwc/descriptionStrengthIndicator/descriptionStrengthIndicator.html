@@ -1,6 +1,6 @@
 <template>
   <div class="slds-grid">
-    <div class="slds-p-top_x-small">
+    <div class="slds-var-p-top_x-small">
       <template if:true={isFull}>
         <lightning-progress-ring
           size="large"
@@ -28,10 +28,10 @@
       </template>
     </div>
     <div class="slds-col">
-      <h3 class="slds-text-title_bold slds-p-left_small">{message}</h3>
+      <h3 class="slds-text-title_bold slds-var-p-left_small">{message}</h3>
       <lightning-accordion allow-multiple-sections-open class="accordion">
         <lightning-accordion-section label={helpLabel}>
-          <div class="slds-m-left_large">
+          <div class="slds-var-m-left_large">
             <slot name="content">
               Since when is this problem affecting you?<br />
               Is it the first time it is affecting you?<br />

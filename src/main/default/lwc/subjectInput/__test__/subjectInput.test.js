@@ -117,6 +117,7 @@ describe('c-subject-input', () => {
     expect(errorNode).not.toBeNull();
     expect(errorNode.textContent).toBe(expectedErrorMessage);
   });
+  
   it('should show the default localized error message when the value is empty and the input is required', async () => {
     const element = createTestComponent();
     const expectedErrorMessage = 'Complete this field.';

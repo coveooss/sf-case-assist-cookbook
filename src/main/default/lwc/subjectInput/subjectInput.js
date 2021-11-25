@@ -1,5 +1,5 @@
 import { LightningElement, api } from 'lwc';
-import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInput';
+import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputTitle';
 import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
 
 /**

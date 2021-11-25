@@ -52,12 +52,11 @@ describe('c-subject-input', () => {
 
   it('should display the correct localized label', async () => {
     const element = createTestComponent();
-    const expectedLabel = 'Write a descriptive title';
 
     await flushPromises();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
-    expect(labelNode.title).toBe(expectedLabel);
+    expect(labelNode.title).toBe('Write a descriptive title');
   });
   
   it('should display the input', async () => {

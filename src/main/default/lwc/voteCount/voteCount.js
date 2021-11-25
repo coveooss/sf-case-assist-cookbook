@@ -62,7 +62,7 @@ export default class VoteCount extends LightningElement {
    */
   get labelClass() {
     return this.active
-      ? 'view-count_label slds-text-color_success'
-      : 'view-count_label view-count_label-neutral';
+      ? 'slds-text-body_small slds-text-color_success'
+      : 'slds-text-body_small view-count_label-neutral';
   }
 }

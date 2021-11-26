@@ -8,6 +8,18 @@
     <shortDescription>Section title</shortDescription>
   </labels>
   <labels>
+    <fullName>cookbook_SubjectInputTitle</fullName>
+    <value>Write a descriptive title</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Write a descriptive title</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ValueMissing</fullName>
+    <value>Complete this field.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Complete this field</shortDescription>
     <fullName>cookbook_HelpedUsers</fullName>
     <value>Helped {{0}} user</value>
     <language>en_US</language>

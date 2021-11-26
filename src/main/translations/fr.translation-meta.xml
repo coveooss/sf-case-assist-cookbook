@@ -5,6 +5,12 @@
     <name>cookbook_SectionTitle</name>
   </customLabels>
   <customLabels>
+    <label>Écrivez un titre descriptif</label>
+    <name>cookbook_SubjectInputTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Remplissez ce champ.</label>
+    <name>cookbook_ValueMissing</name>
     <label>A aidé {{0}} utilisateur</label>
     <name>cookbook_HelpedUsers</name>
   </customLabels>

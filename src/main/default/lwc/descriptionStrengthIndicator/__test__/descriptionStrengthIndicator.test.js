@@ -11,7 +11,7 @@ function createTestComponent() {
 }
 
 // Helper function to wait until the microtask queue is empty.
-function flushPromises() {
+function allPromisesResolution() {
   // eslint-disable-next-line no-undef
   return new Promise((resolve) => setImmediate(resolve));
 }
@@ -52,12 +52,13 @@ describe('c-description-strength-indicator', () => {
       document.body.removeChild(document.body.firstChild);
     }
   });
+
   it('should display the initial message', async () => {
     const element = createTestComponent();
     const expectedText = 'Expected Text';
     element.initialMessage = expectedText;
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
@@ -69,13 +70,14 @@ describe('c-description-strength-indicator', () => {
     const element = createTestComponent();
     const expectedText = 'Provide details';
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
+
   it('should display the keep going message', async () => {
     const element = createTestComponent();
     const expectedText = 'Expected Text';
@@ -85,7 +87,7 @@ describe('c-description-strength-indicator', () => {
     element.progress = progress;
     element.keepGoingThreshold = keepGoingThreshold;
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
@@ -101,7 +103,7 @@ describe('c-description-strength-indicator', () => {
     element.progress = progress;
     element.keepGoingThreshold = keepGoingThreshold;
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
@@ -116,7 +118,7 @@ describe('c-description-strength-indicator', () => {
     element.finalMessage = expectedText;
     element.progress = progress;
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
@@ -130,17 +132,18 @@ describe('c-description-strength-indicator', () => {
     const progress = 100;
     element.progress = progress;
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'h3.slds-text-title_bold'
     );
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
+
   it('should display the progress indicator', async () => {
     const element = createTestComponent();
 
-    await flushPromises();
+    await allPromisesResolution();
     const progressRingNode = element.shadowRoot.querySelector(
       '.slds-progress-ring'
     );
@@ -150,12 +153,13 @@ describe('c-description-strength-indicator', () => {
     expect(progressRingNode).not.toBeNull();
     expect(fullProgressRingNode).toBeNull();
   });
+
   it('should display the progress indicator full', async () => {
     const element = createTestComponent();
     const progress = 100;
     element.progress = progress;
 
-    await flushPromises();
+    await allPromisesResolution();
     const fullProgressRingNode = element.shadowRoot.querySelector(
       'lightning-progress-ring'
     );
@@ -166,32 +170,35 @@ describe('c-description-strength-indicator', () => {
     expect(fullProgressRingNode).not.toBeNull();
     expect(progressRingNode).toBeNull();
   });
+
   it('should display the help accordion', async () => {
     const element = createTestComponent();
 
-    await flushPromises();
+    await allPromisesResolution();
     const accordionNode = element.shadowRoot.querySelector(
       'lightning-accordion'
     );
     expect(accordionNode).not.toBeNull();
   });
+
   it('should display the help label', async () => {
     const element = createTestComponent();
     const expectedText = 'Expected Text';
     element.helpLabel = expectedText;
 
-    await flushPromises();
+    await allPromisesResolution();
     const accordionNode = element.shadowRoot.querySelector(
       'lightning-accordion-section'
     );
     expect(accordionNode).not.toBeNull();
     expect(accordionNode.label).toBe(expectedText);
   });
+
   it('should display the default localized value of the help label', async () => {
     const element = createTestComponent();
     const expectedText = "Don't know what to write?";
 
-    await flushPromises();
+    await allPromisesResolution();
     const messageNode = element.shadowRoot.querySelector(
       'lightning-accordion-section'
     );

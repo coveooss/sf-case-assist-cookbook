@@ -8,7 +8,7 @@ import descriptionHintTwo from '@salesforce/label/c.cookbook_DescriptionHintTwo'
 import descriptionHintThree from '@salesforce/label/c.cookbook_DescriptionHintThree';
 
 /**
- * The `descriptionStrengthIndicator` component is a dynamic indicator that shows the user if his case description has enough details so far. It also give hints to the user as to what information they show include in the description.
+ * The `descriptionStrengthIndicator` component is a dynamic indicator that shows the user if his case description has enough details so far. It also gives hints to the user as to what information they should include in the description.
  * @example
  * <c-description-strength-indicator initial-message="Provide details" help-label="Don't know what to write?" keep-going-message="Provide more details" keep-going-threshold="75" final-message="Thank you!"></c-description-strength-indicator>
  */

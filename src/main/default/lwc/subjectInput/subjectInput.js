@@ -74,6 +74,7 @@ export default class SubjectInput extends LightningElement {
   get length() {
     return this._value.length;
   }
+
   /**
    * Returns the error message to be shown.
    * @type {string}
@@ -87,9 +88,7 @@ export default class SubjectInput extends LightningElement {
    * @returns {string}
    */
   get formClass() {
-    return this.hasError
-      ? 'slds-form-element slds-has-error'
-      : 'slds-form-element';
+    return `slds-form-element ${this.hasError ? 'slds-has-error' : ''}`;
   }
 
   /**

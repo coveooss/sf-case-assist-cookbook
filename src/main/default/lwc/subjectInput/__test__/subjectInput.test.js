@@ -11,7 +11,7 @@ function createTestComponent() {
 }
 
 // Helper function to wait until the microtask queue is empty.
-function flushPromises() {
+function allPromisesResolution() {
   // eslint-disable-next-line no-undef
   return new Promise((resolve) => setImmediate(resolve));
 }
@@ -44,7 +44,7 @@ describe('c-subject-input', () => {
     const expectedLabel = 'Expected Label';
     element.label = expectedLabel;
 
-    await flushPromises();
+    await allPromisesResolution();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).toBeDefined();
     expect(labelNode.title).toBe(expectedLabel);
@@ -53,25 +53,25 @@ describe('c-subject-input', () => {
   it('should display the correct localized label', async () => {
     const element = createTestComponent();
 
-    await flushPromises();
+    await allPromisesResolution();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe('Write a descriptive title');
   });
-  
+
   it('should display the input', async () => {
     const element = createTestComponent();
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
     expect(inputNode).not.toBeNull();
   });
-  
+
   it('should display the correct value in the input', async () => {
     const element = createTestComponent();
     const expectedValue = 'Expected Value';
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
 
     const inputEvent = new CustomEvent('input');
@@ -80,7 +80,7 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
-  
+
   it('should respect the max length of the input', async () => {
     const element = createTestComponent();
     const maxLength = 26;
@@ -88,7 +88,7 @@ describe('c-subject-input', () => {
     const expectedValue = longValue.substring(0, maxLength);
     element.maxLength = maxLength;
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
 
     const inputEvent = new CustomEvent('input');
@@ -97,14 +97,14 @@ describe('c-subject-input', () => {
 
     expect(element.value).toBe(expectedValue);
   });
-  
+
   it('should show an error when the value is empty and the input is required', async () => {
     const element = createTestComponent();
     const expectedErrorMessage = 'Expected Error Message';
     element.required = true;
     element.messageWhenValueMissing = expectedErrorMessage;
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
     inputNode.value = '';
     await element.reportValidity();
@@ -116,13 +116,13 @@ describe('c-subject-input', () => {
     expect(errorNode).not.toBeNull();
     expect(errorNode.textContent).toBe(expectedErrorMessage);
   });
-  
+
   it('should show the default localized error message when the value is empty and the input is required', async () => {
     const element = createTestComponent();
     const expectedErrorMessage = 'Complete this field.';
     element.required = true;
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
     inputNode.value = '';
     await element.reportValidity();

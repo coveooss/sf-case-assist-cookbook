@@ -66,7 +66,7 @@ export default class DescriptionStrengthIndicator extends LightningElement {
    * @returns {string}
    */
   get message() {
-    if (this._progress === 100) {
+    if (this.isFull) {
       return this.finalMessage;
     } else if (
       this.keepGoingThreshold > 0 &&

@@ -1,11 +1,14 @@
 import { createElement } from 'lwc';
 import DescriptionStrengthIndicator from 'c/descriptionStrengthIndicator';
 
-function createTestComponent() {
+function createTestComponent(props = {}) {
   const element = createElement('c-description-strength-indicator', {
     is: DescriptionStrengthIndicator
   });
   document.body.appendChild(element);
+  Object.keys(props).forEach((key) => {
+    element[key] = props[key];
+  });
 
   return element;
 }
@@ -55,9 +58,10 @@ describe('c-description-strength-indicator', () => {
 
   describe('when the progress is less than the keep going threshold', () => {
     it('should display the initial message', async () => {
-      const element = createTestComponent();
       const expectedText = 'Expected Text';
-      element.initialMessage = expectedText;
+      const element = createTestComponent({
+        initialMessage: expectedText
+      });
 
       await allPromisesResolution();
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
@@ -100,9 +104,10 @@ describe('c-description-strength-indicator', () => {
     });
 
     it('should display the help label', async () => {
-      const element = createTestComponent();
       const expectedText = 'Expected Text';
-      element.helpLabel = expectedText;
+      const element = createTestComponent({
+        helpLabel: expectedText
+      });
 
       await allPromisesResolution();
       const accordionNode = element.shadowRoot.querySelector(
@@ -127,13 +132,12 @@ describe('c-description-strength-indicator', () => {
 
   describe('the keep going threshold', () => {
     it('should display the keep going message', async () => {
-      const element = createTestComponent();
       const expectedText = 'Expected Text';
-      const keepGoingThreshold = 50;
-      const progress = 50;
-      element.keepGoingMessage = expectedText;
-      element.progress = progress;
-      element.keepGoingThreshold = keepGoingThreshold;
+      const element = createTestComponent({
+        keepGoingMessage: expectedText,
+        progress: 50,
+        keepGoingThreshold: 50
+      });
 
       await allPromisesResolution();
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
@@ -142,12 +146,11 @@ describe('c-description-strength-indicator', () => {
     });
 
     it('should display the default localized value of the keep going message', async () => {
-      const element = createTestComponent();
       const expectedText = 'Provide more details';
-      const keepGoingThreshold = 50;
-      const progress = 50;
-      element.progress = progress;
-      element.keepGoingThreshold = keepGoingThreshold;
+      const element = createTestComponent({
+        progress: 50,
+        keepGoingThreshold: 50
+      });
 
       await allPromisesResolution();
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
@@ -158,11 +161,11 @@ describe('c-description-strength-indicator', () => {
 
   describe('when the indicator is full', () => {
     it('should display the final message', async () => {
-      const element = createTestComponent();
       const expectedText = 'Expected Text';
-      const progress = 100;
-      element.finalMessage = expectedText;
-      element.progress = progress;
+      const element = createTestComponent({
+        progress: 100,
+        finalMessage: expectedText
+      });
 
       await allPromisesResolution();
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
@@ -171,10 +174,10 @@ describe('c-description-strength-indicator', () => {
     });
 
     it('should display the default localized value of the final message', async () => {
-      const element = createTestComponent();
+      const element = createTestComponent({
+        progress: 100
+      });
       const expectedText = 'Thank you!';
-      const progress = 100;
-      element.progress = progress;
 
       await allPromisesResolution();
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
@@ -183,9 +186,9 @@ describe('c-description-strength-indicator', () => {
     });
 
     it('should display the progress indicator full', async () => {
-      const element = createTestComponent();
-      const progress = 100;
-      element.progress = progress;
+      const element = createTestComponent({
+        progress: 100
+      });
 
       await allPromisesResolution();
       const fullProgressRingNode = element.shadowRoot.querySelector(

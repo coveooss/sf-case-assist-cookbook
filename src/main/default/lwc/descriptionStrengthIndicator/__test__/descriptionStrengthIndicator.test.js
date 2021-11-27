@@ -53,144 +53,150 @@ describe('c-description-strength-indicator', () => {
     }
   });
 
-  it('should display the initial message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Expected Text';
-    element.initialMessage = expectedText;
+  describe('when the progress is less than the keep going threshold', () => {
+    it('should display the initial message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Expected Text';
+      element.initialMessage = expectedText;
 
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
+
+    it('should display the default localized value of the initial message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Provide details';
+
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
+
+    it('should display the progress indicator', async () => {
+      const element = createTestComponent();
+
+      await allPromisesResolution();
+      const progressRingNode = element.shadowRoot.querySelector(
+        '.slds-progress-ring'
+      );
+      const fullProgressRingNode = element.shadowRoot.querySelector(
+        'lightning-progress-ring'
+      );
+      expect(progressRingNode).not.toBeNull();
+      expect(fullProgressRingNode).toBeNull();
+    });
+
+    it('should display the help accordion', async () => {
+      const element = createTestComponent();
+
+      await allPromisesResolution();
+      const accordionNode = element.shadowRoot.querySelector(
+        'lightning-accordion'
+      );
+      expect(accordionNode).not.toBeNull();
+    });
+
+    it('should display the help label', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Expected Text';
+      element.helpLabel = expectedText;
+
+      await allPromisesResolution();
+      const accordionNode = element.shadowRoot.querySelector(
+        'lightning-accordion-section'
+      );
+      expect(accordionNode).not.toBeNull();
+      expect(accordionNode.label).toBe(expectedText);
+    });
+
+    it('should display the default localized value of the help label', async () => {
+      const element = createTestComponent();
+      const expectedText = "Don't know what to write?";
+
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector(
+        'lightning-accordion-section'
+      );
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.label).toBe(expectedText);
+    });
   });
 
-  it('should display the default localized value of the initial message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Provide details';
+  describe('the keep going threshold', () => {
+    it('should display the keep going message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Expected Text';
+      const keepGoingThreshold = 50;
+      const progress = 50;
+      element.keepGoingMessage = expectedText;
+      element.progress = progress;
+      element.keepGoingThreshold = keepGoingThreshold;
 
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
+
+    it('should display the default localized value of the keep going message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Provide more details';
+      const keepGoingThreshold = 50;
+      const progress = 50;
+      element.progress = progress;
+      element.keepGoingThreshold = keepGoingThreshold;
+
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
   });
 
-  it('should display the keep going message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Expected Text';
-    const keepGoingThreshold = 50;
-    const progress = 50;
-    element.keepGoingMessage = expectedText;
-    element.progress = progress;
-    element.keepGoingThreshold = keepGoingThreshold;
+  describe('when the indicator is full', () => {
+    it('should display the final message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Expected Text';
+      const progress = 100;
+      element.finalMessage = expectedText;
+      element.progress = progress;
 
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
-  });
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
 
-  it('should display the default localized value of the keep going message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Provide more details';
-    const keepGoingThreshold = 50;
-    const progress = 50;
-    element.progress = progress;
-    element.keepGoingThreshold = keepGoingThreshold;
+    it('should display the default localized value of the final message', async () => {
+      const element = createTestComponent();
+      const expectedText = 'Thank you!';
+      const progress = 100;
+      element.progress = progress;
 
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
-  });
+      await allPromisesResolution();
+      const messageNode = element.shadowRoot.querySelector('.indicator_title');
+      expect(messageNode).not.toBeNull();
+      expect(messageNode.textContent).toBe(expectedText);
+    });
 
-  it('should display the final message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Expected Text';
-    const progress = 100;
-    element.finalMessage = expectedText;
-    element.progress = progress;
+    it('should display the progress indicator full', async () => {
+      const element = createTestComponent();
+      const progress = 100;
+      element.progress = progress;
 
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
-  });
+      await allPromisesResolution();
+      const fullProgressRingNode = element.shadowRoot.querySelector(
+        'lightning-progress-ring'
+      );
+      const progressRingNode = element.shadowRoot.querySelector(
+        '.slds-progress-ring'
+      );
 
-  it('should display the default localized value of the final message', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Thank you!';
-    const progress = 100;
-    element.progress = progress;
-
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector('.indicator_title');
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.textContent).toBe(expectedText);
-  });
-
-  it('should display the progress indicator', async () => {
-    const element = createTestComponent();
-
-    await allPromisesResolution();
-    const progressRingNode = element.shadowRoot.querySelector(
-      '.slds-progress-ring'
-    );
-    const fullProgressRingNode = element.shadowRoot.querySelector(
-      'lightning-progress-ring'
-    );
-    expect(progressRingNode).not.toBeNull();
-    expect(fullProgressRingNode).toBeNull();
-  });
-
-  it('should display the progress indicator full', async () => {
-    const element = createTestComponent();
-    const progress = 100;
-    element.progress = progress;
-
-    await allPromisesResolution();
-    const fullProgressRingNode = element.shadowRoot.querySelector(
-      'lightning-progress-ring'
-    );
-    const progressRingNode = element.shadowRoot.querySelector(
-      '.slds-progress-ring'
-    );
-
-    expect(fullProgressRingNode).not.toBeNull();
-    expect(progressRingNode).toBeNull();
-  });
-
-  it('should display the help accordion', async () => {
-    const element = createTestComponent();
-
-    await allPromisesResolution();
-    const accordionNode = element.shadowRoot.querySelector(
-      'lightning-accordion'
-    );
-    expect(accordionNode).not.toBeNull();
-  });
-
-  it('should display the help label', async () => {
-    const element = createTestComponent();
-    const expectedText = 'Expected Text';
-    element.helpLabel = expectedText;
-
-    await allPromisesResolution();
-    const accordionNode = element.shadowRoot.querySelector(
-      'lightning-accordion-section'
-    );
-    expect(accordionNode).not.toBeNull();
-    expect(accordionNode.label).toBe(expectedText);
-  });
-
-  it('should display the default localized value of the help label', async () => {
-    const element = createTestComponent();
-    const expectedText = "Don't know what to write?";
-
-    await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'lightning-accordion-section'
-    );
-    expect(messageNode).not.toBeNull();
-    expect(messageNode.label).toBe(expectedText);
+      expect(fullProgressRingNode).not.toBeNull();
+      expect(progressRingNode).toBeNull();
+    });
   });
 });

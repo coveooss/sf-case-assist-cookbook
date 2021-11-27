@@ -59,9 +59,7 @@ describe('c-description-strength-indicator', () => {
     element.initialMessage = expectedText;
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
@@ -71,9 +69,7 @@ describe('c-description-strength-indicator', () => {
     const expectedText = 'Provide details';
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
@@ -88,9 +84,7 @@ describe('c-description-strength-indicator', () => {
     element.keepGoingThreshold = keepGoingThreshold;
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
@@ -104,9 +98,7 @@ describe('c-description-strength-indicator', () => {
     element.keepGoingThreshold = keepGoingThreshold;
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
@@ -119,9 +111,7 @@ describe('c-description-strength-indicator', () => {
     element.progress = progress;
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });
@@ -133,9 +123,7 @@ describe('c-description-strength-indicator', () => {
     element.progress = progress;
 
     await allPromisesResolution();
-    const messageNode = element.shadowRoot.querySelector(
-      'h3.slds-text-title_bold'
-    );
+    const messageNode = element.shadowRoot.querySelector('.indicator_title');
     expect(messageNode).not.toBeNull();
     expect(messageNode.textContent).toBe(expectedText);
   });

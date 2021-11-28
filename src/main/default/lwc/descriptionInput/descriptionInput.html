@@ -1,8 +1,14 @@
 <template>
   <c-section-title title={label}></c-section-title>
-  <lightning-input-rich-text
-    formats={formats}
-    value={value}
-    onchange={handleChange}
-  ></lightning-input-rich-text>
+  <div class={formClass}>
+    <lightning-input-rich-text
+      formats={formats}
+      value={value}
+      onchange={handleChange}
+      aria-describedby="description-error-message"
+    ></lightning-input-rich-text>
+    <div class="slds-form-element__help" id="description-error-message">
+      {errorMessage}
+    </div>
+  </div>
 </template>

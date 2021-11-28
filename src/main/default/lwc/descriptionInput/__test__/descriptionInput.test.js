@@ -1,24 +1,34 @@
 import { createElement } from 'lwc';
 import DescriptionInput from 'c/descriptionInput';
 
-function createTestComponent() {
+function createTestComponent(props = {}) {
   const element = createElement('c-description-input', {
     is: DescriptionInput
   });
   document.body.appendChild(element);
+  Object.keys(props).forEach((key) => {
+    element[key] = props[key];
+  });
 
   return element;
 }
 
 // Helper function to wait until the microtask queue is empty.
-function flushPromises() {
+function allPromisesResolution() {
   // eslint-disable-next-line no-undef
   return new Promise((resolve) => setImmediate(resolve));
 }
 
 jest.mock(
-  '@salesforce/label/c.cookbook_DescriptionInputLabel',
+  '@salesforce/label/c.cookbook_DescriptionInputTitle',
   () => ({ default: 'Explain the problem' }),
+  {
+    virtual: true
+  }
+);
+jest.mock(
+  '@salesforce/label/c.cookbook_ValueMissing',
+  () => ({ default: 'Complete this field.' }),
   {
     virtual: true
   }
@@ -33,11 +43,12 @@ describe('c-description-input', () => {
   });
 
   it('should display the input label', async () => {
-    const element = createTestComponent();
     const expectedLabel = 'Expected Label';
-    element.label = expectedLabel;
+    const element = createTestComponent({
+      label: expectedLabel
+    });
 
-    await flushPromises();
+    await allPromisesResolution();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
@@ -47,7 +58,7 @@ describe('c-description-input', () => {
     const element = createTestComponent();
     const expectedLabel = 'Explain the problem';
 
-    await flushPromises();
+    await allPromisesResolution();
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
@@ -55,7 +66,7 @@ describe('c-description-input', () => {
   it('should display the input', async () => {
     const element = createTestComponent();
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector(
       'lightning-input-rich-text'
     );
@@ -65,7 +76,7 @@ describe('c-description-input', () => {
     const element = createTestComponent();
     const expectedValue = 'Expected Value';
 
-    await flushPromises();
+    await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector(
       'lightning-input-rich-text'
     );
@@ -75,5 +86,71 @@ describe('c-description-input', () => {
     inputNode.dispatchEvent(inputEvent);
 
     expect(element.value).toBe(expectedValue);
+  });
+
+  describe('when the input is required', () => {
+    it('should show an error when the value is empty', async () => {
+      const expectedErrorMessage = 'Expected Error Message';
+      const element = createTestComponent({
+        required: true,
+        messageWhenValueMissing: expectedErrorMessage
+      });
+
+      await allPromisesResolution();
+      const inputNode = element.shadowRoot.querySelector(
+        'lightning-input-rich-text'
+      );
+      inputNode.value = '';
+      await element.reportValidity();
+      const errorNode = element.shadowRoot.querySelector(
+        'div.slds-form-element__help'
+      );
+
+      expect(element.hasError).toBe(true);
+      expect(errorNode).not.toBeNull();
+      expect(errorNode.textContent).toBe(expectedErrorMessage);
+    });
+
+    it('should show the default localized error message when the value is empty', async () => {
+      const expectedErrorMessage = 'Complete this field.';
+      const element = createTestComponent({
+        required: true
+      });
+
+      await allPromisesResolution();
+      const inputNode = element.shadowRoot.querySelector(
+        'lightning-input-rich-text'
+      );
+      inputNode.value = '';
+      await element.reportValidity();
+      const errorNode = element.shadowRoot.querySelector(
+        'div.slds-form-element__help'
+      );
+
+      expect(element.hasError).toBe(true);
+      expect(errorNode).not.toBeNull();
+      expect(errorNode.textContent).toBe(expectedErrorMessage);
+    });
+  });
+
+  describe('when the input is not required', () => {
+    it('should not show an error when the value is empty', async () => {
+      const element = createTestComponent({
+        required: false
+      });
+
+      await allPromisesResolution();
+      const inputNode = element.shadowRoot.querySelector(
+        'lightning-input-rich-text'
+      );
+      inputNode.value = '';
+      await element.reportValidity();
+      const errorNode = element.shadowRoot.querySelector(
+        'div.slds-form-element__help'
+      );
+
+      expect(element.hasError).toBe(false);
+      expect(errorNode).toBeNull();
+    });
   });
 });

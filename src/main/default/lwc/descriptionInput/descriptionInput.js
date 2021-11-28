@@ -1,11 +1,11 @@
 import { LightningElement, api } from 'lwc';
-import explainProblem from '@salesforce/label/c.cookbook_DescriptionInputLabel';
+import explainProblem from '@salesforce/label/c.cookbook_DescriptionInputTitle';
 import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
 
 /**
  * The `descriptionInput` component displays a rich text input for the case description.
  * @example
- * <c-description-input label="Explain the problem"></c-description-input>
+ * <c-description-input label="Explain the problem" messageWhenValueMissing="Complete this field." required></c-description-input>
  */
 export default class DescriptionInput extends LightningElement {
   labels = {

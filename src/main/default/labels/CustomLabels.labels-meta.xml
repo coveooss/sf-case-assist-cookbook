@@ -8,7 +8,7 @@
     <shortDescription>Section title</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_DescriptionInputLabel</fullName>
+    <fullName>cookbook_DescriptionInputTitle</fullName>
     <value>Explain the problem</value>
     <language>en_US</language>
     <protected>false</protected>

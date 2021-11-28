@@ -7,5 +7,45 @@
   <customLabels>
     <label>Expliquez le problème</label>
     <name>cookbook_DescriptionInputLabel</name>
+    <label>Écrivez un titre descriptif</label>
+    <name>cookbook_SubjectInputTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Remplissez ce champ.</label>
+    <name>cookbook_ValueMissing</name>
+    <label>A aidé {{0}} utilisateur</label>
+    <name>cookbook_HelpedUsers</name>
+  </customLabels>
+  <customLabels>
+    <label>A aidé {{0}} utilisateurs</label>
+    <name>cookbook_HelpedUsers_plural</name>
+  </customLabels>
+  <customLabels>
+    <label>Soyez le premier à évaluer ce document</label>
+    <name>cookbook_HelpedUsers_zero</name>
+  </customLabels>
+  <customLabels>
+    <label>Oui</label>
+    <name>cookbook_Yes</name>
+  </customLabels>
+  <customLabels>
+    <label>Non</label>
+    <name>cookbook_No</name>
+  </customLabels>
+  <customLabels>
+    <label>Est-ce que cela a été utile?</label>
+    <name>cookbook_VoteQuestion</name>
+  </customLabels>
+  <customLabels>
+    <label>Votre avis peut aider les autres</label>
+    <name>cookbook_VoteLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci pour votre collaboration!</label>
+    <name>cookbook_VoteFinalText</name>
+  </customLabels>
+  <customLabels>
+    <label>Abandonner la demande</label>
+    <name>cookbook_AbandonRequest</name>
   </customLabels>
 </Translations>

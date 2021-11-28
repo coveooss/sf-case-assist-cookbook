@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import explainProblem from '@salesforce/label/c.cookbook_DescriptionInputLabel';
 
 /**
- * The `descriptionInput` component is a rich text input for the description of the case.
+ * The `descriptionInput` component displays a rich text input for the case description.
  * @example
  * <c-description-input label="Explain the problem"></c-description-input>
  */
@@ -13,7 +13,6 @@ export default class DescriptionInput extends LightningElement {
 
   /**
    * The label to be shown to the user.
-   * @api
    * @type {string}
    * @defaultValue `'Explain the problem'`
    */
@@ -24,7 +23,6 @@ export default class DescriptionInput extends LightningElement {
 
   /**
    * List of formats to include in the editor.
-   * @api
    * @type {Array<string>}
    */
   @api formats = [
@@ -46,7 +44,6 @@ export default class DescriptionInput extends LightningElement {
 
   /**
    * Returns the value of the input.
-   * @api
    * @returns {string}
    */
   @api get value() {

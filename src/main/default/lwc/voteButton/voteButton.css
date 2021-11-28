@@ -1,0 +1,9 @@
+.text-color_initial {
+  color: var(--lwc-brandAccessible);
+}
+.icon-color_initial {
+  --sds-c-icon-color-foreground-default: var(--lwc-brandAccessible);
+}
+.label_small {
+  font-size: 12px;
+}

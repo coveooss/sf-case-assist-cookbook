@@ -70,7 +70,7 @@ export default class DescriptionInput extends LightningElement {
    * @return {void}
    */
   handleChange = (e) => {
-    this._validity = true;
+    this._validity = !this.required || !!e.target.value;
     this._value = e.target.value;
   };
 

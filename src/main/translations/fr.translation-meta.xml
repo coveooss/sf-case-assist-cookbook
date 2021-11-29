@@ -5,6 +5,32 @@
     <name>cookbook_SectionTitle</name>
   </customLabels>
   <customLabels>
+    <label>Donnez des détails</label>
+    <name>cookbook_ProvideDetails</name>
+  </customLabels>
+  <customLabels>
+    <label>Donnez plus de détails</label>
+    <name>cookbook_ProvideMoreDetails</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci!</label>
+    <name>cookbook_ThankYou</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous ne savez pas quoi écrire?</label>
+    <name>cookbook_DontKnowWhatToWrite</name>
+  </customLabels>
+  <customLabels>
+    <label>Depuis quand ce problème vous affecte-t-il?</label>
+    <name>cookbook_DescriptionHintOne</name>
+  </customLabels>
+  <customLabels>
+    <label>Est-ce la première fois que cela vous affecte?</label>
+    <name>cookbook_DescriptionHintTwo</name>
+  </customLabels>
+  <customLabels>
+    <label>Qu'est-ce que cela vous empêche de réaliser?</label>
+    <name>cookbook_DescriptionHintThree</name>
     <label>Écrivez un titre descriptif</label>
     <name>cookbook_SubjectInputTitle</name>
   </customLabels>

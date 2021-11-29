@@ -103,14 +103,10 @@ describe('c-description-input', () => {
         'lightning-input-rich-text'
       );
       inputNode.value = '';
-      await element.reportValidity();
-      const errorNode = element.shadowRoot.querySelector(
-        'div.slds-form-element__help'
-      );
+      await element.validate();
 
-      expect(element.hasError).toBe(true);
-      expect(errorNode).not.toBeNull();
-      expect(errorNode.textContent).toBe(expectedErrorMessage);
+      expect(inputNode.valid).toBe(false);
+      expect(inputNode.messageWhenBadInput).toBe(expectedErrorMessage);
     });
 
     it('should show the default localized error message when the value is empty', async () => {
@@ -124,14 +120,10 @@ describe('c-description-input', () => {
         'lightning-input-rich-text'
       );
       inputNode.value = '';
-      await element.reportValidity();
-      const errorNode = element.shadowRoot.querySelector(
-        'div.slds-form-element__help'
-      );
+      await element.validate();
 
-      expect(element.hasError).toBe(true);
-      expect(errorNode).not.toBeNull();
-      expect(errorNode.textContent).toBe(expectedErrorMessage);
+      expect(inputNode.valid).toBe(false);
+      expect(inputNode.messageWhenBadInput).toBe(expectedErrorMessage);
     });
   });
 
@@ -146,13 +138,9 @@ describe('c-description-input', () => {
         'lightning-input-rich-text'
       );
       inputNode.value = '';
-      await element.reportValidity();
-      const errorNode = element.shadowRoot.querySelector(
-        'div.slds-form-element__help'
-      );
+      await element.validate();
 
-      expect(element.hasError).toBe(false);
-      expect(errorNode).toBeNull();
+      expect(inputNode.valid).toBe(true);
     });
   });
 });

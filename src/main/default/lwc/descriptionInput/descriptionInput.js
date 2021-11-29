@@ -37,8 +37,8 @@ export default class DescriptionInput extends LightningElement {
   /** @type {string} */
   _value = '';
 
-  /** @type {string} */
-  _errorMessage = '';
+  /** @type {boolean} */
+  _validity = true;
 
   /**
    * List of formats to include in the editor.
@@ -58,27 +58,11 @@ export default class DescriptionInput extends LightningElement {
   ];
 
   /**
-   * Returns the error message to be shown.
-   * @type {string}
-   */
-  get errorMessage() {
-    return this._errorMessage;
-  }
-
-  /**
-   * Returns the CSS class of the form.
-   * @returns {string}
-   */
-  get formClass() {
-    return `slds-form-element ${this.hasError ? 'slds-has-error' : ''}`;
-  }
-
-  /**
    * Tells if there is an error in the input.
    * @returns {boolean}
    */
-  @api get hasError() {
-    return !!this._errorMessage.length;
+  @api get validity() {
+    return this._validity;
   }
 
   /**
@@ -86,7 +70,7 @@ export default class DescriptionInput extends LightningElement {
    * @return {void}
    */
   handleChange = (e) => {
-    this._errorMessage = '';
+    this._validity = true;
     this._value = e.target.value;
   };
 
@@ -102,9 +86,7 @@ export default class DescriptionInput extends LightningElement {
    * Shows an error message in the componet if there is an error.
    * @returns {void}
    */
-  @api reportValidity() {
-    if (this.required && !this._value) {
-      this._errorMessage = this.messageWhenValueMissing;
-    }
+  @api validate() {
+    this._validity = this.required && !this._value ? false : true;
   }
 }

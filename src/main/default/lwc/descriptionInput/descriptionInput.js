@@ -99,7 +99,7 @@ export default class DescriptionInput extends LightningElement {
   }
 
   /**
-   * Shows an error message in the componet if there is an error.
+   * Shows an error message in the component if there is an error.
    * @returns {void}
    */
   @api reportValidity() {

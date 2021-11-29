@@ -87,6 +87,6 @@ export default class DescriptionInput extends LightningElement {
    * @returns {void}
    */
   @api validate() {
-    this._validity = this.required && !this._value ? false : true;
+    this._validity = !this.required || !!this._value;
   }
 }

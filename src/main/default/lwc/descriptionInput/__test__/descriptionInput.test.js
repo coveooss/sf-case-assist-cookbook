@@ -63,6 +63,7 @@ describe('c-description-input', () => {
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
   });
+
   it('should display the input', async () => {
     const element = createTestComponent();
 
@@ -72,6 +73,7 @@ describe('c-description-input', () => {
     );
     expect(inputNode).not.toBeNull();
   });
+
   it('should display the correct value in the input', async () => {
     const element = createTestComponent();
     const expectedValue = 'Expected Value';

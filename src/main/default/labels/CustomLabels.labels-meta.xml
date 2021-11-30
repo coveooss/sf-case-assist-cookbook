@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
   <labels>
+    <fullName>cookbook_ProvideDetails</fullName>
+    <value>Provide details</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide details</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideMoreDetails</fullName>
+    <value>Provide more details</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide more details</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ThankYou</fullName>
+    <value>Thank you!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DontKnowWhatToWrite</fullName>
+    <value>Don't know what to write?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Don't know what to write?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintOne</fullName>
+    <value>Since when is this problem affecting you?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Since when is this problem affecting you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintTwo</fullName>
+    <value>Is it the first time it is affecting you?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Is it the first time it is affecting you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintThree</fullName>
+    <value>What is it preventing you to achieve?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What is it preventing you to achieve?</shortDescription>
+  </labels>
+  <labels>
     <fullName>cookbook_SectionTitle</fullName>
     <value>Section title</value>
     <language>en_US</language>

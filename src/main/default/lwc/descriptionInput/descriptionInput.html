@@ -1,0 +1,10 @@
+<template>
+  <c-section-title title={label}></c-section-title>
+  <lightning-input-rich-text
+    formats={formats}
+    value={value}
+    onchange={handleChange}
+    message-when-bad-input={messageWhenValueMissing}
+    valid={validity}
+  ></lightning-input-rich-text>
+</template>

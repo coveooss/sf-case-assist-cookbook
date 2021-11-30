@@ -5,6 +5,8 @@
     <name>cookbook_SectionTitle</name>
   </customLabels>
   <customLabels>
+    <label>Expliquez le problème</label>
+    <name>cookbook_DescriptionInputTitle</name>
     <label>Donnez des détails</label>
     <name>cookbook_ProvideDetails</name>
   </customLabels>

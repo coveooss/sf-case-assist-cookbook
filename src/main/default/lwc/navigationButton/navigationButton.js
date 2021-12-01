@@ -1,0 +1,66 @@
+import { LightningElement, api } from 'lwc';
+
+export default class NavigationButton extends LightningElement {
+  /**
+   * The type of the navigation button.
+   * @type {'next'|'previous'}
+   * @defaultValue `'next'`
+   */
+  @api type = 'next';
+
+  /**
+   * The label to be shown in the button.
+   * @type {string}
+   * @defaultValue `'Navigate'`
+   */
+  @api label = 'Navigate';
+
+  /**
+   * Tells if an icon should be displayed witht the button.
+   * @type {boolean}
+   * @defaultValue `false`
+   *
+   */
+  @api showIcon = false;
+
+  /**
+   * Returns the variant of the button.
+   * @returns {string}
+   */
+  get variant() {
+    return this.type === 'next' ? 'brand' : 'base';
+  }
+
+  /**
+   * Returns the name of the icon to be displayed.
+   * @returns {string}
+   */
+  get iconName() {
+    if (!this.showIcon) {
+      return '';
+    }
+    return this.type === 'next'
+      ? 'utility:chevronright'
+      : 'utility:chevronleft';
+  }
+
+  /**
+   * Returns the position where the icon will be displayed.
+   * @returns {'right'|'left'}
+   */
+  get iconPosition() {
+    return this.type === 'next' ? 'right' : 'left';
+  }
+
+  /**
+   * Handles clicks on the navigation button.
+   * @returns {void}
+   */
+  handleNavigate() {
+    if (this.type === 'next') {
+      this.dispatchEvent(new CustomEvent('next'));
+    } else {
+      this.dispatchEvent(new CustomEvent('previous'));
+    }
+  }
+}

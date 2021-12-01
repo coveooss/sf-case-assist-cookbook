@@ -142,4 +142,11 @@
     <protected>false</protected>
     <shortDescription>Abandon Request</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_Navigate</fullName>
+    <value>Navigate</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Navigate</shortDescription>
+  </labels>
 </CustomLabels>

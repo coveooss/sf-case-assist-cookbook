@@ -74,4 +74,8 @@
     <label>Abandonner la demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
+  <customLabels>
+    <label>Naviguer</label>
+    <name>cookbook_Navigate</name>
+  </customLabels>
 </Translations>

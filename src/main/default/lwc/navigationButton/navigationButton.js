@@ -1,6 +1,16 @@
 import { LightningElement, api } from 'lwc';
+import navigate from '@salesforce/label/c.cookbook_Navigate';
 
+/**
+ * The `navigationButton` is button to navigate through the steps of the case creation process.
+ * @example
+ * <c-navigation-button type="next" show-icon label="Next"></navigation-button>
+ */
 export default class NavigationButton extends LightningElement {
+  labels = {
+    navigate
+  };
+
   /**
    * The type of the navigation button.
    * @type {'next'|'previous'}
@@ -13,7 +23,7 @@ export default class NavigationButton extends LightningElement {
    * @type {string}
    * @defaultValue `'Navigate'`
    */
-  @api label = 'Navigate';
+  @api label = this.labels.navigate;
 
   /**
    * Tells if an icon should be displayed witht the button.

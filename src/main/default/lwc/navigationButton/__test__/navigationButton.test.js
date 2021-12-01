@@ -21,8 +21,8 @@ function allPromisesResolution() {
 }
 
 jest.mock(
-  '@salesforce/label/c.cookbook_DescriptionInputTitle',
-  () => ({ default: 'Explain the problem' }),
+  '@salesforce/label/c.cookbook_Navigate',
+  () => ({ default: 'Navigate' }),
   {
     virtual: true
   }

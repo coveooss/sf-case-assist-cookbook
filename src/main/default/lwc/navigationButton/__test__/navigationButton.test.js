@@ -20,13 +20,12 @@ function allPromisesResolution() {
   return new Promise((resolve) => setImmediate(resolve));
 }
 
-jest.mock(
-  '@salesforce/label/c.cookbook_Navigate',
-  () => ({ default: 'Navigate' }),
-  {
-    virtual: true
-  }
-);
+jest.mock('@salesforce/label/c.cookbook_Next', () => ({ default: 'Next' }), {
+  virtual: true
+});
+jest.mock('@salesforce/label/c.cookbook_Back', () => ({ default: 'Back' }), {
+  virtual: true
+});
 
 describe('c-navigation-button', () => {
   afterEach(() => {
@@ -56,17 +55,19 @@ describe('c-navigation-button', () => {
     expect(buttonNode.label).toBe(expectedLabel);
   });
 
-  it('should display the correct localized label', async () => {
-    const element = createTestComponent();
-    const expectedLabel = 'Navigate';
-
-    await allPromisesResolution();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
-    expect(buttonNode).not.toBeNull();
-    expect(buttonNode.label).toBe(expectedLabel);
-  });
-
   describe('when the type of the navigation button is next', () => {
+    it('should display the correct localized label', async () => {
+      const expectedLabel = 'Next';
+      const element = createTestComponent({
+        type: 'next'
+      });
+
+      await allPromisesResolution();
+      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      expect(buttonNode).not.toBeNull();
+      expect(buttonNode.label).toBe(expectedLabel);
+    });
+
     it('should display the correct icon in the correct position', async () => {
       const expectedIcon = 'utility:chevronright';
       const expectedPosition = 'right';
@@ -96,6 +97,18 @@ describe('c-navigation-button', () => {
   });
 
   describe('when the type of the navigation button is previous', () => {
+    it('should display the correct localized label', async () => {
+      const expectedLabel = 'Back';
+      const element = createTestComponent({
+        type: 'previous'
+      });
+
+      await allPromisesResolution();
+      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      expect(buttonNode).not.toBeNull();
+      expect(buttonNode.label).toBe(expectedLabel);
+    });
+
     it('should display the correct icon in the correct position', async () => {
       const expectedIcon = 'utility:chevronleft';
       const expectedPosition = 'left';

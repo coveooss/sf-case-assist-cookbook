@@ -1,5 +1,6 @@
 import { LightningElement, api } from 'lwc';
-import navigate from '@salesforce/label/c.cookbook_Navigate';
+import next from '@salesforce/label/c.cookbook_Next';
+import back from '@salesforce/label/c.cookbook_Back';
 
 /**
  * The `navigationButton` is a button to navigate through the steps of the case creation process.
@@ -8,7 +9,8 @@ import navigate from '@salesforce/label/c.cookbook_Navigate';
  */
 export default class NavigationButton extends LightningElement {
   labels = {
-    navigate
+    next,
+    back
   };
 
   /**
@@ -19,11 +21,11 @@ export default class NavigationButton extends LightningElement {
   @api type = 'next';
 
   /**
-   * The label to be shown in the button.
+   * The label given to the navigation button.
    * @type {string}
-   * @defaultValue `'Navigate'`
+   * @defaultValue `''`
    */
-  @api label = this.labels.navigate;
+  @api label = '';
 
   /**
    * Tells if an icon should be displayed with the button.
@@ -32,6 +34,17 @@ export default class NavigationButton extends LightningElement {
    *
    */
   @api showIcon = false;
+
+  /**
+   * Returns the label to be shown in the navigation button.
+   * @returns { string }
+   */
+  get shownLabel() {
+    if (this.label) {
+      return this.label;
+    }
+    return this.type === 'next' ? this.labels.next : this.labels.back;
+  }
 
   /**
    * Returns the variant of the button.

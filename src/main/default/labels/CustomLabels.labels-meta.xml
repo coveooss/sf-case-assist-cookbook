@@ -143,10 +143,17 @@
     <shortDescription>Abandon Request</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_Navigate</fullName>
-    <value>Navigate</value>
+    <fullName>cookbook_Next</fullName>
+    <value>Next</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Navigate</shortDescription>
+    <shortDescription>Next</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Back</fullName>
+    <value>Back</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Back</shortDescription>
   </labels>
 </CustomLabels>

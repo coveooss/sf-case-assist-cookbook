@@ -75,7 +75,11 @@
     <name>cookbook_AbandonRequest</name>
   </customLabels>
   <customLabels>
-    <label>Naviguer</label>
-    <name>cookbook_Navigate</name>
+    <label>Suivant</label>
+    <name>cookbook_Next</name>
+  </customLabels>
+  <customLabels>
+    <label>Précédent</label>
+    <name>cookbook_Back</name>
   </customLabels>
 </Translations>

@@ -23,9 +23,13 @@ function allPromisesResolution() {
 jest.mock('@salesforce/label/c.cookbook_Next', () => ({ default: 'Next' }), {
   virtual: true
 });
-jest.mock('@salesforce/label/c.cookbook_Back', () => ({ default: 'Back' }), {
-  virtual: true
-});
+jest.mock(
+  '@salesforce/label/c.cookbook_Previous',
+  () => ({ default: 'Previous' }),
+  {
+    virtual: true
+  }
+);
 
 describe('c-navigation-button', () => {
   afterEach(() => {
@@ -44,7 +48,7 @@ describe('c-navigation-button', () => {
   });
 
   it('should display the correct label', async () => {
-    const expectedLabel = 'Next';
+    const expectedLabel = 'Expected label';
     const element = createTestComponent({
       label: expectedLabel
     });
@@ -98,7 +102,7 @@ describe('c-navigation-button', () => {
 
   describe('when the type of the navigation button is previous', () => {
     it('should display the correct localized label', async () => {
-      const expectedLabel = 'Back';
+      const expectedLabel = 'Previous';
       const element = createTestComponent({
         type: 'previous'
       });

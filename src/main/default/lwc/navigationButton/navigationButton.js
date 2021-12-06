@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import next from '@salesforce/label/c.cookbook_Next';
-import back from '@salesforce/label/c.cookbook_Back';
+import previous from '@salesforce/label/c.cookbook_Previous';
 
 /**
  * The `navigationButton` is a button to navigate through the steps of the case creation process.
@@ -10,7 +10,7 @@ import back from '@salesforce/label/c.cookbook_Back';
 export default class NavigationButton extends LightningElement {
   labels = {
     next,
-    back
+    previous
   };
 
   /**
@@ -43,7 +43,7 @@ export default class NavigationButton extends LightningElement {
     if (this.label) {
       return this.label;
     }
-    return this.type === 'next' ? this.labels.next : this.labels.back;
+    return this.type === 'next' ? this.labels.next : this.labels.previous;
   }
 
   /**

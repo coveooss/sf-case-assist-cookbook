@@ -150,10 +150,10 @@
     <shortDescription>Next</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_Back</fullName>
-    <value>Back</value>
+    <fullName>cookbook_Previous</fullName>
+    <value>Previous</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Back</shortDescription>
+    <shortDescription>Previous</shortDescription>
   </labels>
 </CustomLabels>

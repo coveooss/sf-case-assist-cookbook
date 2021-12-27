@@ -142,4 +142,11 @@
     <protected>false</protected>
     <shortDescription>Abandon Request</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_MainTitle</fullName>
+    <value>Hi, what do you need help with?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Hi, what do you need help with?</shortDescription>
+  </labels>
 </CustomLabels>

@@ -34,37 +34,25 @@ const DEFAULT_STEPS = [
 /**
  * The `flowProgressIndicator` component is a dynamic indicator that shows the progress in the different steps of the flow.
  * @example
- * <flow-progress-indicator steps={customSteps}></flow-progress-indicator>
+ * <flow-progress-indicator current-step-index="0" steps={customSteps}></flow-progress-indicator>
  */
 export default class FlowProgressIndicator extends LightningElement {
   /** @type {ProgressStep[]} */
   @api steps = DEFAULT_STEPS;
 
-  /** @type {number}  */
-  _currentStepIdx = 0;
   /** @type {boolean} */
   _hasError = false;
 
   /**
-   * Set the current step index value.
-   * @param {number} idx - the index value of the step to be set.
-   * @returns {void}
+   * The current step index value.
+   * @type {number}
+   * @defaultValue `0`
    */
-  @api set currentStepIdx(idx) {
-    this._currentStepIdx = idx;
-  }
-
-  /**
-   * Returns the current step index value.
-   * @returns {number}
-   */
-  get currentStepIdx() {
-    return this._currentStepIdx;
-  }
+  @api currentStepIndex = 0;
 
   /** Returns the current step value */
   get currentStep() {
-    return this.steps[this.currentStepIdx].value || 0;
+    return this.steps[this.currentStepIndex].value || 0;
   }
 
   /**

@@ -74,4 +74,32 @@
     <label>Abandonner la demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
+  <customLabels>
+    <label>Nous sommes ravis que vous ayez trouvé une réponse !</label>
+    <name>cookbook_GladYouFoundAnswer</name>
+  </customLabels>
+  <customLabels>
+    <label>Votre demande ne sera pas enregistrée.</label>
+    <name>cookbook_YourRequestWillNotBeSaved</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci de nous faire part de vos commentaires !</label>
+    <name>cookbook_ThankYouForFeedback</name>
+  </customLabels>
+  <customLabels>
+    <label>Fermer</label>
+    <name>cookbook_Close</name>
+  </customLabels>
+  <customLabels>
+    <label>Accéder au site</label>
+    <name>cookbook_GoToSite</name>
+  </customLabels>
+  <customLabels>
+    <label>Fermer la page</label>
+    <name>cookbook_ClosePage</name>
+  </customLabels>
+  <customLabels>
+    <label>Annuler</label>
+    <name>cookbook_Undo</name>
+  </customLabels>
 </Translations>

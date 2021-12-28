@@ -142,4 +142,53 @@
     <protected>false</protected>
     <shortDescription>Abandon Request</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_GladYouFoundAnswer</fullName>
+    <value>We're glad you found the answer!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>We're glad you found the answer!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_YourRequestWillNotBeSaved</fullName>
+    <value>Your request will not be saved.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your request will not be saved</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ThankYouForFeedback</fullName>
+    <value>Thank you for providing feedback!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you for providing feedback!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Close</fullName>
+    <value>Close</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GoToSite</fullName>
+    <value>Go to site</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Go to site</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ClosePage</fullName>
+    <value>Close page</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close page</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Undo</fullName>
+    <value>Undo</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Undo</shortDescription>
+  </labels>
 </CustomLabels>

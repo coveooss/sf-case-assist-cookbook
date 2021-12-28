@@ -74,4 +74,20 @@
     <label>Abandonner la demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
+  <customLabels>
+    <label>Connexion</label>
+    <name>cookbook_LogIn</name>
+  </customLabels>
+  <customLabels>
+    <label>Décrire le problème</label>
+    <name>cookbook_DescribeProblem</name>
+  </customLabels>
+  <customLabels>
+    <label>Fournir des détails</label>
+    <name>cookbook_ProvideDetails</name>
+  </customLabels>
+  <customLabels>
+    <label>Révision</label>
+    <name>cookbook_ReviewHelp</name>
+  </customLabels>
 </Translations>

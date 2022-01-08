@@ -7,4 +7,9 @@
     message-when-bad-input={messageWhenValueMissing}
     valid={validity}
   ></lightning-input-rich-text>
+  <template if:true={displayStrengthIndicator}>
+    <div class="row">
+      <c-description-strength-indicator></c-description-strength-indicator>
+    </div>
+  </template>
 </template>

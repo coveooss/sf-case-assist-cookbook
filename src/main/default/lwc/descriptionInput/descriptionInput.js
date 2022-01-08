@@ -164,7 +164,7 @@ export default class DescriptionInput extends LightningElement {
     this.engine.dispatch(
       this.actions.updateCaseInput({
         fieldName: this._fieldName,
-        fieldValue: this._value
+        fieldValue: this.replaceTagsWithSpace(this._value)
       })
     );
     this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
@@ -179,11 +179,33 @@ export default class DescriptionInput extends LightningElement {
   updateDescriptionStrength() {
     if (this.displayStrengthIndicator) {
       const currentProgress =
-        (this._value.length * 100) / this.strongDescriptionLength;
+        (this.getTextContentLength(this._value) * 100) /
+        this.strongDescriptionLength;
       const strentghIndicator = this.template.querySelector(
         'c-description-strength-indicator'
       );
       strentghIndicator.progress = currentProgress;
     }
+  }
+
+  /**
+   * Returns the length of the rich text after transforming it to normal text.
+   * @param {string} htmlStr
+   * @returns {string}
+   */
+  getTextContentLength(htmlStr) {
+    const div = document.createElement('div');
+    // eslint-disable-next-line @lwc/lwc/no-inner-html
+    div.innerHTML = htmlStr;
+    return div.innerText.length;
+  }
+
+  /**
+   * Returns rich text after replacing the HTML tags with spaces.
+   * @param {string} htmlStr
+   * @returns {string}
+   */
+  replaceTagsWithSpace(htmlStr) {
+    return htmlStr.replace(/(<([^>]+)>)/gi, ' ');
   }
 }

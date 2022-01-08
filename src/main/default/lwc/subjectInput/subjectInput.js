@@ -1,6 +1,15 @@
+/* eslint-disable no-undef */
 import { LightningElement, api } from 'lwc';
 import writeDescriptiveTitle from '@salesforce/label/c.cookbook_SubjectInputTitle';
 import errorValueMissing from '@salesforce/label/c.cookbook_ValueMissing';
+import {
+  registerComponentForInit,
+  initializeWithHeadless
+} from 'c/quanticHeadlessLoader';
+import { debounce } from 'c/utils';
+
+/** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
+/** @typedef {import("coveo").CaseInput} CaseInput */
 
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
@@ -12,6 +21,14 @@ export default class SubjectInput extends LightningElement {
     writeDescriptiveTitle,
     errorValueMissing
   };
+
+  /**
+   * The ID of the engine instance the component registers to.
+   * @api
+   * @type {string}
+   */
+  @api engineId;
+
   /**
    * The label of the input.
    * @type {string}
@@ -40,11 +57,56 @@ export default class SubjectInput extends LightningElement {
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
 
+  /**
+   * This is the delay before sending a query and analytics events on user typing.
+   */
+  @api caseEditDelayMs = 500;
+
   /** @type {string} */
   _value = '';
+  /** @type {string} */
+  _fieldName = 'subject';
 
   /** @type {string} */
   _errorMessage = '';
+
+  /** @type {CaseAssistEngine} */
+  engine;
+  /** @type {CaseInput} */
+  input;
+  /** @type {Function} */
+  unsubscribeInput;
+
+  connectedCallback() {
+    registerComponentForInit(this, this.engineId);
+    this.debounceUpdateSubjectState = debounce(
+      this.updateSubjectState,
+      this.caseEditDelayMs
+    );
+  }
+
+  renderedCallback() {
+    initializeWithHeadless(this, this.engineId, this.initialize);
+  }
+
+  /**
+   * @param {CaseAssistEngine} engine
+   */
+  initialize = (engine) => {
+    this.engine = engine;
+    this.input = CoveoHeadlessCaseAssist.buildCaseInput(engine, {
+      options: {
+        field: this._fieldName
+      }
+    });
+
+    this.actions = {
+      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
+      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine),
+      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
+      ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
+    };
+  };
 
   /**
    * Handles the changes in the input.
@@ -56,7 +118,20 @@ export default class SubjectInput extends LightningElement {
       e.target.value.length <= this.maxLength
         ? e.target.value
         : e.target.value.substring(0, this.maxLength);
+    this.debounceUpdateSubjectState();
   };
+
+  updateSubjectState() {
+    this.engine.dispatch(
+      this.actions.updateCaseInput({
+        fieldName: this._fieldName,
+        fieldValue: this._value
+      })
+    );
+    this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
+    this.engine.dispatch(this.actions.fetchCaseClassifications());
+    this.engine.dispatch(this.actions.fetchDocumentSuggestions());
+  }
 
   /**
    * Returns the value of the input.

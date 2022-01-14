@@ -88,6 +88,7 @@ describe('c-flow-progress-indicator', () => {
     );
 
     expect(progressIndicatorNode).not.toBeNull();
+    expect(element).toBeAccessible();
   });
 
   it('should display the correct default progress indicator steps', async () => {

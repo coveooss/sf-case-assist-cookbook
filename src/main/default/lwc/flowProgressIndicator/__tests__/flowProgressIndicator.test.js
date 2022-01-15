@@ -109,6 +109,7 @@ describe('c-flow-progress-indicator', () => {
       expect(step.label).toBe(DEFAULT_STEPS[idx].label);
       expect(step.value).toBe(DEFAULT_STEPS[idx].value);
     });
+    expect(element).toBeAccessible();
   });
 
   it('should display the correct progress indicator steps', async () => {
@@ -130,5 +131,38 @@ describe('c-flow-progress-indicator', () => {
       expect(step.label).toBe(CUSTOM_STEPS[idx].label);
       expect(step.value).toBe(CUSTOM_STEPS[idx].value);
     });
+    expect(element).toBeAccessible();
+  });
+
+  it('should display an error in the current step when trigering an error', async () => {
+    const element = createTestComponent();
+
+    await allPromisesResolution();
+    const progressIndicatorNode = element.shadowRoot.querySelector(
+      'lightning-progress-indicator'
+    );
+
+    await element.triggerError(true);
+    expect(progressIndicatorNode).not.toBeNull();
+    expect(progressIndicatorNode.hasError).toBe(true);
+    expect(element).toBeAccessible();
+  });
+
+  it('should display the correct current step', async () => {
+    const element = createTestComponent();
+    const stepIdx = 1;
+    element.currentStepIndex = stepIdx;
+
+    await allPromisesResolution();
+    const progressIndicatorNode = element.shadowRoot.querySelector(
+      'lightning-progress-indicator'
+    );
+
+    await element.triggerError(true);
+    expect(progressIndicatorNode).not.toBeNull();
+    expect(progressIndicatorNode.currentStep).toBe(
+      DEFAULT_STEPS[stepIdx].value
+    );
+    expect(element).toBeAccessible();
   });
 });

@@ -43,7 +43,7 @@ describe('c-main-title', () => {
     );
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct default value of the title', async () => {
@@ -56,7 +56,7 @@ describe('c-main-title', () => {
     );
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 
   it('should not display the subtitle', async () => {
@@ -67,7 +67,7 @@ describe('c-main-title', () => {
       'h2.slds-text-heading_small'
     );
     expect(subtitleNode).toBeNull();
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct value of the subtitle', async () => {
@@ -81,6 +81,6 @@ describe('c-main-title', () => {
     );
     expect(subtitleNode).not.toBeNull();
     expect(subtitleNode.textContent).toBe(expectedSubtitle);
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 });

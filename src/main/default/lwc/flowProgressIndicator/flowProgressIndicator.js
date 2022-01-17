@@ -41,7 +41,7 @@ export default class FlowProgressIndicator extends LightningElement {
   @api steps = DEFAULT_STEPS;
 
   /**
-   * The index value OF the current step.
+   * The index value of the current step.
    * @type {number}
    * @defaultValue `0`
    */

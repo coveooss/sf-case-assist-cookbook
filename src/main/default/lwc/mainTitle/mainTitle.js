@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import mainTitle from '@salesforce/label/c.cookbook_MainTitle';
 
 /**
- * The `mainTitle` component is a title to mark the beginning of a screen of the case assist flow.
+ * The `mainTitle` component is a title to mark the beginning of a screen on the case assist flow.
  * @example
  * <c-main-title title="Explain the problem" subtitle="Detail your problem to find the agent best suited to help you"></c-main-title>
  */

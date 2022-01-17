@@ -75,7 +75,7 @@
     <name>cookbook_AbandonRequest</name>
   </customLabels>
   <customLabels>
-    <label>Bonjour, en quoi avez-vous besoin d'aide?</label>
+    <label>Bonjour, comment puis-je vous aider?</label>
     <name>cookbook_MainTitle</name>
   </customLabels>
 </Translations>

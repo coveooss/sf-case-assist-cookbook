@@ -44,32 +44,38 @@ jest.mock(
 const DEFAULT_STEPS = [
   {
     label: 'Log in',
-    value: 'login'
+    value: 'log in'
   },
   {
     label: 'Describe problem',
-    value: 'describe'
+    value: 'describe problem'
   },
   {
     label: 'Provide details',
-    value: 'details'
+    value: 'provide details'
   },
   {
     label: 'Review help',
-    value: 'review'
+    value: 'review help'
   }
 ];
 
 const CUSTOM_STEPS = [
   {
     label: 'First step',
-    value: 'first'
+    value: 'first step'
   },
   {
     label: 'Second step',
-    value: 'step'
+    value: 'second step'
   }
 ];
+
+const assertProgressStepEquals = (actual, expected) => {
+  expect(actual).not.toBeNull();
+  expect(actual.label).toBe(expected.label);
+  expect(actual.value).toBe(expected.value);
+};
 
 describe('c-flow-progress-indicator', () => {
   afterEach(() => {
@@ -88,7 +94,7 @@ describe('c-flow-progress-indicator', () => {
     );
 
     expect(progressIndicatorNode).not.toBeNull();
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct default progress indicator steps', async () => {
@@ -104,12 +110,10 @@ describe('c-flow-progress-indicator', () => {
 
     expect(progressIndicatorNode).not.toBeNull();
     expect(stepNodes.length).toBe(DEFAULT_STEPS.length);
-    stepNodes.forEach((step, idx) => {
-      expect(step).not.toBeNull();
-      expect(step.label).toBe(DEFAULT_STEPS[idx].label);
-      expect(step.value).toBe(DEFAULT_STEPS[idx].value);
-    });
-    expect(element).toBeAccessible();
+    stepNodes.forEach((step, idx) =>
+      assertProgressStepEquals(step, DEFAULT_STEPS[idx])
+    );
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct progress indicator steps', async () => {
@@ -126,12 +130,10 @@ describe('c-flow-progress-indicator', () => {
 
     expect(progressIndicatorNode).not.toBeNull();
     expect(stepNodes.length).toBe(CUSTOM_STEPS.length);
-    stepNodes.forEach((step, idx) => {
-      expect(step).not.toBeNull();
-      expect(step.label).toBe(CUSTOM_STEPS[idx].label);
-      expect(step.value).toBe(CUSTOM_STEPS[idx].value);
-    });
-    expect(element).toBeAccessible();
+    stepNodes.forEach((step, idx) =>
+      assertProgressStepEquals(step, CUSTOM_STEPS[idx])
+    );
+    await expect(element).toBeAccessible();
   });
 
   it('should display an error in the current step when triggering an error', async () => {
@@ -145,13 +147,13 @@ describe('c-flow-progress-indicator', () => {
     await element.triggerError(true);
     expect(progressIndicatorNode).not.toBeNull();
     expect(progressIndicatorNode.hasError).toBe(true);
-    expect(element).toBeAccessible();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct current step', async () => {
     const element = createTestComponent();
-    const stepIdx = 1;
-    element.currentStepIndex = stepIdx;
+    const step = 'provide details';
+    element.currentStep = step;
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
@@ -160,9 +162,7 @@ describe('c-flow-progress-indicator', () => {
 
     await element.triggerError(true);
     expect(progressIndicatorNode).not.toBeNull();
-    expect(progressIndicatorNode.currentStep).toBe(
-      DEFAULT_STEPS[stepIdx].value
-    );
-    expect(element).toBeAccessible();
+    expect(progressIndicatorNode.currentStep).toBe(step);
+    await expect(element).toBeAccessible();
   });
 });

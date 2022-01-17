@@ -15,19 +15,19 @@ import reviewHelp from '@salesforce/label/c.cookbook_ReviewHelp';
 const DEFAULT_STEPS = [
   {
     label: logIn,
-    value: 'login'
+    value: 'log in'
   },
   {
     label: describeProblem,
-    value: 'describe'
+    value: 'describe problem'
   },
   {
     label: provideDetails,
-    value: 'details'
+    value: 'provide details'
   },
   {
     label: reviewHelp,
-    value: 'review'
+    value: 'review help'
   }
 ];
 
@@ -41,19 +41,13 @@ export default class FlowProgressIndicator extends LightningElement {
   @api steps = DEFAULT_STEPS;
 
   /**
-   * The index value of the current step.
-   * @type {number}
-   * @defaultValue `0`
+   * The value of the current step.
+   * @type {string}
    */
-  @api currentStepIndex = 0;
+  @api currentStep;
 
   /** @type {boolean} */
   _hasError = false;
-
-  /** Returns the value of current step. */
-  get currentStep() {
-    return this.steps[this.currentStepIndex].value || 0;
-  }
 
   /**
    * Set the error state of the component.
@@ -70,5 +64,17 @@ export default class FlowProgressIndicator extends LightningElement {
    */
   @api get hasError() {
     return this._hasError;
+  }
+
+  get _currentStep() {
+    if (
+      this.steps.some((step) => {
+        return step.value === this.currentStep;
+      })
+    ) {
+      return this.currentStep;
+    }
+    console.error('Invalid current step value.');
+    return null;
   }
 }

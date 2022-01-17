@@ -41,7 +41,7 @@ export default class FlowProgressIndicator extends LightningElement {
   @api steps = DEFAULT_STEPS;
 
   /**
-   * The current step index value.
+   * The index value OF the current step.
    * @type {number}
    * @defaultValue `0`
    */
@@ -50,7 +50,7 @@ export default class FlowProgressIndicator extends LightningElement {
   /** @type {boolean} */
   _hasError = false;
 
-  /** Returns the current step value */
+  /** Returns the value of current step. */
   get currentStep() {
     return this.steps[this.currentStepIndex].value || 0;
   }

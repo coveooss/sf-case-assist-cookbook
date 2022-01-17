@@ -134,7 +134,7 @@ describe('c-flow-progress-indicator', () => {
     expect(element).toBeAccessible();
   });
 
-  it('should display an error in the current step when trigering an error', async () => {
+  it('should display an error in the current step when triggering an error', async () => {
     const element = createTestComponent();
 
     await allPromisesResolution();

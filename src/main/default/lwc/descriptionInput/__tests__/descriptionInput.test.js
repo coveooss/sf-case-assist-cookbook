@@ -74,6 +74,27 @@ describe('c-description-input', () => {
     expect(inputNode).not.toBeNull();
   });
 
+  it('should not display the description strength indicator', async () => {
+    const element = createTestComponent();
+
+    await allPromisesResolution();
+    const strengthIndicatorNode = element.shadowRoot.querySelector(
+      'c-description-strength-indicator'
+    );
+    expect(strengthIndicatorNode).toBeNull();
+  });
+
+  it('should display the description strength indicator', async () => {
+    const element = createTestComponent();
+    element.displayStrengthIndicator = true;
+
+    await allPromisesResolution();
+    const strengthIndicatorNode = element.shadowRoot.querySelector(
+      'c-description-strength-indicator'
+    );
+    expect(strengthIndicatorNode).not.toBeNull();
+  });
+
   it('should display the correct value in the input', async () => {
     const element = createTestComponent();
     const expectedValue = 'Expected Value';

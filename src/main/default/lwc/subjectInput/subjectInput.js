@@ -14,7 +14,7 @@ import { debounce } from 'c/utils';
 /**
  * The `SubjectInput` component  displays a text input for the case subject.
  * @example
- * <c-subject-input label="Write a descriptive title" maxLength="50" message-when-value-missing="Complete this field." required></c-subject-input>
+ * <c-subject-input engineId={engineId} caseEditDelayMs="500" label="Write a descriptive title" maxLength="100" message-when-value-missing="Complete this field." required></c-subject-input>
  */
 export default class SubjectInput extends LightningElement {
   labels = {
@@ -28,35 +28,30 @@ export default class SubjectInput extends LightningElement {
    * @type {string}
    */
   @api engineId;
-
   /**
    * The label of the input.
    * @type {string}
    * @defaultValue `'Write a descriptive title'`
    */
   @api label = this.labels.writeDescriptiveTitle;
-
   /**
    * The maximum length of the string to be written in the input.
    * @type {number}
    * @defaultValue `100`
    */
   @api maxLength = 100;
-
   /**
    * Tells if the input is required.
    * @type {boolean}
    * @defaultValue `false`
    */
   @api required = false;
-
   /**
    * The error message to be shown when the value is missing.
    * @type {string}
    * @defaultValue `'Complete this field.`
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
-
   /**
    * This is the delay before sending a query and analytics events on user typing.
    */
@@ -66,10 +61,8 @@ export default class SubjectInput extends LightningElement {
   _value = '';
   /** @type {string} */
   _fieldName = 'subject';
-
   /** @type {string} */
   _errorMessage = '';
-
   /** @type {CaseAssistEngine} */
   engine;
   /** @type {CaseInput} */

@@ -153,7 +153,9 @@ export default class DescriptionInput extends LightningElement {
     this._validity = !this.required || !!e.target.value;
     this._value = e.target.value;
     this.debounceUpdateDescriptionState();
-    this.updateDescriptionStrength();
+    if (this.displayStrengthIndicator) {
+      this.updateDescriptionStrength();
+    }
   };
 
   /**
@@ -177,15 +179,13 @@ export default class DescriptionInput extends LightningElement {
    * @returns {void}
    */
   updateDescriptionStrength() {
-    if (this.displayStrengthIndicator) {
-      const currentProgress =
-        (this.getTextContentLength(this._value) * 100) /
-        this.strongDescriptionLength;
-      const strentghIndicator = this.template.querySelector(
-        'c-description-strength-indicator'
-      );
-      strentghIndicator.progress = currentProgress;
-    }
+    const currentProgress =
+      (this.getTextContentLength(this._value) * 100) /
+      this.strongDescriptionLength;
+    const strentghIndicator = this.template.querySelector(
+      'c-description-strength-indicator'
+    );
+    strentghIndicator.progress = currentProgress;
   }
 
   /**
@@ -197,11 +197,11 @@ export default class DescriptionInput extends LightningElement {
     const div = document.createElement('div');
     // eslint-disable-next-line @lwc/lwc/no-inner-html
     div.innerHTML = htmlStr;
-    return div.innerText.length;
+    return div.innerText.replaceAll(' ', '').length;
   }
 
   /**
-   * Returns rich text after replacing the HTML tags with spaces.
+   * Returns rich text value after replacing the HTML tags with spaces.
    * @param {string} htmlStr
    * @returns {string}
    */

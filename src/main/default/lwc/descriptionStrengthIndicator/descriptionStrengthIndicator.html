@@ -31,8 +31,12 @@
       <h3 class="indicator_title slds-text-title_bold slds-var-p-left_small">
         {message}
       </h3>
-      <lightning-accordion allow-multiple-sections-open class="accordion">
-        <lightning-accordion-section label={helpLabel}>
+      <lightning-accordion
+        active-section-name="help"
+        allow-multiple-sections-open
+        class="accordion"
+      >
+        <lightning-accordion-section name="help" label={helpLabel}>
           <div class="slds-var-m-left_large">
             <slot name="content">
               {labels.descriptionHintOne}<br />

@@ -40,18 +40,14 @@ export default class FlowProgressIndicator extends LightningElement {
   /** @type {ProgressStep[]} */
   @api steps = DEFAULT_STEPS;
 
-  /**
-   * The value of the current step.
-   * @type {string}
-   */
-  @api currentStep;
-
   /** @type {boolean} */
   _hasError = false;
+  /** @type {string} */
+  _currentStep;
 
   /**
    * Set the error state of the component.
-   * @param {boolean} state - the value to be set.
+   * @param {boolean} state - the state to be set.
    * @returns {void}
    */
   @api triggerError(state) {
@@ -66,15 +62,27 @@ export default class FlowProgressIndicator extends LightningElement {
     return this._hasError;
   }
 
-  get _currentStep() {
-    if (
-      this.steps.some((step) => {
-        return step.value === this.currentStep;
-      })
-    ) {
-      return this.currentStep;
+  /**
+   * Set the current step of the component.
+   * @param {string} value - the value to be set.
+   * @returns void
+   */
+  @api set currentStep(value) {
+    const stepExists = this.steps.some((step) => value === step.value);
+    if (!stepExists) {
+      throw new Error(`No steps found with value '${value}'`);
     }
-    console.error('Invalid current step value.');
-    return null;
+    this._currentStep = value;
+  }
+
+  /**
+   * Get the current step of the component.
+   * @returns {string| null}
+   */
+  get currentStep() {
+    const stepExists = this.steps.some(
+      (step) => step.value === this._currentStep
+    );
+    return stepExists ? this._currentStep : null;
   }
 }

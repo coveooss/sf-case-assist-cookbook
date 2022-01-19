@@ -153,9 +153,6 @@ export default class DescriptionInput extends LightningElement {
     this._validity = !this.required || !!e.target.value;
     this._value = e.target.value;
     this.debounceUpdateDescriptionState();
-    if (this.displayStrengthIndicator) {
-      this.updateDescriptionStrength();
-    }
   };
 
   /**
@@ -174,18 +171,11 @@ export default class DescriptionInput extends LightningElement {
     this.engine.dispatch(this.actions.fetchDocumentSuggestions());
   }
 
-  /**
-   * Updates the progress value of the description strength indicator.
-   * @returns {void}
-   */
-  updateDescriptionStrength() {
-    const currentProgress =
+  get currentProgress() {
+    return (
       (this.getTextContentLength(this._value) * 100) /
-      this.strongDescriptionLength;
-    const strentghIndicator = this.template.querySelector(
-      'c-description-strength-indicator'
+      this.strongDescriptionLength
     );
-    strentghIndicator.progress = currentProgress;
   }
 
   /**

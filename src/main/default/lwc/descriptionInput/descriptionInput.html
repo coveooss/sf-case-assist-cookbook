@@ -9,8 +9,10 @@
     class="slds-var-m-top_x-small"
   ></lightning-input-rich-text>
   <template if:true={displayStrengthIndicator}>
-    <div class="row">
-      <c-description-strength-indicator></c-description-strength-indicator>
+    <div class="row slds-var-m-top_large">
+      <c-description-strength-indicator
+        progress={currentProgress}
+      ></c-description-strength-indicator>
     </div>
   </template>
 </template>

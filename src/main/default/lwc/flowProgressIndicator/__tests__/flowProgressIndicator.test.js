@@ -94,6 +94,7 @@ describe('c-flow-progress-indicator', () => {
     );
 
     expect(progressIndicatorNode).not.toBeNull();
+    expect(progressIndicatorNode.currentStep).toBe(undefined);
     await expect(element).toBeAccessible();
   });
 
@@ -160,9 +161,27 @@ describe('c-flow-progress-indicator', () => {
       'lightning-progress-indicator'
     );
 
-    await element.triggerError(true);
     expect(progressIndicatorNode).not.toBeNull();
     expect(progressIndicatorNode.currentStep).toBe(step);
+    await expect(element).toBeAccessible();
+  });
+
+  it('should throw an error and display the component in the first step when an invalid current step is given', async () => {
+    const element = createTestComponent();
+    const invalidStep = 'Invalid Step';
+    const setInvalidStep = () => {
+      element.currentStep = invalidStep;
+    };
+    expect(setInvalidStep).toThrow(
+      `No steps found with value '${invalidStep}'`
+    );
+
+    await allPromisesResolution();
+    const progressIndicatorNode = element.shadowRoot.querySelector(
+      'lightning-progress-indicator'
+    );
+    expect(progressIndicatorNode).not.toBeNull();
+    expect(progressIndicatorNode.currentStep).toBe(undefined);
     await expect(element).toBeAccessible();
   });
 });

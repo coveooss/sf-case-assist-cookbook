@@ -13,16 +13,33 @@ export default class AbandonRequest extends LightningElement {
 
   /**
    * The label to be shown in the button to abandon a request.
-   * @api
    * @type {string}
    */
-  @api label = this.labels.abandonRequestText;
+  @api label = '';
+  /**
+   * The size of the button
+   * @type {'small'|'big'}
+   */
+  @api size = 'big';
+  /**
+   * The label to be shown in the button to abandon a request.
+   * @type {string}
+   */
+  @api buttonLabel = this.labels.abandonRequestText;
+
+  get buttonClass() {
+    return `slds-button slds-button_outline-brand ${
+      this.size === 'big' ? 'big' : ''
+    }`;
+  }
 
   /**
    * Handles the click on the abandon request button.
    * @returns {void}
    */
   handleAbandon() {
+    const modal = this.template.querySelector('c-abandon-modal');
+    modal.openModal();
     this.dispatchEvent(new CustomEvent('abandon'));
   }
 }

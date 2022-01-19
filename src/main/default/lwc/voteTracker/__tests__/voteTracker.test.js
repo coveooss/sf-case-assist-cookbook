@@ -297,7 +297,9 @@ describe('c-vote-tracker', () => {
       await positiveButtonNode.dispatchEvent(clickEvent);
 
       await jest.runAllTimers();
-      const buttonNode = element.shadowRoot.querySelector('c-abandon-request');
+      const buttonNode = element.shadowRoot.querySelector(
+        'c-abandon-request-button'
+      );
 
       expect(buttonNode).not.toBeNull();
     });

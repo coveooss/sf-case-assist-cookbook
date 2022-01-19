@@ -1,9 +1,9 @@
 import { createElement } from 'lwc';
-import AbandonRequest from 'c/abandonRequest';
+import AbandonRequestButton from 'c/abandonRequestButton';
 
 function createTestComponent() {
-  const element = createElement('c-abandon-request', {
-    is: AbandonRequest
+  const element = createElement('c-abandon-request-button', {
+    is: AbandonRequestButton
   });
   document.body.appendChild(element);
 
@@ -24,7 +24,7 @@ jest.mock(
   }
 );
 
-describe('c-abandon-request', () => {
+describe('c-abandon-request-button', () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -36,19 +36,19 @@ describe('c-abandon-request', () => {
     const element = createTestComponent();
 
     await flushPromises();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
+    const buttonNode = element.shadowRoot.querySelector('button');
     expect(buttonNode).not.toBeNull();
   });
 
   it('should display the label of the abandon request button', async () => {
     const element = createTestComponent();
     const expectedText = 'Expected Text';
-    element.label = expectedText;
+    element.buttonLabel = expectedText;
 
     await flushPromises();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
+    const buttonNode = element.shadowRoot.querySelector('button');
     expect(buttonNode).not.toBeNull();
-    expect(buttonNode.label).toBe(expectedText);
+    expect(buttonNode.textContent).toBe(expectedText);
   });
 
   it('should display the default localized label', async () => {
@@ -56,8 +56,8 @@ describe('c-abandon-request', () => {
     const expectedText = `Abandon Request`;
 
     await flushPromises();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
+    const buttonNode = element.shadowRoot.querySelector('button');
     expect(buttonNode).not.toBeNull();
-    expect(buttonNode.label).toBe(expectedText);
+    expect(buttonNode.textContent).toBe(expectedText);
   });
 });

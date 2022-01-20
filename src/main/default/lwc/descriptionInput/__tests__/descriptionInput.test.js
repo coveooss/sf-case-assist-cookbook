@@ -84,7 +84,7 @@ describe('c-description-input', () => {
     expect(strengthIndicatorNode).toBeNull();
   });
 
-  it('should display the description strength indicator', async () => {
+  it('should display the description strength indicator when #displayStrengthIndicator attribute is specified', async () => {
     const element = createTestComponent();
     element.displayStrengthIndicator = true;
 

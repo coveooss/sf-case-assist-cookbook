@@ -74,7 +74,7 @@ describe('c-description-input', () => {
     expect(inputNode).not.toBeNull();
   });
 
-  it('should not display the description strength indicator', async () => {
+  it('should not display the description strength indicator by default', async () => {
     const element = createTestComponent();
 
     await allPromisesResolution();

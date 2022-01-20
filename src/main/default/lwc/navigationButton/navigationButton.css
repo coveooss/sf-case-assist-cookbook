@@ -1,4 +1,9 @@
-lightning-button {
-  --sds-c-button-brand-spacing-inline-start: 4rem;
-  --sds-c-button-brand-spacing-inline-end: 4rem;
+.big {
+  width: 13.5rem;
+}
+.previous-button-icon {
+  --sds-c-icon-color-foreground-default: var(
+    --lwc-brandAccessible,
+    rgb(1, 118, 211)
+  );
 }

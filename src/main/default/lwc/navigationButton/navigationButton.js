@@ -19,21 +19,19 @@ export default class NavigationButton extends LightningElement {
    * @defaultValue `'next'`
    */
   @api type = 'next';
-
   /**
    * The label given to the navigation button.
    * @type {string}
    * @defaultValue `''`
    */
   @api label = '';
-
   /**
    * Tells if an icon should be displayed with the button.
    * @type {boolean}
    * @defaultValue `false`
    *
    */
-  @api showIcon = false;
+  showIcon = true;
 
   /**
    * Returns the label to be shown in the navigation button.
@@ -47,32 +45,19 @@ export default class NavigationButton extends LightningElement {
   }
 
   /**
-   * Returns the variant of the button.
+   * Returns the CSS class of the icon.
    * @returns {string}
    */
-  get variant() {
-    return this.type === 'next' ? 'brand' : 'base';
+  get buttonClass() {
+    return `slds-button ${this.type === 'next' ? 'slds-button_brand big' : ''}`;
   }
 
-  /**
-   * Returns the name of the icon to be displayed.
-   * @returns {string}
-   */
-  get iconName() {
-    if (!this.showIcon) {
-      return '';
-    }
-    return this.type === 'next'
-      ? 'utility:chevronright'
-      : 'utility:chevronleft';
+  get showNextIcon() {
+    return this.showIcon && this.type === 'next';
   }
 
-  /**
-   * Returns the position where the icon will be displayed.
-   * @returns {'right'|'left'}
-   */
-  get iconPosition() {
-    return this.type === 'next' ? 'right' : 'left';
+  get showPreviousIcon() {
+    return this.showIcon && this.type === 'previous';
   }
 
   /**
@@ -81,9 +66,9 @@ export default class NavigationButton extends LightningElement {
    */
   handleNavigate() {
     if (this.type === 'next') {
-      this.dispatchEvent(new CustomEvent('next'));
+      this.dispatchEvent(new CustomEvent('next', { bubbles: true }));
     } else {
-      this.dispatchEvent(new CustomEvent('previous'));
+      this.dispatchEvent(new CustomEvent('previous', { bubbles: true }));
     }
   }
 }

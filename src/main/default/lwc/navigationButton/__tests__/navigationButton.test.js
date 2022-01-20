@@ -39,11 +39,12 @@ describe('c-navigation-button', () => {
     }
   });
 
-  it('should display the lightning button', async () => {
+  it('should display the navigation button', async () => {
     const element = createTestComponent();
 
     await allPromisesResolution();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
+    const buttonNode = element.shadowRoot.querySelector('button');
+
     expect(buttonNode).not.toBeNull();
   });
 
@@ -54,9 +55,10 @@ describe('c-navigation-button', () => {
     });
 
     await allPromisesResolution();
-    const buttonNode = element.shadowRoot.querySelector('lightning-button');
+    const buttonNode = element.shadowRoot.querySelector('button');
+
     expect(buttonNode).not.toBeNull();
-    expect(buttonNode.label).toBe(expectedLabel);
+    expect(buttonNode.textContent).toBe(expectedLabel);
   });
 
   describe('when the type of the navigation button is next', () => {
@@ -67,36 +69,38 @@ describe('c-navigation-button', () => {
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.label).toBe(expectedLabel);
+      expect(buttonNode.textContent).toBe(expectedLabel);
     });
 
     it('should display the correct icon in the correct position', async () => {
       const expectedIcon = 'utility:chevronright';
-      const expectedPosition = 'right';
       const element = createTestComponent({
         type: 'next',
         showIcon: true
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+      const iconNode = element.shadowRoot.querySelector('lightning-icon');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.iconPosition).toBe(expectedPosition);
-      expect(buttonNode.iconName).toBe(expectedIcon);
+      expect(iconNode.iconName).toBe(expectedIcon);
     });
 
-    it('should display the lightning button in the correct variant', async () => {
-      const expectedVariant = 'brand';
+    it('should display the navigation button with the correct CSS class', async () => {
+      const expectedClass = 'slds-button slds-button_brand big';
       const element = createTestComponent({
         type: 'next'
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.variant).toBe(expectedVariant);
+      expect(buttonNode.className).toBe(expectedClass);
     });
   });
 
@@ -108,36 +112,38 @@ describe('c-navigation-button', () => {
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.label).toBe(expectedLabel);
+      expect(buttonNode.textContent).toBe(expectedLabel);
     });
 
     it('should display the correct icon in the correct position', async () => {
       const expectedIcon = 'utility:chevronleft';
-      const expectedPosition = 'left';
       const element = createTestComponent({
         type: 'previous',
         showIcon: true
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+      const iconNode = element.shadowRoot.querySelector('lightning-icon');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.iconPosition).toBe(expectedPosition);
-      expect(buttonNode.iconName).toBe(expectedIcon);
+      expect(iconNode.iconName).toBe(expectedIcon);
     });
 
-    it('should display the lightning button in the correct variant', async () => {
-      const expectedVariant = 'base';
+    it('should display the lightning button with the correct CSS class', async () => {
+      const expectedClass = 'slds-button';
       const element = createTestComponent({
         type: 'previous'
       });
 
       await allPromisesResolution();
-      const buttonNode = element.shadowRoot.querySelector('lightning-button');
+      const buttonNode = element.shadowRoot.querySelector('button');
+
       expect(buttonNode).not.toBeNull();
-      expect(buttonNode.variant).toBe(expectedVariant);
+      expect(buttonNode.className).toBe(expectedClass);
     });
   });
 });

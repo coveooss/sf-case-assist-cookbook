@@ -1,9 +1,22 @@
 <template>
-  <lightning-button
-    icon-name={iconName}
-    icon-position={iconPosition}
-    variant={variant}
-    label={shownLabel}
-    onclick={handleNavigate}
-  ></lightning-button>
+  <button onclick={handleNavigate} class={buttonClass}>
+    <template if:true={showPreviousIcon}>
+      <lightning-icon
+        class="slds-button__icon_left previous-button-icon"
+        size="x-small"
+        icon-name="utility:chevronleft"
+        alternative-text={shownLabel}
+      ></lightning-icon>
+    </template>
+    {shownLabel}
+    <template if:true={showNextIcon}>
+      <lightning-icon
+        variant="inverse"
+        class="slds-button__icon_right"
+        size="x-small"
+        icon-name="utility:chevronright"
+        alternative-text={shownLabel}
+      ></lightning-icon>
+    </template>
+  </button>
 </template>

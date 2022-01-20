@@ -31,7 +31,7 @@ export default class NavigationButton extends LightningElement {
    * @defaultValue `false`
    *
    */
-  showIcon = true;
+  @api showIcon = false;
 
   /**
    * Returns the label to be shown in the navigation button.

@@ -74,4 +74,8 @@
     <label>Abandonner la demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
+  <customLabels>
+    <label>créez la demande</label>
+    <name>cookbook_CreateCase</name>
+  </customLabels>
 </Translations>

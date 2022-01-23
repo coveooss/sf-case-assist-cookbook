@@ -142,4 +142,11 @@
     <protected>false</protected>
     <shortDescription>Abandon Request</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_CreateCase</fullName>
+    <value>Create case</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Create case</shortDescription>
+  </labels>
 </CustomLabels>

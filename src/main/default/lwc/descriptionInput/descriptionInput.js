@@ -47,7 +47,7 @@ export default class DescriptionInput extends LightningElement {
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
-   * This is the delay before sending a query and analytics events on user typing.
+   * This is the delay before sending a query and analytics events on user typing, this value is in milliseconds.
    */
   @api caseEditDelayMs = 500;
   /**
@@ -72,10 +72,10 @@ export default class DescriptionInput extends LightningElement {
     'header'
   ];
   /**
-   * The necessary length that the description must have in order to be considered strong.
+   * The necessary number of words that the description must have in order to be considered strong.
    * @type {Number}
    */
-  @api strongDescriptionLength = 100;
+  @api strongDescriptionLength = 20;
 
   /** @type {string} */
   _value = '';
@@ -172,10 +172,9 @@ export default class DescriptionInput extends LightningElement {
   }
 
   get currentProgress() {
-    return (
-      (this.getTextContentLength(this._value) * 100) /
-      this.strongDescriptionLength
-    );
+    return this._value
+      ? (this.getWordsCount(this._value) * 100) / this.strongDescriptionLength
+      : 0;
   }
 
   /**
@@ -183,11 +182,8 @@ export default class DescriptionInput extends LightningElement {
    * @param {string} htmlStr
    * @returns {string}
    */
-  getTextContentLength(htmlStr) {
-    const div = document.createElement('div');
-    // eslint-disable-next-line @lwc/lwc/no-inner-html
-    div.innerHTML = htmlStr;
-    return div.innerText.replaceAll(' ', '').length;
+  getWordsCount(htmlStr) {
+    return this.replaceTagsWithSpace(htmlStr).split(/\s+/).length;
   }
 
   /**
@@ -196,6 +192,6 @@ export default class DescriptionInput extends LightningElement {
    * @returns {string}
    */
   replaceTagsWithSpace(htmlStr) {
-    return htmlStr.replace(/(<([^>]+)>)/gi, ' ');
+    return htmlStr.replace(/(<[^>]*>)/gi, ' ').trim();
   }
 }

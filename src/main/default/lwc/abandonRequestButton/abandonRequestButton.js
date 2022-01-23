@@ -1,18 +1,18 @@
 import { LightningElement, api } from 'lwc';
-import abandonRequestText from '@salesforce/label/c.cookbook_AbandonRequest';
+import abandonRequest from '@salesforce/label/c.cookbook_AbandonRequest';
 
 /**
  * The `abandonRequest` component is a button to abandon a case creation request.
  * @example
- * <c-abandon-request  label="Abandon request"></c-abandon-request>
+ * <c-abandon-request-button button-label="Abandon request" label="Solved your problem" size="big"></c-abandon-request-button>
  */
-export default class AbandonRequest extends LightningElement {
+export default class AbandonRequestButton extends LightningElement {
   labels = {
-    abandonRequestText
+    abandonRequest
   };
 
   /**
-   * The label to be shown in the button to abandon a request.
+   * The label dislayed above the button.
    * @type {string}
    */
   @api label = '';
@@ -22,15 +22,19 @@ export default class AbandonRequest extends LightningElement {
    */
   @api size = 'big';
   /**
-   * The label to be shown in the button to abandon a request.
+   * The label displayed inside the button.
    * @type {string}
    */
-  @api buttonLabel = this.labels.abandonRequestText;
+  @api buttonLabel = this.labels.abandonRequest;
 
   get buttonClass() {
     return `slds-button slds-button_outline-brand ${
       this.size === 'big' ? 'big' : ''
     }`;
+  }
+
+  get showLabel() {
+    return !!this.label.length;
   }
 
   /**
@@ -40,6 +44,5 @@ export default class AbandonRequest extends LightningElement {
   handleAbandon() {
     const modal = this.template.querySelector('c-abandon-modal');
     modal.openModal();
-    this.dispatchEvent(new CustomEvent('abandon'));
   }
 }

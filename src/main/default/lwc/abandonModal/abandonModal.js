@@ -66,4 +66,8 @@ export default class AbandonModal extends LightningElement {
   @api closeModal() {
     this._isOpen = false;
   }
+
+  @api get isOpen() {
+    return this._isOpen;
+  }
 }

@@ -1,9 +1,11 @@
 <template>
-  <label
-    class="slds-text-heading_small slds-var-m-bottom_x-small block"
-    for="create-case-button"
-    >{label}</label
-  >
+  <template if:true={showLabel}>
+    <label
+      class="slds-text-heading_small slds-var-m-bottom_x-small"
+      for="create-case-button"
+      >{label}</label
+    >
+  </template>
   <button onclick={handleAbandon} id="create-case-button" class={buttonClass}>
     {buttonLabel}
   </button>

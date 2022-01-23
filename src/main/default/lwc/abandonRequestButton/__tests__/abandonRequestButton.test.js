@@ -41,6 +41,7 @@ describe('c-abandon-request-button', () => {
 
     expect(buttonNode).not.toBeNull();
     expect(labelNode).toBeNull();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct button label', async () => {

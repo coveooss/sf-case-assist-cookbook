@@ -70,4 +70,8 @@ export default class AbandonModal extends LightningElement {
   @api get isOpen() {
     return this._isOpen;
   }
+
+  goToSite() {
+    // Placeholder for navigation to site.
+  }
 }

@@ -74,4 +74,8 @@ export default class AbandonModal extends LightningElement {
   goToSite() {
     // Placeholder for navigation to site.
   }
+
+  closePage() {
+    window.close();
+  }
 }

@@ -13,6 +13,11 @@ import createCase from '@salesforce/label/c.cookbook_CreateCase';
  * @property {String} reason
  */
 
+/**
+ * The `createCaseButton` component is a button to submit the create of a case.
+ * @example
+ * <c-create-case-button button-label="Create case" label="Still need help" size="big"></c-create-case-button>
+ */
 export default class CreateCaseButton extends LightningElement {
   labels = {
     createCase

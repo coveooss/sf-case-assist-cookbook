@@ -11,7 +11,7 @@ import {
 /**
  * The `abandonRequest` component is a button to abandon a case creation request.
  * @example
- * <c-abandon-request-button button-label="Abandon request" label="Solved your problem" size="big"></c-abandon-request-button>
+ * <c-abandon-request-button engine-id={engineId} button-label="Abandon request" label="Solved your problem" size="big"></c-abandon-request-button>
  */
 export default class AbandonRequestButton extends LightningElement {
   labels = {

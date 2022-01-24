@@ -76,7 +76,7 @@ describe('c-create-case-button', () => {
     await expect(element).toBeAccessible();
   });
 
-  it('should display a big button', async () => {
+  it('should display a big button when size is set to big', async () => {
     const element = createTestComponent();
     const bigSizeClass = 'big';
     element.size = 'big';
@@ -89,7 +89,7 @@ describe('c-create-case-button', () => {
     await expect(element).toBeAccessible();
   });
 
-  it('should display a small button', async () => {
+  it('should display a small button when size is set to small', async () => {
     const element = createTestComponent();
     const bigSizeClass = 'big';
     element.size = 'small';

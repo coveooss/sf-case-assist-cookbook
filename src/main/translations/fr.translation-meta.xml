@@ -74,4 +74,8 @@
     <label>Abandonner la demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
+  <customLabels>
+    <label>Bonjour, comment pouvons-nous vous aider?</label>
+    <name>cookbook_MainTitle</name>
+  </customLabels>
 </Translations>

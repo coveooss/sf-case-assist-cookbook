@@ -90,4 +90,8 @@
     <label>Révision</label>
     <name>cookbook_ReviewHelp</name>
   </customLabels>
+  <customLabels>
+    <label>Bonjour, comment pouvons-nous vous aider?</label>
+    <name>cookbook_MainTitle</name>
+  </customLabels>
 </Translations>

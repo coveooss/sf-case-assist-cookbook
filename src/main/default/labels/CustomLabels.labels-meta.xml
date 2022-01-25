@@ -170,4 +170,11 @@
     <protected>false</protected>
     <shortDescription>Review help</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_MainTitle</fullName>
+    <value>Hi, how may we help you?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Hi, how may we help you?</shortDescription>
+  </labels>
 </CustomLabels>

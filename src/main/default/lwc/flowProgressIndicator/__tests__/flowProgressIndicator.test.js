@@ -71,6 +71,8 @@ const CUSTOM_STEPS = [
   }
 ];
 
+const PROGRESS_INDICATOR_SELECTOR = 'lightning-progress-indicator';
+
 const assertProgressStepEquals = (actual, expected) => {
   expect(actual).not.toBeNull();
   expect(actual.label).toBe(expected.label);
@@ -90,7 +92,7 @@ describe('c-flow-progress-indicator', () => {
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
+      PROGRESS_INDICATOR_SELECTOR
     );
 
     expect(progressIndicatorNode).not.toBeNull();
@@ -103,7 +105,7 @@ describe('c-flow-progress-indicator', () => {
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
+      PROGRESS_INDICATOR_SELECTOR
     );
     const stepNodes = element.shadowRoot.querySelectorAll(
       'lightning-progress-step'
@@ -111,8 +113,8 @@ describe('c-flow-progress-indicator', () => {
 
     expect(progressIndicatorNode).not.toBeNull();
     expect(stepNodes.length).toBe(DEFAULT_STEPS.length);
-    stepNodes.forEach((step, idx) =>
-      assertProgressStepEquals(step, DEFAULT_STEPS[idx])
+    DEFAULT_STEPS.forEach((step, idx) =>
+      assertProgressStepEquals(step, stepNodes[idx])
     );
     await expect(element).toBeAccessible();
   });
@@ -123,7 +125,7 @@ describe('c-flow-progress-indicator', () => {
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
+      PROGRESS_INDICATOR_SELECTOR
     );
     const stepNodes = element.shadowRoot.querySelectorAll(
       'lightning-progress-step'
@@ -131,8 +133,8 @@ describe('c-flow-progress-indicator', () => {
 
     expect(progressIndicatorNode).not.toBeNull();
     expect(stepNodes.length).toBe(CUSTOM_STEPS.length);
-    stepNodes.forEach((step, idx) =>
-      assertProgressStepEquals(step, CUSTOM_STEPS[idx])
+    CUSTOM_STEPS.forEach((step, idx) =>
+      assertProgressStepEquals(step, stepNodes[idx])
     );
     await expect(element).toBeAccessible();
   });
@@ -142,7 +144,7 @@ describe('c-flow-progress-indicator', () => {
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
+      PROGRESS_INDICATOR_SELECTOR
     );
 
     await element.triggerError(true);
@@ -158,7 +160,7 @@ describe('c-flow-progress-indicator', () => {
 
     await allPromisesResolution();
     const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
+      PROGRESS_INDICATOR_SELECTOR
     );
 
     expect(progressIndicatorNode).not.toBeNull();

@@ -75,7 +75,7 @@
     <name>cookbook_AbandonRequest</name>
   </customLabels>
   <customLabels>
-    <label>Nous sommes ravis que vous ayez trouvé une réponse !</label>
+    <label>Nous sommes ravis que vous ayez trouvé une réponse!</label>
     <name>cookbook_GladYouFoundAnswer</name>
   </customLabels>
   <customLabels>
@@ -83,7 +83,7 @@
     <name>cookbook_YourRequestWillNotBeSaved</name>
   </customLabels>
   <customLabels>
-    <label>Merci de nous faire part de vos commentaires !</label>
+    <label>Merci de nous faire part de vos commentaires!</label>
     <name>cookbook_ThankYouForFeedback</name>
   </customLabels>
   <customLabels>

@@ -151,7 +151,7 @@
   </labels>
   <labels>
     <fullName>cookbook_YourRequestWillNotBeSaved</fullName>
-    <value>Your request will not be saved.</value>
+    <value>Your request will be discarded..</value>
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Your request will not be saved</shortDescription>

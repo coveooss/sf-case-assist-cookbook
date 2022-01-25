@@ -8,7 +8,7 @@ import closePage from '@salesforce/label/c.cookbook_ClosePage';
 import undo from '@salesforce/label/c.cookbook_Undo';
 
 /**
- * The `abandonModal` component is a modal that displays a message when the case is abandoned or canceled.
+ * The `abandonModal` component is a modal that displays a message when the case is abandoned.
  * @example
  * <c-abandon-modal header-label="We're glad you found the answer!"></c-abandon-modal>
  */

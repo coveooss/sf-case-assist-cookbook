@@ -18,7 +18,7 @@ function allPromisesResolution() {
 
 jest.mock(
   '@salesforce/label/c.cookbook_MainTitle',
-  () => ({ default: 'Hi, what do you need help with?' }),
+  () => ({ default: 'Hi, how may we help you?' }),
   {
     virtual: true
   }
@@ -50,7 +50,7 @@ describe('c-main-title', () => {
 
   it('should display the correct default value of the title', async () => {
     const element = createTestComponent();
-    const expectedTitle = 'Hi, what do you need help with?';
+    const expectedTitle = 'Hi, how may we help you?';
 
     await allPromisesResolution();
     const titleNode = element.shadowRoot.querySelector(titleSelector);

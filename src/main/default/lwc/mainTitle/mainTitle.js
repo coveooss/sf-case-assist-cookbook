@@ -14,7 +14,7 @@ export default class MainTitle extends LightningElement {
   /**
    * The text value of the title.
    * @type {string}
-   * @defaultValue `'Hi, what do you need help with?'`
+   * @defaultValue `'Hi, how may we help you?'`
    */
   @api title = this.labels.mainTitle;
   /**

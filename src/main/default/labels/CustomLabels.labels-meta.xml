@@ -144,9 +144,9 @@
   </labels>
   <labels>
     <fullName>cookbook_MainTitle</fullName>
-    <value>Hi, what do you need help with?</value>
+    <value>Hi, how may we help you?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Hi, what do you need help with?</shortDescription>
+    <shortDescription>Hi, how may we help you?</shortDescription>
   </labels>
 </CustomLabels>

@@ -5,7 +5,12 @@ import areYouSure from '@salesforce/label/c.cookbook_AreYouSure';
 import close from '@salesforce/label/c.cookbook_Close';
 import undo from '@salesforce/label/c.cookbook_Undo';
 import confirm from '@salesforce/label/c.cookbook_Confirm';
+import {
+  registerComponentForInit,
+  initializeWithHeadless
+} from 'c/quanticHeadlessLoader';
 
+/** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 /**
  * The `abandonModal` component is a modal that displays a message when the case is abandoned.
  * @example
@@ -22,6 +27,12 @@ export default class AbandonModal extends LightningElement {
   };
 
   /**
+   * The ID of the engine instance the component registers to.
+   * @api
+   * @type {string}
+   */
+  @api engineId;
+  /**
    * The text to be displayed in the header of the modal.
    * @type {string}
    * @defaultValue `'We're glad you found the answer!'`
@@ -29,7 +40,29 @@ export default class AbandonModal extends LightningElement {
   @api headerLabel = this.labels.gladYouFoundAnswer;
 
   /** @type {boolean} */
+  /** @type {CaseAssistEngine} */
+  engine;
   _isOpen = false;
+
+  connectedCallback() {
+    registerComponentForInit(this, this.engineId);
+  }
+
+  renderedCallback() {
+    initializeWithHeadless(this, this.engineId, this.initialize);
+  }
+
+  /**
+   * @param {CaseAssistEngine} engine
+   */
+  initialize = (engine) => {
+    this.engine = engine;
+
+    this.actions = {
+      // eslint-disable-next-line no-undef
+      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
+    };
+  };
 
   /**
    * Returns the CSS class of the modal.
@@ -69,7 +102,8 @@ export default class AbandonModal extends LightningElement {
     return this._isOpen;
   }
 
-  goToSite() {
+  confirm() {
+    this.engine.dispatch(this.actions.logAbandonCase('Solved'));
     // Placeholder for navigation to site.
   }
 }

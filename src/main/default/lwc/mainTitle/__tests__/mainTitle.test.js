@@ -59,7 +59,7 @@ describe('c-main-title', () => {
     await expect(element).toBeAccessible();
   });
 
-  it('should not display the subtitle', async () => {
+  it('should not display the subtitle if the option is not set', async () => {
     const element = createTestComponent();
 
     await allPromisesResolution();

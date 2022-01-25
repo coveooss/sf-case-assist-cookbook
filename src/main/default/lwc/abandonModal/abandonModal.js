@@ -103,7 +103,7 @@ export default class AbandonModal extends LightningElement {
   }
 
   confirm() {
-    this.engine.dispatch(this.actions.logAbandonCase('Solved'));
+    this.engine.dispatch(this.actions.logSolveCase());
     // Placeholder for navigation to site.
   }
 }

@@ -14,14 +14,20 @@ export default class MainTitle extends LightningElement {
   /**
    * The text value of the title.
    * @type {string}
+   * @defaultValue `'Hi, what do you need help with?'`
    */
   @api title = this.labels.mainTitle;
-
   /**
    * The text value of the subtitle.
    * @type {string|undefined}
    */
   @api subtitle;
+  /**
+   * Tells whether or not we want to center the title.
+   * @type {boolean}
+   * @defaultValue `false`
+   */
+  @api alignCenter = false;
 
   /**
    * Indicates whether there is a subtitle to show.
@@ -29,5 +35,25 @@ export default class MainTitle extends LightningElement {
    */
   get hasSubtitle() {
     return !!this.subtitle;
+  }
+
+  /**
+   * Returns the CSS class of the title.
+   * @returns {string}
+   */
+  get titleClass() {
+    return `slds-text-heading_large h1_heading slds-var-p-bottom_x-small ${
+      this.alignCenter ? 'slds-align_absolute-center' : ''
+    }`;
+  }
+
+  /**
+   * Returns the CSS class of the title.
+   * @returns {string}
+   */
+  get subtitleClass() {
+    return `slds-text-heading_small ${
+      this.alignCenter ? 'slds-align_absolute-center' : ''
+    }`;
   }
 }

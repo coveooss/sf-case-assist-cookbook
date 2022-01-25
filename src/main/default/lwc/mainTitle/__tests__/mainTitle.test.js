@@ -24,6 +24,9 @@ jest.mock(
   }
 );
 
+const titleSelector = 'h1.slds-text-heading_large';
+const subtitleSelector = 'h2.slds-text-heading_small';
+
 describe('c-main-title', () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
@@ -38,9 +41,8 @@ describe('c-main-title', () => {
     element.title = expectedTitle;
 
     await allPromisesResolution();
-    const titleNode = element.shadowRoot.querySelector(
-      'h1.slds-text-heading_large'
-    );
+    const titleNode = element.shadowRoot.querySelector(titleSelector);
+
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
     await expect(element).toBeAccessible();
@@ -51,9 +53,8 @@ describe('c-main-title', () => {
     const expectedTitle = 'Hi, what do you need help with?';
 
     await allPromisesResolution();
-    const titleNode = element.shadowRoot.querySelector(
-      'h1.slds-text-heading_large'
-    );
+    const titleNode = element.shadowRoot.querySelector(titleSelector);
+
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
     await expect(element).toBeAccessible();
@@ -63,9 +64,8 @@ describe('c-main-title', () => {
     const element = createTestComponent();
 
     await allPromisesResolution();
-    const subtitleNode = element.shadowRoot.querySelector(
-      'h2.slds-text-heading_small'
-    );
+    const subtitleNode = element.shadowRoot.querySelector(subtitleSelector);
+
     expect(subtitleNode).toBeNull();
     await expect(element).toBeAccessible();
   });
@@ -76,11 +76,46 @@ describe('c-main-title', () => {
     element.subtitle = expectedSubtitle;
 
     await allPromisesResolution();
-    const subtitleNode = element.shadowRoot.querySelector(
-      'h2.slds-text-heading_small'
-    );
+    const subtitleNode = element.shadowRoot.querySelector(subtitleSelector);
+
     expect(subtitleNode).not.toBeNull();
     expect(subtitleNode.textContent).toBe(expectedSubtitle);
+    await expect(element).toBeAccessible();
+  });
+
+  it('should align the title and the subtitle to the center when alignCenter is set to true', async () => {
+    const element = createTestComponent();
+    const expectedSubtitle = 'Expected Subtitle';
+    const alignCenterClass = 'slds-align_absolute-center';
+    element.subtitle = expectedSubtitle;
+    element.alignCenter = true;
+
+    await allPromisesResolution();
+    const titleNode = element.shadowRoot.querySelector(titleSelector);
+    const subtitleNode = element.shadowRoot.querySelector(subtitleSelector);
+
+    expect(titleNode).not.toBeNull();
+    expect(subtitleNode).not.toBeNull();
+    expect(titleNode.classList.contains(alignCenterClass)).toBe(true);
+    expect(subtitleNode.classList.contains(alignCenterClass)).toBe(true);
+    await expect(element).toBeAccessible();
+  });
+
+  it('should not align the title and the subtitle to the center when alignCenter is set to false', async () => {
+    const element = createTestComponent();
+    const expectedSubtitle = 'Expected Subtitle';
+    const alignCenterClass = 'slds-align_absolute-center';
+    element.subtitle = expectedSubtitle;
+    element.alignCenter = false;
+
+    await allPromisesResolution();
+    const titleNode = element.shadowRoot.querySelector(titleSelector);
+    const subtitleNode = element.shadowRoot.querySelector(subtitleSelector);
+
+    expect(titleNode).not.toBeNull();
+    expect(subtitleNode).not.toBeNull();
+    expect(titleNode.classList.contains(alignCenterClass)).toBe(false);
+    expect(subtitleNode.classList.contains(alignCenterClass)).toBe(false);
     await expect(element).toBeAccessible();
   });
 });

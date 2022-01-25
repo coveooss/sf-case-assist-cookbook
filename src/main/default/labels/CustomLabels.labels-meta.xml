@@ -95,7 +95,7 @@
   </labels>
   <labels>
     <fullName>cookbook_HelpedUsers_zero</fullName>
-    <value>Helped no one</value>
+    <value>Be the first to rate this document</value>
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Be the first to rate this document</shortDescription>
@@ -151,17 +151,10 @@
   </labels>
   <labels>
     <fullName>cookbook_YourRequestWillNotBeSaved</fullName>
-    <value>Your request will be discarded..</value>
+    <value>Your request will be discarded.</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Your request will not be saved</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_ThankYouForFeedback</fullName>
-    <value>Thank you for providing feedback!</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Thank you for providing feedback!</shortDescription>
+    <shortDescription>Your request will be discarded.</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Close</fullName>
@@ -169,20 +162,6 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Close</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_GoToSite</fullName>
-    <value>Go to site</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Go to site</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_ClosePage</fullName>
-    <value>Close page</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Close page</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Undo</fullName>
@@ -197,5 +176,20 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Hi, how may we help you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AreYouSure</fullName>
+    <value>Are you sure you want to abandon your request?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Are you sure you want to abandon your request?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Confirm</fullName>
+    <value>Confirm</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Confirm</shortDescription>
   </labels>
 </CustomLabels>

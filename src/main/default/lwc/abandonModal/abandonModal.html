@@ -25,20 +25,17 @@
         <slot name="content">
           <p class="slds-text-heading_small slds-var-p-around_large">
             {labels.yourRequestWillNotBeSaved}<br />
-            {labels.thankYouForFeedback}
+            {labels.areYouSure}
           </p>
         </slot>
       </div>
-      <footer class="slds-modal__footer slds-modal__footer_directional">
+      <footer class="slds-modal__footer">
         <slot name="actions">
           <button onclick={closeModal} class="slds-button slds-button_neutral">
             {labels.undo}
           </button>
-          <button onclick={closePage} class="slds-button slds-button_neutral">
-            {labels.closePage}
-          </button>
           <button onclick={goToSite} class="slds-button slds-button_brand">
-            {labels.goToSite}
+            {labels.confirm}
           </button>
         </slot>
       </footer>

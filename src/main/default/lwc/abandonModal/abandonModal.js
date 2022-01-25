@@ -1,11 +1,10 @@
 import { LightningElement, api } from 'lwc';
 import yourRequestWillNotBeSaved from '@salesforce/label/c.cookbook_YourRequestWillNotBeSaved';
 import gladYouFoundAnswer from '@salesforce/label/c.cookbook_GladYouFoundAnswer';
-import thankYouForFeedback from '@salesforce/label/c.cookbook_ThankYouForFeedback';
+import areYouSure from '@salesforce/label/c.cookbook_AreYouSure';
 import close from '@salesforce/label/c.cookbook_Close';
-import goToSite from '@salesforce/label/c.cookbook_GoToSite';
-import closePage from '@salesforce/label/c.cookbook_ClosePage';
 import undo from '@salesforce/label/c.cookbook_Undo';
+import confirm from '@salesforce/label/c.cookbook_Confirm';
 
 /**
  * The `abandonModal` component is a modal that displays a message when the case is abandoned.
@@ -16,11 +15,10 @@ export default class AbandonModal extends LightningElement {
   labels = {
     yourRequestWillNotBeSaved,
     gladYouFoundAnswer,
-    thankYouForFeedback,
     close,
-    closePage,
-    goToSite,
-    undo
+    undo,
+    areYouSure,
+    confirm
   };
 
   /**
@@ -73,9 +71,5 @@ export default class AbandonModal extends LightningElement {
 
   goToSite() {
     // Placeholder for navigation to site.
-  }
-
-  closePage() {
-    window.close();
   }
 }

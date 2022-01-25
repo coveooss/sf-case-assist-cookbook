@@ -83,20 +83,8 @@
     <name>cookbook_YourRequestWillNotBeSaved</name>
   </customLabels>
   <customLabels>
-    <label>Merci de nous faire part de vos commentaires!</label>
-    <name>cookbook_ThankYouForFeedback</name>
-  </customLabels>
-  <customLabels>
     <label>Fermer</label>
     <name>cookbook_Close</name>
-  </customLabels>
-  <customLabels>
-    <label>Accéder au site</label>
-    <name>cookbook_GoToSite</name>
-  </customLabels>
-  <customLabels>
-    <label>Fermer la page</label>
-    <name>cookbook_ClosePage</name>
   </customLabels>
   <customLabels>
     <label>Annuler</label>
@@ -105,5 +93,13 @@
   <customLabels>
     <label>Bonjour, comment pouvons-nous vous aider?</label>
     <name>cookbook_MainTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Voulez-vous vraiment abandonner votre demande?</label>
+    <name>cookbook_AreYouSure</name>
+  </customLabels>
+  <customLabels>
+    <label>Confirmer</label>
+    <name>cookbook_Confirm</name>
   </customLabels>
 </Translations>

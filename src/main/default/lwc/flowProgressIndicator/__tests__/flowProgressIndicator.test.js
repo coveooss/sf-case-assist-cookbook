@@ -94,7 +94,7 @@ describe('c-flow-progress-indicator', () => {
     );
 
     expect(progressIndicatorNode).not.toBeNull();
-    expect(progressIndicatorNode.currentStep).toBe(undefined);
+    expect(progressIndicatorNode.currentStep).toBe(null);
     await expect(element).toBeAccessible();
   });
 
@@ -175,13 +175,5 @@ describe('c-flow-progress-indicator', () => {
     expect(setInvalidStep).toThrow(
       `No steps found with value '${invalidStep}'`
     );
-
-    await allPromisesResolution();
-    const progressIndicatorNode = element.shadowRoot.querySelector(
-      'lightning-progress-indicator'
-    );
-    expect(progressIndicatorNode).not.toBeNull();
-    expect(progressIndicatorNode.currentStep).toBe(undefined);
-    await expect(element).toBeAccessible();
   });
 });

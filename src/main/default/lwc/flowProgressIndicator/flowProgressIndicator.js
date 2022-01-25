@@ -68,8 +68,7 @@ export default class FlowProgressIndicator extends LightningElement {
    * @returns void
    */
   @api set currentStep(value) {
-    const stepExists = this.steps.some((step) => value === step.value);
-    if (!stepExists) {
+    if (!this.stepExists(value)) {
       throw new Error(`No steps found with value '${value}'`);
     }
     this._currentStep = value;
@@ -80,9 +79,15 @@ export default class FlowProgressIndicator extends LightningElement {
    * @returns {string| null}
    */
   get currentStep() {
-    const stepExists = this.steps.some(
-      (step) => step.value === this._currentStep
-    );
-    return stepExists ? this._currentStep : null;
+    return this.stepExists(this._currentStep) ? this._currentStep : null;
+  }
+
+  /**
+   * Indicates whether a given step exists or not.
+   * @param {string} value - the value of the given step.
+   * @returns {boolean}
+   */
+  stepExists(value) {
+    return this.steps.some((step) => step.value === value);
   }
 }

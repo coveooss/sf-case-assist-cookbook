@@ -2,11 +2,11 @@
   <template if:true={showLabel}>
     <label
       class="slds-text-heading_small slds-var-m-bottom_x-small"
-      for="create-case-button"
+      for="abandon-case-button"
       >{label}</label
     >
   </template>
-  <button onclick={handleAbandon} id="create-case-button" class={buttonClass}>
+  <button onclick={handleAbandon} id="abandon-case-button" class={buttonClass}>
     {buttonLabel}
   </button>
   <c-abandon-modal engine-id={engineId}></c-abandon-modal>

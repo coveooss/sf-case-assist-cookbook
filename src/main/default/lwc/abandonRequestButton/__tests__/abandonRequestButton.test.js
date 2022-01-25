@@ -44,7 +44,7 @@ describe('c-abandon-request-button', () => {
     await expect(element).toBeAccessible();
   });
 
-  it('should display the correct button label', async () => {
+  it('should display the correct button text', async () => {
     const element = createTestComponent();
     const expectedText = 'Expected Text';
     element.buttonLabel = expectedText;

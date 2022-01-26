@@ -20,7 +20,7 @@ import {
  */
 
 /**
- * The `createCaseButton` component is a button to submit the create of a case.
+ * The `createCaseButton` component is a button to submit a new case.
  * @example
  * <c-create-case-button engine-id={engineId} button-label="Create case" label="Still need help" size="big"></c-create-case-button>
  */

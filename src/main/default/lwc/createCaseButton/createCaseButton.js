@@ -22,7 +22,7 @@ import {
 /**
  * The `createCaseButton` component is a button to submit the create of a case.
  * @example
- * <c-create-case-button eingine-id={engineId} button-label="Create case" label="Still need help" size="big"></c-create-case-button>
+ * <c-create-case-button engine-id={engineId} button-label="Create case" label="Still need help" size="big"></c-create-case-button>
  */
 export default class CreateCaseButton extends LightningElement {
   labels = {

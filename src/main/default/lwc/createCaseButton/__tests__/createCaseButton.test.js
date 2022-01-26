@@ -47,7 +47,7 @@ describe('c-create-case-button', () => {
     await expect(element).toBeAccessible();
   });
 
-  it('should display the button with the correct default button label', async () => {
+  it('should display the button with the correct default button text', async () => {
     const element = createTestComponent();
     const expectedLabel = 'Create Case';
 

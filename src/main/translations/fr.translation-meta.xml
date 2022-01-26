@@ -87,8 +87,8 @@
     <name>cookbook_ProvideDetails</name>
   </customLabels>
   <customLabels>
-    <label>Révision</label>
-    <name>cookbook_ReviewHelp</name>
+    <label>Consulter les ressources</label>
+    <name>cookbook_ReviewResources</name>
   </customLabels>
   <customLabels>
     <label>Bonjour, comment pouvons-nous vous aider?</label>

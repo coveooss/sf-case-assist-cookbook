@@ -2,7 +2,7 @@ import { api, LightningElement } from 'lwc';
 import logIn from '@salesforce/label/c.cookbook_LogIn';
 import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
 import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
-import reviewHelp from '@salesforce/label/c.cookbook_ReviewHelp';
+import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
 
 /**
  * @typedef ProgressStep
@@ -26,8 +26,8 @@ const DEFAULT_STEPS = [
     value: 'provide details'
   },
   {
-    label: reviewHelp,
-    value: 'review help'
+    label: reviewResources,
+    value: 'review resources'
   }
 ];
 

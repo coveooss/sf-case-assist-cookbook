@@ -34,8 +34,8 @@ jest.mock(
   }
 );
 jest.mock(
-  '@salesforce/label/c.cookbook_ReviewHelp',
-  () => ({ default: 'Review help' }),
+  '@salesforce/label/c.cookbook_ReviewResources',
+  () => ({ default: 'Review resources' }),
   {
     virtual: true
   }
@@ -55,8 +55,8 @@ const DEFAULT_STEPS = [
     value: 'provide details'
   },
   {
-    label: 'Review help',
-    value: 'review help'
+    label: 'Review resources',
+    value: 'review resources'
   }
 ];
 

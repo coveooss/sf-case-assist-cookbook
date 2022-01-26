@@ -164,11 +164,11 @@
     <shortDescription>Provide details</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_ReviewHelp</fullName>
-    <value>Review help</value>
+    <fullName>cookbook_ReviewResources</fullName>
+    <value>Review resources</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Review help</shortDescription>
+    <shortDescription>Review resources</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_MainTitle</fullName>

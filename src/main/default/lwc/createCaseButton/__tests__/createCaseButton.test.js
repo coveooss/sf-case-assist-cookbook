@@ -32,7 +32,7 @@ describe('c-create-case-button', () => {
     }
   });
 
-  it('should display the button with the correct button label', async () => {
+  it('should display the button with the correct button text', async () => {
     const element = createTestComponent();
     const expectedLabel = 'Expected Label';
     element.buttonLabel = expectedLabel;

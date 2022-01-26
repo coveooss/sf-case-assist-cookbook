@@ -71,11 +71,11 @@
     <name>cookbook_VoteFinalText</name>
   </customLabels>
   <customLabels>
-    <label>Abandonner la demande</label>
+    <label>Abandonnez votre demande</label>
     <name>cookbook_AbandonRequest</name>
   </customLabels>
   <customLabels>
-    <label>créez la demande</label>
+    <label>Créez une demande</label>
     <name>cookbook_CreateCase</name>
   </customLabels>
   <customLabels>

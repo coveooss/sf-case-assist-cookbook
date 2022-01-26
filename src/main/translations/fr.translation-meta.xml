@@ -78,4 +78,8 @@
     <label>créez la demande</label>
     <name>cookbook_CreateCase</name>
   </customLabels>
+  <customLabels>
+    <label>Bonjour, comment pouvons-nous vous aider?</label>
+    <name>cookbook_MainTitle</name>
+  </customLabels>
 </Translations>

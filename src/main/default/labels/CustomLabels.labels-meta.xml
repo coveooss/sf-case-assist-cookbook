@@ -95,7 +95,7 @@
   </labels>
   <labels>
     <fullName>cookbook_HelpedUsers_zero</fullName>
-    <value>Helped no one</value>
+    <value>Be the first to rate this document</value>
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Be the first to rate this document</shortDescription>
@@ -141,6 +141,13 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Abandon Request</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_CreateCase</fullName>
+    <value>Create case</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Create case</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_LogIn</fullName>

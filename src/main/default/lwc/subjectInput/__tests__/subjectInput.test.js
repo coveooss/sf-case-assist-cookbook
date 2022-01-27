@@ -48,6 +48,7 @@ describe('c-subject-input', () => {
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).toBeDefined();
     expect(labelNode.title).toBe(expectedLabel);
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct localized label', async () => {
@@ -57,6 +58,7 @@ describe('c-subject-input', () => {
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe('Write a descriptive title');
+    await expect(element).toBeAccessible();
   });
 
   it('should display the input', async () => {
@@ -65,6 +67,7 @@ describe('c-subject-input', () => {
     await allPromisesResolution();
     const inputNode = element.shadowRoot.querySelector('input');
     expect(inputNode).not.toBeNull();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct value in the input', async () => {
@@ -79,6 +82,7 @@ describe('c-subject-input', () => {
     inputNode.dispatchEvent(inputEvent);
 
     expect(element.value).toBe(expectedValue);
+    await expect(element).toBeAccessible();
   });
 
   it('should respect the max length of the input', async () => {
@@ -96,6 +100,7 @@ describe('c-subject-input', () => {
     await inputNode.dispatchEvent(inputEvent);
 
     expect(element.value).toBe(expectedValue);
+    await expect(element).toBeAccessible();
   });
 
   it('should show an error when the value is empty and the input is required', async () => {
@@ -115,6 +120,7 @@ describe('c-subject-input', () => {
     expect(element.hasError).toBe(true);
     expect(errorNode).not.toBeNull();
     expect(errorNode.textContent).toBe(expectedErrorMessage);
+    await expect(element).toBeAccessible();
   });
 
   it('should show the default localized error message when the value is empty and the input is required', async () => {
@@ -133,5 +139,6 @@ describe('c-subject-input', () => {
     expect(element.hasError).toBe(true);
     expect(errorNode).not.toBeNull();
     expect(errorNode.textContent).toBe(expectedErrorMessage);
+    await expect(element).toBeAccessible();
   });
 });

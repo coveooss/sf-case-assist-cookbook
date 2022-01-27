@@ -143,6 +143,34 @@
     <shortDescription>Abandon Request</shortDescription>
   </labels>
   <labels>
+    <fullName>cookbook_LogIn</fullName>
+    <value>Log in</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Log in</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescribeProblem</fullName>
+    <value>Describe problem</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Describe problem</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetails</fullName>
+    <value>Provide details</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide details</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ReviewResources</fullName>
+    <value>Review resources</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Review resources</shortDescription>
+  </labels>
+  <labels>
     <fullName>cookbook_MainTitle</fullName>
     <value>Hi, how may we help you?</value>
     <language>en_US</language>

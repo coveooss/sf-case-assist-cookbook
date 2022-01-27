@@ -170,12 +170,16 @@ describe('c-flow-progress-indicator', () => {
 
   it('should throw an error and display the component in the first step when an invalid current step is given', async () => {
     const element = createTestComponent();
+    const errorSpy = jest.spyOn(console, 'error');
     const invalidStep = 'Invalid Step';
-    const setInvalidStep = () => {
-      element.currentStep = invalidStep;
-    };
-    expect(setInvalidStep).toThrow(
-      `No steps found with value '${invalidStep}'`
+    element.currentStep = invalidStep;
+
+    await allPromisesResolution();
+    const progressIndicatorNode = element.shadowRoot.querySelector(
+      PROGRESS_INDICATOR_SELECTOR
     );
+
+    expect(errorSpy).toHaveBeenCalledTimes(1);
+    expect(progressIndicatorNode.currentStep).toBe(null);
   });
 });

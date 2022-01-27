@@ -70,9 +70,10 @@ export default class FlowProgressIndicator extends LightningElement {
   @api set currentStep(value) {
     if (!this.stepExists(value)) {
       console.error(`No steps found with value '${value}'`);
-      throw new Error(`No steps found with value '${value}'`);
+      this._currentStep = null;
+    } else {
+      this._currentStep = value;
     }
-    this._currentStep = value;
   }
 
   /**

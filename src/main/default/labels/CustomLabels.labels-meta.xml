@@ -217,8 +217,7 @@
     <value>Are you sure you want to abandon your request?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Are you sure you want to abandon your request?</shortDescription>
+    <shortDescription>Are you sure you want to abandon your request?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Confirm</fullName>

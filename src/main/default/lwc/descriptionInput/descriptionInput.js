@@ -14,7 +14,7 @@ import { debounce } from 'c/utils';
 /**
  * The `descriptionInput` component displays a rich text input for the case description.
  * @example
- * <c-description-input engineId={engineId} caseEditDelayMs="500" label="Explain the problem" messageWhenValueMissing="Complete this field." required displayStrengthIndicator></c-description-input>
+ * <c-description-input engine-id={engineId} case-edit-delay-ms="500" label="Explain the problem" message-when-value-missing="Complete this field." required display-strength-indicator></c-description-input>
  */
 export default class DescriptionInput extends LightningElement {
   labels = {

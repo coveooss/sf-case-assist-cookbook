@@ -9,6 +9,7 @@ import {
   registerComponentForInit,
   initializeWithHeadless
 } from 'c/quanticHeadlessLoader';
+import { NavigationMixin } from 'lightning/navigation';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 /**
@@ -16,7 +17,7 @@ import {
  * @example
  * <c-abandon-modal header-label="We're glad you found the answer!"></c-abandon-modal>
  */
-export default class AbandonModal extends LightningElement {
+export default class AbandonModal extends NavigationMixin(LightningElement) {
   labels = {
     yourRequestWillNotBeSaved,
     gladYouFoundAnswer,
@@ -38,6 +39,16 @@ export default class AbandonModal extends LightningElement {
    * @defaultValue `'We're glad you found the answer!'`
    */
   @api headerLabel = this.labels.gladYouFoundAnswer;
+  /**
+   * Object describing the type of page, its attributes, and the state of the page to redirect to when abandoning the case, more information in https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_navigate_basic
+   * @type {object}
+   */
+  @api redirectRef = {
+    type: 'standard__namedPage',
+    attributes: {
+      pageName: 'home'
+    }
+  };
 
   /** @type {boolean} */
   /** @type {CaseAssistEngine} */
@@ -104,6 +115,6 @@ export default class AbandonModal extends LightningElement {
 
   confirm() {
     this.engine.dispatch(this.actions.logSolveCase());
-    // Placeholder for navigation to site.
+    this[NavigationMixin.Navigate](this.redirectRef);
   }
 }

@@ -75,6 +75,22 @@
     <name>cookbook_AbandonRequest</name>
   </customLabels>
   <customLabels>
+    <label>Nous sommes ravis que vous ayez trouvé une réponse!</label>
+    <name>cookbook_GladYouFoundAnswer</name>
+  </customLabels>
+  <customLabels>
+    <label>Votre demande ne sera pas enregistrée.</label>
+    <name>cookbook_YourRequestWillNotBeSaved</name>
+  </customLabels>
+  <customLabels>
+    <label>Fermer</label>
+    <name>cookbook_Close</name>
+  </customLabels>
+  <customLabels>
+    <label>Annuler</label>
+    <name>cookbook_Undo</name>
+  </customLabels>
+  <customLabels>
     <label>Créez une demande</label>
     <name>cookbook_CreateCase</name>
   </customLabels>
@@ -97,5 +113,13 @@
   <customLabels>
     <label>Bonjour, comment pouvons-nous vous aider?</label>
     <name>cookbook_MainTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Voulez-vous vraiment abandonner votre demande?</label>
+    <name>cookbook_AreYouSure</name>
+  </customLabels>
+  <customLabels>
+    <label>Confirmer</label>
+    <name>cookbook_Confirm</name>
   </customLabels>
 </Translations>

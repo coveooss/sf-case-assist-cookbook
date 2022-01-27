@@ -143,6 +143,34 @@
     <shortDescription>Abandon Request</shortDescription>
   </labels>
   <labels>
+    <fullName>cookbook_GladYouFoundAnswer</fullName>
+    <value>We're glad you found the answer!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>We're glad you found the answer!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_YourRequestWillNotBeSaved</fullName>
+    <value>Your request will be discarded.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your request will be discarded.</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Close</fullName>
+    <value>Close</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Undo</fullName>
+    <value>Undo</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Undo</shortDescription>
+  </labels>
+  <labels>
     <fullName>cookbook_CreateCase</fullName>
     <value>Create case</value>
     <language>en_US</language>
@@ -183,5 +211,19 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Hi, how may we help you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AreYouSure</fullName>
+    <value>Are you sure you want to abandon your request?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Are you sure you want to abandon your request?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Confirm</fullName>
+    <value>Confirm</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Confirm</shortDescription>
   </labels>
 </CustomLabels>

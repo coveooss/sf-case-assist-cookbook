@@ -43,6 +43,7 @@ describe('c-section-title', () => {
     );
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
+    await expect(element).toBeAccessible();
   });
 
   it('should display the label as the default value for the title', async () => {
@@ -55,5 +56,6 @@ describe('c-section-title', () => {
     );
     expect(titleNode).not.toBeNull();
     expect(titleNode.textContent).toBe(expectedTitle);
+    await expect(element).toBeAccessible();
   });
 });

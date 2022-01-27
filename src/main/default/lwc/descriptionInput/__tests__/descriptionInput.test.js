@@ -52,6 +52,7 @@ describe('c-description-input', () => {
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct localized label', async () => {
@@ -62,6 +63,7 @@ describe('c-description-input', () => {
     const labelNode = element.shadowRoot.querySelector('c-section-title');
     expect(labelNode).not.toBeNull();
     expect(labelNode.title).toBe(expectedLabel);
+    await expect(element).toBeAccessible();
   });
 
   it('should display the input', async () => {
@@ -72,6 +74,30 @@ describe('c-description-input', () => {
       'lightning-input-rich-text'
     );
     expect(inputNode).not.toBeNull();
+    await expect(element).toBeAccessible();
+  });
+
+  it('should not display the description strength indicator by default', async () => {
+    const element = createTestComponent();
+
+    await allPromisesResolution();
+    const strengthIndicatorNode = element.shadowRoot.querySelector(
+      'c-description-strength-indicator'
+    );
+    expect(strengthIndicatorNode).toBeNull();
+    await expect(element).toBeAccessible();
+  });
+
+  it('should display the description strength indicator when displayStrengthIndicator attribute is specified', async () => {
+    const element = createTestComponent();
+    element.displayStrengthIndicator = true;
+
+    await allPromisesResolution();
+    const strengthIndicatorNode = element.shadowRoot.querySelector(
+      'c-description-strength-indicator'
+    );
+    expect(strengthIndicatorNode).not.toBeNull();
+    await expect(element).toBeAccessible();
   });
 
   it('should display the correct value in the input', async () => {
@@ -88,6 +114,7 @@ describe('c-description-input', () => {
     inputNode.dispatchEvent(inputEvent);
 
     expect(element.value).toBe(expectedValue);
+    await expect(element).toBeAccessible();
   });
 
   describe('when the input is required', () => {
@@ -107,6 +134,7 @@ describe('c-description-input', () => {
 
       expect(inputNode.valid).toBe(false);
       expect(inputNode.messageWhenBadInput).toBe(expectedErrorMessage);
+      await expect(element).toBeAccessible();
     });
 
     it('should show the default localized error message when the value is empty', async () => {
@@ -124,6 +152,7 @@ describe('c-description-input', () => {
 
       expect(inputNode.valid).toBe(false);
       expect(inputNode.messageWhenBadInput).toBe(expectedErrorMessage);
+      await expect(element).toBeAccessible();
     });
   });
 
@@ -141,6 +170,7 @@ describe('c-description-input', () => {
       await element.validate();
 
       expect(inputNode.valid).toBe(true);
+      await expect(element).toBeAccessible();
     });
   });
 });

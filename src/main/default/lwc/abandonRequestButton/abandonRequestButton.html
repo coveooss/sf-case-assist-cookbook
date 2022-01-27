@@ -9,5 +9,8 @@
   <button onclick={handleAbandon} id="abandon-case-button" class={buttonClass}>
     {buttonLabel}
   </button>
-  <c-abandon-modal engine-id={engineId}></c-abandon-modal>
+  <c-abandon-modal
+    redirect-ref={redirectRef}
+    engine-id={engineId}
+  ></c-abandon-modal>
 </template>

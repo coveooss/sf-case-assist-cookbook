@@ -67,6 +67,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the default localized value of the initial message', async () => {
@@ -77,6 +78,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the progress indicator', async () => {
@@ -91,6 +93,7 @@ describe('c-description-strength-indicator', () => {
       );
       expect(progressRingNode).not.toBeNull();
       expect(fullProgressRingNode).toBeNull();
+      await expect(element).toBeAccessible();
     });
 
     it('should display the help accordion', async () => {
@@ -101,6 +104,7 @@ describe('c-description-strength-indicator', () => {
         'lightning-accordion'
       );
       expect(accordionNode).not.toBeNull();
+      await expect(element).toBeAccessible();
     });
 
     it('should display the help label', async () => {
@@ -115,6 +119,7 @@ describe('c-description-strength-indicator', () => {
       );
       expect(accordionNode).not.toBeNull();
       expect(accordionNode.label).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the default localized value of the help label', async () => {
@@ -127,6 +132,7 @@ describe('c-description-strength-indicator', () => {
       );
       expect(messageNode).not.toBeNull();
       expect(messageNode.label).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
   });
 
@@ -143,6 +149,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the default localized value of the keep going message', async () => {
@@ -156,6 +163,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
   });
 
@@ -171,6 +179,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the default localized value of the final message', async () => {
@@ -183,6 +192,7 @@ describe('c-description-strength-indicator', () => {
       const messageNode = element.shadowRoot.querySelector('.indicator_title');
       expect(messageNode).not.toBeNull();
       expect(messageNode.textContent).toBe(expectedText);
+      await expect(element).toBeAccessible();
     });
 
     it('should display the progress indicator full', async () => {
@@ -200,6 +210,7 @@ describe('c-description-strength-indicator', () => {
 
       expect(fullProgressRingNode).not.toBeNull();
       expect(progressRingNode).toBeNull();
+      await expect(element).toBeAccessible();
     });
   });
 });

@@ -1,15 +1,14 @@
 import { LightningElement, api } from 'lwc';
 import {
   FlowNavigationNextEvent,
-  FlowAttributeChangeEvent,
-  FlowNavigationBackEvent
+  FlowAttributeChangeEvent
 } from 'lightning/flowSupport';
 import {
   registerComponentForInit,
   initializeWithHeadless
 } from 'c/quanticHeadlessLoader';
+import describeProblemTitle from '@salesforce/label/c.cookbook_DescribeProblemTitle';
 import next from '@salesforce/label/c.cookbook_Next';
-import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
@@ -19,10 +18,10 @@ import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 
-export default class ProvideDetailsScreen extends LightningElement {
+export default class CreateCaseScreen extends LightningElement {
   labels = {
+    describeProblemTitle,
     next,
-    previous,
     priority,
     typeLabel,
     origin,
@@ -30,6 +29,7 @@ export default class ProvideDetailsScreen extends LightningElement {
     provideDetailsSubtitle,
     moreOptions
   };
+
   /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation
@@ -41,12 +41,22 @@ export default class ProvideDetailsScreen extends LightningElement {
    */
   @api engineId;
   /**
+   * The Case Assist configuration ID.
+   * @type {string}
+   */
+  @api caseAssistId;
+  /**
    * A stringified object representing the current fields set on the case.
+   * @type {string}
    */
   @api caseData;
 
-  /** @type{object} */
+  /** @type {object} */
   theCase;
+  /** @type {string} */
+  subject = '';
+  /** @type {string} */
+  description = '';
   /** @type {string} */
   priority = '';
   /** @type {string} */
@@ -56,12 +66,7 @@ export default class ProvideDetailsScreen extends LightningElement {
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    try {
-      this._caseData = JSON.parse(this.caseData);
-      this.extractDataFromSessionStorage();
-    } catch (err) {
-      this._caseData = {};
-    }
+    this.extractDataFromSessionStorage();
   }
 
   renderedCallback() {
@@ -74,10 +79,10 @@ export default class ProvideDetailsScreen extends LightningElement {
   initialize = (engine) => {
     this.actions = {
       // eslint-disable-next-line no-undef
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine)
+      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
     if (!sessionStorage.previousNavigation) {
-      engine.dispatch(this.actions.fetchCaseClassifications());
+      engine.dispatch(this.actions.logCaseStart());
     }
   };
 
@@ -94,19 +99,17 @@ export default class ProvideDetailsScreen extends LightningElement {
     }
   }
 
-  handleBack() {
-    if (this.availableActions.some((action) => action === 'BACK')) {
-      const navigateBackEvent = new FlowNavigationBackEvent();
-      this.dispatchEvent(navigateBackEvent);
-      sessionStorage.previousNavigation = true;
-    }
-  }
-
   getCaseValues() {
-    const { priorityInput, typeInput, originInput } = this.getInputs();
-
-    this._caseData = {
-      ...this._caseData,
+    const {
+      subjectInput,
+      descriptionInput,
+      priorityInput,
+      typeInput,
+      originInput
+    } = this.getInputs();
+    this.theCase = {
+      subject: subjectInput.value,
+      description: descriptionInput.value,
       priority: priorityInput.value,
       type: typeInput.value,
       origin: originInput.value
@@ -115,7 +118,7 @@ export default class ProvideDetailsScreen extends LightningElement {
 
   updateFlowState() {
     this.getCaseValues();
-    this._caseData = JSON.stringify(this._caseData);
+    this._caseData = JSON.stringify(this.theCase);
     const attributeChangeEvent = new FlowAttributeChangeEvent(
       'caseData',
       this._caseData
@@ -124,17 +127,27 @@ export default class ProvideDetailsScreen extends LightningElement {
   }
 
   inputValidity() {
-    const inputs = Object.values(this.getInputs());
-    inputs.forEach((input) => {
-      input.reportValidity();
-    });
-    return inputs.reduce(
-      (previousValidity, input) => previousValidity && !input.hasError,
-      true
+    const {
+      subjectInput,
+      descriptionInput,
+      priorityInput,
+      typeInput,
+      originInput
+    } = this.getInputs();
+    const inputs = [subjectInput, priorityInput, typeInput, originInput];
+    descriptionInput.validate();
+    return (
+      descriptionInput.validity &&
+      inputs.reduce(
+        (previousValidity, input) => previousValidity && !input.hasError,
+        true
+      )
     );
   }
 
   getInputs() {
+    const subjectInput = this.template.querySelector('c-subject-input');
+    const descriptionInput = this.template.querySelector('c-description-input');
     const priorityInput = this.template.querySelector(
       'c-quantic-case-classification[title="priority"]'
     );
@@ -144,15 +157,20 @@ export default class ProvideDetailsScreen extends LightningElement {
     const originInput = this.template.querySelector(
       'c-quantic-case-classification[title="origin"]'
     );
-    return { priorityInput, typeInput, originInput };
+    return {
+      subjectInput,
+      descriptionInput,
+      priorityInput,
+      typeInput,
+      originInput
+    };
   }
 
   extractDataFromSessionStorage() {
     if (sessionStorage.previousNavigation && sessionStorage.caseData) {
       const sessionStorageObject = JSON.parse(sessionStorage.caseData);
-      this.priority = sessionStorageObject.priority;
-      this.type = sessionStorageObject.type;
-      this.origin = sessionStorageObject.origin;
+      this.subject = sessionStorageObject.subject;
+      this.description = sessionStorageObject.description;
     }
   }
 }

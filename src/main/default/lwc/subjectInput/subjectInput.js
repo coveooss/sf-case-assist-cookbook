@@ -49,13 +49,19 @@ export default class SubjectInput extends LightningElement {
   /**
    * The error message to be shown when the value is missing.
    * @type {string}
-   * @defaultValue `'Complete this field.`
+   * @defaultValue `'Complete this field.'`
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
    * This is the delay before sending a query and analytics events on user typing.
+   * @type {number}
+   * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
+  /** The initial value to be given to the input.
+   * @type {string}
+   */
+  @api initialValue;
 
   /** @type {string} */
   _value = '';
@@ -99,6 +105,11 @@ export default class SubjectInput extends LightningElement {
       ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
       ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
     };
+
+    if (this.initialValue) {
+      this._value = this.initialValue.substring(0, this.maxLength);
+      this.updateSubjectState();
+    }
   };
 
   /**
@@ -130,9 +141,6 @@ export default class SubjectInput extends LightningElement {
    */
   @api get value() {
     return this._value;
-  }
-  set value(initialValue) {
-    this._value = initialValue.substring(0, this.maxLength);
   }
 
   /**

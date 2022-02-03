@@ -43,16 +43,18 @@ export default class DescriptionInput extends LightningElement {
   /**
    * The error message to be shown when the value is missing.
    * @type {string}
-   * @defaultValue `'Complete this field.`
+   * @defaultValue `'Complete this field.'`
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
    * This is the delay before sending a query and analytics events on user typing, this value is in milliseconds.
+   * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
   /**
    * Whether we display the description strength indicator or not.
    * @type {boolean}
+   * @defaultValue `false`
    */
   @api displayStrengthIndicator = false;
   /**
@@ -74,8 +76,13 @@ export default class DescriptionInput extends LightningElement {
   /**
    * The necessary number of words that the description must have in order to be considered strong.
    * @type {Number}
+   * @defaultValue `20`
    */
   @api strongDescriptionLength = 20;
+  /** The initial value to be given to the input.
+   * @type {string}
+   */
+  @api initialValue;
 
   /** @type {string} */
   _value = '';
@@ -119,6 +126,11 @@ export default class DescriptionInput extends LightningElement {
       ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
       ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
     };
+
+    if (this.initialValue) {
+      this._value = this.initialValue;
+      this.updateDescriptionState();
+    }
   };
 
   /**

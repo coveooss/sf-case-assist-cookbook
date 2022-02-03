@@ -107,10 +107,7 @@ export default class SubjectInput extends LightningElement {
    */
   handleChange = (e) => {
     this._errorMessage = '';
-    this._value =
-      e.target.value.length <= this.maxLength
-        ? e.target.value
-        : e.target.value.substring(0, this.maxLength);
+    this._value = e.target.value.substring(0, this.maxLength);
     this.debounceUpdateSubjectState();
   };
 
@@ -133,6 +130,9 @@ export default class SubjectInput extends LightningElement {
    */
   @api get value() {
     return this._value;
+  }
+  set value(initialValue) {
+    this._value = initialValue.substring(0, this.maxLength);
   }
 
   /**

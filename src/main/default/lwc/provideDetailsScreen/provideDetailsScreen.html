@@ -1,0 +1,78 @@
+<template>
+  <div class="slds-var-p-vertical_xx-large">
+    <div class="content">
+      <div class="slds-is-relative screen-header">
+        <c-flow-progress-indicator
+          current-step="provide details"
+        ></c-flow-progress-indicator>
+        <div class="slds-is-absolute navigation">
+          <button onclick={handleBack} class="slds-button">
+            <lightning-icon
+              class="slds-button__icon_left previous-button-icon"
+              size="x-small"
+              icon-name="utility:chevronleft"
+              alternative-text="Previous"
+            ></lightning-icon>
+            Previous
+          </button>
+        </div>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-main-title
+          align-center
+          title="Speed up the resolution of your problem"
+          subtitle="Detail your problem to find the agent best suited to help you"
+        ></c-main-title>
+      </div>
+      <div class="slds-var-p-top_medium">
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            value={priority}
+            title="priority"
+            label="How would you classify the priority of your issue?"
+            coveo-field-name="sfpriority"
+            max-suggestions="2"
+            sf-field-api-name="Priority"
+            engine-id={engineId}
+            select-placeholder="More options"
+          >
+          </c-quantic-case-classification>
+        </div>
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            value={type}
+            title="type"
+            label="What type of problem is it?"
+            coveo-field-name="sfreason"
+            max-suggestions="2"
+            sf-field-api-name="Reason"
+            engine-id={engineId}
+            select-placeholder="More options"
+          ></c-quantic-case-classification>
+        </div>
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            value={origin}
+            title="origin"
+            label="What's the origin of your problem?"
+            coveo-field-name="sforigin"
+            max-suggestions="2"
+            sf-field-api-name="Origin"
+            engine-id={engineId}
+            select-placeholder="More options"
+          ></c-quantic-case-classification>
+        </div>
+        <div
+          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
+        >
+          <button
+            onclick={handleNext}
+            class="slds-button slds-button_brand large-button"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

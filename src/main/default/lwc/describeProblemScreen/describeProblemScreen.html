@@ -1,0 +1,59 @@
+<template>
+  <div class="slds-var-p-vertical_xx-large container">
+    <div class="content">
+      <div class="slds-is-relative screen-header">
+        <c-flow-progress-indicator
+          current-step="describe problem"
+        ></c-flow-progress-indicator>
+        <div class="slds-is-absolute navigation">
+          <button onclick={handleBack} class="slds-button">
+            <lightning-icon
+              class="slds-button__icon_left previous-button-icon"
+              size="x-small"
+              icon-name="utility:chevronleft"
+              alternative-text="Previous"
+            ></lightning-icon>
+            Previous
+          </button>
+        </div>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-main-title
+          align-center
+          title="Hi John, what do you need help with?"
+        ></c-main-title>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-quantic-case-assist-interface
+          engine-id={engineId}
+          case-assist-id={caseAssistId}
+        >
+          <c-subject-input
+            label="Write a descriptive title"
+            engine-id={engineId}
+            value={subject}
+          ></c-subject-input>
+          <div class="slds-var-m-top_xx-large">
+            <c-description-input
+              value={description}
+              strong-description-length="5"
+              display-strength-indicator="true"
+              label="Explain the problem"
+              engine-id={engineId}
+            ></c-description-input>
+          </div>
+        </c-quantic-case-assist-interface>
+        <div
+          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
+        >
+          <button
+            onclick={handleNext}
+            class="slds-button slds-button_brand large-button"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

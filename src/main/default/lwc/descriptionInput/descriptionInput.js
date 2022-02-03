@@ -136,6 +136,9 @@ export default class DescriptionInput extends LightningElement {
   @api get value() {
     return this._value;
   }
+  set value(initialValue) {
+    this._value = initialValue;
+  }
 
   /**
    * Shows an error message in the component if there is an error.

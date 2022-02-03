@@ -1,0 +1,103 @@
+<template>
+  <div class="slds-var-p-vertical_xx-large">
+    <div class="content">
+      <div class="slds-var-p-bottom_x-large">
+        <c-main-title
+          title="Log in to contact a support agent"
+          subtitle="We will be able to propose better solutions based on your account information"
+        ></c-main-title>
+      </div>
+
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-5">
+          <div class="slds-var-p-vertical_small">
+            <lightning-input
+              onchange={handleInputChange}
+              type="text"
+              label="Username"
+            ></lightning-input>
+          </div>
+          <div class="slds-var-p-vertical_small">
+            <lightning-input type="password" label="Password"></lightning-input>
+          </div>
+          <div class="slds-var-p-vertical_small">
+            <button
+              onclick={handleButtonNext}
+              class="slds-button slds-button_brand full-width-button"
+            >
+              Log in
+            </button>
+          </div>
+          <div class="slds-var-p-vertical_small">
+            <lightning-checkbox-group
+              name="Checkbox Group"
+              options={options}
+              value={value}
+              onchange={handleChange}
+            >
+            </lightning-checkbox-group>
+          </div>
+          <div class="slds-var-m-vertical_small separator"></div>
+          <div class="slds-var-p-vertical_xx-small">
+            <lightning-button
+              variant="base"
+              label="Forgot Your Password?"
+              title="Forgot Your Password?"
+            >
+            </lightning-button>
+          </div>
+        </div>
+        <div class="slds-col slds-size_3-of-5 steps-container">
+          <div
+            class="slds-var-p-horizontal_xx-large slds-var-p-vertical_large steps-content"
+          >
+            <h3
+              class="slds-text-title_bold steps-title slds-var-p-bottom_x-small"
+            >
+              Get help in 4 steps
+            </h3>
+            <div class="slds-progress slds-progress_vertical">
+              <ol class="slds-progress__list">
+                <template iterator:it={steps}>
+                  <template if:true={it.value.active}>
+                    <li
+                      key={it.value.label}
+                      class="slds-progress__item slds-is-active"
+                    >
+                      <div class="slds-progress__marker">
+                        <span class="slds-assistive-text">Active</span>
+                      </div>
+                      <div
+                        class="slds-progress__item_content slds-grid slds-grid_align-spread slds-text-heading_small"
+                      >
+                        {it.value.label}
+                      </div>
+                    </li>
+                  </template>
+                  <template if:false={it.value.active}>
+                    <li key={it.value.label} class="slds-progress__item">
+                      <div class="slds-progress__marker"></div>
+                      <div
+                        class="slds-progress__item_content slds-grid slds-grid_align-spread slds-text-heading_small"
+                      >
+                        {it.value.label}
+                      </div>
+                    </li>
+                  </template>
+                </template>
+              </ol>
+              <div
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                role="progressbar"
+              >
+                <span class="slds-assistive-text">Progress: 0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

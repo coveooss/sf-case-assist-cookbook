@@ -8,10 +8,28 @@ import {
   registerComponentForInit,
   initializeWithHeadless
 } from 'c/quanticHeadlessLoader';
+import next from '@salesforce/label/c.cookbook_Next';
+import previous from '@salesforce/label/c.cookbook_Previous';
+import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
+import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
+import priority from '@salesforce/label/c.cookbook_PriorityLabel';
+import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
+import origin from '@salesforce/label/c.cookbook_OriginLabel';
+import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 
 export default class ProvideDetailsScreen extends LightningElement {
+  labels = {
+    next,
+    previous,
+    priority,
+    typeLabel,
+    origin,
+    provideDetailsTitle,
+    provideDetailsSubtitle,
+    moreOptions
+  };
   /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation

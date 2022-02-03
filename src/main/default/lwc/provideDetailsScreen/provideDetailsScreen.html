@@ -11,17 +11,17 @@
               class="slds-button__icon_left previous-button-icon"
               size="x-small"
               icon-name="utility:chevronleft"
-              alternative-text="Previous"
+              alternative-text={labels.previous}
             ></lightning-icon>
-            Previous
+            {labels.previous}
           </button>
         </div>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title
           align-center
-          title="Speed up the resolution of your problem"
-          subtitle="Detail your problem to find the agent best suited to help you"
+          title={labels.provideDetailsTitle}
+          subtitle={labels.provideDetailsSubtitle}
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium">
@@ -29,12 +29,12 @@
           <c-quantic-case-classification
             initial-value={priority}
             title="priority"
-            label="How would you classify the priority of your issue?"
+            label={labels.priority}
             coveo-field-name="sfpriority"
             max-suggestions="2"
             sf-field-api-name="Priority"
             engine-id={engineId}
-            select-placeholder="More options"
+            select-placeholder={labels.moreOptions}
           >
           </c-quantic-case-classification>
         </div>
@@ -42,24 +42,24 @@
           <c-quantic-case-classification
             initial-value={type}
             title="type"
-            label="What type of problem is it?"
+            label={labels.typeLabel}
             coveo-field-name="sfreason"
             max-suggestions="2"
             sf-field-api-name="Reason"
             engine-id={engineId}
-            select-placeholder="More options"
+            select-placeholder={labels.moreOptions}
           ></c-quantic-case-classification>
         </div>
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
             initial-value={origin}
             title="origin"
-            label="What's the origin of your problem?"
+            label={labels.origin}
             coveo-field-name="sforigin"
             max-suggestions="2"
             sf-field-api-name="Origin"
             engine-id={engineId}
-            select-placeholder="More options"
+            select-placeholder={labels.moreOptions}
           ></c-quantic-case-classification>
         </div>
         <div
@@ -69,7 +69,7 @@
             onclick={handleNext}
             class="slds-button slds-button_brand large-button"
           >
-            Next
+            {labels.next}
           </button>
         </div>
       </div>

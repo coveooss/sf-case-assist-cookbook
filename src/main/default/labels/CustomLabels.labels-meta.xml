@@ -299,4 +299,48 @@
     <protected>false</protected>
     <shortDescription>Hi John, what do you need help with?</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetailsTitle</fullName>
+    <value>Speed up the resolution of your problem</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Speed up the resolution of your problem</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetailsSubtitle</fullName>
+    <value>Detail your problem to find the agent best suited to help you</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Detail your problem to find the agent best suited to help you</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_PriorityLabel</fullName>
+    <value>How would you classify the priority of your issue?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >How would you classify the priority of your issue?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_TypeLabel</fullName>
+    <value>What type of problem is it?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What type of problem is it?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_OriginLabel</fullName>
+    <value>What's the origin of your problem?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What's the origin of your problem?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_MoreOptions</fullName>
+    <value>More options</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>More options</shortDescription>
+  </labels>
 </CustomLabels>

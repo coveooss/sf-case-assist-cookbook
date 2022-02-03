@@ -278,4 +278,25 @@
     <shortDescription
         >We will be able to propose better solutions based on your account information</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_Previous</fullName>
+    <value>Previous</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Previous</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Next</fullName>
+    <value>Next</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Next</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescribeProblemTitle</fullName>
+    <value>Hi John, what do you need help with?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Hi John, what do you need help with?</shortDescription>
+  </labels>
 </CustomLabels>

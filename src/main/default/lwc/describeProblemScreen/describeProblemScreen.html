@@ -11,16 +11,16 @@
               class="slds-button__icon_left previous-button-icon"
               size="x-small"
               icon-name="utility:chevronleft"
-              alternative-text="Previous"
+              alternative-text={labels.previous}
             ></lightning-icon>
-            Previous
+            {labels.previous}
           </button>
         </div>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title
           align-center
-          title="Hi John, what do you need help with?"
+          title={labels.describeProblemTitle}
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
@@ -31,7 +31,6 @@
           prevent-log-case-start-on-init
         >
           <c-subject-input
-            label="Write a descriptive title"
             engine-id={engineId}
             initial-value={subject}
           ></c-subject-input>
@@ -39,8 +38,7 @@
             <c-description-input
               initial-value={description}
               strong-description-length="5"
-              display-strength-indicator="true"
-              label="Explain the problem"
+              display-strength-indicator
               engine-id={engineId}
             ></c-description-input>
           </div>
@@ -52,7 +50,7 @@
             onclick={handleNext}
             class="slds-button slds-button_brand large-button"
           >
-            Next
+            {labels.next}
           </button>
         </div>
       </div>

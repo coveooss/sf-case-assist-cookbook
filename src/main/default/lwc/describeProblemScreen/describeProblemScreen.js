@@ -8,10 +8,19 @@ import {
   registerComponentForInit,
   initializeWithHeadless
 } from 'c/quanticHeadlessLoader';
+import describeProblemTitle from '@salesforce/label/c.cookbook_DescribeProblemTitle';
+import next from '@salesforce/label/c.cookbook_Next';
+import previous from '@salesforce/label/c.cookbook_Previous';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 
 export default class DescribeProblemScreen extends LightningElement {
+  labels = {
+    describeProblemTitle,
+    next,
+    previous
+  };
+
   /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation

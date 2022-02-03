@@ -3,8 +3,8 @@
     <div class="content">
       <div class="slds-var-p-bottom_x-large">
         <c-main-title
-          title="Log in to contact a support agent"
-          subtitle="We will be able to propose better solutions based on your account information"
+          title={labels.loginTitle}
+          subtitle={labels.loginSubtitle}
         ></c-main-title>
       </div>
 
@@ -14,18 +14,21 @@
             <lightning-input
               onchange={handleInputChange}
               type="text"
-              label="Username"
+              label={labels.username}
             ></lightning-input>
           </div>
           <div class="slds-var-p-vertical_small">
-            <lightning-input type="password" label="Password"></lightning-input>
+            <lightning-input
+              type="password"
+              label={labels.password}
+            ></lightning-input>
           </div>
           <div class="slds-var-p-vertical_small">
             <button
               onclick={handleButtonNext}
               class="slds-button slds-button_brand full-width-button"
             >
-              Log in
+              {labels.logIn}
             </button>
           </div>
           <div class="slds-var-p-vertical_small">
@@ -41,8 +44,8 @@
           <div class="slds-var-p-vertical_xx-small">
             <lightning-button
               variant="base"
-              label="Forgot Your Password?"
-              title="Forgot Your Password?"
+              label={labels.forgetYourPassword}
+              title={labels.forgetYourPassword}
             >
             </lightning-button>
           </div>
@@ -54,7 +57,7 @@
             <h3
               class="slds-text-title_bold steps-title slds-var-p-bottom_x-small"
             >
-              Get help in 4 steps
+              {labels.getHelp}
             </h3>
             <div class="slds-progress slds-progress_vertical">
               <ol class="slds-progress__list">

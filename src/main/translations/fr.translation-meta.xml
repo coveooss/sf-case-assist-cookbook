@@ -122,4 +122,33 @@
     <label>Confirmer</label>
     <name>cookbook_Confirm</name>
   </customLabels>
+  <customLabels>
+    <label>Mot de passe</label>
+    <name>cookbook_Password</name>
+  </customLabels>
+  <customLabels>
+    <label>Nom d'utilisateur</label>
+    <name>cookbook_Username</name>
+  </customLabels>
+  <customLabels>
+    <label>Se souvenir de moi</label>
+    <name>cookbook_RememberMe</name>
+  </customLabels>
+  <customLabels>
+    <label>Mot de passe oublié</label>
+    <name>cookbook_ForgetYourPassword</name>
+  </customLabels>
+  <customLabels>
+    <label>Obtenez de l'aide en 4 étapes</label>
+    <name>cookbook_GetHelp</name>
+  </customLabels>
+  <customLabels>
+    <label>Connectez-vous pour contacter un agent d'assistance</label>
+    <name>cookbook_LoginTitle</name>
+  </customLabels>
+  <customLabels>
+    <label
+        >Nous serons en mesure de vous proposer de meilleures solutions sur la base des informations relatives à votre compte.</label>
+    <name>cookbook_LoginSubtitle</name>
+  </customLabels>
 </Translations>

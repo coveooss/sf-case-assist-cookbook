@@ -217,7 +217,8 @@
     <value>Are you sure you want to abandon your request?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Are you sure you want to abandon your request?</shortDescription>
+    <shortDescription
+        >Are you sure you want to abandon your request?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Confirm</fullName>
@@ -225,5 +226,56 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Confirm</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Password</fullName>
+    <value>Password</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Password</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Username</fullName>
+    <value>Username</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Username</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_RememberMe</fullName>
+    <value>Remember me</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Remember me</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ForgetYourPassword</fullName>
+    <value>Forget your password</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Forget your password</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GetHelp</fullName>
+    <value>Get help in 4 steps</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Get help in 4 steps</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_LoginTitle</fullName>
+    <value>Log in to contact a support agent</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Log in to contact a support agent</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_LoginSubtitle</fullName>
+    <value
+        >We will be able to propose better solutions based on your account information</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >We will be able to propose better solutions based on your account information</shortDescription>
   </labels>
 </CustomLabels>

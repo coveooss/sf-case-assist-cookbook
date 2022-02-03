@@ -1,15 +1,41 @@
 import { LightningElement, api } from 'lwc';
 import { FlowNavigationNextEvent } from 'lightning/flowSupport';
+import logIn from '@salesforce/label/c.cookbook_LogIn';
+import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
+import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
+import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
+import username from '@salesforce/label/c.cookbook_Username';
+import password from '@salesforce/label/c.cookbook_Password';
+import forgetYourPassword from '@salesforce/label/c.cookbook_ForgetYourPassword';
+import rememberMe from '@salesforce/label/c.cookbook_RememberMe';
+import getHelp from '@salesforce/label/c.cookbook_GetHelp';
+import loginTitle from '@salesforce/label/c.cookbook_LoginTitle';
+import loginSubtitle from '@salesforce/label/c.cookbook_LoginSubtitle';
 
 export default class LoginScreen extends LightningElement {
+  labels = {
+    logIn,
+    describeProblem,
+    provideDetails,
+    reviewResources,
+    username,
+    password,
+    rememberMe,
+    forgetYourPassword,
+    getHelp,
+    loginTitle,
+    loginSubtitle
+  };
+
   /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation
    */
   @api availableActions = [];
+
   value = [];
   get options() {
-    return [{ label: 'Remember me', value: 'option1' }];
+    return [{ label: this.labels.rememberMe, value: 'option1' }];
   }
 
   handleButtonNext() {
@@ -20,9 +46,9 @@ export default class LoginScreen extends LightningElement {
   }
 
   steps = [
-    { label: 'Log in', active: true },
-    { label: 'Describe the problem', active: false },
-    { label: 'Provide details for the agent', active: false },
-    { label: 'Review help resources', active: false }
+    { label: this.labels.logIn, active: true },
+    { label: this.labels.describeProblem, active: false },
+    { label: this.labels.provideDetails, active: false },
+    { label: this.labels.reviewResources, active: false }
   ];
 }

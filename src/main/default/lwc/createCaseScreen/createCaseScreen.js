@@ -1,7 +1,8 @@
 import { LightningElement, api } from 'lwc';
 import {
   FlowNavigationNextEvent,
-  FlowAttributeChangeEvent
+  FlowAttributeChangeEvent,
+  FlowNavigationBackEvent
 } from 'lightning/flowSupport';
 import {
   registerComponentForInit,
@@ -9,12 +10,23 @@ import {
 } from 'c/quanticHeadlessLoader';
 import describeProblemTitle from '@salesforce/label/c.cookbook_DescribeProblemTitle';
 import next from '@salesforce/label/c.cookbook_Next';
+import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
 import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
 import origin from '@salesforce/label/c.cookbook_OriginLabel';
 import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
+import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
+import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
+import logIn from '@salesforce/label/c.cookbook_LogIn';
+
+/**
+ * @typedef ProgressStep
+ * @type {Object}
+ * @property {String} value
+ * @property {String} label
+ */
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 
@@ -27,7 +39,11 @@ export default class CreateCaseScreen extends LightningElement {
     origin,
     provideDetailsTitle,
     provideDetailsSubtitle,
-    moreOptions
+    moreOptions,
+    reviewResources,
+    describeProblem,
+    logIn,
+    previous
   };
 
   /**
@@ -63,6 +79,21 @@ export default class CreateCaseScreen extends LightningElement {
   type = '';
   /** @type {string} */
   origin = '';
+  /** @type {ProgressStep[]} */
+  customSteps = [
+    {
+      label: this.labels.logIn,
+      value: 'log in'
+    },
+    {
+      label: this.labels.describeProblem,
+      value: 'describe problem'
+    },
+    {
+      label: this.labels.reviewResources,
+      value: 'review resources'
+    }
+  ];
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -96,6 +127,13 @@ export default class CreateCaseScreen extends LightningElement {
       this.dispatchEvent(navigateNextEvent);
       sessionStorage.previousNavigation = false;
       sessionStorage.caseData = this._caseData;
+    }
+  }
+
+  handleBack() {
+    if (this.availableActions.some((action) => action === 'BACK')) {
+      const navigateBackEvent = new FlowNavigationBackEvent();
+      this.dispatchEvent(navigateBackEvent);
     }
   }
 

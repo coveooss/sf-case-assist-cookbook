@@ -1,9 +1,23 @@
 <template>
   <div class="slds-var-p-vertical_xx-large container">
     <div class="content">
-      <c-flow-progress-indicator
-        current-step="describe problem"
-      ></c-flow-progress-indicator>
+      <div class="slds-is-relative screen-header">
+        <c-flow-progress-indicator
+          steps={customSteps}
+          current-step="describe problem"
+        ></c-flow-progress-indicator>
+        <div class="slds-is-absolute navigation">
+          <button onclick={handleBack} class="slds-button">
+            <lightning-icon
+              class="slds-button__icon_left previous-button-icon"
+              size="x-small"
+              icon-name="utility:chevronleft"
+              alternative-text={labels.previous}
+            ></lightning-icon>
+            {labels.previous}
+          </button>
+        </div>
+      </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title
           align-center
@@ -30,16 +44,6 @@
             ></c-description-input>
           </div>
         </c-quantic-case-assist-interface>
-        <div
-          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
-        >
-          <button
-            onclick={handleNext}
-            class="slds-button slds-button_brand large-button"
-          >
-            {labels.next}
-          </button>
-        </div>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title

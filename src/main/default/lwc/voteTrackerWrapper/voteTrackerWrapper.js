@@ -1,6 +1,11 @@
 import { LightningElement, api } from 'lwc';
 import { incrementScore } from 'c/ratingUtils';
 
+/**
+ * The `voteTrackerWrapper` component is responsible of displaying or not the content of the actions slot of a document suggestion.
+ * @example
+ * <c-vote-tracker-wrapper></c-vote-tracker-wrapper>
+ */
 export default class VoteTrackerWrapper extends LightningElement {
   /** @type {visible}*/
   visible = false;

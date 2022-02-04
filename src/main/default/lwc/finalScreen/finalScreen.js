@@ -41,6 +41,13 @@ export default class FinalScreen extends NavigationMixin(LightningElement) {
         actionName: 'view'
       }
     };
+
+    this.homePageRef = {
+      type: 'standard__namedPage',
+      attributes: {
+        pageName: 'home'
+      }
+    };
     this[NavigationMixin.GenerateUrl](this.caseRecordPageRef).then(
       (url) => (this.url = url)
     );
@@ -53,9 +60,11 @@ export default class FinalScreen extends NavigationMixin(LightningElement) {
     ];
   }
 
-  handleSeeRequest(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  handleSeeRequest() {
     this[NavigationMixin.Navigate](this.caseRecordPageRef);
+  }
+
+  handleGoBackToCommunity() {
+    this[NavigationMixin.Navigate](this.homePageRef);
   }
 }

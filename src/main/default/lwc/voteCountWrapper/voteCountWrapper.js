@@ -1,6 +1,11 @@
 import { LightningElement, api } from 'lwc';
 import { getScore } from 'c/ratingUtils';
 
+/**
+ * The `voteCountWrapper` component is responsible for retrieving the rating score of a document suggestion and passing it to the voteCount component.
+ * @example
+ * <c-vote-count-wrapper></cc-vote-count-wrapper>
+ */
 export default class VoteCountWrapper extends LightningElement {
   /** @type {string} */
   _id;

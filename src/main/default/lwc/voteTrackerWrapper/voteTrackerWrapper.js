@@ -16,10 +16,14 @@ export default class VoteTrackerWrapper extends LightningElement {
       await incrementScore(this._id);
     }
     this.dispatchEvent(
-      new CustomEvent('rating_saved', {
-        detail: { id: this._id, type: evt.detail, source: 'actions' },
-        bubbles: true,
-        composed: true
+      new CustomEvent('rating', {
+        detail: {
+          id: this._id,
+          type: evt.detail,
+          source: 'actions',
+          score: evt.detail === 'positive' ? 1 : 0
+        },
+        bubbles: true
       })
     );
   };

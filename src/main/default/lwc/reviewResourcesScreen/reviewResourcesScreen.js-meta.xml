@@ -15,7 +15,11 @@
   <targetConfigs>
     <targetConfig targets="lightning__FlowScreen">
       <property name="caseData" label="Data from the case" type="String" />
-      <property name="recordId" label="Data from the case" type="String" />
+      <property
+                name="recordId"
+                label="The record id of the new created case"
+                type="String"
+            />
       <property
                 name="engineId"
                 label="The ID of the engine instance the component registers to"

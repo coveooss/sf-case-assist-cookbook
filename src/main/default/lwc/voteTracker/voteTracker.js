@@ -147,7 +147,6 @@ export default class VoteTracker extends LightningElement {
       this.dispatchEvent(
         new CustomEvent('rating_clicked', {
           detail: 'positive',
-          composed: true,
           bubbles: true
         })
       );
@@ -167,7 +166,6 @@ export default class VoteTracker extends LightningElement {
       this.dispatchEvent(
         new CustomEvent('rating_clicked', {
           detail: 'negative',
-          composed: true,
           bubbles: true
         })
       );

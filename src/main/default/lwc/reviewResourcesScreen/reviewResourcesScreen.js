@@ -3,8 +3,24 @@ import {
   FlowNavigationNextEvent,
   FlowNavigationBackEvent
 } from 'lightning/flowSupport';
+import previous from '@salesforce/label/c.cookbook_Previous';
+import theseResourcesMightHelp from '@salesforce/label/c.cookbook_TheseResourcesMightHelp';
+import resourcesSuggested from '@salesforce/label/c.cookbook_ResourcesSuggested';
+import stillNeedHelp from '@salesforce/label/c.cookbook_StillNeedHelp';
+import changedYourMind from '@salesforce/label/c.cookbook_ChangedYourMind';
+import sendYourRequest from '@salesforce/label/c.cookbook_SendYourRequest';
+import weHaveTheInformationWeNeed from '@salesforce/label/c.cookbook_WeHaveTheInformationWeNeed';
 
 export default class reviewResourcesScreen extends LightningElement {
+  labels = {
+    previous,
+    theseResourcesMightHelp,
+    resourcesSuggested,
+    stillNeedHelp,
+    changedYourMind,
+    weHaveTheInformationWeNeed,
+    sendYourRequest
+  };
   /**
    * The ID of the engine instance the component registers to.
    * @type {string}
@@ -20,7 +36,10 @@ export default class reviewResourcesScreen extends LightningElement {
    * @type {string}
    */
   @api caseData;
-  /** @type {boolean} */
+  /**
+   * The record id of the new created case.
+   *  @type {boolean}
+   */
   @api recordId;
 
   /** @type {Array<string>} */
@@ -29,7 +48,7 @@ export default class reviewResourcesScreen extends LightningElement {
   hasSuggestions = true;
 
   connectedCallback() {
-    this.template.addEventListener('rating_saved', this.onRatingSaved);
+    this.template.addEventListener('rating', this.onRating);
     this.template.addEventListener('show_action_slot', this.onShowActionSlot);
     this.template.addEventListener('no_suggestions', this.onNoSuggestions);
     this.template.addEventListener('next', this.handleNext);
@@ -55,25 +74,31 @@ export default class reviewResourcesScreen extends LightningElement {
     }
   }
 
-  onRatingSaved = (evt) => {
+  onRating = (evt) => {
     if (evt.detail.type === 'positive') {
       const countSlot = this.getSlotById('c-vote-count-wrapper', evt.detail.id);
-      countSlot.incrementDlot();
+      if (countSlot) {
+        countSlot.incrementScore();
+      }
     }
     if (evt.detail.source === 'quickview_footer') {
-      const actionsSlot = this.getSlotById(
+      const actionSlot = this.getSlotById(
         'c-vote-tracker-wrapper',
         evt.detail.id
       );
-      actionsSlot.hide();
+      if (actionSlot) {
+        actionSlot.hide();
+      }
     }
 
     this.slotsToBeHidden = [...this.slotsToBeHidden, evt.detail.id];
   };
 
   onShowActionSlot = (evt) => {
-    const actionsSlot = this.getSlotById('c-vote-tracker-wrapper', evt.detail);
-    actionsSlot.show();
+    const actionSlot = this.getSlotById('c-vote-tracker-wrapper', evt.detail);
+    if (actionSlot) {
+      actionSlot.show();
+    }
   };
 
   onNoSuggestions = () => {
@@ -86,24 +111,19 @@ export default class reviewResourcesScreen extends LightningElement {
 
   getSlotById(tag, id) {
     const actionsSlots = this.template.querySelectorAll(tag);
-    for (let i = 0; i < actionsSlots.length; i++) {
-      if (actionsSlots[i].dataset.id === id) {
-        return actionsSlots[i];
-      }
-    }
-    return null;
+    return actionsSlots.find((slot) => slot.dataset.id === id);
   }
 
   get reviewResourcesTitle() {
     return this.hasSuggestions
-      ? 'These resources might help'
-      : 'Send your request';
+      ? this.labels.theseResourcesMightHelp
+      : this.sendYourRequest;
   }
 
   get reviewResourcesSubtitle() {
     return this.hasSuggestions
-      ? 'Resources suggested based on your problem description'
-      : 'Thank you, we have the information we need.';
+      ? this.labels.resourcesSuggested
+      : this.labels.weHaveTheInformationWeNeed;
   }
 
   get abandonRequestLabel() {

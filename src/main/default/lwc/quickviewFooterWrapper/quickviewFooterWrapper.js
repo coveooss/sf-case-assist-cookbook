@@ -17,15 +17,19 @@ export default class QuickviewFooter extends LightningElement {
     this.template.addEventListener('rating_clicked', this.onRatingClick);
   }
 
-  onRatingClick = (evt) => {
+  onRatingClick = async (evt) => {
     if (evt.detail === 'positive') {
-      incrementScore(this._id);
+      await incrementScore(this._id);
     }
     this.dispatchEvent(
-      new CustomEvent('rating_saved', {
-        detail: { id: this._id, type: evt.detail, source: 'quickview_footer' },
-        bubbles: true,
-        composed: true
+      new CustomEvent('rating', {
+        detail: {
+          id: this._id,
+          type: evt.detail,
+          source: 'quickview_footer',
+          score: evt.detail === 'positive' ? 1 : 0
+        },
+        bubbles: true
       })
     );
   };

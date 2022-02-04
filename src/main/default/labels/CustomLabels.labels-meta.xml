@@ -343,4 +343,55 @@
     <protected>false</protected>
     <shortDescription>More options</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_TheseResourcesMightHelp</fullName>
+    <value>These resources might help</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>These resources might help</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ResourcesSuggested</fullName>
+    <value>Resources suggested based on your problem description</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Resources suggested based on your problem description</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SolvedProblem</fullName>
+    <value>Solved your problem?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Solved your problem?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_StillNeedHelp</fullName>
+    <value>Still need help?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Still need help?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ChangedYourMind</fullName>
+    <value>Changed your mind?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Changed your mind?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_WeHaveTheInformationWeNeed</fullName>
+    <value>Thank you, we have the information we need</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Thank you, we have the information we need.</shortDescription>
+  </labels>  
+  <labels>
+    <fullName>cookbook_SendYourRequest</fullName>
+    <value>Send your request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Send your request</shortDescription>
+  </labels>
 </CustomLabels>

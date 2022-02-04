@@ -190,4 +190,33 @@
     <label>Plus d'options</label>
     <name>cookbook_MoreOptions</name>
   </customLabels>
+  <customLabels>
+    <label>Ces ressources pourraient vous aider</label>
+    <name>cookbook_TheseResourcesMightHelp</name>
+  </customLabels>
+  <customLabels>
+    <label
+        >Ressources suggérées en fonction de la description de votre problème</label>
+    <name>cookbook_ResourcesSuggested</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous avez résolu votre problème ?</label>
+    <name>cookbook_SolvedProblem</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous avez encore besoin d'aide ?</label>
+    <name>cookbook_StillNeedHelp</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous avez changé d'avis ?</label>
+    <name>cookbook_ChangedYourMind</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci, nous avons les informations dont nous avons besoin</label>
+    <name>cookbook_WeHaveTheInformationWeNeed</name>
+  </customLabels>
+  <customLabels>
+    <label>Envoyez votre demande</label>
+    <name>cookbook_SendYourRequest</name>
+  </customLabels>
 </Translations>

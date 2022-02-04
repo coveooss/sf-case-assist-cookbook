@@ -1,13 +1,15 @@
 <template>
-  <div class="slds-grid">
-    <lightning-icon
-      variant={variant}
-      icon-name="utility:like"
-      alternative-text={altText}
-      size="xx-small"
-      class="slds-var-m-right_x-small"
-    >
-    </lightning-icon>
-    <div class={labelClass}>{label}</div>
-  </div>
+  <template if:true={displayCount}>
+    <div class="slds-grid">
+      <lightning-icon
+        variant={variant}
+        icon-name="utility:like"
+        alternative-text={altText}
+        size="xx-small"
+        class="slds-var-m-right_x-small"
+      >
+      </lightning-icon>
+      <div class={labelClass}>{label}</div>
+    </div>
+  </template>
 </template>

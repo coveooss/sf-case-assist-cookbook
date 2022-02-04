@@ -144,6 +144,13 @@ export default class VoteTracker extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this._timer = setTimeout(() => {
       this._finalState = true;
+      this.dispatchEvent(
+        new CustomEvent('rating_clicked', {
+          detail: 'positive',
+          composed: true,
+          bubbles: true
+        })
+      );
     }, this.timeout);
   }
 
@@ -157,6 +164,13 @@ export default class VoteTracker extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this._timer = setTimeout(() => {
       this._finalState = true;
+      this.dispatchEvent(
+        new CustomEvent('rating_clicked', {
+          detail: 'negative',
+          composed: true,
+          bubbles: true
+        })
+      );
     }, this.timeout);
   }
 }

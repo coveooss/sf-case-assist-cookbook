@@ -219,4 +219,41 @@
     <label>Envoyez votre demande</label>
     <name>cookbook_SendYourRequest</name>
   </customLabels>
+  <customLabels>
+    <label>Demande enregistrée avec succès!</label>
+    <name>cookbook_RequestSuccessfullySaved</name>
+  </customLabels>
+  <customLabels>
+    <label>Un courriel de confirmation est en route</label>
+    <name>cookbook_ConfirmationEmailOnTheWay</name>
+  </customLabels>
+  <customLabels>
+    <label>Un agent vous contactera dans les prochaines 24 heures.</label>
+    <name>cookbook_AgentWillBeInTouch</name>
+  </customLabels>
+  <customLabels>
+    <label>Via:</label>
+    <name>cookbook_Via</name>
+  </customLabels>
+  <customLabels>
+    <label>Email</label>
+    <name>cookbook_Email</name>
+  </customLabels>
+  <customLabels>
+    <label>Téléphone</label>
+    <name>cookbook_Phone</name>
+  </customLabels>
+  <customLabels>
+    <label>Retourner à la communauté</label>
+    <name>cookbook_GoBackToCommunity</name>
+  </customLabels>
+  <customLabels>
+    <label>Consultez votre demande</label>
+    <name>cookbook_SeeYourRequest</name>
+  </customLabels>
+  <customLabels>
+    <label
+        >Pardonnez-nous pour le retard pendant que nous aidons tout le monde dans l'ordre.</label>
+    <name>cookbook_ForgiveUsForTheDelay</name>
+  </customLabels>
 </Translations>

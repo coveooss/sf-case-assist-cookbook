@@ -394,4 +394,69 @@
     <protected>false</protected>
     <shortDescription>Send your request</shortDescription>
   </labels>
+  <labels>
+    <fullName>cookbook_RequestSuccessfullySaved</fullName>
+    <value>Request successfully saved!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Request successfully saved!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ConfirmationEmailOnTheWay</fullName>
+    <value>A confirmation email is on the way</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>A confirmation email is on the way</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AgentWillBeInTouch</fullName>
+    <value>An agent will be in touch in the next 24h</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >An agent will be in touch in the next 24h</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Via</fullName>
+    <value>Via:</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Via:</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Email</fullName>
+    <value>Email</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Email</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Phone</fullName>
+    <value>Phone</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Phone</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GoBackToCommunity</fullName>
+    <value>Go back to community</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Go back to community</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SeeYourRequest</fullName>
+    <value>See your request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>See your request</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ForgiveUsForTheDelay</fullName>
+    <value>Forgive us for the delay while we help everyone in order.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription
+        >Forgive us for the delay while we help everyone in order.</shortDescription>
+  </labels>
 </CustomLabels>

@@ -25,31 +25,26 @@
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-quantic-case-assist-interface
+        <c-quantic-document-suggestion
           engine-id={engineId}
-          case-assist-id="a4fb453a-b1f1-4054-9067-bef117586baa"
+          fetch-on-init
+          search-engine-id="search"
+          max-documents="5"
+          show-quickview
         >
-          <c-quantic-document-suggestion
+          <c-vote-count-wrapper slot="rating"></c-vote-count-wrapper>
+          <c-vote-tracker-wrapper slot="actions"></c-vote-tracker-wrapper>
+          <c-quickview-footer-wrapper
+            slots-to-be-hidden={slotsToBeHidden}
+            slot="quickview-footer"
+          ></c-quickview-footer-wrapper>
+          <c-no-suggestion
+            disconnected-callback-action={onSuggestions}
             engine-id={engineId}
-            fetch-on-init
-            search-engine-id="search"
-            max-documents="5"
-            show-quickview
-          >
-            <c-vote-count-wrapper slot="rating"></c-vote-count-wrapper>
-            <c-vote-tracker-wrapper slot="actions"></c-vote-tracker-wrapper>
-            <c-quickview-footer-wrapper
-              slots-to-be-hidden={slotsToBeHidden}
-              slot="quickview-footer"
-            ></c-quickview-footer-wrapper>
-            <c-no-suggestion
-              disconnected-callback-action={onSuggestions}
-              engine-id={engineId}
-              case-data={_caseData}
-              slot="no-suggestions"
-            ></c-no-suggestion>
-          </c-quantic-document-suggestion>
-        </c-quantic-case-assist-interface>
+            case-data={_caseData}
+            slot="no-suggestions"
+          ></c-no-suggestion>
+        </c-quantic-document-suggestion>
       </div>
 
       <div

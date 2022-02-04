@@ -25,7 +25,7 @@ export default class reviewResourcesScreen extends LightningElement {
    * The ID of the engine instance the component registers to.
    * @type {string}
    */
-  @api engineId = 'engine';
+  @api engineId;
   /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation
@@ -111,13 +111,18 @@ export default class reviewResourcesScreen extends LightningElement {
 
   getSlotById(tag, id) {
     const actionsSlots = this.template.querySelectorAll(tag);
-    return actionsSlots.find((slot) => slot.dataset.id === id);
+    for (let i = 0; i < actionsSlots.length; i++) {
+      if (actionsSlots[i].dataset.id === id) {
+        return actionsSlots[i];
+      }
+    }
+    return null;
   }
 
   get reviewResourcesTitle() {
     return this.hasSuggestions
       ? this.labels.theseResourcesMightHelp
-      : this.sendYourRequest;
+      : this.labels.sendYourRequest;
   }
 
   get reviewResourcesSubtitle() {

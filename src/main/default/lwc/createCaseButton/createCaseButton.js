@@ -95,7 +95,8 @@ export default class CreateCaseButton extends LightningElement {
         newCaseId
       );
       const customEvent = new CustomEvent('next', {
-        bubbles: true
+        bubbles: true,
+        composed: true
       });
       this.dispatchEvent(attributeChangeEvent);
       this.dispatchEvent(customEvent);

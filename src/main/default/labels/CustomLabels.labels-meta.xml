@@ -323,13 +323,6 @@
         >How would you classify the priority of your issue?</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_TypeLabel</fullName>
-    <value>What type of problem is it?</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>What type of problem is it?</shortDescription>
-  </labels>
-  <labels>
     <fullName>cookbook_OriginLabel</fullName>
     <value>What's the origin of your problem?</value>
     <language>en_US</language>

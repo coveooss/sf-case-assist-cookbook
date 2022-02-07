@@ -13,7 +13,6 @@ import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
-import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
 import origin from '@salesforce/label/c.cookbook_OriginLabel';
 import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 
@@ -24,7 +23,6 @@ export default class ProvideDetailsScreen extends LightningElement {
     next,
     previous,
     priority,
-    typeLabel,
     origin,
     provideDetailsTitle,
     provideDetailsSubtitle,
@@ -49,8 +47,6 @@ export default class ProvideDetailsScreen extends LightningElement {
   theCase;
   /** @type {string} */
   priority = '';
-  /** @type {string} */
-  type = '';
   /** @type {string} */
   origin = '';
 
@@ -103,12 +99,11 @@ export default class ProvideDetailsScreen extends LightningElement {
   }
 
   getCaseValues() {
-    const { priorityInput, typeInput, originInput } = this.getInputs();
+    const { priorityInput, originInput } = this.getInputs();
 
     this._caseData = {
       ...this._caseData,
       priority: priorityInput.value,
-      type: typeInput.value,
       origin: originInput.value
     };
   }
@@ -138,20 +133,16 @@ export default class ProvideDetailsScreen extends LightningElement {
     const priorityInput = this.template.querySelector(
       'c-quantic-case-classification[title="priority"]'
     );
-    const typeInput = this.template.querySelector(
-      'c-quantic-case-classification[title="type"]'
-    );
     const originInput = this.template.querySelector(
       'c-quantic-case-classification[title="origin"]'
     );
-    return { priorityInput, typeInput, originInput };
+    return { priorityInput, originInput };
   }
 
   extractDataFromSessionStorage() {
     if (sessionStorage.previousNavigation && sessionStorage.caseData) {
       const sessionStorageObject = JSON.parse(sessionStorage.caseData);
       this.priority = sessionStorageObject.priority;
-      this.type = sessionStorageObject.type;
       this.origin = sessionStorageObject.origin;
     }
   }

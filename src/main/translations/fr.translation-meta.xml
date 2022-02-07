@@ -179,10 +179,6 @@
     <name>cookbook_PriorityLabel</name>
   </customLabels>
   <customLabels>
-    <label>De quel type de problème s'agit-il?</label>
-    <name>cookbook_TypeLabel</name>
-  </customLabels>
-  <customLabels>
     <label>Quelle est l'origine de votre problème ?</label>
     <name>cookbook_OriginLabel</name>
   </customLabels>

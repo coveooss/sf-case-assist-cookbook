@@ -27,6 +27,7 @@
       <div class="slds-var-p-top_medium">
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
+            required
             initial-value={priority}
             title="priority"
             label={labels.priority}
@@ -40,18 +41,7 @@
         </div>
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
-            initial-value={type}
-            title="type"
-            label={labels.typeLabel}
-            coveo-field-name="sfreason"
-            max-suggestions="2"
-            sf-field-api-name="Reason"
-            engine-id={engineId}
-            select-placeholder={labels.moreOptions}
-          ></c-quantic-case-classification>
-        </div>
-        <div class="slds-var-m-top_xx-large">
-          <c-quantic-case-classification
+            required
             initial-value={origin}
             title="origin"
             label={labels.origin}
@@ -62,6 +52,18 @@
             select-placeholder={labels.moreOptions}
           ></c-quantic-case-classification>
         </div>
+        <!-- <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            initial-value={reason}
+            title="reason"
+            label={labels.reason}
+            coveo-field-name="sfreason"
+            max-suggestions="2"
+            sf-field-api-name="Reason"
+            engine-id={engineId}
+            select-placeholder={labels.moreOptions}
+          ></c-quantic-case-classification>
+        </div> -->
         <div
           class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
         >

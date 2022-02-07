@@ -31,11 +31,13 @@
           prevent-log-case-start-on-init
         >
           <c-subject-input
+            required
             engine-id={engineId}
             initial-value={subject}
           ></c-subject-input>
           <div class="slds-var-m-top_xx-large">
             <c-description-input
+              required
               initial-value={description}
               strong-description-length="5"
               display-strength-indicator

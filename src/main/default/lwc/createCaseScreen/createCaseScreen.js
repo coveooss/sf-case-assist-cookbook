@@ -14,7 +14,6 @@ import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
-import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
 import origin from '@salesforce/label/c.cookbook_OriginLabel';
 import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
@@ -35,7 +34,6 @@ export default class CreateCaseScreen extends LightningElement {
     describeProblemTitle,
     next,
     priority,
-    typeLabel,
     origin,
     provideDetailsTitle,
     provideDetailsSubtitle,
@@ -75,8 +73,6 @@ export default class CreateCaseScreen extends LightningElement {
   description = '';
   /** @type {string} */
   priority = '';
-  /** @type {string} */
-  type = '';
   /** @type {string} */
   origin = '';
   /** @type {ProgressStep[]} */
@@ -142,14 +138,12 @@ export default class CreateCaseScreen extends LightningElement {
       subjectInput,
       descriptionInput,
       priorityInput,
-      typeInput,
       originInput
     } = this.getInputs();
     this.theCase = {
       subject: subjectInput.value,
       description: descriptionInput.value,
       priority: priorityInput.value,
-      type: typeInput.value,
       origin: originInput.value
     };
   }
@@ -169,10 +163,12 @@ export default class CreateCaseScreen extends LightningElement {
       subjectInput,
       descriptionInput,
       priorityInput,
-      typeInput,
       originInput
     } = this.getInputs();
-    const inputs = [subjectInput, priorityInput, typeInput, originInput];
+    const inputs = [subjectInput, priorityInput, originInput];
+    inputs.forEach((input) => {
+      input.reportValidity();
+    });
     descriptionInput.validate();
     return (
       descriptionInput.validity &&
@@ -189,9 +185,6 @@ export default class CreateCaseScreen extends LightningElement {
     const priorityInput = this.template.querySelector(
       'c-quantic-case-classification[title="priority"]'
     );
-    const typeInput = this.template.querySelector(
-      'c-quantic-case-classification[title="type"]'
-    );
     const originInput = this.template.querySelector(
       'c-quantic-case-classification[title="origin"]'
     );
@@ -199,7 +192,6 @@ export default class CreateCaseScreen extends LightningElement {
       subjectInput,
       descriptionInput,
       priorityInput,
-      typeInput,
       originInput
     };
   }

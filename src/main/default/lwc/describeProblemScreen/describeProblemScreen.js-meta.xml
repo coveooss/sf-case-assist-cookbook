@@ -20,11 +20,6 @@
                 label="The ID of the engine instance the component registers to"
                 type="String"
             />
-          <property
-                name="caseAssistId"
-                label=" The Case Assist configuration ID."
-                type="String"
-            />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

@@ -25,27 +25,20 @@
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-quantic-case-assist-interface
+        <c-subject-input
+          required
           engine-id={engineId}
-          case-assist-id={caseAssistId}
-          prevent-fetch-classification-on-init
-          prevent-log-case-start-on-init
-        >
-          <c-subject-input
+          initial-value={subject}
+        ></c-subject-input>
+        <div class="slds-var-m-top_xx-large">
+          <c-description-input
             required
+            initial-value={description}
+            strong-description-length="5"
+            display-strength-indicator
             engine-id={engineId}
-            initial-value={subject}
-          ></c-subject-input>
-          <div class="slds-var-m-top_xx-large">
-            <c-description-input
-              required
-              initial-value={description}
-              strong-description-length="5"
-              display-strength-indicator
-              engine-id={engineId}
-            ></c-description-input>
-          </div>
-        </c-quantic-case-assist-interface>
+          ></c-description-input>
+        </div>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title

@@ -11,4 +11,18 @@
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__FlowScreen">
+      <property
+                name="engineId"
+                label="The ID of the engine instance the component registers to"
+                type="String"
+            />
+      <property
+                name="caseAssistId"
+                label=" The Case Assist configuration ID."
+                type="String"
+            />
+    </targetConfig>
+</targetConfigs>
 </LightningComponentBundle>

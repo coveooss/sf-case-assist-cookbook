@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { LightningElement, api } from 'lwc';
 import {
   FlowNavigationNextEvent,
@@ -43,6 +44,8 @@ export default class ProvideDetailsScreen extends LightningElement {
    */
   @api caseData;
 
+  /** @type {CaseAssistEngine} */
+  engine;
   /** @type{object} */
   theCase;
   /** @type {string} */
@@ -68,9 +71,10 @@ export default class ProvideDetailsScreen extends LightningElement {
    * @param {CaseAssistEngine} engine
    */
   initialize = (engine) => {
+    this.engine = engine;
     this.actions = {
-      // eslint-disable-next-line no-undef
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine)
+      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
+      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
     if (!sessionStorage.previousNavigation) {
       engine.dispatch(this.actions.fetchCaseClassifications());
@@ -87,6 +91,7 @@ export default class ProvideDetailsScreen extends LightningElement {
       this.dispatchEvent(navigateNextEvent);
       sessionStorage.previousNavigation = false;
       sessionStorage.caseData = this._caseData;
+      this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 

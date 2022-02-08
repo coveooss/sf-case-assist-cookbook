@@ -32,16 +32,13 @@ export default class DescribeProblemScreen extends LightningElement {
    */
   @api engineId;
   /**
-   * The Case Assist configuration ID.
-   * @type {string}
-   */
-  @api caseAssistId;
-  /**
    * A stringified object representing the current fields set on the case.
    * @type {string}
    */
   @api caseData;
 
+  /** @type {CaseAssistEngine} */
+  engine;
   /** @type {object} */
   theCase;
   /** @type {string} */
@@ -62,13 +59,11 @@ export default class DescribeProblemScreen extends LightningElement {
    * @param {CaseAssistEngine} engine
    */
   initialize = (engine) => {
+    this.engine = engine;
     this.actions = {
       // eslint-disable-next-line no-undef
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
-    if (!sessionStorage.previousNavigation) {
-      engine.dispatch(this.actions.logCaseStart());
-    }
   };
 
   handleNext() {
@@ -80,6 +75,7 @@ export default class DescribeProblemScreen extends LightningElement {
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
       sessionStorage.previousNavigation = false;
+      this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 
@@ -87,6 +83,7 @@ export default class DescribeProblemScreen extends LightningElement {
     if (this.availableActions.some((action) => action === 'BACK')) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
+      sessionStorage.previousNavigation = true;
     }
   }
 

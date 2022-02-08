@@ -53,13 +53,6 @@ export default class FinalScreen extends NavigationMixin(LightningElement) {
     );
   }
 
-  get options() {
-    return [
-      { label: 'Sales', value: 'option1' },
-      { label: 'Force', value: 'option2' }
-    ];
-  }
-
   handleSeeRequest() {
     this[NavigationMixin.Navigate](this.caseRecordPageRef);
   }

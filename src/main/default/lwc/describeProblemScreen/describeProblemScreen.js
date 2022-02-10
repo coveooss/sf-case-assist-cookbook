@@ -32,6 +32,11 @@ export default class DescribeProblemScreen extends LightningElement {
    */
   @api engineId;
   /**
+   * The Case Assist configuration ID.
+   * @type {string}
+   */
+  @api caseAssistId;
+  /**
    * A stringified object representing the current fields set on the case.
    * @type {string}
    */
@@ -64,6 +69,10 @@ export default class DescribeProblemScreen extends LightningElement {
       // eslint-disable-next-line no-undef
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
+
+    if (!sessionStorage.previousNavigation) {
+      engine.dispatch(this.actions.logCaseStart());
+    }
   };
 
   handleNext() {

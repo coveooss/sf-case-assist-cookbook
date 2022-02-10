@@ -4,9 +4,15 @@ import { incrementScore } from 'c/ratingUtils';
 /**
  * The `voteTrackerWrapper` component is responsible of displaying or not the content of the actions slot of a document suggestion.
  * @example
- * <c-vote-tracker-wrapper></c-vote-tracker-wrapper>
+ * <c-vote-tracker-wrapper engine-id={engineId}></c-vote-tracker-wrapper>
  */
 export default class VoteTrackerWrapper extends LightningElement {
+  /**
+   * The ID of the engine instance the component registers to.
+   * @type {string}
+   */
+  @api engineId;
+
   /** @type {visible}*/
   visible = false;
   /** @type {string} */

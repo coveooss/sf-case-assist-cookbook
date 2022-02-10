@@ -4,11 +4,16 @@ import { incrementScore } from 'c/ratingUtils';
 /**
  * The `quickviewFooterWrapper` component is responsible of displaying or not the content of a quickview footer of a document suggestion.
  * @example
- * <c-quickview-footer-wrapper slots-to-be-hidden={slotsToBeHidden}></c-quickview-footer-wrapper>
+ * <c-quickview-footer-wrapper engine-id={engineId} slots-to-be-hidden={slotsToBeHidden}></c-quickview-footer-wrapper>
  */
 export default class QuickviewFooterWrapper extends LightningElement {
   /**
-   * list of ods of the components to hide.
+   * The ID of the engine instance the component registers to.
+   * @type {string}
+   */
+  @api engineId;
+  /**
+   * list of ids of the components to hide.
    * @type {Array<string>}
    */
   @api slotsToBeHidden = [];

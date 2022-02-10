@@ -8,6 +8,7 @@ import theseResourcesMightHelp from '@salesforce/label/c.cookbook_TheseResources
 import resourcesSuggested from '@salesforce/label/c.cookbook_ResourcesSuggested';
 import stillNeedHelp from '@salesforce/label/c.cookbook_StillNeedHelp';
 import changedYourMind from '@salesforce/label/c.cookbook_ChangedYourMind';
+import solvedYourProblem from '@salesforce/label/c.cookbook_SolvedProblem';
 import sendYourRequest from '@salesforce/label/c.cookbook_SendYourRequest';
 import weHaveTheInformationWeNeed from '@salesforce/label/c.cookbook_WeHaveTheInformationWeNeed';
 
@@ -19,7 +20,8 @@ export default class reviewResourcesScreen extends LightningElement {
     stillNeedHelp,
     changedYourMind,
     weHaveTheInformationWeNeed,
-    sendYourRequest
+    sendYourRequest,
+    solvedYourProblem
   };
   /**
    * The ID of the engine instance the component registers to.
@@ -132,6 +134,12 @@ export default class reviewResourcesScreen extends LightningElement {
   }
 
   get abandonRequestLabel() {
-    return this.hasSuggestions ? 'Solved your problem?' : 'Changed your mind?';
+    return this.hasSuggestions
+      ? this.labels.solvedYourProblem
+      : this.labels.changedYourMind;
+  }
+
+  get abandonRequestClass() {
+    return this.hasSuggestions ? 'slds-var-m-right_small' : '';
   }
 }

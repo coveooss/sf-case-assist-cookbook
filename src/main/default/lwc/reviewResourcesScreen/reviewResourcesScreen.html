@@ -32,8 +32,12 @@
           prevent-fetch-on-init
         >
           <c-vote-count-wrapper slot="rating"></c-vote-count-wrapper>
-          <c-vote-tracker-wrapper slot="actions"></c-vote-tracker-wrapper>
+          <c-vote-tracker-wrapper
+            engine-id={engineId}
+            slot="actions"
+          ></c-vote-tracker-wrapper>
           <c-quickview-footer-wrapper
+            engine-id={engineId}
             slots-to-be-hidden={slotsToBeHidden}
             slot="quickview-footer"
           ></c-quickview-footer-wrapper>
@@ -51,7 +55,7 @@
       >
         <c-abandon-request-button
           engine-id={engineId}
-          class="slds-var-m-right_small"
+          class={abandonRequestClass}
           label={abandonRequestLabel}
         >
         </c-abandon-request-button>

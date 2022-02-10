@@ -9,5 +9,6 @@
 
 # Prettier does weird stuff to xml and SVGs...
 **/lwc/**/*.svg
+*.xml
 
 coverage/

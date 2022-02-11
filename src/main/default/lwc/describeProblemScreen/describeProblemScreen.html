@@ -6,7 +6,7 @@
           current-step="describe problem"
         ></c-flow-progress-indicator>
         <div class="slds-is-absolute navigation">
-          <button onclick={handleBack} class="slds-button">
+          <button onclick={handlePrevious} class="slds-button">
             <lightning-icon
               class="slds-button__icon_left previous-button-icon"
               size="x-small"
@@ -31,14 +31,16 @@
           prevent-log-case-start-on-init
         >
           <c-subject-input
+            prevent-fetch-classifications-on-change
             required
             engine-id={engineId}
-            initial-value={subject}
+            initial-value={sessionStorageCaseObject.subject}
           ></c-subject-input>
           <div class="slds-var-m-top_xx-large">
             <c-description-input
+              prevent-fetch-classifications-on-change
               required
-              initial-value={description}
+              initial-value={sessionStorageCaseObject.description}
               strong-description-length="5"
               display-strength-indicator
               engine-id={engineId}

@@ -50,9 +50,9 @@ export default class AbandonModal extends NavigationMixin(LightningElement) {
     }
   };
 
-  /** @type {boolean} */
   /** @type {CaseAssistEngine} */
   engine;
+  /** @type {boolean} */
   _isOpen = false;
 
   connectedCallback() {

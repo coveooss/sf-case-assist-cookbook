@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>52.0</apiVersion>
   <isExposed>true</isExposed>
@@ -11,20 +11,11 @@
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
-
   <targetConfigs>
     <targetConfig targets="lightning__FlowScreen">
       <property name="caseData" label="Data from the case" type="String" />
-      <property
-                name="recordId"
-                label="The record id of the new created case"
-                type="String"
-            />
-      <property
-                name="engineId"
-                label="The ID of the engine instance the component registers to"
-                type="String"
-            />
+      <property name="recordId" label="The record ID of the newly created case" type="String" />
+      <property name="engineId" label="The ID of the engine instance the component registers to" type="String" />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

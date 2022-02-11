@@ -67,6 +67,6 @@ export default class VoteCount extends LightningElement {
   }
 
   get displayCount() {
-    return !isNaN(Number(this.count)) && Number(this.count) >= 0;
+    return Number(this.count) >= 0;
   }
 }

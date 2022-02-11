@@ -31,11 +31,11 @@ export default class CreateCaseButton extends LightningElement {
 
   /**
    * The ID of the engine instance the component registers to.
-   * @api
    * @type {string}
    */
   @api engineId;
   /**
+   * A JSON-serialized object representing the current case fields.
    * @type {CaseData}
    */
   @api caseData;
@@ -57,6 +57,8 @@ export default class CreateCaseButton extends LightningElement {
 
   /** @type {CaseAssistEngine} */
   engine;
+  /** @type {boolean} */
+  loading;
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -87,6 +89,7 @@ export default class CreateCaseButton extends LightningElement {
   }
 
   async handleCreateCase() {
+    this.loading = true;
     const newCaseId = await newCase(this.caseData);
     if (newCaseId) {
       this.engine.dispatch(this.actions.logCreateCase(newCaseId));
@@ -101,5 +104,6 @@ export default class CreateCaseButton extends LightningElement {
       this.dispatchEvent(attributeChangeEvent);
       this.dispatchEvent(customEvent);
     }
+    this.loading = false;
   }
 }

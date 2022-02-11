@@ -48,6 +48,7 @@ export default class DescriptionInput extends LightningElement {
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
    * This is the delay before sending a query and analytics events on user typing, this value is in milliseconds.
+   * @type {number}
    * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
@@ -75,7 +76,7 @@ export default class DescriptionInput extends LightningElement {
   ];
   /**
    * The necessary number of words that the description must have in order to be considered strong.
-   * @type {Number}
+   * @type {number}
    * @defaultValue `20`
    */
   @api strongDescriptionLength = 20;
@@ -83,6 +84,16 @@ export default class DescriptionInput extends LightningElement {
    * @type {string}
    */
   @api initialValue;
+  /**
+   * Wheather we want to prevent fetching classifications when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchClassificationsOnChange = false;
+  /**
+   * Wheather we want to prevent fetching suggestions when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchSuggestionsOnChange = false;
 
   /** @type {string} */
   _value = '';
@@ -120,16 +131,9 @@ export default class DescriptionInput extends LightningElement {
       }
     });
 
-    this.actions = {
-      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
-      ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
-    };
-
     if (this.initialValue) {
       this._value = this.initialValue;
-      this.updateDescriptionState();
+      this.input.update(this.replaceTagsWithSpace(this._value));
     }
   };
 
@@ -172,15 +176,10 @@ export default class DescriptionInput extends LightningElement {
    * @returns {void}
    */
   updateDescriptionState() {
-    this.engine.dispatch(
-      this.actions.updateCaseInput({
-        fieldName: this._fieldName,
-        fieldValue: this.replaceTagsWithSpace(this._value)
-      })
-    );
-    this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
-    this.engine.dispatch(this.actions.fetchCaseClassifications());
-    this.engine.dispatch(this.actions.fetchDocumentSuggestions());
+    this.input.update(this.replaceTagsWithSpace(this._value), {
+      caseClassifications: !this.preventFetchClassificationsOnChange,
+      documentSuggestions: !this.preventFetchSuggestionsOnChange
+    });
   }
 
   get currentProgress() {

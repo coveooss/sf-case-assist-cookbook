@@ -1,103 +1,125 @@
 <template>
   <div class="slds-var-p-vertical_xx-large container">
     <div class="content">
-      <div class="slds-is-relative screen-header">
-        <c-flow-progress-indicator
-          steps={customSteps}
-          current-step="describe problem"
-        ></c-flow-progress-indicator>
-        <div class="slds-is-absolute navigation">
-          <button onclick={handleBack} class="slds-button">
-            <lightning-icon
-              class="slds-button__icon_left previous-button-icon"
-              size="x-small"
-              icon-name="utility:chevronleft"
-              alternative-text={labels.previous}
-            ></lightning-icon>
-            {labels.previous}
-          </button>
+      <c-quantic-case-assist-interface
+        engine-id={engineId}
+        case-assist-id={caseAssistId}
+        prevent-fetch-classification-on-init
+        prevent-log-case-start-on-init
+      >
+        <div class="slds-is-relative screen-header">
+          <c-flow-progress-indicator
+            steps={customSteps}
+            current-step="describe problem"
+          ></c-flow-progress-indicator>
+          <div class="slds-is-absolute navigation">
+            <button onclick={handlePrevious} class="slds-button">
+              <lightning-icon
+                class="slds-button__icon_left previous-button-icon"
+                size="x-small"
+                icon-name="utility:chevronleft"
+                alternative-text={labels.previous}
+              ></lightning-icon>
+              {labels.previous}
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-main-title
-          align-center
-          title={labels.describeProblemTitle}
-        ></c-main-title>
-      </div>
-      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-subject-input
-          required
-          engine-id={engineId}
-          initial-value={subject}
-        ></c-subject-input>
-        <div class="slds-var-m-top_xx-large">
-          <c-description-input
-            required
-            initial-value={description}
-            strong-description-length="5"
-            display-strength-indicator
-            engine-id={engineId}
-          ></c-description-input>
+        <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+          <c-main-title
+            align-center
+            title={labels.describeProblemTitle}
+          ></c-main-title>
         </div>
-      </div>
-      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-main-title
-          align-center
-          title={labels.provideDetailsTitle}
-          subtitle={labels.provideDetailsSubtitle}
-        ></c-main-title>
-      </div>
-      <div class="slds-var-p-top_medium">
-        <div class="slds-var-m-top_xx-large">
-          <c-quantic-case-classification
+        <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+          <c-subject-input
             required
-            initial-value={priority}
-            title="priority"
-            label={labels.priority}
-            coveo-field-name="sfpriority"
-            max-suggestions="2"
-            sf-field-api-name="Priority"
             engine-id={engineId}
-            select-placeholder={labels.moreOptions}
+            initial-value={sessionStorageCaseObject.subject}
+          ></c-subject-input>
+          <div class="slds-var-m-top_xx-large">
+            <c-description-input
+              required
+              initial-value={sessionStorageCaseObject.description}
+              strong-description-length="5"
+              display-strength-indicator
+              engine-id={engineId}
+            ></c-description-input>
+          </div>
+        </div>
+        <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+          <c-main-title
+            align-center
+            title={labels.provideDetailsTitle}
+            subtitle={labels.provideDetailsSubtitle}
+          ></c-main-title>
+        </div>
+        <div class="slds-var-p-top_medium">
+          <div class="slds-var-m-top_xx-large">
+            <c-quantic-case-classification
+              required
+              initial-value={sessionStorageCaseObject.priority}
+              title="priority"
+              label={labels.priority}
+              coveo-field-name="sfpriority"
+              max-suggestions="3"
+              sf-field-api-name="Priority"
+              engine-id={engineId}
+              select-placeholder={labels.moreOptions}
+            >
+            </c-quantic-case-classification>
+          </div>
+          <div class="slds-var-m-top_xx-large">
+            <c-quantic-case-classification
+              required
+              initial-value={sessionStorageCaseObject.reason}
+              title="reason"
+              label={labels.reason}
+              coveo-field-name="sfreason"
+              max-suggestions="3"
+              sf-field-api-name="Reason"
+              engine-id={engineId}
+              select-placeholder={labels.moreOptions}
+            ></c-quantic-case-classification>
+          </div>
+          <div class="slds-var-m-top_xx-large">
+            <c-quantic-case-classification
+              required
+              initial-value={sessionStorageCaseObject.type}
+              title="type"
+              label={labels.typeLabel}
+              coveo-field-name="sftype"
+              max-suggestions="3"
+              sf-field-api-name="Type"
+              engine-id={engineId}
+              select-placeholder={labels.moreOptions}
+            ></c-quantic-case-classification>
+          </div>
+
+          <!--This sample component lets you specify a new field for classification. Copy it every time you want to add a new field for classification.
+          Replace <SALESFORCE_API_FIELD_NAME> with the Salesforce API name of the field to predict and 
+          <COVEO_FIELD_NAME> with the Coveo name of the field to predict. -->
+
+          <!-- <div class="slds-var-m-top_xx-large">
+            <c-quantic-case-classification
+              title="my new field"
+              label="label for my new field"
+              coveo-field-name=<COVEO_FIELD_NAME>
+              sf-field-api-name=<SALESFORCE_API_FIELD_NAME>
+              engine-id={engineId}
+            ></c-quantic-case-classification>
+          </div> -->
+          <div
+            class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
           >
-          </c-quantic-case-classification>
+            <button
+              onclick={handleNext}
+              class="slds-button slds-button_brand large-button"
+            >
+              {labels.next}
+            </button>
+          </div>
         </div>
-        <div class="slds-var-m-top_xx-large">
-          <c-quantic-case-classification
-            required
-            initial-value={origin}
-            title="origin"
-            label={labels.origin}
-            coveo-field-name="sforigin"
-            max-suggestions="2"
-            sf-field-api-name="Origin"
-            engine-id={engineId}
-            select-placeholder={labels.moreOptions}
-          ></c-quantic-case-classification>
-        </div>
-        <!-- <div class="slds-var-m-top_xx-large">
-          <c-quantic-case-classification
-            initial-value={reason}
-            title="reason"
-            label={labels.reason}
-            coveo-field-name="sfreason"
-            max-suggestions="2"
-            sf-field-api-name="Reason"
-            engine-id={engineId}
-            select-placeholder={labels.moreOptions}
-          ></c-quantic-case-classification>
-        </div> -->
-        <div
-          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
-        >
-          <button
-            onclick={handleNext}
-            class="slds-button slds-button_brand large-button"
-          >
-            {labels.next}
-          </button>
-        </div>
-      </div>
+      </c-quantic-case-assist-interface>
     </div>
   </div>
 </template>

@@ -34,7 +34,7 @@ export default class reviewResourcesScreen extends LightningElement {
    */
   @api availableActions = [];
   /**
-   * A stringified object representing the current fields set on the case.
+   * A JSON-serialized object representing the current case fields.
    * @type {string}
    */
   @api caseData;
@@ -48,6 +48,8 @@ export default class reviewResourcesScreen extends LightningElement {
   slotsToBeHidden = [];
   /** @type {boolean} */
   hasSuggestions = true;
+  /** @type{object} */
+  _caseData;
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
@@ -61,16 +63,23 @@ export default class reviewResourcesScreen extends LightningElement {
     }
   }
 
+  canMoveNext() {
+    return this.availableActions.some((action) => action === 'NEXT');
+  }
+
+  canMovePrevious() {
+    return this.availableActions.some((action) => action === 'BACK');
+  }
+
   handleNext = () => {
-    if (this.availableActions.some((action) => action === 'NEXT')) {
+    if (this.canMoveNext()) {
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
     }
   };
 
-  handleBack() {
-    if (this.availableActions.some((action) => action === 'BACK')) {
-      sessionStorage.previousNavigation = true;
+  handlePrevious() {
+    if (this.canMovePrevious()) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
     }

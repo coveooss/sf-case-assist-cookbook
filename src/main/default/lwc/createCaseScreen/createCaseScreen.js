@@ -14,7 +14,8 @@ import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
-import origin from '@salesforce/label/c.cookbook_OriginLabel';
+import reason from '@salesforce/label/c.cookbook_ReasonLabel';
+import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
 import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
 import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
@@ -34,7 +35,8 @@ export default class CreateCaseScreen extends LightningElement {
     describeProblemTitle,
     next,
     priority,
-    origin,
+    reason,
+    typeLabel,
     provideDetailsTitle,
     provideDetailsSubtitle,
     moreOptions,
@@ -55,23 +57,22 @@ export default class CreateCaseScreen extends LightningElement {
    */
   @api engineId;
   /**
-   * A stringified object representing the current fields set on the case.
+   * The Case Assist configuration ID.
+   * @type {string}
+   */
+  @api caseAssistId;
+  /**
+   * A JSON-serialized object representing the current case fields.
    * @type {string}
    */
   @api caseData;
 
   /** @type {CaseAssistEngine} */
   engine;
+  /** @type{object} */
+  _caseData;
   /** @type {object} */
-  theCase;
-  /** @type {string} */
-  subject = '';
-  /** @type {string} */
-  description = '';
-  /** @type {string} */
-  priority = '';
-  /** @type {string} */
-  origin = '';
+  sessionStorageCaseObject = {};
   /** @type {ProgressStep[]} */
   customSteps = [
     {
@@ -90,7 +91,12 @@ export default class CreateCaseScreen extends LightningElement {
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.extractDataFromSessionStorage();
+    try {
+      this._caseData = JSON.parse(this.caseData);
+      this.extractDataFromSessionStorage();
+    } catch (err) {
+      this._caseData = {};
+    }
   }
 
   renderedCallback() {
@@ -106,52 +112,63 @@ export default class CreateCaseScreen extends LightningElement {
       // eslint-disable-next-line no-undef
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
+    if (!sessionStorage.caseData) {
+      engine.dispatch(this.actions.logCaseStart());
+    }
   };
 
-  handleNext() {
-    if (
+  canMoveNext() {
+    return (
       this.availableActions.some((action) => action === 'NEXT') &&
       this.inputValidity()
-    ) {
+    );
+  }
+
+  canMovePrevious() {
+    return this.availableActions.some((action) => action === 'BACK');
+  }
+
+  handleNext() {
+    if (this.canMoveNext()) {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      sessionStorage.previousNavigation = false;
-      sessionStorage.caseData = this._caseData;
       this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 
-  handleBack() {
-    if (this.availableActions.some((action) => action === 'BACK')) {
+  handlePrevious() {
+    if (this.canMovePrevious()) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
     }
   }
 
-  getCaseValues() {
+  updateCaseValues() {
     const {
       subjectInput,
       descriptionInput,
       priorityInput,
-      originInput
+      typeInput,
+      reasonInput
     } = this.getInputs();
-    this.theCase = {
+    this._caseData = {
       subject: subjectInput.value,
       description: descriptionInput.value,
       priority: priorityInput.value,
-      origin: originInput.value
+      type: typeInput.value,
+      reason: reasonInput.value
     };
   }
 
   updateFlowState() {
-    this.getCaseValues();
-    this._caseData = JSON.stringify(this.theCase);
+    this.updateCaseValues();
     const attributeChangeEvent = new FlowAttributeChangeEvent(
       'caseData',
-      this._caseData
+      JSON.stringify(this._caseData)
     );
     this.dispatchEvent(attributeChangeEvent);
+    sessionStorage.caseData = JSON.stringify(this._caseData);
   }
 
   inputValidity() {
@@ -159,9 +176,10 @@ export default class CreateCaseScreen extends LightningElement {
       subjectInput,
       descriptionInput,
       priorityInput,
-      originInput
+      typeInput,
+      reasonInput
     } = this.getInputs();
-    const inputs = [subjectInput, priorityInput, originInput];
+    const inputs = [subjectInput, priorityInput, typeInput, reasonInput];
     inputs.forEach((input) => {
       input.reportValidity();
     });
@@ -181,22 +199,28 @@ export default class CreateCaseScreen extends LightningElement {
     const priorityInput = this.template.querySelector(
       'c-quantic-case-classification[title="priority"]'
     );
-    const originInput = this.template.querySelector(
-      'c-quantic-case-classification[title="origin"]'
+    const reasonInput = this.template.querySelector(
+      'c-quantic-case-classification[title="reason"]'
+    );
+    const typeInput = this.template.querySelector(
+      'c-quantic-case-classification[title="type"]'
     );
     return {
       subjectInput,
       descriptionInput,
       priorityInput,
-      originInput
+      reasonInput,
+      typeInput
     };
   }
 
   extractDataFromSessionStorage() {
-    if (sessionStorage.previousNavigation && sessionStorage.caseData) {
-      const sessionStorageObject = JSON.parse(sessionStorage.caseData);
-      this.subject = sessionStorageObject.subject;
-      this.description = sessionStorageObject.description;
+    if (sessionStorage.caseData) {
+      try {
+        this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
+      } catch (err) {
+        this.sessionStorageCaseObject = {};
+      }
     }
   }
 }

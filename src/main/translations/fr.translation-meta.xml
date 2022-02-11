@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
   <customLabels>
     <label>Titre de la section</label>
@@ -149,8 +149,7 @@
     <name>cookbook_LoginTitle</name>
   </customLabels>
   <customLabels>
-    <label
-        >Nous serons en mesure de vous proposer de meilleures solutions sur la base des informations relatives à votre compte.</label>
+    <label>Nous serons en mesure de vous proposer de meilleures solutions sur la base des informations relatives à votre compte.</label>
     <name>cookbook_LoginSubtitle</name>
   </customLabels>
   <customLabels>
@@ -170,8 +169,7 @@
     <name>cookbook_ProvideDetailsTitle</name>
   </customLabels>
   <customLabels>
-    <label
-        >Détailler votre problème pour trouver l'agent le plus apte à vous aider</label>
+    <label>Détailler votre problème pour trouver l'agent le plus apte à vous aider</label>
     <name>cookbook_ProvideDetailsSubtitle</name>
   </customLabels>
   <customLabels>
@@ -179,8 +177,12 @@
     <name>cookbook_PriorityLabel</name>
   </customLabels>
   <customLabels>
-    <label>Quelle est l'origine de votre problème ?</label>
-    <name>cookbook_OriginLabel</name>
+    <label>De quel type de problème s'agit-il?</label>
+    <name>cookbook_TypeLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Quelle est la raison derrière l'ouverture de cette demande?</label>
+    <name>cookbook_ReasonLabel</name>
   </customLabels>
   <customLabels>
     <label>Plus d'options</label>
@@ -191,8 +193,7 @@
     <name>cookbook_TheseResourcesMightHelp</name>
   </customLabels>
   <customLabels>
-    <label
-        >Ressources suggérées en fonction de la description de votre problème</label>
+    <label>Ressources suggérées en fonction de la description de votre problème</label>
     <name>cookbook_ResourcesSuggested</name>
   </customLabels>
   <customLabels>
@@ -248,8 +249,7 @@
     <name>cookbook_SeeYourRequest</name>
   </customLabels>
   <customLabels>
-    <label
-        >Pardonnez-nous pour le retard pendant que nous aidons tout le monde dans l'ordre.</label>
+    <label>Pardonnez-nous pour le retard pendant que nous aidons tout le monde dans l'ordre.</label>
     <name>cookbook_ForgiveUsForTheDelay</name>
   </customLabels>
 </Translations>

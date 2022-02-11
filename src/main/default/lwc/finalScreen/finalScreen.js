@@ -22,6 +22,11 @@ export default class FinalScreen extends NavigationMixin(LightningElement) {
     agentWillBeInTouch,
     requestSuccessfullySaved
   };
+
+  /**
+   * The record ID of the newly created case.
+   * @type {string}
+   */
   @api recordId;
   /**
    * caseData is the variable that will be accessible as an output variable to the Flow.

@@ -37,7 +37,7 @@ export default class DescribeProblemScreen extends LightningElement {
    */
   @api caseAssistId;
   /**
-   * A stringified object representing the current fields set on the case.
+   * A JSON-serialized object representing the current case fields.
    * @type {string}
    */
   @api caseData;
@@ -45,15 +45,19 @@ export default class DescribeProblemScreen extends LightningElement {
   /** @type {CaseAssistEngine} */
   engine;
   /** @type {object} */
-  theCase;
-  /** @type {string} */
-  subject = '';
-  /** @type {string} */
-  description = '';
+  _caseData;
+  /** @type {object} */
+  sessionStorageCaseObject = {};
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.extractDataFromSessionStorage();
+    sessionStorage.valuesUpdated = false;
+    try {
+      this._caseData = JSON.parse(this.caseData);
+      this.extractDataFromSessionStorage();
+    } catch (err) {
+      this._caseData = {};
+    }
   }
 
   renderedCallback() {
@@ -70,49 +74,61 @@ export default class DescribeProblemScreen extends LightningElement {
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
 
-    if (!sessionStorage.previousNavigation) {
+    if (!sessionStorage.caseData) {
       engine.dispatch(this.actions.logCaseStart());
     }
   };
 
-  handleNext() {
-    if (
+  canMoveNext() {
+    return (
       this.availableActions.some((action) => action === 'NEXT') &&
       this.inputValidity()
-    ) {
+    );
+  }
+
+  canMovePrevious() {
+    return this.availableActions.some((action) => action === 'BACK');
+  }
+
+  handleNext() {
+    if (this.canMoveNext()) {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      sessionStorage.previousNavigation = false;
       this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 
-  handleBack() {
-    if (this.availableActions.some((action) => action === 'BACK')) {
+  handlePrevious() {
+    if (this.canMovePrevious()) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
-      sessionStorage.previousNavigation = true;
     }
   }
 
-  getCaseValues() {
-    const { subjectInput, descriptionInput } = this.getInputs();
-    this.theCase = {
-      subject: subjectInput.value,
-      description: descriptionInput.value
-    };
-  }
-
   updateFlowState() {
-    this.getCaseValues();
-    this._caseData = JSON.stringify(this.theCase);
+    this.updateCaseValues();
     const attributeChangeEvent = new FlowAttributeChangeEvent(
       'caseData',
-      this._caseData
+      JSON.stringify(this._caseData)
     );
     this.dispatchEvent(attributeChangeEvent);
-    sessionStorage.caseData = this._caseData;
+  }
+
+  updateCaseValues() {
+    const { subjectInput, descriptionInput } = this.getInputs();
+    if (
+      this._caseData.subject !== subjectInput.value ||
+      this._caseData.description !== descriptionInput.value
+    ) {
+      this._caseData = {
+        ...this.sessionStorageCaseObject,
+        subject: subjectInput.value,
+        description: descriptionInput.value
+      };
+      sessionStorage.caseData = JSON.stringify(this._caseData);
+      sessionStorage.valuesUpdated = true;
+    }
   }
 
   inputValidity() {
@@ -129,10 +145,12 @@ export default class DescribeProblemScreen extends LightningElement {
   }
 
   extractDataFromSessionStorage() {
-    if (sessionStorage.previousNavigation && sessionStorage.caseData) {
-      const sessionStorageObject = JSON.parse(sessionStorage.caseData);
-      this.subject = sessionStorageObject.subject;
-      this.description = sessionStorageObject.description;
+    if (sessionStorage.caseData) {
+      try {
+        this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
+      } catch (err) {
+        this.sessionStorageCaseObject = {};
+      }
     }
   }
 }

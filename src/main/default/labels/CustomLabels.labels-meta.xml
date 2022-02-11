@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
   <labels>
     <fullName>cookbook_ProvideDetails</fullName>
@@ -33,16 +33,14 @@
     <value>Since when is this problem affecting you?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Since when is this problem affecting you?</shortDescription>
+    <shortDescription>Since when is this problem affecting you?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_DescriptionHintTwo</fullName>
     <value>Is it the first time it is affecting you?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Is it the first time it is affecting you?</shortDescription>
+    <shortDescription>Is it the first time it is affecting you?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_DescriptionHintThree</fullName>
@@ -217,8 +215,7 @@
     <value>Are you sure you want to abandon your request?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Are you sure you want to abandon your request?</shortDescription>
+    <shortDescription>Are you sure you want to abandon your request?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Confirm</fullName>
@@ -271,12 +268,10 @@
   </labels>
   <labels>
     <fullName>cookbook_LoginSubtitle</fullName>
-    <value
-        >We will be able to propose better solutions based on your account information</value>
+    <value>We will be able to propose better solutions based on your account information</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >We will be able to propose better solutions based on your account information</shortDescription>
+    <shortDescription>We will be able to propose better solutions based on your account information</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Previous</fullName>
@@ -311,23 +306,28 @@
     <value>Detail your problem to find the agent best suited to help you</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Detail your problem to find the agent best suited to help you</shortDescription>
+    <shortDescription>Detail your problem to find the agent best suited to help you</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_PriorityLabel</fullName>
     <value>How would you classify the priority of your issue?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >How would you classify the priority of your issue?</shortDescription>
+    <shortDescription>How would you classify the priority of your issue?</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_OriginLabel</fullName>
-    <value>What's the origin of your problem?</value>
+    <fullName>cookbook_TypeLabel</fullName>
+    <value>What type of problem is it?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>What's the origin of your problem?</shortDescription>
+    <shortDescription>What type of problem is it?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ReasonLabel</fullName>
+    <value>What's the reason behind opening this case?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What's the reason behind opening this case?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_MoreOptions</fullName>
@@ -348,8 +348,7 @@
     <value>Resources suggested based on your problem description</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Resources suggested based on your problem description</shortDescription>
+    <shortDescription>Resources suggested based on your problem description</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_SolvedProblem</fullName>
@@ -377,9 +376,8 @@
     <value>Thank you, we have the information we need</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Thank you, we have the information we need.</shortDescription>
-  </labels>  
+    <shortDescription>Thank you, we have the information we need.</shortDescription>
+  </labels>
   <labels>
     <fullName>cookbook_SendYourRequest</fullName>
     <value>Send your request</value>
@@ -406,8 +404,7 @@
     <value>An agent will be in touch in the next 24h</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >An agent will be in touch in the next 24h</shortDescription>
+    <shortDescription>An agent will be in touch in the next 24h</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Via</fullName>
@@ -449,7 +446,6 @@
     <value>Forgive us for the delay while we help everyone in order.</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription
-        >Forgive us for the delay while we help everyone in order.</shortDescription>
+    <shortDescription>Forgive us for the delay while we help everyone in order.</shortDescription>
   </labels>
 </CustomLabels>

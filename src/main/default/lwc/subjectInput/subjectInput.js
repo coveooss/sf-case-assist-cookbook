@@ -62,6 +62,16 @@ export default class SubjectInput extends LightningElement {
    * @type {string}
    */
   @api initialValue;
+  /**
+   * Wheather we want to prevent fetching classifications when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchClassificationsOnChange = false;
+  /**
+   * Wheather we want to prevent fetching suggestions when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchSuggestionsOnChange = false;
 
   /** @type {string} */
   _value = '';
@@ -99,16 +109,9 @@ export default class SubjectInput extends LightningElement {
       }
     });
 
-    this.actions = {
-      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
-      ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
-    };
-
     if (this.initialValue) {
       this._value = this.initialValue.substring(0, this.maxLength);
-      this.updateSubjectState();
+      this.input.update(this._value);
     }
   };
 
@@ -123,15 +126,10 @@ export default class SubjectInput extends LightningElement {
   };
 
   updateSubjectState() {
-    this.engine.dispatch(
-      this.actions.updateCaseInput({
-        fieldName: this._fieldName,
-        fieldValue: this._value
-      })
-    );
-    this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
-    this.engine.dispatch(this.actions.fetchCaseClassifications());
-    this.engine.dispatch(this.actions.fetchDocumentSuggestions());
+    this.input.update(this._value, {
+      caseClassifications: !this.preventFetchClassificationsOnChange,
+      documentSuggestions: !this.preventFetchSuggestionsOnChange
+    });
   }
 
   /**

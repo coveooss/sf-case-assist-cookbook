@@ -14,8 +14,8 @@ const DOCUMENT_ID_FIELD = 'Document_id__c';
 export async function incrementScore(id) {
   try {
     const response = await getRating({ documentId: id });
-    if (response?.length) {
-      this.object = response[0];
+    if (response) {
+      this.object = response;
       this.object[SCORE_FIELD]++;
       await updateRecord({ fields: { ...this.object } });
     }
@@ -33,7 +33,7 @@ export async function incrementScore(id) {
 export async function getScore(id) {
   try {
     const response = await getRating({ documentId: id });
-    if (!response || !response.length) {
+    if (!response) {
       const fields = {
         [SCORE_FIELD]: 0,
         [DOCUMENT_ID_FIELD]: id
@@ -43,7 +43,7 @@ export async function getScore(id) {
 
       return 0;
     }
-    return response[0]?.[SCORE_FIELD];
+    return response?.[SCORE_FIELD];
   } catch (err) {
     throw err;
   }

@@ -14,7 +14,8 @@ import previous from '@salesforce/label/c.cookbook_Previous';
 import provideDetailsTitle from '@salesforce/label/c.cookbook_ProvideDetailsTitle';
 import provideDetailsSubtitle from '@salesforce/label/c.cookbook_ProvideDetailsSubtitle';
 import priority from '@salesforce/label/c.cookbook_PriorityLabel';
-import origin from '@salesforce/label/c.cookbook_OriginLabel';
+import reason from '@salesforce/label/c.cookbook_ReasonLabel';
+import typeLabel from '@salesforce/label/c.cookbook_TypeLabel';
 import moreOptions from '@salesforce/label/c.cookbook_MoreOptions';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
@@ -24,7 +25,8 @@ export default class ProvideDetailsScreen extends LightningElement {
     next,
     previous,
     priority,
-    origin,
+    reason,
+    typeLabel,
     provideDetailsTitle,
     provideDetailsSubtitle,
     moreOptions
@@ -40,18 +42,16 @@ export default class ProvideDetailsScreen extends LightningElement {
    */
   @api engineId;
   /**
-   * A stringified object representing the current fields set on the case.
+   * A JSON-serialized object representing the current case fields.
    */
   @api caseData;
 
   /** @type {CaseAssistEngine} */
   engine;
   /** @type{object} */
-  theCase;
-  /** @type {string} */
-  priority = '';
-  /** @type {string} */
-  origin = '';
+  _caseData;
+  /** @type {object} */
+  sessionStorageCaseObject = {};
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -76,51 +76,60 @@ export default class ProvideDetailsScreen extends LightningElement {
       ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
-    if (!sessionStorage.previousNavigation) {
+
+    if (sessionStorage.valuesUpdated) {
       engine.dispatch(this.actions.fetchCaseClassifications());
+      sessionStorage.valuesUpdated = false;
     }
   };
 
-  handleNext() {
-    if (
+  canMoveNext() {
+    return (
       this.availableActions.some((action) => action === 'NEXT') &&
       this.inputValidity()
-    ) {
+    );
+  }
+
+  canMovePrevious() {
+    return this.availableActions.some((action) => action === 'BACK');
+  }
+
+  handleNext() {
+    if (this.canMoveNext()) {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      sessionStorage.previousNavigation = false;
-      sessionStorage.caseData = this._caseData;
       this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 
-  handleBack() {
-    if (this.availableActions.some((action) => action === 'BACK')) {
+  handlePrevious() {
+    if (this.canMovePrevious()) {
+      this.updateFlowState();
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
-      sessionStorage.previousNavigation = true;
     }
   }
 
-  getCaseValues() {
-    const { priorityInput, originInput } = this.getInputs();
+  updateFlowState() {
+    this.updateCaseValues();
+    const attributeChangeEvent = new FlowAttributeChangeEvent(
+      'caseData',
+      JSON.stringify(this._caseData)
+    );
+    this.dispatchEvent(attributeChangeEvent);
+    sessionStorage.caseData = JSON.stringify(this._caseData);
+  }
+
+  updateCaseValues() {
+    const { priorityInput, reasonInput, typeInput } = this.getInputs();
 
     this._caseData = {
       ...this._caseData,
       priority: priorityInput.value,
-      origin: originInput.value
+      reason: reasonInput.value,
+      type: typeInput.value
     };
-  }
-
-  updateFlowState() {
-    this.getCaseValues();
-    this._caseData = JSON.stringify(this._caseData);
-    const attributeChangeEvent = new FlowAttributeChangeEvent(
-      'caseData',
-      this._caseData
-    );
-    this.dispatchEvent(attributeChangeEvent);
   }
 
   inputValidity() {
@@ -138,17 +147,22 @@ export default class ProvideDetailsScreen extends LightningElement {
     const priorityInput = this.template.querySelector(
       'c-quantic-case-classification[title="priority"]'
     );
-    const originInput = this.template.querySelector(
-      'c-quantic-case-classification[title="origin"]'
+    const reasonInput = this.template.querySelector(
+      'c-quantic-case-classification[title="reason"]'
     );
-    return { priorityInput, originInput };
+    const typeInput = this.template.querySelector(
+      'c-quantic-case-classification[title="type"]'
+    );
+    return { priorityInput, reasonInput, typeInput };
   }
 
   extractDataFromSessionStorage() {
-    if (sessionStorage.previousNavigation && sessionStorage.caseData) {
-      const sessionStorageObject = JSON.parse(sessionStorage.caseData);
-      this.priority = sessionStorageObject.priority;
-      this.origin = sessionStorageObject.origin;
+    if (!sessionStorage.valuesUpdated && sessionStorage.caseData) {
+      try {
+        this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
+      } catch (err) {
+        this.sessionStorageCaseObject = {};
+      }
     }
   }
 }

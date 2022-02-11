@@ -11,7 +11,6 @@
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
-
   <targetConfigs>
     <targetConfig targets="lightning__FlowScreen">
       <property name="caseData" label="Data from the case" type="String" />

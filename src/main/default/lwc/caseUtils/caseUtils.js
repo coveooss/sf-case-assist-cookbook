@@ -7,7 +7,7 @@ export async function createCase(caseData) {
     const fields = {
       Subject: caseData.subject,
       Description: caseData.description,
-      Origin: caseData.origin,
+      Reason: caseData.reason,
       Priority: caseData.priority,
       Type: caseData.type
     };

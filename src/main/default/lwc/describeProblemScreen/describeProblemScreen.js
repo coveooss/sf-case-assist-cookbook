@@ -53,9 +53,12 @@ export default class DescribeProblemScreen extends LightningElement {
     registerComponentForInit(this, this.engineId);
     sessionStorage.valuesUpdated = false;
     try {
-      this._caseData = JSON.parse(this.caseData);
+      if (this.caseData) {
+        this._caseData = JSON.parse(this.caseData);
+      }
       this.extractDataFromSessionStorage();
     } catch (err) {
+      console.warn('Failed to parse the flow variable caseData');
       this._caseData = {};
     }
   }
@@ -149,6 +152,7 @@ export default class DescribeProblemScreen extends LightningElement {
       try {
         this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
       } catch (err) {
+        console.warn('Failed to parse the case object');
         this.sessionStorageCaseObject = {};
       }
     }

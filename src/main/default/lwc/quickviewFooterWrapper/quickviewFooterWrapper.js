@@ -29,7 +29,7 @@ export default class QuickviewFooterWrapper extends LightningElement {
 
   onRatingClick = async (evt) => {
     if (evt.detail === 'positive') {
-      await incrementScore(this._id);
+      incrementScore(this._id);
     }
     this.dispatchEvent(
       new CustomEvent('rating', {

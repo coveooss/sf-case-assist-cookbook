@@ -89,21 +89,26 @@ export default class CreateCaseButton extends LightningElement {
   }
 
   async handleCreateCase() {
-    this.loading = true;
-    const newCaseId = await newCase(this.caseData);
-    if (newCaseId) {
-      this.engine.dispatch(this.actions.logCreateCase(newCaseId));
-      const attributeChangeEvent = new FlowAttributeChangeEvent(
-        'recordId',
-        newCaseId
-      );
-      const customEvent = new CustomEvent('next', {
-        bubbles: true,
-        composed: true
-      });
-      this.dispatchEvent(attributeChangeEvent);
-      this.dispatchEvent(customEvent);
+    try {
+      this.loading = true;
+      const newCaseId = await newCase(this.caseData);
+      if (newCaseId) {
+        this.engine.dispatch(this.actions.logCreateCase(newCaseId));
+        const attributeChangeEvent = new FlowAttributeChangeEvent(
+          'recordId',
+          newCaseId
+        );
+        const customEvent = new CustomEvent('next', {
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(attributeChangeEvent);
+        this.dispatchEvent(customEvent);
+      }
+    } catch (err) {
+      console.warn('Failed to create case');
+    } finally {
+      this.loading = false;
     }
-    this.loading = false;
   }
 }

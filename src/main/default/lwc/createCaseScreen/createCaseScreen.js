@@ -92,9 +92,12 @@ export default class CreateCaseScreen extends LightningElement {
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
     try {
-      this._caseData = JSON.parse(this.caseData);
+      if (this.caseData) {
+        this._caseData = JSON.parse(this.caseData);
+      }
       this.extractDataFromSessionStorage();
     } catch (err) {
+      console.warn('Failed to parse the flow variable caseData');
       this._caseData = {};
     }
   }
@@ -219,6 +222,7 @@ export default class CreateCaseScreen extends LightningElement {
       try {
         this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
       } catch (err) {
+        console.warn('Failed to parse the case object');
         this.sessionStorageCaseObject = {};
       }
     }

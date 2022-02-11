@@ -57,8 +57,11 @@ export default class reviewResourcesScreen extends LightningElement {
     this.template.addEventListener('no_suggestions', this.onNoSuggestions);
     this.template.addEventListener('next', this.handleNext);
     try {
-      this._caseData = JSON.parse(this.caseData);
+      if (this.caseData) {
+        this._caseData = JSON.parse(this.caseData);
+      }
     } catch (err) {
+      console.warn('Failed to parse the flow variable caseData', err);
       this._caseData = {};
     }
   }

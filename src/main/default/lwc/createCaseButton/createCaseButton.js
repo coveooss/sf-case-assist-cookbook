@@ -106,7 +106,7 @@ export default class CreateCaseButton extends LightningElement {
         this.dispatchEvent(customEvent);
       }
     } catch (err) {
-      console.warn('Failed to create case');
+      console.warn('Failed to create case', err);
     } finally {
       this.loading = false;
     }

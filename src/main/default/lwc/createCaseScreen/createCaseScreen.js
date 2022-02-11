@@ -70,7 +70,7 @@ export default class CreateCaseScreen extends LightningElement {
   /** @type {CaseAssistEngine} */
   engine;
   /** @type{object} */
-  _caseData;
+  _caseData = {};
   /** @type {object} */
   sessionStorageCaseObject = {};
   /** @type {ProgressStep[]} */
@@ -97,7 +97,7 @@ export default class CreateCaseScreen extends LightningElement {
       }
       this.extractDataFromSessionStorage();
     } catch (err) {
-      console.warn('Failed to parse the flow variable caseData');
+      console.warn('Failed to parse the flow variable caseData', err);
       this._caseData = {};
     }
   }
@@ -222,7 +222,7 @@ export default class CreateCaseScreen extends LightningElement {
       try {
         this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
       } catch (err) {
-        console.warn('Failed to parse the case object');
+        console.warn('Failed to parse the case object', err);
         this.sessionStorageCaseObject = {};
       }
     }

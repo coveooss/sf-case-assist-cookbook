@@ -20,7 +20,7 @@ export async function incrementScore(id) {
       await updateRecord({ fields: { ...this.object } });
     }
   } catch (err) {
-    console.warn('Failed to increment rating score');
+    console.warn('Failed to increment rating score', err);
     throw err;
   }
 }
@@ -45,7 +45,7 @@ export async function getScore(id) {
     }
     return response[SCORE_FIELD];
   } catch (err) {
-    console.warn('Failed to get rating score');
+    console.warn('Failed to get rating score', err);
     throw err;
   }
 }

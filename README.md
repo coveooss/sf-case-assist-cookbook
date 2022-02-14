@@ -1,9 +1,10 @@
 # Case Assist Flow cookbook
 
-A pre-built example of a Lightning Flow utilizing [Coveo Customer Service](https://docs.coveo.com/en/3327/service/coveo-customer-service) capabilities in order to:
+A pre-built example of a Lightning Flow utilizing the [Coveo Quantic Case Assist components](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/) in order to:
 
 1. Predict case classification values depending on the case description given by the customer.
 2. Suggest documents that can potentially solve the customer's case before it is created.
+3. Track users' interactions with the different components and screens of this flow.
 
 It is distributed as an example of best practices when requesting field predictions and document suggestions from the Coveo Customer Service API.
 
@@ -21,11 +22,24 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 ## What is included within this project
 
-1. A lightning flow already setup with multiple steps to create a support case.
-2. A first screen where the user can enter a Subject and a Description for their case. This screen will predict values for the `Case Reason` field as it is a Standard Salesforce Case field.
-3. A second screen where documentation will be suggested to the customer based on the text entered in the case Subject and Description.
-4. A final screen where the customer can review their case information if they were not able to solve it.
-5. A confirmation screen that the case was created.
+This project contains two flows: a Recommended Flow and a Demo flow. Both are lightning flows already setup with multiple steps to create a support case.
+
+#### Recommended Flow:
+
+The Recommended Flow contains the following screens:
+
+1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description using the Description Strength Indicator.
+2. A second screen where the user can find predictions to help classify their case. This screen will predict values for the Case Priority, Case Type, and Case Reason fields as these are Standard Salesforce Case fields.
+3. A third screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
+4. A confirmation screen that the case was created.
+
+#### Demo Flow:
+
+The Demo Flow contains the following screens:
+
+1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description, using the Description Strength Indicator, as well as the predictions to help classify their case. The user can see the predictions for the Case Priority, Case Type, and Case Reason fields as he types in the Subject and the Description inputs.
+2. A second screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
+3. A confirmation screen that the case was created.
 
 ## How to deploy
 
@@ -49,7 +63,11 @@ npm run build
 
 > These steps assume you already have the [Coveo for Salesforce package installed](https://docs.coveo.com/en/1158/coveo-for-salesforce/getting-started-with-coveo-for-salesforce) and configured (linked to a Coveo organization).
 
-### 2a. Deploying the project with the Org Development Model
+### 2. Install the Quantic Library
+
+[Install the Coveo Quantic Library as a Salesforce unlocked package](httphttps://docs.coveo.com/en/quantic/latest/usage/#install-quantic:// "Install Coveo Quantic as a Salesforce unlocked package")
+
+### 3a. Deploying the project with the Org Development Model
 
 The Org Development Model allows you to connect directly to a non-source-tracked org (sandbox, Developer Edition (DE) org, Trailhead Playground, or even a production org) to retrieve and deploy code directly. This model is similar to the type of development you have done in the past using tools such as Force.com IDE or MavensMate.
 
@@ -57,27 +75,20 @@ To start developing with this model in Visual Studio Code, see [Org Development 
 
 When working with non-source-tracked orgs, use the commands `SFDX: Deploy Source to Org` (VS Code) or `sfdx force:source:deploy` (Salesforce CLI) and `SFDX: Retrieve Source from Org` (VS Code) or `sfdx force:source:retrieve` (Salesforce CLI). The `Push` and `Pull` commands work only on orgs with source tracking (scratch orgs).
 
-### 2b. Pushing the code in a Scratch Org
+### 3b. Pushing the code in a Scratch Org
 
 When working with source-tracked orgs, use the commands `SFDX: Push Source to Org` (VS Code) or `sfdx force:source:push` (Salesforce CLI) and `SFDX: Pull Source from Org` (VS Code) or `sfdx force:source:pull` (Salesforce CLI). Do not use the `Retrieve` and `Deploy` commands with scratch orgs.
 
-### 2c. Installing the app using an Unlocked Package
+### 3c. Installing the app using an Unlocked Package
 
 TBD
 
-### 3. How to enable the Case Flow in your community
+### 4. How to enable the Case Flow in your community
 
-1. In the class CaseAssistEndpoint. Change this line to add your case assist ID:
-   `public static final String CASE_ASSIST_ID = 'YOUR_CASE_ASSIST_ID';`
-1. In your Salesforce community, drag the Lightning Flow component onto a Community page and select the Case_Assist_Demo_Flow shipped with this repository.
-1. In the published version of your community, fill in the subject and description fields **(minimum of 10 characters in the description)** in the first screen to see the Related Category section appear and get predictions for the Case Reason field.
-
-### 4. Sending analytics with the Case Flow
-
-Make sure you drag and drop the component AnalyticsBeacon somewhere in your community in order for the Case Flow to send analytics events.
-We recommend dropping it in your community header or footer region (It is invisible to the end user).
-
-If you do not have it you will see that error in the console : `Analytics Beacon cannot be found, include the component in your page to send events.`.
+1. In your Salesforce community, drag the Lightning Flow component onto a Community page and select the Case_Assist_Recommended_Flow or the Case_Assist_Demo_Flow shipped with this repository.
+2. After selecting the name of the flow two inputs labeled caseAssistId and engineId appear. Fill the caseAssistId input with your [Case Assist Id](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#retrieving-a-case-assist-id "Case Assist Id") retrieved from your Case assist Configuration and fill the enginId input with an appropriate name for the engine that the Quantic components will register to.
+3. In the published version of your community, fill in the subject and description fields in the first screen.
+4. Proceed to the next screens to see the proposed predictions for classifying your case and get documents suggestions that will potentially resolve your case before it is created.
 
 ## Dev, Build and Test
 
@@ -93,9 +104,7 @@ https://developer.salesforce.com/docs/component-library/documentation/lwc/get_st
 
 ### Testing
 
-You can run the included tests:
-
-`npm run:test:watch`
+TBD
 
 ## Dependencies
 
@@ -107,4 +116,4 @@ It is included as a dependency in this project and served via a static resource 
 
 ## Add New Fields for Classification
 
-This cookbook suggests classifications for the standard case  field `reason`. To specify additional fields for classification, access the [caseAssistFlow folder](src/main/default/lwc/caseAssistFlow) and copy the sample components that are commented out in the `caseAssistFlow.html` and `caseAssistFlow.js` files as many times as necessary. If you are using the Case Review Form,  access the [caseReviewForm folder](src/main/default/lwc/caseReviewForm) and copy the sample components that are commented out in the `caseReviewForm.html` and `caseReviewForm.js` files as well. After modifying these files, access the Coveo Administration Console to update your Case Classification configuration accordingly. Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality. 
+This cookbook suggests classifications for the standard case field `reason`. To specify additional fields for classification, access the [caseAssistFlow folder](src/main/default/lwc/caseAssistFlow) and copy the sample components that are commented out in the `caseAssistFlow.html` and `caseAssistFlow.js` files as many times as necessary. If you are using the Case Review Form, access the [caseReviewForm folder](src/main/default/lwc/caseReviewForm) and copy the sample components that are commented out in the `caseReviewForm.html` and `caseReviewForm.js` files as well. After modifying these files, access the Coveo Administration Console to update your Case Classification configuration accordingly. Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality.

@@ -14,7 +14,7 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 ## Table of Contents
 
-- [What is included within this project](#what-is-included-within-this-project): A description of all the content of this repository.
+- [What Is Included in This Project](#what-is-included-within-this-project): A description of the contents of this repository.
 
 - [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 

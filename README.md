@@ -108,7 +108,7 @@ https://developer.salesforce.com/docs/component-library/documentation/lwc/get_st
 
 TBD
 
-## How to add new fields for classification
+## How to Add New fields for Classification
 
 This cookbook suggests classifications for the standard case fields Case Priority, Case Type, and Case Reason.
 To specify additional fields for classification, access the [Provide Details Screen](src/main/default/lwc/provideDetailsScreen "Provide Details Screen") and copy the sample code that are commented out in the `provideDetailsScreen.html` and `provideDetailsScreen.js` files as many times as necessary. Remember to replace the placeholders `<SALESFORCE_API_FIELD_NAME>` and `<COVEO_FIELD_NAME>` with the Salesforce API name and the Coveo field name of the new field to predict, respectively.

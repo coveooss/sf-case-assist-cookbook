@@ -20,7 +20,7 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 - [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification): A guide to specify additional fields for classification.
 
-## What is included within this project
+## What Is Included in This Project
 
 This project contains two flows: a Recommended Flow and a Demo flow. Both are lightning flows already setup with multiple steps to create a support case.
 

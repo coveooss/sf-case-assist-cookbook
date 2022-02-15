@@ -85,7 +85,7 @@ When working with source-tracked orgs, use the commands `SFDX: Push Source to Or
 
 TBD
 
-### 4. How to enable the Case Flow in your community
+### 4. Enable the Case Flow in Your Community
 
 1. In your Salesforce community, drag the Lightning Flow component onto a Community page and select the Case_Assist_Recommended_Flow or the Case_Assist_Demo_Flow shipped with this repository.
 2. After selecting the name of the flow two inputs labeled caseAssistId and engineId appear. Fill the caseAssistId input with your [Case Assist Id](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#retrieving-a-case-assist-id "Case Assist Id") retrieved from your Case assist Configuration and fill the enginId input with an appropriate name for the engine that the Quantic components will register to.

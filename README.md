@@ -16,7 +16,7 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 - [What is included within this project](#what-is-included-within-this-project): A description of all the content of this repository.
 
-- [How to deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to experience the app and the code.
+- [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 
 - [How to add new fields for classification](#how-to-add-new-fields-for-classification): Simple guide to specify additional fields for classification.
 

@@ -2,7 +2,7 @@
 
 A pre-built example of a Lightning Flow utilizing the [Coveo Quantic Case Assist components](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/) in order to:
 
-1. Predict case classification values depending on the case description given by the customer.
+1. Predict case classification values depending on the case Subject and Description given by the customer.
 2. Suggest documents that can potentially solve the customer's case before it is created.
 3. Track users' interactions with the different components and screens of this flow.
 
@@ -67,7 +67,7 @@ npm run build
 
 ### 2. Install the Quantic Library
 
-[Install the Coveo Quantic Library as a Salesforce unlocked package](httphttps://docs.coveo.com/en/quantic/latest/usage/#install-quantic://)
+[Install the Coveo Quantic Library as a Salesforce unlocked package](httphttps://docs.coveo.com/en/quantic/latest/usage/#install-quantic:// "Install the Coveo Quantic Library as a Salesforce unlocked package")
 
 ### 3a. Deploying the project with the Org Development Model
 

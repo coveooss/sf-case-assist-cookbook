@@ -18,7 +18,7 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 - [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 
-- [How to add new fields for classification](#how-to-add-new-fields-for-classification): Simple guide to specify additional fields for classification.
+- [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification): A guide to specify additional fields for classification.
 
 ## What is included within this project
 

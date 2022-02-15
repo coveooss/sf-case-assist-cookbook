@@ -14,17 +14,17 @@ It requires a working deployment of a [Case Assist Configuration](https://docs.c
 
 ## Table of contents
 
+- [What is included within this project](#what-is-included-within-this-project): A description of all the content of this repository.
+
 - [How to deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to experience the app and the code.
 
-- [Installing the app using an Unlocked Package](#2c-installing-the-app-using-an-unlocked-package): This option allows anybody to experience the sample app without installing a local development environment.
-
-- [Description of Files and Directories](#description-of-files-and-directories): A description of all the content of this repository.
+- [How to add new fields for classification](#how-to-add-new-fields-for-classification): Simple guide to specify additional fields for classification,
 
 ## What is included within this project
 
 This project contains two flows: a Recommended Flow and a Demo flow. Both are lightning flows already setup with multiple steps to create a support case.
 
-#### Recommended Flow:
+### Recommended Flow:
 
 The Recommended Flow contains the following screens:
 
@@ -33,7 +33,7 @@ The Recommended Flow contains the following screens:
 3. A third screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
 4. A confirmation screen that the case was created.
 
-#### Demo Flow:
+### Demo Flow:
 
 The Demo Flow contains the following screens:
 
@@ -90,7 +90,7 @@ TBD
 3. In the published version of your community, fill in the subject and description fields in the first screen.
 4. Proceed to the next screens to see the proposed predictions for classifying your case and get documents suggestions that will potentially resolve your case before it is created.
 
-## Dev, Build and Test
+### Dev, Build and Test
 
 1. Run `npm i`
 1. Run `npm run build`
@@ -106,14 +106,8 @@ https://developer.salesforce.com/docs/component-library/documentation/lwc/get_st
 
 TBD
 
-## Dependencies
-
-This cookbook uses the [coveo.analytics.js](https://www.npmjs.com/package/coveo.analytics) library in order to track user interactions with the different components.
-
-It is included as a dependency in this project and served via a static resource within the different components of this repository.
-
-## Description of Files and Directories
-
 ## Add New Fields for Classification
 
-This cookbook suggests classifications for the standard case field `reason`. To specify additional fields for classification, access the [caseAssistFlow folder](src/main/default/lwc/caseAssistFlow) and copy the sample components that are commented out in the `caseAssistFlow.html` and `caseAssistFlow.js` files as many times as necessary. If you are using the Case Review Form, access the [caseReviewForm folder](src/main/default/lwc/caseReviewForm) and copy the sample components that are commented out in the `caseReviewForm.html` and `caseReviewForm.js` files as well. After modifying these files, access the Coveo Administration Console to update your Case Classification configuration accordingly. Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality.
+This cookbook suggests classifications for the standard case fields Case Priority, Case Type, and Case Reason.
+To specify additional fields for classification, access the [Provide Details Screen](src/main/default/lwc/provideDetailsScreen "Provide Details Screen") and copy the sample code that are commented out in the provideDetailsScreen.html and provideDetailsScreen.js files as many times as necessary. Remember to replace the placeholders <SALESFORCE_API_FIELD_NAME> and <COVEO_FIELD_NAME> with the Salesforce API name and the Coveo field name of the new field to predict, respectively.
+Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality.

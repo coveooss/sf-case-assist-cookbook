@@ -67,7 +67,7 @@ npm run build
 
 ### 2. Install the Quantic Library
 
-[Install the Coveo Quantic Library as a Salesforce unlocked package](httphttps://docs.coveo.com/en/quantic/latest/usage/#install-quantic:// "Install the Coveo Quantic Library as a Salesforce unlocked package")
+[Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic)
 
 ### 3a. Deploying the project with the Org Development Model
 

@@ -121,13 +121,13 @@ export default class DescribeProblemScreen extends LightningElement {
   updateCaseValues() {
     const { subjectInput, descriptionInput } = this.getInputs();
     if (
-      this._caseData.subject !== subjectInput.value ||
-      this._caseData.description !== descriptionInput.value
+      this._caseData.Subject !== subjectInput.value ||
+      this._caseData.Description !== descriptionInput.value
     ) {
       this._caseData = {
         ...this.sessionStorageCaseObject,
-        subject: subjectInput.value,
-        description: descriptionInput.value
+        Subject: subjectInput.value,
+        Description: descriptionInput.value
       };
       sessionStorage.caseData = JSON.stringify(this._caseData);
       sessionStorage.valuesUpdated = true;

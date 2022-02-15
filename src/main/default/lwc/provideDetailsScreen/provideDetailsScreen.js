@@ -125,18 +125,18 @@ export default class ProvideDetailsScreen extends LightningElement {
   }
 
   updateCaseValues() {
-    const { priorityInput, reasonInput, typeInput } = this.getInputs();
+    const classificationInputs = this.getInputs();
 
-    this._caseData = {
-      ...this._caseData,
-      priority: priorityInput.value,
-      reason: reasonInput.value,
-      type: typeInput.value
-    };
+    classificationInputs.forEach((input) => {
+      this._caseData = {
+        ...this._caseData,
+        [input.title]: input.value
+      };
+    });
   }
 
   inputValidity() {
-    const inputs = Object.values(this.getInputs());
+    const inputs = this.getInputs();
     inputs.forEach((input) => {
       input.reportValidity();
     });
@@ -148,15 +148,23 @@ export default class ProvideDetailsScreen extends LightningElement {
 
   getInputs() {
     const priorityInput = this.template.querySelector(
-      'c-quantic-case-classification[title="priority"]'
+      'c-quantic-case-classification[title="Priority"]'
     );
     const reasonInput = this.template.querySelector(
-      'c-quantic-case-classification[title="reason"]'
+      'c-quantic-case-classification[title="Reason"]'
     );
     const typeInput = this.template.querySelector(
-      'c-quantic-case-classification[title="type"]'
+      'c-quantic-case-classification[title="Type"]'
     );
-    return { priorityInput, reasonInput, typeInput };
+
+    // Use this sample code every time you want to add a new field for classification.
+    // Replace <SALESFORCE_API_FIELD_NAME> with the Salesforce API name of the field to predict
+    // const newFieldInput = this.template.querySelector(
+    //   'c-quantic-case-classification[title=<SALESFORCE_API_FIELD_NAME>]'
+    // );
+    // Don't forget to add your input the returned  array below.
+
+    return [priorityInput, reasonInput, typeInput];
   }
 
   extractDataFromSessionStorage() {

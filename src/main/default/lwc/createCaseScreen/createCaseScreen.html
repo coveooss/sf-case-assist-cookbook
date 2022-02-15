@@ -34,12 +34,12 @@
           <c-subject-input
             required
             engine-id={engineId}
-            initial-value={sessionStorageCaseObject.subject}
+            initial-value={sessionStorageCaseObject.Subject}
           ></c-subject-input>
           <div class="slds-var-m-top_xx-large">
             <c-description-input
               required
-              initial-value={sessionStorageCaseObject.description}
+              initial-value={sessionStorageCaseObject.Description}
               strong-description-length="5"
               display-strength-indicator
               engine-id={engineId}
@@ -57,8 +57,8 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.priority}
-              title="priority"
+              initial-value={sessionStorageCaseObject.Priority}
+              title="Priority"
               label={labels.priority}
               coveo-field-name="sfpriority"
               max-suggestions="3"
@@ -71,8 +71,8 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.reason}
-              title="reason"
+              initial-value={sessionStorageCaseObject.Reason}
+              title="Reason"
               label={labels.reason}
               coveo-field-name="sfreason"
               max-suggestions="3"
@@ -84,8 +84,8 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.type}
-              title="type"
+              initial-value={sessionStorageCaseObject.Type}
+              title="Type"
               label={labels.typeLabel}
               coveo-field-name="sftype"
               max-suggestions="3"

@@ -28,8 +28,8 @@
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
             required
-            initial-value={sessionStorageCaseObject.priority}
-            title="priority"
+            initial-value={sessionStorageCaseObject.Priority}
+            title="Priority"
             label={labels.priority}
             coveo-field-name="sfpriority"
             max-suggestions="2"
@@ -42,8 +42,8 @@
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
             required
-            initial-value={sessionStorageCaseObject.reason}
-            title="reason"
+            initial-value={sessionStorageCaseObject.Reason}
+            title="Reason"
             label={labels.reason}
             coveo-field-name="sfreason"
             max-suggestions="2"
@@ -55,8 +55,8 @@
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
             required
-            initial-value={sessionStorageCaseObject.type}
-            title="type"
+            initial-value={sessionStorageCaseObject.Type}
+            title="Type"
             label={labels.typeLabel}
             coveo-field-name="sftype"
             max-suggestions="2"
@@ -71,7 +71,7 @@
 
         <!-- <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification
-            title="my new field"
+            title=<SALESFORCE_API_FIELD_NAME>
             label="label for my new field"
             coveo-field-name=<COVEO_FIELD_NAME>
             sf-field-api-name=<SALESFORCE_API_FIELD_NAME>

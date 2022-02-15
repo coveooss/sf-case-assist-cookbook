@@ -151,17 +151,20 @@ export default class CreateCaseScreen extends LightningElement {
     const {
       subjectInput,
       descriptionInput,
-      priorityInput,
-      typeInput,
-      reasonInput
+      classificationInputs
     } = this.getInputs();
+
     this._caseData = {
-      subject: subjectInput.value,
-      description: descriptionInput.value,
-      priority: priorityInput.value,
-      type: typeInput.value,
-      reason: reasonInput.value
+      Subject: subjectInput.value,
+      Description: descriptionInput.value
     };
+
+    classificationInputs.forEach((input) => {
+      this._caseData = {
+        ...this._caseData,
+        [input.title]: input.value
+      };
+    });
   }
 
   updateFlowState() {
@@ -178,21 +181,16 @@ export default class CreateCaseScreen extends LightningElement {
     const {
       subjectInput,
       descriptionInput,
-      priorityInput,
-      typeInput,
-      reasonInput
+      classificationInputs
     } = this.getInputs();
-    const inputs = [subjectInput, priorityInput, typeInput, reasonInput];
+    const inputs = [...classificationInputs, subjectInput];
     inputs.forEach((input) => {
       input.reportValidity();
     });
     descriptionInput.validate();
-    return (
-      descriptionInput.validity &&
-      inputs.reduce(
-        (previousValidity, input) => previousValidity && !input.hasError,
-        true
-      )
+    return inputs.reduce(
+      (previousValidity, input) => previousValidity && !input.hasError,
+      descriptionInput.validity
     );
   }
 
@@ -200,20 +198,27 @@ export default class CreateCaseScreen extends LightningElement {
     const subjectInput = this.template.querySelector('c-subject-input');
     const descriptionInput = this.template.querySelector('c-description-input');
     const priorityInput = this.template.querySelector(
-      'c-quantic-case-classification[title="priority"]'
+      'c-quantic-case-classification[title="Priority"]'
     );
     const reasonInput = this.template.querySelector(
-      'c-quantic-case-classification[title="reason"]'
+      'c-quantic-case-classification[title="Reason"]'
     );
     const typeInput = this.template.querySelector(
-      'c-quantic-case-classification[title="type"]'
+      'c-quantic-case-classification[title="Type"]'
     );
+    // Use this sample code every time you want to add a new field for classification.
+    // Replace <SALESFORCE_API_FIELD_NAME> with the Salesforce API name of the field to predict
+    // const newFieldInput = this.template.querySelector(
+    //   'c-quantic-case-classification[title=<SALESFORCE_API_FIELD_NAME>]'
+    // );
+    // Don't forget to add your input the classification Inputs array below.
+
+    const classificationInputs = [priorityInput, reasonInput, typeInput];
+
     return {
       subjectInput,
       descriptionInput,
-      priorityInput,
-      reasonInput,
-      typeInput
+      classificationInputs
     };
   }
 

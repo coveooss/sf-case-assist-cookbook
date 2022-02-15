@@ -112,4 +112,4 @@ TBD
 
 This cookbook suggests classifications for the standard case fields Case Priority, Case Type, and Case Reason.
 To specify additional fields for classification, access the [Provide Details Screen](src/main/default/lwc/provideDetailsScreen) and copy the sample code that are commented out in the `provideDetailsScreen.html` and `provideDetailsScreen.js` files as many times as necessary. Remember to replace the placeholders `<SALESFORCE_API_FIELD_NAME>` and `<COVEO_FIELD_NAME>` with the Salesforce API name and the Coveo field name of the new field to predict, respectively.
-Make sure that all newly added fields are specified in your configuration. For more information, see https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality.
+Make sure that all newly added fields are specified in your configuration (see [Configuring the Case Classification Functionality](https://docs.coveo.com/en/3328/#configuring-the-case-classification-functionality)).

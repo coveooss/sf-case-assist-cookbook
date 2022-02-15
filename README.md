@@ -41,7 +41,7 @@ The Demo Flow contains the following screens:
 2. A second screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
 3. A confirmation screen that the case was created.
 
-PS: A Login screen is implemented with both flows. It's just a template that can be used if the user want a custom login screen to access the case assist flow.
+PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
 
 ## How to deploy
 

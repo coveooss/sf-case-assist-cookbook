@@ -43,7 +43,7 @@ The Demo Flow contains the following screens:
 
 PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
 
-## How to deploy
+## How to Deploy
 
 ### 1. Set up your environment
 

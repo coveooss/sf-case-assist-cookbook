@@ -69,7 +69,7 @@ npm run build
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
 
-### 3a. Deploying the project with the Org Development Model
+### 3a. Deploy the Project Using the Org Development Model
 
 The Org Development Model allows you to connect directly to a non-source-tracked org (sandbox, Developer Edition (DE) org, Trailhead Playground, or even a production org) to retrieve and deploy code directly. This model is similar to the type of development you have done in the past using tools such as Force.com IDE or MavensMate.
 

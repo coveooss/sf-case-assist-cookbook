@@ -12,7 +12,7 @@ It requires an active Coveo organization with indexed Salesforce Cases in order 
 
 It requires a working deployment of a [Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations) to provide [Document Suggestions](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-document-suggestion-functionality) as well as [Case Classifications](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
 
-## Table of contents
+## Table of Contents
 
 - [What is included within this project](#what-is-included-within-this-project): A description of all the content of this repository.
 

@@ -131,6 +131,7 @@ export default class DescribeProblemScreen extends LightningElement {
       };
       sessionStorage.caseData = JSON.stringify(this._caseData);
       sessionStorage.valuesUpdated = true;
+      sessionStorage.idsPreviouslyVoted = JSON.stringify([]);
     }
   }
 

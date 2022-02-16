@@ -50,6 +50,8 @@ export default class reviewResourcesScreen extends LightningElement {
   hasSuggestions = true;
   /** @type{object} */
   _caseData;
+  /** @type {array} */
+  idsPreviouslyVoted = [];
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
@@ -85,6 +87,9 @@ export default class reviewResourcesScreen extends LightningElement {
     if (this.canMovePrevious()) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
+      sessionStorage.idsPreviouslyVoted = JSON.stringify(
+        this.idsPreviouslyVoted
+      );
     }
   }
 
@@ -105,6 +110,7 @@ export default class reviewResourcesScreen extends LightningElement {
       }
     }
 
+    this.idsPreviouslyVoted = [...this.idsPreviouslyVoted, evt.detail.id];
     this.slotsToBeHidden = [...this.slotsToBeHidden, evt.detail.id];
   };
 

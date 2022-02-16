@@ -18,10 +18,12 @@ export default class QuickviewFooterWrapper extends LightningElement {
    */
   @api slotsToBeHidden = [];
 
-  /** @type {visible}*/
+  /** @type {boolean}*/
   visible = false;
   /** @type {string} */
   _id;
+  /** @type {array} */
+  idsPreviouslyVoted;
 
   connectedCallback() {
     this.template.addEventListener('rating_clicked', this.onRatingClick);
@@ -44,11 +46,27 @@ export default class QuickviewFooterWrapper extends LightningElement {
     );
   };
 
+  votePreviouslyClicked(id) {
+    if (!sessionStorage.idsPreviouslyVoted) {
+      return false;
+    }
+    try {
+      this.idsPreviouslyVoted = JSON.parse(sessionStorage.idsPreviouslyVoted);
+      return this.idsPreviouslyVoted.includes(id);
+    } catch (err) {
+      console.warn('Failed to parse the idsPreviouslyVoted array', err);
+      return false;
+    }
+  }
+
   renderedCallback() {
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(() => {
       this._id = this.template.host.dataset.id;
-      if (!this.slotsToBeHidden.includes(this._id)) {
+      if (
+        !this.votePreviouslyClicked(this._id) &&
+        !this.slotsToBeHidden.includes(this._id)
+      ) {
         this.visible = true;
         this.dispatchEvent(
           new CustomEvent('show_action_slot', {

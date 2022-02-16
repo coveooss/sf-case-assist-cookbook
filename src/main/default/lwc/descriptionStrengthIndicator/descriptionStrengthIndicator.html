@@ -38,7 +38,9 @@
         class="accordion"
       >
         <lightning-accordion-section name="help" label={helpLabel}>
-          <div class="slds-var-m-left_large">
+          <div
+            class="slds-var-m-left_large slds-text-body_small slds-is-absolute"
+          >
             <slot name="content">
               {labels.descriptionHintOne}<br />
               {labels.descriptionHintTwo}<br />

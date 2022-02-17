@@ -45,7 +45,7 @@ PS: A Login screen is implemented in both flows. It's just a template that you c
 
 ## How to Deploy
 
-### 1. Set up your environment
+### 1. Set up Your Environment
 
 - Install [npmjs](https://www.npmjs.com/get-npm)
 

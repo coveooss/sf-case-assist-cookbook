@@ -11,4 +11,9 @@
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__FlowScreen">
+      <property name="flowType" label="The type of the flow" type="String" />
+    </targetConfig>
+  </targetConfigs>
 </LightningComponentBundle>

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
   <labels>
-    <fullName>cookbook_ProvideDetails</fullName>
-    <value>Provide details</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Provide details</shortDescription>
-  </labels>
-  <labels>
     <fullName>cookbook_ProvideMoreDetails</fullName>
     <value>Provide more details</value>
     <language>en_US</language>
@@ -253,7 +246,14 @@
     <shortDescription>Forget your password</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_GetHelp</fullName>
+    <fullName>cookbook_GetHelpDemo</fullName>
+    <value>Get help in 3 steps</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Get help in 3 steps</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GetHelpRecommended</fullName>
     <value>Get help in 4 steps</value>
     <language>en_US</language>
     <protected>false</protected>

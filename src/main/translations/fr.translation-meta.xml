@@ -142,7 +142,11 @@
   </customLabels>
   <customLabels>
     <label>Obtenez de l'aide en 4 étapes</label>
-    <name>cookbook_GetHelp</name>
+    <name>cookbook_GetHelpRecommended</name>
+  </customLabels>
+  <customLabels>
+    <label>Obtenez de l'aide en 3 étapes</label>
+    <name>cookbook_GetHelpDemo</name>
   </customLabels>
   <customLabels>
     <label>Connectez-vous pour contacter un agent d'assistance</label>

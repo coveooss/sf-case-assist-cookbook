@@ -115,9 +115,6 @@ export default class CreateCaseScreen extends LightningElement {
       // eslint-disable-next-line no-undef
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
-    if (!sessionStorage.caseData) {
-      engine.dispatch(this.actions.logCaseStart());
-    }
   };
 
   canMoveNext() {

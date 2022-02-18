@@ -11,6 +11,10 @@ import changedYourMind from '@salesforce/label/c.cookbook_ChangedYourMind';
 import solvedYourProblem from '@salesforce/label/c.cookbook_SolvedProblem';
 import sendYourRequest from '@salesforce/label/c.cookbook_SendYourRequest';
 import weHaveTheInformationWeNeed from '@salesforce/label/c.cookbook_WeHaveTheInformationWeNeed';
+import logIn from '@salesforce/label/c.cookbook_LogIn';
+import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
+import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
+import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
 
 export default class reviewResourcesScreen extends LightningElement {
   labels = {
@@ -21,7 +25,11 @@ export default class reviewResourcesScreen extends LightningElement {
     changedYourMind,
     weHaveTheInformationWeNeed,
     sendYourRequest,
-    solvedYourProblem
+    solvedYourProblem,
+    logIn,
+    describeProblem,
+    provideDetails,
+    reviewResources
   };
   /**
    * The ID of the engine instance the component registers to.
@@ -43,6 +51,11 @@ export default class reviewResourcesScreen extends LightningElement {
    *  @type {boolean}
    */
   @api recordId;
+  /**
+   * The type of the flow where this screen is used.
+   * @type {'recommended_flow' | 'demo_flow'}
+   */
+  @api flowType;
 
   /** @type {Array<string>} */
   slotsToBeHidden = [];
@@ -159,5 +172,42 @@ export default class reviewResourcesScreen extends LightningElement {
 
   get abandonRequestClass() {
     return this.hasSuggestions ? 'slds-var-m-right_small' : '';
+  }
+
+  get steps() {
+    if (this.flowType === 'demo_flow') {
+      return [
+        {
+          label: this.labels.logIn,
+          value: 'log in'
+        },
+        {
+          label: this.labels.describeProblem,
+          value: 'describe problem'
+        },
+        {
+          label: this.labels.reviewResources,
+          value: 'review resources'
+        }
+      ];
+    }
+    return [
+      {
+        label: this.labels.logIn,
+        value: 'log in'
+      },
+      {
+        label: this.labels.describeProblem,
+        value: 'describe problem'
+      },
+      {
+        label: this.labels.provideDetails,
+        value: 'provide details'
+      },
+      {
+        label: this.labels.reviewResources,
+        value: 'review resources'
+      }
+    ];
   }
 }

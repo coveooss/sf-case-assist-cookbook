@@ -4,8 +4,6 @@
       <c-quantic-case-assist-interface
         engine-id={engineId}
         case-assist-id={caseAssistId}
-        prevent-fetch-classification-on-init
-        prevent-log-case-start-on-init
       >
         <div class="slds-is-relative screen-header">
           <c-flow-progress-indicator
@@ -57,11 +55,10 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.Priority}
               title="Priority"
               label={labels.priority}
               coveo-field-name="sfpriority"
-              max-suggestions="3"
+              max-suggestions="2"
               sf-field-api-name="Priority"
               engine-id={engineId}
               select-placeholder={labels.moreOptions}
@@ -71,11 +68,10 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.Reason}
               title="Reason"
               label={labels.reason}
               coveo-field-name="sfreason"
-              max-suggestions="3"
+              max-suggestions="2"
               sf-field-api-name="Reason"
               engine-id={engineId}
               select-placeholder={labels.moreOptions}
@@ -84,11 +80,10 @@
           <div class="slds-var-m-top_xx-large">
             <c-quantic-case-classification
               required
-              initial-value={sessionStorageCaseObject.Type}
               title="Type"
               label={labels.typeLabel}
               coveo-field-name="sftype"
-              max-suggestions="3"
+              max-suggestions="2"
               sf-field-api-name="Type"
               engine-id={engineId}
               select-placeholder={labels.moreOptions}

@@ -8,7 +8,8 @@ import username from '@salesforce/label/c.cookbook_Username';
 import password from '@salesforce/label/c.cookbook_Password';
 import forgetYourPassword from '@salesforce/label/c.cookbook_ForgetYourPassword';
 import rememberMe from '@salesforce/label/c.cookbook_RememberMe';
-import getHelp from '@salesforce/label/c.cookbook_GetHelp';
+import getHelpRecommended from '@salesforce/label/c.cookbook_GetHelpRecommended';
+import getHelpDemo from '@salesforce/label/c.cookbook_GetHelpDemo';
 import loginTitle from '@salesforce/label/c.cookbook_LoginTitle';
 import loginSubtitle from '@salesforce/label/c.cookbook_LoginSubtitle';
 
@@ -24,7 +25,8 @@ export default class LoginScreen extends LightningElement {
     password,
     rememberMe,
     forgetYourPassword,
-    getHelp,
+    getHelpRecommended,
+    getHelpDemo,
     loginTitle,
     loginSubtitle
   };
@@ -34,6 +36,11 @@ export default class LoginScreen extends LightningElement {
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation
    */
   @api availableActions = [];
+  /**
+   * The type of the flow where this screen is used.
+   * @type {'recommended_flow' | 'demo_flow'}
+   */
+  @api flowType;
 
   value = [];
   get options() {
@@ -48,10 +55,24 @@ export default class LoginScreen extends LightningElement {
     }
   }
 
-  steps = [
-    { label: this.labels.logIn, active: true },
-    { label: this.labels.describeProblem, active: false },
-    { label: this.labels.provideDetails, active: false },
-    { label: this.labels.reviewResources, active: false }
-  ];
+  get helpMessage() {
+    return this.flowType === 'recommended_flow'
+      ? this.labels.getHelpRecommended
+      : this.labels.getHelpDemo;
+  }
+
+  get steps() {
+    return this.flowType === 'recommended_flow'
+      ? [
+          { label: this.labels.logIn, active: true },
+          { label: this.labels.describeProblem, active: false },
+          { label: this.labels.provideDetails, active: false },
+          { label: this.labels.reviewResources, active: false }
+        ]
+      : [
+          { label: this.labels.logIn, active: true },
+          { label: this.labels.describeProblem, active: false },
+          { label: this.labels.reviewResources, active: false }
+        ];
+  }
 }

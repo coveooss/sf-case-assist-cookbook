@@ -59,7 +59,6 @@ export default class ProvideDetailsScreen extends LightningElement {
       if (this.caseData) {
         this._caseData = JSON.parse(this.caseData);
       }
-      this.extractDataFromSessionStorage();
     } catch (err) {
       console.warn('Failed to parse the flow variable caseData', err);
       this._caseData = {};
@@ -80,10 +79,7 @@ export default class ProvideDetailsScreen extends LightningElement {
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
 
-    if (sessionStorage.valuesUpdated) {
-      engine.dispatch(this.actions.fetchCaseClassifications());
-      sessionStorage.valuesUpdated = false;
-    }
+    engine.dispatch(this.actions.fetchCaseClassifications());
   };
 
   canMoveNext() {
@@ -165,16 +161,5 @@ export default class ProvideDetailsScreen extends LightningElement {
     // Don't forget to add your input the returned  array below.
 
     return [priorityInput, reasonInput, typeInput];
-  }
-
-  extractDataFromSessionStorage() {
-    if (!sessionStorage.valuesUpdated && sessionStorage.caseData) {
-      try {
-        this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
-      } catch (err) {
-        console.warn('Failed to parse the case object', err);
-        this.sessionStorageCaseObject = {};
-      }
-    }
   }
 }

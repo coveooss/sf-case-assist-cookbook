@@ -51,7 +51,6 @@ export default class DescribeProblemScreen extends LightningElement {
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    sessionStorage.valuesUpdated = false;
     try {
       if (this.caseData) {
         this._caseData = JSON.parse(this.caseData);
@@ -76,10 +75,6 @@ export default class DescribeProblemScreen extends LightningElement {
       // eslint-disable-next-line no-undef
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
-
-    if (!sessionStorage.caseData) {
-      engine.dispatch(this.actions.logCaseStart());
-    }
   };
 
   canMoveNext() {
@@ -130,7 +125,6 @@ export default class DescribeProblemScreen extends LightningElement {
         Description: descriptionInput.value
       };
       sessionStorage.caseData = JSON.stringify(this._caseData);
-      sessionStorage.valuesUpdated = true;
       sessionStorage.idsPreviouslyVoted = JSON.stringify([]);
     }
   }

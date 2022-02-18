@@ -16,6 +16,7 @@
       <property name="caseData" label="Data from the case" type="String" />
       <property name="recordId" label="The record ID of the newly created case" type="String" />
       <property name="engineId" label="The ID of the engine instance the component registers to" type="String" />
+      <property name="flowType" label="The type of the flow" type="String" />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

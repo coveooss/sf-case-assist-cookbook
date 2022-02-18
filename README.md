@@ -10,7 +10,7 @@ It is distributed as an example of best practices when requesting field predicti
 
 It requires an active Coveo organization with indexed Salesforce Cases in order to provide field predictions.
 
-It requires a working deployment of a [Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations) to provide [Document Suggestions](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-document-suggestion-functionality) as well as [Case Classifications](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
+It a [Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations) to provide [Document Suggestions](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-document-suggestion-functionality) as well as [Case Classifications](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
 
 ## Table of Contents
 
@@ -29,15 +29,17 @@ This project contains two flows: a Recommended Flow and a Demo flow. Both are li
 The Recommended Flow contains the following screens:
 
 1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description using the Description Strength Indicator.
-2. A second screen where the user can find predictions to help classify their case. This screen will predict values for the Case Priority, Case Type, and Case Reason fields as these are Standard Salesforce Case fields.
+2. A second screen where the user can find predictions to help classify their case. This screen will predict values for the Case Priority, Case Type, and Case Reason fields as these are Standard Salesforce Case fields. See "How to Add New Fields for Classification" section to learn how to modify these.
 3. A third screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
 4. A confirmation screen that the case was created.
+
+Here is a demo video of this flow in action: https://youtu.be/WvHKYbiZRNI
 
 ### Demo Flow:
 
 The Demo Flow contains the following screens:
 
-1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description, using the Description Strength Indicator, as well as the predictions to help classify their case. The user can see the predictions for the Case Priority, Case Type, and Case Reason fields as they type in the Subject and Description inputs.
+1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description, using the Description Strength Indicator, as well as the predictions to help classify their case. The user can see the predictions for the Case Priority, Case Type, and Case Reason fields as they type in the Subject and Description inputs. See "How to Add New Fields for Classification" section to learn how to modify these.
 2. A second screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
 3. A confirmation screen that the case was created.
 
@@ -80,10 +82,6 @@ When working with non-source-tracked orgs, use the commands `SFDX: Deploy Source
 ### 3b. Push the Code in a Scratch Org
 
 When working with source-tracked orgs, use the commands `SFDX: Push Source to Org` (VS Code) or `sfdx force:source:push` (Salesforce CLI) and `SFDX: Pull Source from Org` (VS Code) or `sfdx force:source:pull` (Salesforce CLI). Do not use the `Retrieve` and `Deploy` commands with scratch orgs.
-
-### 3c. Install the App Using an Unlocked Package
-
-TBD
 
 ### 4. Enable the Case Flow in Your Community
 

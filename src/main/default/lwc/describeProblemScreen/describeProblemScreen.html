@@ -1,22 +1,15 @@
 <template>
+  <template if:true={renderCaseAssistInterface}>
+    <c-quantic-case-assist-interface
+      engine-id={engineId}
+      case-assist-id={caseAssistId}
+    ></c-quantic-case-assist-interface>
+  </template>
   <div class="slds-var-p-vertical_xx-large container">
     <div class="content">
-      <div class="slds-is-relative screen-header">
-        <c-flow-progress-indicator
-          current-step="describe problem"
-        ></c-flow-progress-indicator>
-        <div class="slds-is-absolute navigation">
-          <button onclick={handlePrevious} class="slds-button">
-            <lightning-icon
-              class="slds-button__icon_left previous-button-icon"
-              size="x-small"
-              icon-name="utility:chevronleft"
-              alternative-text={labels.previous}
-            ></lightning-icon>
-            {labels.previous}
-          </button>
-        </div>
-      </div>
+      <c-flow-progress-indicator
+        current-step="describe problem"
+      ></c-flow-progress-indicator>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
         <c-main-title
           align-center
@@ -24,27 +17,16 @@
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-quantic-case-assist-interface
-          engine-id={engineId}
-          case-assist-id={caseAssistId}
-        >
-          <c-subject-input
-            prevent-fetch-classifications-on-change
+        <c-subject-input required engine-id={engineId}></c-subject-input>
+        <div class="slds-var-m-top_xx-large slds-var-p-bottom_xx-large">
+          <c-description-input
             required
+            strong-description-length="50"
+            display-strength-indicator
             engine-id={engineId}
-            initial-value={sessionStorageCaseObject.Subject}
-          ></c-subject-input>
-          <div class="slds-var-m-top_xx-large slds-var-p-bottom_xx-large">
-            <c-description-input
-              prevent-fetch-classifications-on-change
-              required
-              initial-value={sessionStorageCaseObject.Description}
-              strong-description-length="50"
-              display-strength-indicator
-              engine-id={engineId}
-            ></c-description-input>
-          </div>
-        </c-quantic-case-assist-interface>
+            initial-value={_caseData.Description}
+          ></c-description-input>
+        </div>
         <div
           class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
         >

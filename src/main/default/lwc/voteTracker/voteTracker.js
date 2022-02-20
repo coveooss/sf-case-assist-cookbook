@@ -9,7 +9,7 @@ import no from '@salesforce/label/c.cookbook_No';
 /**
  * The `voteTracker` component is a button to share whether a document was helpful or not. Also sends a signal to Coveo platform for ML.
  * @example
- * <c-vote-tracker engine-id={engineId} size="small" label="Your feedback can help others" question="Did you find this helpful?" final-nessage="Thank you" abandon-label="Abandon request" timeout="2000"></c-vote-tracker>
+ * <c-vote-tracker engine-id={engineId} size="small" label="Your feedback can help others" question="Did you find this helpful?" final-message="Thank you" abandon-label="Abandon request" timeout="2000"></c-vote-tracker>
  */
 export default class VoteTracker extends LightningElement {
   labels = {
@@ -60,7 +60,7 @@ export default class VoteTracker extends LightningElement {
    * The timeout to wait before showing the final state after voting.
    * @type {number}
    */
-  timeout = 2000;
+  @api timeout = 2000;
 
   /**
    * Tells if the component is on the final state that appears after voting.

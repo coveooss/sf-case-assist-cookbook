@@ -58,10 +58,6 @@ export default class SubjectInput extends LightningElement {
    * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
-  /** The initial value to be given to the input.
-   * @type {string}
-   */
-  @api initialValue;
   /**
    * Wheather we want to prevent fetching classifications when the value of the input changes.
    * @type {boolean}
@@ -109,10 +105,7 @@ export default class SubjectInput extends LightningElement {
       }
     });
 
-    if (this.initialValue) {
-      this._value = this.initialValue.substring(0, this.maxLength);
-      this.input.update(this._value);
-    }
+    this._value = this.input.state.value.substring(0, this.maxLength);
   };
 
   /**

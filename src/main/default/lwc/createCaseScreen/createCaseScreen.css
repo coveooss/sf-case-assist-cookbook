@@ -8,12 +8,6 @@
   max-width: 1000px;
 }
 
-.screen-header {
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
-
 c-flow-progress-indicator {
   flex: 1;
 }

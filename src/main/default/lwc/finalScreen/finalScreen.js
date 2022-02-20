@@ -5,7 +5,6 @@ import phone from '@salesforce/label/c.cookbook_Phone';
 import via from '@salesforce/label/c.cookbook_Via';
 import goBackToCommunity from '@salesforce/label/c.cookbook_GoBackToCommunity';
 import seeYourRequest from '@salesforce/label/c.cookbook_SeeYourRequest';
-import forgiveUsForTheDelay from '@salesforce/label/c.cookbook_ForgiveUsForTheDelay';
 import confirmationMailIsOnTheWay from '@salesforce/label/c.cookbook_ConfirmationEmailOnTheWay';
 import agentWillBeInTouch from '@salesforce/label/c.cookbook_AgentWillBeInTouch';
 import requestSuccessfullySaved from '@salesforce/label/c.cookbook_RequestSuccessfullySaved';
@@ -17,7 +16,6 @@ export default class FinalScreen extends NavigationMixin(LightningElement) {
     via,
     goBackToCommunity,
     seeYourRequest,
-    forgiveUsForTheDelay,
     confirmationMailIsOnTheWay,
     agentWillBeInTouch,
     requestSuccessfullySaved

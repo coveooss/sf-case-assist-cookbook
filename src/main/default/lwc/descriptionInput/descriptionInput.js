@@ -130,11 +130,9 @@ export default class DescriptionInput extends LightningElement {
         field: this._fieldName
       }
     });
-
-    if (this.initialValue) {
-      this._value = this.initialValue;
-      this.input.update(this.replaceTagsWithSpace(this._value));
-    }
+    this._value = this.initialValue
+      ? this.initialValue
+      : this.input.state.value;
   };
 
   /**

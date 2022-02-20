@@ -50,8 +50,6 @@ export default class ProvideDetailsScreen extends LightningElement {
   engine;
   /** @type{object} */
   _caseData = {};
-  /** @type {object} */
-  sessionStorageCaseObject = {};
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -75,11 +73,8 @@ export default class ProvideDetailsScreen extends LightningElement {
   initialize = (engine) => {
     this.engine = engine;
     this.actions = {
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
       ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
     };
-
-    engine.dispatch(this.actions.fetchCaseClassifications());
   };
 
   canMoveNext() {
@@ -117,7 +112,6 @@ export default class ProvideDetailsScreen extends LightningElement {
       JSON.stringify(this._caseData)
     );
     this.dispatchEvent(attributeChangeEvent);
-    sessionStorage.caseData = JSON.stringify(this._caseData);
   }
 
   updateCaseValues() {

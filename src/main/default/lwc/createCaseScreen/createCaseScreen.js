@@ -1,8 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import {
   FlowNavigationNextEvent,
-  FlowAttributeChangeEvent,
-  FlowNavigationBackEvent
+  FlowAttributeChangeEvent
 } from 'lightning/flowSupport';
 import {
   registerComponentForInit,
@@ -71,8 +70,6 @@ export default class CreateCaseScreen extends LightningElement {
   engine;
   /** @type{object} */
   _caseData = {};
-  /** @type {object} */
-  sessionStorageCaseObject = {};
   /** @type {ProgressStep[]} */
   customSteps = [
     {
@@ -95,7 +92,6 @@ export default class CreateCaseScreen extends LightningElement {
       if (this.caseData) {
         this._caseData = JSON.parse(this.caseData);
       }
-      this.extractDataFromSessionStorage();
     } catch (err) {
       console.warn('Failed to parse the flow variable caseData', err);
       this._caseData = {};
@@ -124,23 +120,12 @@ export default class CreateCaseScreen extends LightningElement {
     );
   }
 
-  canMovePrevious() {
-    return this.availableActions.some((action) => action === 'BACK');
-  }
-
   handleNext() {
     if (this.canMoveNext()) {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
       this.engine.dispatch(this.actions.logCaseNextStage());
-    }
-  }
-
-  handlePrevious() {
-    if (this.canMovePrevious()) {
-      const navigateBackEvent = new FlowNavigationBackEvent();
-      this.dispatchEvent(navigateBackEvent);
     }
   }
 
@@ -151,10 +136,18 @@ export default class CreateCaseScreen extends LightningElement {
       classificationInputs
     } = this.getInputs();
 
-    this._caseData = {
-      Subject: subjectInput.value,
-      Description: descriptionInput.value
-    };
+    if (
+      this._caseData.Subject !== subjectInput.value ||
+      this.replaceTagsWithSpace(this._caseData.Description) !==
+        descriptionInput.value
+    ) {
+      this._caseData = {
+        Subject: subjectInput.value,
+        Description: descriptionInput.value
+      };
+      sessionStorage.idsPreviouslyVoted = JSON.stringify([]);
+      sessionStorage.idsPreviouslyVotedPositive = JSON.stringify([]);
+    }
 
     classificationInputs.forEach((input) => {
       this._caseData = {
@@ -171,7 +164,6 @@ export default class CreateCaseScreen extends LightningElement {
       JSON.stringify(this._caseData)
     );
     this.dispatchEvent(attributeChangeEvent);
-    sessionStorage.caseData = JSON.stringify(this._caseData);
   }
 
   inputValidity() {
@@ -219,14 +211,11 @@ export default class CreateCaseScreen extends LightningElement {
     };
   }
 
-  extractDataFromSessionStorage() {
-    if (sessionStorage.caseData) {
-      try {
-        this.sessionStorageCaseObject = JSON.parse(sessionStorage.caseData);
-      } catch (err) {
-        console.warn('Failed to parse the case object', err);
-        this.sessionStorageCaseObject = {};
-      }
-    }
+  replaceTagsWithSpace(htmlStr) {
+    return htmlStr.replace(/(<[^>]*>)/gi, ' ').trim();
+  }
+
+  get renderCaseAssistInterface() {
+    return !this.caseData;
   }
 }

@@ -65,6 +65,8 @@ export default class reviewResourcesScreen extends LightningElement {
   _caseData;
   /** @type {array} */
   idsPreviouslyVoted = [];
+  /** @type {array} */
+  idsPreviouslyVotedPositive = [];
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
@@ -100,10 +102,42 @@ export default class reviewResourcesScreen extends LightningElement {
     if (this.canMovePrevious()) {
       const navigateBackEvent = new FlowNavigationBackEvent();
       this.dispatchEvent(navigateBackEvent);
-      sessionStorage.idsPreviouslyVoted = JSON.stringify(
-        this.idsPreviouslyVoted
-      );
+      this.persistIdsPreviouslyVoted();
+      this.persistIdsPreviouslyVotedPositive();
     }
+  }
+
+  persistIdsPreviouslyVotedPositive() {
+    if (sessionStorage.idsPreviouslyVotedPositive) {
+      try {
+        this.idsPreviouslyVotedPositive = [
+          ...JSON.parse(sessionStorage.idsPreviouslyVotedPositive),
+          ...this.idsPreviouslyVotedPositive
+        ];
+      } catch (err) {
+        console.warn(
+          'Failed to parse the idsPreviouslyVotedPositive array',
+          err
+        );
+      }
+    }
+    sessionStorage.idsPreviouslyVotedPositive = JSON.stringify(
+      this.idsPreviouslyVotedPositive
+    );
+  }
+
+  persistIdsPreviouslyVoted() {
+    if (sessionStorage.idsPreviouslyVoted) {
+      try {
+        this.idsPreviouslyVoted = [
+          ...JSON.parse(sessionStorage.idsPreviouslyVoted),
+          ...this.idsPreviouslyVoted
+        ];
+      } catch (err) {
+        console.warn('Failed to parse the idsPreviouslyVoted array', err);
+      }
+    }
+    sessionStorage.idsPreviouslyVoted = JSON.stringify(this.idsPreviouslyVoted);
   }
 
   onRating = (evt) => {
@@ -112,6 +146,10 @@ export default class reviewResourcesScreen extends LightningElement {
       if (countSlot) {
         countSlot.incrementScore();
       }
+      this.idsPreviouslyVotedPositive = [
+        ...this.idsPreviouslyVotedPositive,
+        evt.detail.id
+      ];
     }
     if (evt.detail.source === 'quickview_footer') {
       const actionSlot = this.getSlotById(

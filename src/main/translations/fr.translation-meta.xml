@@ -25,7 +25,7 @@
     <name>cookbook_DescriptionHintOne</name>
   </customLabels>
   <customLabels>
-    <label>Est-ce la première fois que cela vous affecte?</label>
+    <label>Avez-vous déjà rencontré ce problème?</label>
     <name>cookbook_DescriptionHintTwo</name>
   </customLabels>
   <customLabels>
@@ -37,7 +37,7 @@
     <name>cookbook_SubjectInputTitle</name>
   </customLabels>
   <customLabels>
-    <label>Remplissez ce champ.</label>
+    <label>Remplissez ce champ</label>
     <name>cookbook_ValueMissing</name>
   </customLabels>
   <customLabels>
@@ -141,11 +141,11 @@
     <name>cookbook_ForgetYourPassword</name>
   </customLabels>
   <customLabels>
-    <label>Obtenez de l'aide en 4 étapes</label>
+    <label>Obtenez de l'aide en 4 étapes faciles</label>
     <name>cookbook_GetHelpRecommended</name>
   </customLabels>
   <customLabels>
-    <label>Obtenez de l'aide en 3 étapes</label>
+    <label>Obtenez de l'aide en 3 étapes faciles</label>
     <name>cookbook_GetHelpDemo</name>
   </customLabels>
   <customLabels>
@@ -169,11 +169,11 @@
     <name>cookbook_DescribeProblemTitle</name>
   </customLabels>
   <customLabels>
-    <label>Accélérer la résolution de votre problème</label>
+    <label>Accélérer le temps de résolution</label>
     <name>cookbook_ProvideDetailsTitle</name>
   </customLabels>
   <customLabels>
-    <label>Détailler votre problème pour trouver l'agent le plus apte à vous aider</label>
+    <label>Fournissez des détails pour trouver l'agent le plus apte à vous aider</label>
     <name>cookbook_ProvideDetailsSubtitle</name>
   </customLabels>
   <customLabels>
@@ -197,31 +197,31 @@
     <name>cookbook_TheseResourcesMightHelp</name>
   </customLabels>
   <customLabels>
-    <label>Ressources suggérées en fonction de la description de votre problème</label>
+    <label>Ressources suggérées en fonction du problème que vous avez décrit</label>
     <name>cookbook_ResourcesSuggested</name>
   </customLabels>
   <customLabels>
-    <label>Vous avez résolu votre problème ?</label>
+    <label>Problème résolu?</label>
     <name>cookbook_SolvedProblem</name>
   </customLabels>
   <customLabels>
-    <label>Vous avez encore besoin d'aide ?</label>
+    <label>Vous avez encore besoin d'aide?</label>
     <name>cookbook_StillNeedHelp</name>
   </customLabels>
   <customLabels>
-    <label>Vous avez changé d'avis ?</label>
+    <label>Vous avez changé d'avis?</label>
     <name>cookbook_ChangedYourMind</name>
   </customLabels>
   <customLabels>
-    <label>Merci, nous avons les informations dont nous avons besoin</label>
+    <label>Merci, nous avons les informations nécessaires pour traiter votre demande.</label>
     <name>cookbook_WeHaveTheInformationWeNeed</name>
   </customLabels>
   <customLabels>
-    <label>Envoyez votre demande</label>
+    <label>Soumettez votre demande</label>
     <name>cookbook_SendYourRequest</name>
   </customLabels>
   <customLabels>
-    <label>Demande enregistrée avec succès!</label>
+    <label>Demande soumise avec succès!</label>
     <name>cookbook_RequestSuccessfullySaved</name>
   </customLabels>
   <customLabels>
@@ -251,9 +251,5 @@
   <customLabels>
     <label>Consultez votre demande</label>
     <name>cookbook_SeeYourRequest</name>
-  </customLabels>
-  <customLabels>
-    <label>Pardonnez-nous pour le retard pendant que nous aidons tout le monde dans l'ordre.</label>
-    <name>cookbook_ForgiveUsForTheDelay</name>
   </customLabels>
 </Translations>

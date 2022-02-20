@@ -23,17 +23,17 @@
   </labels>
   <labels>
     <fullName>cookbook_DescriptionHintOne</fullName>
-    <value>Since when is this problem affecting you?</value>
+    <value>Since when has this issue been affecting you?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Since when is this problem affecting you?</shortDescription>
+    <shortDescription>Since when has this issue been affecting you?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_DescriptionHintTwo</fullName>
-    <value>Is it the first time it is affecting you?</value>
+    <value>Have you encountered this issue before?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Is it the first time it is affecting you?</shortDescription>
+    <shortDescription>Have you encountered this issue before?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_DescriptionHintThree</fullName>
@@ -51,10 +51,10 @@
   </labels>
   <labels>
     <fullName>cookbook_DescriptionInputTitle</fullName>
-    <value>Explain the problem</value>
+    <value>Explain the issue</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Explain the problem</shortDescription>
+    <shortDescription>Explain the issue</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_SubjectInputTitle</fullName>
@@ -163,10 +163,10 @@
   </labels>
   <labels>
     <fullName>cookbook_CreateCase</fullName>
-    <value>Create case</value>
+    <value>Create Case</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Create case</shortDescription>
+    <shortDescription>Create Case</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_LogIn</fullName>
@@ -177,10 +177,10 @@
   </labels>
   <labels>
     <fullName>cookbook_DescribeProblem</fullName>
-    <value>Describe problem</value>
+    <value>Describe issue</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Describe problem</shortDescription>
+    <shortDescription>Describe issue</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_ProvideDetails</fullName>
@@ -240,24 +240,24 @@
   </labels>
   <labels>
     <fullName>cookbook_ForgetYourPassword</fullName>
-    <value>Forget your password</value>
+    <value>Forgot your password?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Forget your password</shortDescription>
+    <shortDescription>Forgot your password?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_GetHelpDemo</fullName>
-    <value>Get help in 3 steps</value>
+    <value>Get help in 3 easy steps</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Get help in 3 steps</shortDescription>
+    <shortDescription>Get help in 3 easy steps</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_GetHelpRecommended</fullName>
-    <value>Get help in 4 steps</value>
+    <value>Get help in 4 easy steps</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Get help in 4 steps</shortDescription>
+    <shortDescription>Get help in 4 easy steps</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_LoginTitle</fullName>
@@ -268,10 +268,10 @@
   </labels>
   <labels>
     <fullName>cookbook_LoginSubtitle</fullName>
-    <value>We will be able to propose better solutions based on your account information</value>
+    <value>We can propose better solutions based on your account information</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>We will be able to propose better solutions based on your account information</shortDescription>
+    <shortDescription>We can propose better solutions based on your account information</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Previous</fullName>
@@ -296,17 +296,17 @@
   </labels>
   <labels>
     <fullName>cookbook_ProvideDetailsTitle</fullName>
-    <value>Speed up the resolution of your problem</value>
+    <value>Speed up resolution time</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Speed up the resolution of your problem</shortDescription>
+    <shortDescription>Speed up resolution time</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_ProvideDetailsSubtitle</fullName>
-    <value>Detail your problem to find the agent best suited to help you</value>
+    <value>Provide details to find the agent best suited to help you</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Detail your problem to find the agent best suited to help you</shortDescription>
+    <shortDescription>Provide details to find the agent best suited to help you</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_PriorityLabel</fullName>
@@ -317,17 +317,17 @@
   </labels>
   <labels>
     <fullName>cookbook_TypeLabel</fullName>
-    <value>What type of problem is it?</value>
+    <value>What type of issue is it?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>What type of problem is it?</shortDescription>
+    <shortDescription>What type of issue is it?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_ReasonLabel</fullName>
-    <value>What's the reason behind opening this case?</value>
+    <value>What's the source of your issue?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>What's the reason behind opening this case?</shortDescription>
+    <shortDescription>What's the source of your issue?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_MoreOptions</fullName>
@@ -345,17 +345,17 @@
   </labels>
   <labels>
     <fullName>cookbook_ResourcesSuggested</fullName>
-    <value>Resources suggested based on your problem description</value>
+    <value>Suggested resources based on the issue you described</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Resources suggested based on your problem description</shortDescription>
+    <shortDescription>Suggested resources based on the issue you described</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_SolvedProblem</fullName>
-    <value>Solved your problem?</value>
+    <value>Issue solved?</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Solved your problem?</shortDescription>
+    <shortDescription>Issue solved?</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_StillNeedHelp</fullName>
@@ -373,24 +373,24 @@
   </labels>
   <labels>
     <fullName>cookbook_WeHaveTheInformationWeNeed</fullName>
-    <value>Thank you, we have the information we need</value>
+    <value>Thank you, we have the information we need to process your request</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Thank you, we have the information we need.</shortDescription>
+    <shortDescription>Thank you, we have the information we need to process your request</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_SendYourRequest</fullName>
-    <value>Send your request</value>
+    <value>Submit your request</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Send your request</shortDescription>
+    <shortDescription>Submit your request</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_RequestSuccessfullySaved</fullName>
-    <value>Request successfully saved!</value>
+    <value>Request successfully submitted!</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>Request successfully saved!</shortDescription>
+    <shortDescription>Request successfully submitted!</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_ConfirmationEmailOnTheWay</fullName>
@@ -401,10 +401,10 @@
   </labels>
   <labels>
     <fullName>cookbook_AgentWillBeInTouch</fullName>
-    <value>An agent will be in touch in the next 24h</value>
+    <value>An agent will be in touch within 24hrs</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>An agent will be in touch in the next 24h</shortDescription>
+    <shortDescription>An agent will be in touch within 24hrs</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Via</fullName>
@@ -436,16 +436,9 @@
   </labels>
   <labels>
     <fullName>cookbook_SeeYourRequest</fullName>
-    <value>See your request</value>
+    <value>View your request</value>
     <language>en_US</language>
     <protected>false</protected>
-    <shortDescription>See your request</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_ForgiveUsForTheDelay</fullName>
-    <value>Forgive us for the delay while we help everyone in order.</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Forgive us for the delay while we help everyone in order.</shortDescription>
+    <shortDescription>View your request</shortDescription>
   </labels>
 </CustomLabels>

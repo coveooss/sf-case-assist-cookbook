@@ -14,7 +14,7 @@ It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service
 
 ## Table of Contents
 
-- [What Is Included in This Project](#what-is-included-within-this-project): A description of the contents of this repository.
+- [What Is Included in This Project](#what-is-included-in-this-project): A description of the contents of this repository.
 
 - [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 
@@ -33,7 +33,7 @@ The Recommended Flow contains the following screens:
 3. A third screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
 4. A confirmation screen that the case was created.
 
-Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist Experience](https://youtu.be/WvHKYbiZRNI)
+Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist Experience](https://youtu.be/WvHKYbiZRNI).
 
 ### Demo Flow:
 
@@ -108,5 +108,5 @@ TBD
 ## How to Add New Fields for Classification
 
 This cookbook suggests classifications for the standard case fields Case Priority, Case Type, and Case Reason.
-To specify additional fields for classification, access the [Provide Details Screen](src/main/default/lwc/provideDetailsScreen) and copy the sample code that are commented out in the `provideDetailsScreen.html` and `provideDetailsScreen.js` files as many times as necessary. Remember to replace the placeholders `<SALESFORCE_API_FIELD_NAME>` and `<COVEO_FIELD_NAME>` with the Salesforce API name and the Coveo field name of the new field to predict, respectively.
+To specify additional fields for classification, access the [Provide Details Screen](src/main/default/lwc/provideDetailsScreen) and copy the sample code that are commented out in the `provideDetailsScreen.html` and `provideDetailsScreen.js` files as many times as necessary. Remember to replace the placeholders `<SALESFORCE_API_FIELD_NAME>` and `<COVEO_FIELD_NAME>` with the Salesforce API name and the Coveo field name of the new field to predict, respectively. You can find the Coveo Field Name in the [Fields](https://docs.coveo.com/en/2036/index-content/about-fields) section of the Coveo Admin Console.
 Make sure that all newly added fields are specified in your configuration (see [Configuring the Case Classification Functionality](https://docs.coveo.com/en/3328/#configuring-the-case-classification-functionality)).

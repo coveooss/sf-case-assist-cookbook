@@ -86,7 +86,7 @@ When working with source-tracked orgs, use the commands `SFDX: Push Source to Or
 ### 4. Enable the Case Flow in Your Community
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page and select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
-2. After selecting the name of the flow, two inputs labeled `caseAssistId` and `engineId` appear. Fill the `caseAssistId` input with your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id) retrieved from your Case Assist Configuration and fill the `engineId` input with an appropriate name for the engine that the Quantic components will register to.
+2. After selecting the name of the flow, two inputs labeled `caseAssistId` and `engineId` appear. Fill the `caseAssistId` input with your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id) retrieved from your Case Assist Configuration and fill the `engineId` input with your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties) which is the name you want to give to the engine the Quantic components will register to.
 3. In the published version of your community, users can now fill in the subject and description fields in the first screen. If they proceed to the next screens to see the proposed predictions for classifying their case and get documents suggestions that will potentially resolve their case before it is created.
 
 ### Dev, Build and Test

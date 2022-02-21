@@ -102,8 +102,7 @@ export default class DescribeProblemScreen extends LightningElement {
     const { subjectInput, descriptionInput } = this.getInputs();
     if (
       this._caseData.Subject !== subjectInput.value ||
-      this.replaceTagsWithSpace(this._caseData.Description) !==
-        descriptionInput.value
+      this._caseData.Description !== descriptionInput.value
     ) {
       this._caseData = {
         Subject: subjectInput.value,
@@ -125,10 +124,6 @@ export default class DescribeProblemScreen extends LightningElement {
     const subjectInput = this.template.querySelector('c-subject-input');
     const descriptionInput = this.template.querySelector('c-description-input');
     return { subjectInput, descriptionInput };
-  }
-
-  replaceTagsWithSpace(htmlStr) {
-    return htmlStr.replace(/(<[^>]*>)/gi, ' ').trim();
   }
 
   get renderCaseAssistInterface() {

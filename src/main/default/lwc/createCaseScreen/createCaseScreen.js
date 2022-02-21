@@ -138,8 +138,7 @@ export default class CreateCaseScreen extends LightningElement {
 
     if (
       this._caseData.Subject !== subjectInput.value ||
-      this.replaceTagsWithSpace(this._caseData.Description) !==
-        descriptionInput.value
+      this._caseData.Description !== descriptionInput.value
     ) {
       this._caseData = {
         Subject: subjectInput.value,
@@ -209,10 +208,6 @@ export default class CreateCaseScreen extends LightningElement {
       descriptionInput,
       classificationInputs
     };
-  }
-
-  replaceTagsWithSpace(htmlStr) {
-    return htmlStr.replace(/(<[^>]*>)/gi, ' ').trim();
   }
 
   get renderCaseAssistInterface() {

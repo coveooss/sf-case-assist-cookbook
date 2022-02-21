@@ -4,7 +4,7 @@ A pre-built example of a Lightning Flow utilizing the [Coveo Quantic Case Assist
 
 1. Predict case classification values depending on the case Subject and Description given by the customer.
 2. Suggest documents that can potentially solve the customer's case before it is created.
-3. Track user interactions with the different components and screens across the entire case assist flow.
+3. Track user interactions with the different components and screens across the entire case assist flow through Coveo Analytics and Reports.
 
 It is distributed as an example of best practices when requesting field predictions and document suggestions from the Coveo Customer Service API.
 

@@ -5,7 +5,7 @@ import abandonRequest from '@salesforce/label/c.cookbook_AbandonRequest';
 /**
  * The `abandonRequest` component is a button to abandon a case creation request.
  * @example
- * <c-abandon-request-button engine-id={engineId} button-label="Abandon request" label="Solved your problem" size="big"></c-abandon-request-button>
+ * <c-abandon-request-button engine-id={engineId} redirect-ref={redirectRef} button-label="Abandon request" label="Solved your problem" size="big"></c-abandon-request-button>
  */
 export default class AbandonRequestButton extends LightningElement {
   labels = {
@@ -44,12 +44,20 @@ export default class AbandonRequestButton extends LightningElement {
     }
   };
 
+  /**
+   * Returns the CSS class of the button.
+   * @returns {string}
+   */
   get buttonClass() {
     return `slds-button slds-button_outline-brand ${
       this.size === 'big' ? 'big' : ''
     }`;
   }
 
+  /**
+   * Indicates whether there is a label to show or not.
+   * @returns {boolean}
+   */
   get showLabel() {
     return !!this.label.length;
   }

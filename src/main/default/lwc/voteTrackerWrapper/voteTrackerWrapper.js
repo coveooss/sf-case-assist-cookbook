@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import { incrementScore } from 'c/ratingUtils';
 
 /**
- * The `voteTrackerWrapper` component is responsible of displaying or not the content of the actions slot of a document suggestion.
+ * The `voteTrackerWrapper` component is responsible of displaying the content of the actions slot of a document suggestion.
  * @example
  * <c-vote-tracker-wrapper engine-id={engineId}></c-vote-tracker-wrapper>
  */

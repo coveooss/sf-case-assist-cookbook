@@ -22,7 +22,7 @@ import {
 /**
  * The `createCaseButton` component is a button to submit a new case.
  * @example
- * <c-create-case-button engine-id={engineId} button-label="Create case" label="Still need help" size="big"></c-create-case-button>
+ * <c-create-case-button engine-id={engineId} case-data={caseData} button-label="Create case" label="Still need help" size="big" ></c-create-case-button>
  */
 export default class CreateCaseButton extends LightningElement {
   labels = {
@@ -80,10 +80,18 @@ export default class CreateCaseButton extends LightningElement {
     };
   };
 
+  /**
+   * Returns the CSS class of the button.
+   * @returns {string}
+   */
   get buttonClass() {
     return `slds-button slds-button_brand ${this.size === 'big' ? 'big' : ''}`;
   }
 
+  /**
+   * Indicates whether there is a label to show or not.
+   * @returns {boolean}
+   */
   get showLabel() {
     return !!this.label.length;
   }

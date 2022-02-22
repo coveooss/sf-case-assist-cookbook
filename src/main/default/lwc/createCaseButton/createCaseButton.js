@@ -22,7 +22,7 @@ import {
 /**
  * The `createCaseButton` component is a button to submit a new case.
  * @example
- * <c-create-case-button engine-id={engineId} button-label="Create case" label="Still need help" size="big"></c-create-case-button>
+ * <c-create-case-button engine-id={engineId} case-data={caseData} button-label="Create case" label="Still need help" size="big" ></c-create-case-button>
  */
 export default class CreateCaseButton extends LightningElement {
   labels = {
@@ -31,11 +31,11 @@ export default class CreateCaseButton extends LightningElement {
 
   /**
    * The ID of the engine instance the component registers to.
-   * @api
    * @type {string}
    */
   @api engineId;
   /**
+   * A JSON-serialized object representing the current case fields.
    * @type {CaseData}
    */
   @api caseData;
@@ -57,6 +57,8 @@ export default class CreateCaseButton extends LightningElement {
 
   /** @type {CaseAssistEngine} */
   engine;
+  /** @type {boolean} */
+  loading;
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -78,27 +80,43 @@ export default class CreateCaseButton extends LightningElement {
     };
   };
 
+  /**
+   * Returns the CSS class of the button.
+   * @returns {string}
+   */
   get buttonClass() {
     return `slds-button slds-button_brand ${this.size === 'big' ? 'big' : ''}`;
   }
 
+  /**
+   * Indicates whether there is a label to show or not.
+   * @returns {boolean}
+   */
   get showLabel() {
     return !!this.label.length;
   }
 
   async handleCreateCase() {
-    const newCaseId = await newCase(this.caseData);
-    if (newCaseId) {
-      this.engine.dispatch(this.actions.logCreateCase(newCaseId));
-      const attributeChangeEvent = new FlowAttributeChangeEvent(
-        'recordId',
-        newCaseId
-      );
-      const customEvent = new CustomEvent('next', {
-        bubbles: true
-      });
-      this.dispatchEvent(attributeChangeEvent);
-      this.dispatchEvent(customEvent);
+    try {
+      this.loading = true;
+      const newCaseId = await newCase(this.caseData);
+      if (newCaseId) {
+        this.engine.dispatch(this.actions.logCreateCase(newCaseId));
+        const attributeChangeEvent = new FlowAttributeChangeEvent(
+          'recordId',
+          newCaseId
+        );
+        const customEvent = new CustomEvent('next', {
+          bubbles: true,
+          composed: true
+        });
+        this.dispatchEvent(attributeChangeEvent);
+        this.dispatchEvent(customEvent);
+      }
+    } catch (err) {
+      console.warn('Failed to create case', err);
+    } finally {
+      this.loading = false;
     }
   }
 }

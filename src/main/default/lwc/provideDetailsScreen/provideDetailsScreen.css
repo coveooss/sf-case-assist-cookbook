@@ -1,0 +1,34 @@
+.container {
+  background-color: white;
+}
+
+.content {
+  width: 85%;
+  margin: auto;
+  max-width: 1000px;
+}
+
+.screen-header {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+c-flow-progress-indicator {
+  flex: 1;
+}
+
+.navigation {
+  top: 0;
+}
+
+.large-button {
+  width: 13.5rem;
+}
+
+.previous-button-icon {
+  --sds-c-icon-color-foreground-default: var(
+    --lwc-brandAccessible,
+    rgb(1, 118, 211)
+  );
+}

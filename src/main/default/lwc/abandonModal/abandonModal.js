@@ -13,9 +13,9 @@ import { NavigationMixin } from 'lightning/navigation';
 
 /** @typedef {import("coveo").CaseAssistEngine} CaseAssistEngine */
 /**
- * The `abandonModal` component is a modal that displays a message when the case is abandoned.
+ * The `abandonModal` component is a modal that displays a message to confirm that the user wants to abandon his case.
  * @example
- * <c-abandon-modal header-label="We're glad you found the answer!"></c-abandon-modal>
+ * <c-abandon-modal engine-id={engineId} redirect-ref={redirectRef} header-label="We're glad you found the answer!"></c-abandon-modal>
  */
 export default class AbandonModal extends NavigationMixin(LightningElement) {
   labels = {
@@ -50,9 +50,9 @@ export default class AbandonModal extends NavigationMixin(LightningElement) {
     }
   };
 
-  /** @type {boolean} */
   /** @type {CaseAssistEngine} */
   engine;
+  /** @type {boolean} */
   _isOpen = false;
 
   connectedCallback() {
@@ -109,6 +109,10 @@ export default class AbandonModal extends NavigationMixin(LightningElement) {
     this._isOpen = false;
   }
 
+  /**
+   * Indicates whether the modal is open or not.
+   * @returns {boolean}
+   */
   @api get isOpen() {
     return this._isOpen;
   }

@@ -1,0 +1,70 @@
+<template>
+  <div class="slds-var-p-vertical_xx-large container">
+    <div class="slds-align_absolute-center slds-var-m-bottom_large">
+      <lightning-icon
+        icon-name="action:approval"
+        alternative-text="Submitted"
+        title="Submitted"
+        size="large"
+        class="Icon__approval-green"
+      ></lightning-icon>
+    </div>
+    <c-main-title
+      align-center
+      title={labels.requestSuccessfullySaved}
+    ></c-main-title>
+    <div class="slds-align_absolute-center slds-var-m-vertical_x-small">
+      <ul class="instructions slds-text-heading_small">
+        <li class="slds-var-p-vertical_xxx-small">
+          {labels.confirmationMailIsOnTheWay}
+        </li>
+        <li class="slds-var-p-vertical_xxx-small">
+          {labels.agentWillBeInTouch}
+        </li>
+      </ul>
+    </div>
+
+    <fieldset class="slds-align_absolute-center slds-form-element">
+      <legend
+        class="slds-form-element__legend slds-form-element__label slds-text-heading_small slds-var-p-right_medium"
+      >
+        {labels.via}
+      </legend>
+      <div class="slds-form-element__control row">
+        <span class="slds-radio slds-var-p-right_small">
+          <input checked type="radio" id="email" name="default" />
+          <label class="slds-radio__label" for="email">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">{labels.email}</span>
+          </label>
+        </span>
+        <span class="slds-radio">
+          <input type="radio" id="phone" name="default" />
+          <label class="slds-radio__label" for="phone">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">{labels.phone}</span>
+          </label>
+        </span>
+      </div>
+    </fieldset>
+
+    <div
+      class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
+    >
+      <button
+        onclick={handleGoBackToCommunity}
+        title="Go back to community"
+        class="slds-button slds-button_outline-brand slds-var-m-right_small"
+      >
+        {labels.goBackToCommunity}
+      </button>
+      <button
+        onclick={handleSeeRequest}
+        title={labels.seeYourRequest}
+        class="slds-button slds-button_brand slds-var-m-left_small"
+      >
+        {labels.seeYourRequest}
+      </button>
+    </div>
+  </div>
+</template>

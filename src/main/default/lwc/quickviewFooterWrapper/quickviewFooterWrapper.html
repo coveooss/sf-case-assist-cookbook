@@ -1,0 +1,15 @@
+<template>
+  <template if:true={visible}>
+    <div class="slds-clearfix">
+      <div class="slds-float_right">
+        <div class="slds-var-p-around_medium">
+          <c-vote-tracker
+            timeout="0"
+            engine-id={engineId}
+            size="big"
+          ></c-vote-tracker>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

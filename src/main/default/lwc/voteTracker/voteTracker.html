@@ -11,7 +11,10 @@
       </template>
       <template if:true={showAbandonRequest}>
         <div class="slds-var-m-top_x-small">
-          <c-abandon-request-button size="small"></c-abandon-request-button>
+          <c-abandon-request-button
+            engine-id={engineId}
+            size="small"
+          ></c-abandon-request-button>
         </div>
       </template>
     </template>

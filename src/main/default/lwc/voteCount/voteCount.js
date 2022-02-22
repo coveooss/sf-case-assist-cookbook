@@ -65,4 +65,8 @@ export default class VoteCount extends LightningElement {
       ? 'slds-text-body_small slds-text-color_success'
       : 'slds-text-body_small view-count_label-neutral';
   }
+
+  get displayCount() {
+    return Number(this.count) >= 0;
+  }
 }

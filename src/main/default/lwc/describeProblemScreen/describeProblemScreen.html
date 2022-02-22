@@ -1,0 +1,43 @@
+<template>
+  <template if:true={renderCaseAssistInterface}>
+    <c-quantic-case-assist-interface
+      engine-id={engineId}
+      case-assist-id={caseAssistId}
+    ></c-quantic-case-assist-interface>
+  </template>
+  <div class="slds-var-p-vertical_xx-large container">
+    <div class="content">
+      <c-flow-progress-indicator
+        current-step="describe problem"
+      ></c-flow-progress-indicator>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-main-title
+          align-center
+          title={labels.describeProblemTitle}
+        ></c-main-title>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-subject-input required engine-id={engineId}></c-subject-input>
+        <div class="slds-var-m-top_xx-large slds-var-p-bottom_xx-large">
+          <c-description-input
+            required
+            strong-description-length="50"
+            display-strength-indicator
+            engine-id={engineId}
+            initial-value={_caseData.Description}
+          ></c-description-input>
+        </div>
+        <div
+          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
+        >
+          <button
+            onclick={handleNext}
+            class="slds-button slds-button_brand large-button"
+          >
+            {labels.next}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

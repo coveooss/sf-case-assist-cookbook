@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
   <customLabels>
     <label>Titre de la section</label>
@@ -7,8 +7,6 @@
   <customLabels>
     <label>Expliquez le problème</label>
     <name>cookbook_DescriptionInputTitle</name>
-    <label>Donnez des détails</label>
-    <name>cookbook_ProvideDetails</name>
   </customLabels>
   <customLabels>
     <label>Donnez plus de détails</label>
@@ -27,18 +25,22 @@
     <name>cookbook_DescriptionHintOne</name>
   </customLabels>
   <customLabels>
-    <label>Est-ce la première fois que cela vous affecte?</label>
+    <label>Avez-vous déjà rencontré ce problème?</label>
     <name>cookbook_DescriptionHintTwo</name>
   </customLabels>
   <customLabels>
     <label>Qu'est-ce que cela vous empêche de réaliser?</label>
     <name>cookbook_DescriptionHintThree</name>
+  </customLabels>
+  <customLabels>
     <label>Écrivez un titre descriptif</label>
     <name>cookbook_SubjectInputTitle</name>
   </customLabels>
   <customLabels>
-    <label>Remplissez ce champ.</label>
+    <label>Remplissez ce champ</label>
     <name>cookbook_ValueMissing</name>
+  </customLabels>
+  <customLabels>
     <label>A aidé {{0}} utilisateur</label>
     <name>cookbook_HelpedUsers</name>
   </customLabels>
@@ -121,5 +123,133 @@
   <customLabels>
     <label>Confirmer</label>
     <name>cookbook_Confirm</name>
+  </customLabels>
+  <customLabels>
+    <label>Mot de passe</label>
+    <name>cookbook_Password</name>
+  </customLabels>
+  <customLabels>
+    <label>Nom d'utilisateur</label>
+    <name>cookbook_Username</name>
+  </customLabels>
+  <customLabels>
+    <label>Se souvenir de moi</label>
+    <name>cookbook_RememberMe</name>
+  </customLabels>
+  <customLabels>
+    <label>Mot de passe oublié</label>
+    <name>cookbook_ForgetYourPassword</name>
+  </customLabels>
+  <customLabels>
+    <label>Obtenez de l'aide en 4 étapes faciles</label>
+    <name>cookbook_GetHelpRecommended</name>
+  </customLabels>
+  <customLabels>
+    <label>Obtenez de l'aide en 3 étapes faciles</label>
+    <name>cookbook_GetHelpDemo</name>
+  </customLabels>
+  <customLabels>
+    <label>Connectez-vous pour contacter un agent d'assistance</label>
+    <name>cookbook_LoginTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Nous serons en mesure de vous proposer de meilleures solutions sur la base des informations relatives à votre compte.</label>
+    <name>cookbook_LoginSubtitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Précédent</label>
+    <name>cookbook_Previous</name>
+  </customLabels>
+  <customLabels>
+    <label>Suivant</label>
+    <name>cookbook_Next</name>
+  </customLabels>
+  <customLabels>
+    <label>Bonjour John, comment pouvons-nous vous aider?</label>
+    <name>cookbook_DescribeProblemTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Accélérer le temps de résolution</label>
+    <name>cookbook_ProvideDetailsTitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Fournissez des détails pour trouver l'agent le plus apte à vous aider</label>
+    <name>cookbook_ProvideDetailsSubtitle</name>
+  </customLabels>
+  <customLabels>
+    <label>Comment classeriez-vous la priorité de votre problème?</label>
+    <name>cookbook_PriorityLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>De quel type de problème s'agit-il?</label>
+    <name>cookbook_TypeLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Quelle est la raison derrière l'ouverture de cette demande?</label>
+    <name>cookbook_ReasonLabel</name>
+  </customLabels>
+  <customLabels>
+    <label>Plus d'options</label>
+    <name>cookbook_MoreOptions</name>
+  </customLabels>
+  <customLabels>
+    <label>Ces ressources pourraient vous aider</label>
+    <name>cookbook_TheseResourcesMightHelp</name>
+  </customLabels>
+  <customLabels>
+    <label>Ressources suggérées en fonction du problème que vous avez décrit</label>
+    <name>cookbook_ResourcesSuggested</name>
+  </customLabels>
+  <customLabels>
+    <label>Problème résolu?</label>
+    <name>cookbook_SolvedProblem</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous avez encore besoin d'aide?</label>
+    <name>cookbook_StillNeedHelp</name>
+  </customLabels>
+  <customLabels>
+    <label>Vous avez changé d'avis?</label>
+    <name>cookbook_ChangedYourMind</name>
+  </customLabels>
+  <customLabels>
+    <label>Merci, nous avons les informations nécessaires pour traiter votre demande.</label>
+    <name>cookbook_WeHaveTheInformationWeNeed</name>
+  </customLabels>
+  <customLabels>
+    <label>Soumettez votre demande</label>
+    <name>cookbook_SendYourRequest</name>
+  </customLabels>
+  <customLabels>
+    <label>Demande soumise avec succès!</label>
+    <name>cookbook_RequestSuccessfullySaved</name>
+  </customLabels>
+  <customLabels>
+    <label>Un courriel de confirmation est en route</label>
+    <name>cookbook_ConfirmationEmailOnTheWay</name>
+  </customLabels>
+  <customLabels>
+    <label>Un agent vous contactera dans les prochaines 24 heures.</label>
+    <name>cookbook_AgentWillBeInTouch</name>
+  </customLabels>
+  <customLabels>
+    <label>Via:</label>
+    <name>cookbook_Via</name>
+  </customLabels>
+  <customLabels>
+    <label>Email</label>
+    <name>cookbook_Email</name>
+  </customLabels>
+  <customLabels>
+    <label>Téléphone</label>
+    <name>cookbook_Phone</name>
+  </customLabels>
+  <customLabels>
+    <label>Retourner à la communauté</label>
+    <name>cookbook_GoBackToCommunity</name>
+  </customLabels>
+  <customLabels>
+    <label>Consultez votre demande</label>
+    <name>cookbook_SeeYourRequest</name>
   </customLabels>
 </Translations>

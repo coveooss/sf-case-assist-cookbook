@@ -43,16 +43,19 @@ export default class DescriptionInput extends LightningElement {
   /**
    * The error message to be shown when the value is missing.
    * @type {string}
-   * @defaultValue `'Complete this field.`
+   * @defaultValue `'Complete this field.'`
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
    * This is the delay before sending a query and analytics events on user typing, this value is in milliseconds.
+   * @type {number}
+   * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
   /**
    * Whether we display the description strength indicator or not.
    * @type {boolean}
+   * @defaultValue `false`
    */
   @api displayStrengthIndicator = false;
   /**
@@ -73,9 +76,24 @@ export default class DescriptionInput extends LightningElement {
   ];
   /**
    * The necessary number of words that the description must have in order to be considered strong.
-   * @type {Number}
+   * @type {number}
+   * @defaultValue `20`
    */
   @api strongDescriptionLength = 20;
+  /** The initial value to be given to the input.
+   * @type {string}
+   */
+  @api initialValue;
+  /**
+   * Wheather we want to prevent fetching classifications when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchClassificationsOnChange = false;
+  /**
+   * Wheather we want to prevent fetching suggestions when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchSuggestionsOnChange = false;
 
   /** @type {string} */
   _value = '';
@@ -112,13 +130,9 @@ export default class DescriptionInput extends LightningElement {
         field: this._fieldName
       }
     });
-
-    this.actions = {
-      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
-      ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
-    };
+    this._value = this.initialValue
+      ? this.initialValue
+      : this.input.state.value;
   };
 
   /**
@@ -160,15 +174,10 @@ export default class DescriptionInput extends LightningElement {
    * @returns {void}
    */
   updateDescriptionState() {
-    this.engine.dispatch(
-      this.actions.updateCaseInput({
-        fieldName: this._fieldName,
-        fieldValue: this.replaceTagsWithSpace(this._value)
-      })
-    );
-    this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
-    this.engine.dispatch(this.actions.fetchCaseClassifications());
-    this.engine.dispatch(this.actions.fetchDocumentSuggestions());
+    this.input.update(this.replaceTagsWithSpace(this._value), {
+      caseClassifications: !this.preventFetchClassificationsOnChange,
+      documentSuggestions: !this.preventFetchSuggestionsOnChange
+    });
   }
 
   get currentProgress() {

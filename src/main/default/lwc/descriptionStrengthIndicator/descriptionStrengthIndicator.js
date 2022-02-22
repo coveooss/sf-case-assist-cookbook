@@ -47,9 +47,9 @@ export default class DescriptionStrengthIndicator extends LightningElement {
   /**
    * The progress value from where the keepGoingMessage will be shown.
    * @type {number}
-   * @defaultValue `75`
+   * @defaultValue `25`
    */
-  @api keepGoingThreshold = 75;
+  @api keepGoingThreshold = 25;
 
   /**
    * The final message to be shown to the user when the progress indicator is full.

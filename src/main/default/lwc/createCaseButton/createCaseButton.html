@@ -6,11 +6,21 @@
       >{label}</label
     >
   </template>
-  <button
-    id="create-case-button"
-    onclick={handleCreateCase}
-    class={buttonClass}
-  >
-    {buttonLabel}
-  </button>
+  <template if:false={loading}>
+    <button
+      id="create-case-button"
+      onclick={handleCreateCase}
+      class={buttonClass}
+    >
+      {buttonLabel}
+    </button>
+  </template>
+  <template if:true={loading}>
+    <div class="loading-container slds-is-relative">
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"
+      ></lightning-spinner>
+    </div>
+  </template>
 </template>

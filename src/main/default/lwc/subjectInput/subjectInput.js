@@ -49,13 +49,25 @@ export default class SubjectInput extends LightningElement {
   /**
    * The error message to be shown when the value is missing.
    * @type {string}
-   * @defaultValue `'Complete this field.`
+   * @defaultValue `'Complete this field.'`
    */
   @api messageWhenValueMissing = this.labels.errorValueMissing;
   /**
    * This is the delay before sending a query and analytics events on user typing.
+   * @type {number}
+   * @defaultValue `500`
    */
   @api caseEditDelayMs = 500;
+  /**
+   * Wheather we want to prevent fetching classifications when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchClassificationsOnChange = false;
+  /**
+   * Wheather we want to prevent fetching suggestions when the value of the input changes.
+   * @type {boolean}
+   */
+  @api preventFetchSuggestionsOnChange = false;
 
   /** @type {string} */
   _value = '';
@@ -93,12 +105,7 @@ export default class SubjectInput extends LightningElement {
       }
     });
 
-    this.actions = {
-      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine),
-      ...CoveoHeadlessCaseAssist.loadCaseFieldActions(engine),
-      ...CoveoHeadlessCaseAssist.loadDocumentSuggestionActions(engine)
-    };
+    this._value = this.input.state.value.substring(0, this.maxLength);
   };
 
   /**
@@ -107,23 +114,15 @@ export default class SubjectInput extends LightningElement {
    */
   handleChange = (e) => {
     this._errorMessage = '';
-    this._value =
-      e.target.value.length <= this.maxLength
-        ? e.target.value
-        : e.target.value.substring(0, this.maxLength);
+    this._value = e.target.value.substring(0, this.maxLength);
     this.debounceUpdateSubjectState();
   };
 
   updateSubjectState() {
-    this.engine.dispatch(
-      this.actions.updateCaseInput({
-        fieldName: this._fieldName,
-        fieldValue: this._value
-      })
-    );
-    this.engine.dispatch(this.actions.logUpdateCaseField(this._fieldName));
-    this.engine.dispatch(this.actions.fetchCaseClassifications());
-    this.engine.dispatch(this.actions.fetchDocumentSuggestions());
+    this.input.update(this._value, {
+      caseClassifications: !this.preventFetchClassificationsOnChange,
+      documentSuggestions: !this.preventFetchSuggestionsOnChange
+    });
   }
 
   /**

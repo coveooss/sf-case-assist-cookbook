@@ -1,0 +1,104 @@
+<template>
+  <template if:true={renderCaseAssistInterface}>
+    <c-quantic-case-assist-interface
+      engine-id={engineId}
+      case-assist-id={caseAssistId}
+    ></c-quantic-case-assist-interface>
+  </template>
+  <div class="slds-var-p-vertical_xx-large container">
+    <div class="content">
+      <c-flow-progress-indicator
+        steps={customSteps}
+        current-step="describe problem"
+      ></c-flow-progress-indicator>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-main-title
+          align-center
+          title={labels.describeProblemTitle}
+        ></c-main-title>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-subject-input required engine-id={engineId}></c-subject-input>
+        <div class="slds-var-m-top_xx-large slds-var-p-bottom_xx-large">
+          <c-description-input
+            required
+            strong-description-length="5"
+            display-strength-indicator
+            initial-value={_caseData.Description}
+            engine-id={engineId}
+          ></c-description-input>
+        </div>
+      </div>
+      <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
+        <c-main-title
+          align-center
+          title={labels.provideDetailsTitle}
+          subtitle={labels.provideDetailsSubtitle}
+        ></c-main-title>
+      </div>
+      <div class="slds-var-p-top_medium">
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            required
+            title="Priority"
+            label={labels.priority}
+            coveo-field-name="sfpriority"
+            max-suggestions="2"
+            sf-field-api-name="Priority"
+            engine-id={engineId}
+            select-placeholder={labels.moreOptions}
+          >
+          </c-quantic-case-classification>
+        </div>
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            required
+            title="Reason"
+            label={labels.reason}
+            coveo-field-name="sfreason"
+            max-suggestions="2"
+            sf-field-api-name="Reason"
+            engine-id={engineId}
+            select-placeholder={labels.moreOptions}
+          ></c-quantic-case-classification>
+        </div>
+        <div class="slds-var-m-top_xx-large">
+          <c-quantic-case-classification
+            required
+            title="Type"
+            label={labels.typeLabel}
+            coveo-field-name="sftype"
+            max-suggestions="2"
+            sf-field-api-name="Type"
+            engine-id={engineId}
+            select-placeholder={labels.moreOptions}
+          ></c-quantic-case-classification>
+        </div>
+
+        <!--This sample component lets you specify a new field for classification. Copy it every time you want to add a new field for classification.
+          Replace <SALESFORCE_API_FIELD_NAME> with the Salesforce API name of the field to predict and 
+          <COVEO_FIELD_NAME> with the Coveo name of the field to predict. -->
+
+        <!-- <div class="slds-var-m-top_xx-large">
+            <c-quantic-case-classification
+              title="my new field"
+              label="label for my new field"
+              coveo-field-name=<COVEO_FIELD_NAME>
+              sf-field-api-name=<SALESFORCE_API_FIELD_NAME>
+              engine-id={engineId}
+            ></c-quantic-case-classification>
+          </div> -->
+        <div
+          class="slds-align_absolute-center slds-var-p-top_medium slds-var-m-top_xx-large"
+        >
+          <button
+            onclick={handleNext}
+            class="slds-button slds-button_brand large-button"
+          >
+            {labels.next}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

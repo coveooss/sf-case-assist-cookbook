@@ -48,7 +48,7 @@ export default class MainTitle extends LightningElement {
   }
 
   /**
-   * Returns the CSS class of the title.
+   * Returns the CSS class of the subtitle.
    * @returns {string}
    */
   get subtitleClass() {

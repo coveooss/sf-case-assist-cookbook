@@ -1,0 +1,15 @@
+.container {
+  background-color: white;
+}
+
+.instructions {
+  list-style: inside;
+}
+
+.row {
+  display: flex;
+}
+
+button {
+  width: 13.5rem;
+}

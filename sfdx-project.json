@@ -19,7 +19,7 @@
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "49.0",
+  "sourceApiVersion": "52.0",
   "packageAliases": {
     "Salesforce Case Assist Cookbook": "0Ho3s000000fxYxCAI",
     "CoveoV2@4.8": "04t1P000000cC30",

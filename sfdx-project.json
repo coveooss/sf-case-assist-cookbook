@@ -12,7 +12,7 @@
       "default": false,
       "dependencies": [
         {
-          "package": "Quantic@1.8.17.0"
+          "package": "Quantic@1.10.0.0"
         }
       ]
     }
@@ -21,7 +21,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0",
   "packageAliases": {
-    "Quantic@1.8.17.0": "04t6g000008ffsWAAQ",
-    "Salesforce Quantic Case Assist Cookbook": "04t3s000003anxYAAQ"
+    "Quantic@1.10.0.0": "04t6g000008ffuDAAQ",
+    "Salesforce Quantic Case Assist Cookbook": "04t3s000003anxdAAA"
   }
 }

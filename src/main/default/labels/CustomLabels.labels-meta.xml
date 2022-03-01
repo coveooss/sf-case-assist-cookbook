@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+  <labels>
+    <fullName>cookbook_ProvideMoreDetails</fullName>
+    <value>Provide more details</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide more details</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ThankYou</fullName>
+    <value>Thank you!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DontKnowWhatToWrite</fullName>
+    <value>Don't know what to write?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Don't know what to write?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintOne</fullName>
+    <value>Since when has this issue been affecting you?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Since when has this issue been affecting you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintTwo</fullName>
+    <value>Have you encountered this issue before?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Have you encountered this issue before?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionHintThree</fullName>
+    <value>What is it preventing you to achieve?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What is it preventing you to achieve?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SectionTitle</fullName>
+    <value>Section title</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Section title</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescriptionInputTitle</fullName>
+    <value>Explain the issue</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Explain the issue</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SubjectInputTitle</fullName>
+    <value>Write a descriptive title</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Write a descriptive title</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ValueMissing</fullName>
+    <value>Complete this field.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Complete this field</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_HelpedUsers</fullName>
+    <value>Helped {{0}} user</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Helped [component count] user</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_HelpedUsers_plural</fullName>
+    <value>Helped {{0}} users</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Helped [component count] users</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_HelpedUsers_zero</fullName>
+    <value>Be the first to rate this document</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Be the first to rate this document</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Yes</fullName>
+    <value>Yes</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Yes</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_No</fullName>
+    <value>No</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>No</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_VoteQuestion</fullName>
+    <value>Was this helpful?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Was this helpful?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_VoteFinalText</fullName>
+    <value>Thank you for the feedback!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you for the feedback!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_VoteLabel</fullName>
+    <value>Your opinion can help others</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your opinion can help others</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AbandonRequest</fullName>
+    <value>Abandon Request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Abandon Request</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GladYouFoundAnswer</fullName>
+    <value>We're glad you found the answer!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>We're glad you found the answer!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_YourRequestWillNotBeSaved</fullName>
+    <value>Your request will be discarded.</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Your request will be discarded.</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Close</fullName>
+    <value>Close</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Undo</fullName>
+    <value>Undo</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Undo</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_CreateCase</fullName>
+    <value>Create Case</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Create Case</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_LogIn</fullName>
+    <value>Log in</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Log in</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescribeProblem</fullName>
+    <value>Describe issue</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Describe issue</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetails</fullName>
+    <value>Provide details</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide details</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ReviewResources</fullName>
+    <value>Review resources</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Review resources</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_MainTitle</fullName>
+    <value>Hi, how may we help you?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Hi, how may we help you?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AreYouSure</fullName>
+    <value>Are you sure you want to abandon your request?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Are you sure you want to abandon your request?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Confirm</fullName>
+    <value>Confirm</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Confirm</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Password</fullName>
+    <value>Password</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Password</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Username</fullName>
+    <value>Username</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Username</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_RememberMe</fullName>
+    <value>Remember me</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Remember me</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ForgetYourPassword</fullName>
+    <value>Forgot your password?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Forgot your password?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GetHelpDemo</fullName>
+    <value>Get help in 3 easy steps</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Get help in 3 easy steps</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GetHelpRecommended</fullName>
+    <value>Get help in 4 easy steps</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Get help in 4 easy steps</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_LoginTitle</fullName>
+    <value>Log in to contact a support agent</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Log in to contact a support agent</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_LoginSubtitle</fullName>
+    <value>We can propose better solutions based on your account information</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>We can propose better solutions based on your account information</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Previous</fullName>
+    <value>Previous</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Previous</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Next</fullName>
+    <value>Next</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Next</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_DescribeProblemTitle</fullName>
+    <value>Hi John, what do you need help with?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Hi John, what do you need help with?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetailsTitle</fullName>
+    <value>Speed up resolution time</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Speed up resolution time</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ProvideDetailsSubtitle</fullName>
+    <value>Provide details to find the agent best suited to help you</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Provide details to find the agent best suited to help you</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_PriorityLabel</fullName>
+    <value>How would you classify the priority of your issue?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>How would you classify the priority of your issue?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_TypeLabel</fullName>
+    <value>What type of issue is it?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What type of issue is it?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ReasonLabel</fullName>
+    <value>What's the source of your issue?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>What's the source of your issue?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_MoreOptions</fullName>
+    <value>More options</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>More options</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_TheseResourcesMightHelp</fullName>
+    <value>These resources might help</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>These resources might help</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ResourcesSuggested</fullName>
+    <value>Suggested resources based on the issue you described</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Suggested resources based on the issue you described</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SolvedProblem</fullName>
+    <value>Issue solved?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Issue solved?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_StillNeedHelp</fullName>
+    <value>Still need help?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Still need help?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ChangedYourMind</fullName>
+    <value>Changed your mind?</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Changed your mind?</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_WeHaveTheInformationWeNeed</fullName>
+    <value>Thank you, we have the information we need to process your request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Thank you, we have the information we need to process your request</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SendYourRequest</fullName>
+    <value>Submit your request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Submit your request</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_RequestSuccessfullySaved</fullName>
+    <value>Request successfully submitted!</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Request successfully submitted!</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_ConfirmationEmailOnTheWay</fullName>
+    <value>A confirmation email is on the way</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>A confirmation email is on the way</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_AgentWillBeInTouch</fullName>
+    <value>An agent will be in touch within 24hrs</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>An agent will be in touch within 24hrs</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Via</fullName>
+    <value>Via:</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Via:</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Email</fullName>
+    <value>Email</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Email</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_Phone</fullName>
+    <value>Phone</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Phone</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_GoBackToCommunity</fullName>
+    <value>Go back to community</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Go back to community</shortDescription>
+  </labels>
+  <labels>
+    <fullName>cookbook_SeeYourRequest</fullName>
+    <value>View your request</value>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>View your request</shortDescription>
+  </labels>
+</CustomLabels>

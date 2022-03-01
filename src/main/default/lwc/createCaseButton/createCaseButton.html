@@ -1,0 +1,26 @@
+<template>
+  <template if:true={showLabel}>
+    <label
+      class="slds-text-heading_small slds-var-m-bottom_x-small"
+      for="create-case-button"
+      >{label}</label
+    >
+  </template>
+  <template if:false={loading}>
+    <button
+      id="create-case-button"
+      onclick={handleCreateCase}
+      class={buttonClass}
+    >
+      {buttonLabel}
+    </button>
+  </template>
+  <template if:true={loading}>
+    <div class="loading-container slds-is-relative">
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"
+      ></lightning-spinner>
+    </div>
+  </template>
+</template>

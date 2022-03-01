@@ -1,0 +1,16 @@
+<template>
+  <template if:true={showLabel}>
+    <label
+      class="slds-text-heading_small slds-var-m-bottom_x-small"
+      for="abandon-case-button"
+      >{label}</label
+    >
+  </template>
+  <button onclick={handleAbandon} id="abandon-case-button" class={buttonClass}>
+    {buttonLabel}
+  </button>
+  <c-abandon-modal
+    redirect-ref={redirectRef}
+    engine-id={engineId}
+  ></c-abandon-modal>
+</template>

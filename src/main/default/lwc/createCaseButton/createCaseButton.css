@@ -1,0 +1,12 @@
+.big {
+  width: 13.5rem;
+}
+
+.loading-container {
+  width: 13.5rem;
+  height: 2rem;
+}
+
+label {
+  display: block;
+}

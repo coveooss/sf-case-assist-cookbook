@@ -1,0 +1,54 @@
+<template>
+  <div class="slds-grid">
+    <div>
+      <template if:true={isFull}>
+        <lightning-progress-ring
+          size="large"
+          value={progress}
+          variant="base-autocomplete"
+        ></lightning-progress-ring>
+      </template>
+      <template if:false={isFull}>
+        <div
+          class="slds-progress-ring slds-progress-ring_large slds-progress-ring_warning"
+        >
+          <div
+            class="slds-progress-ring__progress"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={progress}
+            aria-label="description strength indicator"
+          >
+            <svg viewBox="-1 -1 2 2">
+              <path class="slds-progress-ring__path" d={progressPath}></path>
+            </svg>
+          </div>
+          <div class="slds-progress-ring__content"></div>
+        </div>
+      </template>
+    </div>
+    <div class="slds-col">
+      <h3 class="indicator_title slds-text-title_bold slds-var-p-left_small">
+        {message}
+      </h3>
+      <lightning-accordion
+        active-section-name="help"
+        allow-multiple-sections-open
+        class="accordion"
+      >
+        <lightning-accordion-section name="help" label={helpLabel}>
+          <div
+            class="slds-var-m-left_large slds-text-body_small slds-is-absolute"
+          >
+            <slot name="content">
+              {labels.descriptionHintOne}<br />
+              {labels.descriptionHintTwo}<br />
+              {labels.descriptionHintThree}
+            </slot>
+          </div>
+        </lightning-accordion-section>
+      </lightning-accordion>
+    </div>
+  </div>
+</template>

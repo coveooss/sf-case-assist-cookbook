@@ -88,6 +88,13 @@ Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX
 sfdx force:source:push
 ```
 
+### 3c. Installing the App Using an Unlocked Package
+Type the following SFDX command in your CLI:  
+```
+sfdx force:package:install --package 04t3s000003anxdAAA -u <USER_NAME>
+```
+Where you replace <USER_NAME> by your username in the target organization.
+
 ### 4. Enable the Case Flow in Your Community
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page and select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.

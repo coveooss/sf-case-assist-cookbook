@@ -6,11 +6,12 @@
     variant="base"
   >
     <template for:each={steps} for:item="step">
-      <lightning-progress-step
-        label={step.label}
-        value={step.value}
-        key={step.value}
-      ></lightning-progress-step>
+      <a tabindex="-1" key={step.value}>
+        <lightning-progress-step
+          label={step.label}
+          value={step.value}
+        ></lightning-progress-step>
+      </a>
     </template>
   </lightning-progress-indicator>
 </template>

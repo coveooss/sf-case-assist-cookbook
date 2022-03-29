@@ -7,7 +7,7 @@
     {
       "path": "src/main/default",
       "package": "Salesforce Quantic Case Assist Cookbook",
-      "versionName": "Version 1.0.2",
+      "versionName": "Version 1.0.4",
       "versionNumber": "1.0.0.NEXT",
       "default": false,
       "dependencies": [
@@ -22,6 +22,6 @@
   "sourceApiVersion": "52.0",
   "packageAliases": {
     "Quantic@1.10.0.0": "04t6g000008ffuDAAQ",
-    "Salesforce Quantic Case Assist Cookbook": "04t3s000003KpUNAA0"
+    "Salesforce Quantic Case Assist Cookbook": "04t3s000003KpUmAAK"
   }
 }

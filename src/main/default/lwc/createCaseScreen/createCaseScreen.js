@@ -125,7 +125,9 @@ export default class CreateCaseScreen extends LightningElement {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      this.engine.dispatch(this.actions.logCaseNextStage());
+      this.engine.dispatch(
+        this.actions.logCaseNextStage({ stageName: 'Create Case Screen' })
+      );
     }
   }
 

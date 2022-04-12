@@ -31,6 +31,11 @@ export default class DescribeProblemScreen extends LightningElement {
    */
   @api engineId;
   /**
+   * The first level of origin of the request, typically the identifier of the graphical case assist interface from which the request originates.
+   * @type {string}
+   */
+  @api searchHub;
+  /**
    * The Case Assist configuration ID.
    * @type {string}
    */

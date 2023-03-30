@@ -92,9 +92,7 @@ sfdx force:source:push
 ```
 
 ### 3c. Installing the App Using an Unlocked Package
-
 Type the following SFDX command in your CLI:
-
 ```
 sfdx force:package:install --package 04t3s000003T1s3AAC -u <USER_NAME>
 ```

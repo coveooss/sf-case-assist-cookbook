@@ -84,9 +84,7 @@ sfdx force:source:deploy
 ```
 
 ### 3b. Push the Code in a Scratch Org
-
 Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX command in your CLI:
-
 ```
 sfdx force:source:push
 ```

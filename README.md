@@ -98,7 +98,6 @@ Type the following SFDX command in your CLI:
 ```
 sfdx force:package:install --package 04t3s000003T1s3AAC -u <USER_NAME>
 ```
-
 Where you replace <USER_NAME> by your username in the target organization.
 
 ### 4. Enable the Case Flow in Your Community

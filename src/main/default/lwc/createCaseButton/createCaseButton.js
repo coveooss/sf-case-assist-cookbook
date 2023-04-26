@@ -76,7 +76,9 @@ export default class CreateCaseButton extends LightningElement {
 
     this.actions = {
       // eslint-disable-next-line no-undef
-      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine)
+      ...CoveoHeadlessCaseAssist.loadCaseAssistAnalyticsActions(engine),
+      // eslint-disable-next-line no-undef
+      ...CoveoHeadlessCaseAssist.loadCaseInputActions(engine)
     };
   };
 
@@ -101,6 +103,12 @@ export default class CreateCaseButton extends LightningElement {
       this.loading = true;
       const newCaseId = await newCase(this.caseData);
       if (newCaseId) {
+        this.engine.dispatch(
+          this.actions.updateCaseInput({
+            fieldName: 'id',
+            fieldValue: newCaseId
+          })
+        );
         this.engine.dispatch(this.actions.logCreateCase(newCaseId));
         const attributeChangeEvent = new FlowAttributeChangeEvent(
           'recordId',

@@ -109,7 +109,7 @@ export default class CreateCaseButton extends LightningElement {
             fieldValue: newCaseId
           })
         );
-        this.engine.dispatch(this.actions.logCreateCase(newCaseId));
+        this.engine.dispatch(this.actions.logCreateCase());
         const attributeChangeEvent = new FlowAttributeChangeEvent(
           'recordId',
           newCaseId

@@ -75,24 +75,28 @@ npm run build
 
 The Org Development Model allows you to connect directly to a non-source-tracked org (sandbox, Developer Edition (DE) org, Trailhead Playground, or even a production org) to retrieve and deploy code directly. This model is similar to the type of development you have done in the past using tools such as Force.com IDE or MavensMate.
 
-To start developing with this model in Visual Studio Code, see [Visual Studio Code for Salesforce Development](https://trailhead.salesforce.com/content/learn/projects/quickstart-vscode-salesforce/use-vscode-for-salesforce). For details about the model, see the [Org Development Model](https://trailhead.salesforce.com/content/learn/projects/quickstart-vscode-salesforce) Trailhead module.  
+To start developing with this model in Visual Studio Code, see [Visual Studio Code for Salesforce Development](https://trailhead.salesforce.com/content/learn/projects/quickstart-vscode-salesforce/use-vscode-for-salesforce). For details about the model, see the [Org Development Model](https://trailhead.salesforce.com/content/learn/projects/quickstart-vscode-salesforce) Trailhead module.
 
-Use the command `SFDX: Deploy Source to Org` in VS Code or type the following SFDX command in your CLI:  
 ```
 sfdx force:source:deploy
 ```
 
 ### 3b. Push the Code in a Scratch Org
-Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX command in your CLI:  
+
+Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX command in your CLI:
+
 ```
 sfdx force:source:push
 ```
 
 ### 3c. Installing the App Using an Unlocked Package
-Type the following SFDX command in your CLI:  
+
+Type the following SFDX command in your CLI:
+
 ```
-sfdx force:package:install --package 04t3s000003anxdAAA -u <USER_NAME>
+sfdx force:package:install --package 04t3s000003T1s3AAC -u <USER_NAME>
 ```
+
 Where you replace <USER_NAME> by your username in the target organization.
 
 ### 4. Enable the Case Flow in Your Community

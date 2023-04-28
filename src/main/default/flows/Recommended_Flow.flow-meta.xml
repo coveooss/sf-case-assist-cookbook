@@ -54,6 +54,12 @@
                     <elementReference>engineId</elementReference>
                 </value>
             </inputParameters>
+            <inputParameters>
+              <name>searchHub</name>
+              <value>
+                  <elementReference>searchHub</elementReference>
+              </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <outputParameters>
@@ -232,6 +238,16 @@
         <value>
             <stringValue>case-assist-engine</stringValue>
         </value>
+    </variables>
+    <variables>
+      <name>searchHub</name>
+      <dataType>String</dataType>
+      <isCollection>false</isCollection>
+      <isInput>true</isInput>
+      <isOutput>false</isOutput>
+      <value>
+          <stringValue>case-assist-cookbook</stringValue>
+      </value>
     </variables>
     <variables>
         <name>recordId</name>

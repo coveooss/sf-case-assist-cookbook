@@ -5,6 +5,7 @@
 
 # Salesforce cache
 .sfdx/
+.sf/
 .localdevserver/
 
 # LWC VSCode autocomplete
@@ -37,6 +38,3 @@ $RECYCLE.BIN/
 
 # VSCODE settings
 .vscode
-
-# static resources
-src/main/default/staticresources/coveoua

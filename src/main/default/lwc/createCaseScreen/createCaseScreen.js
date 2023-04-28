@@ -56,6 +56,11 @@ export default class CreateCaseScreen extends LightningElement {
    */
   @api engineId;
   /**
+   * The first level of origin of the request, typically the identifier of the graphical case assist interface from which the request originates.
+   * @type {string}
+   */
+  @api searchHub;
+  /**
    * The Case Assist configuration ID.
    * @type {string}
    */
@@ -125,7 +130,9 @@ export default class CreateCaseScreen extends LightningElement {
       this.updateFlowState();
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      this.engine.dispatch(this.actions.logCaseNextStage());
+      this.engine.dispatch(
+        this.actions.logCaseNextStage({ stageName: 'Create Case Screen' })
+      );
     }
   }
 

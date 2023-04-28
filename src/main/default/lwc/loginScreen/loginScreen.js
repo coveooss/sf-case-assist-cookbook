@@ -51,7 +51,6 @@ export default class LoginScreen extends LightningElement {
     if (this.availableActions.some((action) => action === 'NEXT')) {
       const navigateNextEvent = new FlowNavigationNextEvent();
       this.dispatchEvent(navigateNextEvent);
-      this.engine.dispatch(this.actions.logCaseNextStage());
     }
   }
 

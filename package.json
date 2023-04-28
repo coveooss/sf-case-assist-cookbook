@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "description": "Salesforce App",
   "scripts": {
-    "build": "npm run clean:staticresources && npm run copy:staticresources",
     "lint": "npm run lint:lwc",
     "lint:lwc": "eslint **/lwc/**",
     "test": "npm run test:unit",
@@ -13,9 +12,7 @@
     "test:unit:debug": "sfdx-lwc-jest --debug",
     "test:unit:coverage": "sfdx-lwc-jest --coverage",
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "copy:staticresources": "node copy-static-resources.js",
-    "clean:staticresources": "rimraf -rf src/main/default/staticResources/coveoua"
+    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.10.0",
@@ -29,8 +26,7 @@
     "lint-staged": "^10.0.7",
     "ncp": "^2.0.0",
     "prettier": "^2.2.0",
-    "prettier-plugin-apex": "^1.8.0",
-    "rimraf": "^3.0.2"
+    "prettier-plugin-apex": "^1.8.0"
   },
   "husky": {
     "hooks": {
@@ -40,8 +36,5 @@
   "lint-staged": {
     "*.{js,css,html}": "eslint --cache --fix",
     "*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": "prettier --write"
-  },
-  "dependencies": {
-    "coveo.analytics": "^2.18.9"
   }
 }

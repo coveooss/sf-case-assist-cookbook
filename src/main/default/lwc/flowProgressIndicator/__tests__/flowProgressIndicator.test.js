@@ -16,9 +16,6 @@ function allPromisesResolution() {
   return new Promise((resolve) => setImmediate(resolve));
 }
 
-jest.mock('@salesforce/label/c.cookbook_LogIn', () => ({ default: 'Log in' }), {
-  virtual: true
-});
 jest.mock(
   '@salesforce/label/c.cookbook_DescribeProblem',
   () => ({ default: 'Describe problem' }),
@@ -42,10 +39,6 @@ jest.mock(
 );
 
 const DEFAULT_STEPS = [
-  {
-    label: 'Log in',
-    value: 'log in'
-  },
   {
     label: 'Describe problem',
     value: 'describe problem'

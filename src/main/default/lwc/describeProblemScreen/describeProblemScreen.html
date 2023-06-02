@@ -18,7 +18,12 @@
         ></c-main-title>
       </div>
       <div class="slds-var-p-top_medium slds-var-m-top_xx-large">
-        <c-subject-input required engine-id={engineId}></c-subject-input>
+        <c-subject-input
+          required
+          engine-id={engineId}
+          prevent-fetch-classifications-on-change
+          prevent-fetch-suggestions-on-change
+        ></c-subject-input>
         <div class="slds-var-m-top_xx-large slds-var-p-bottom_xx-large">
           <c-description-input
             required
@@ -26,6 +31,8 @@
             display-strength-indicator
             engine-id={engineId}
             initial-value={_caseData.Description}
+            prevent-fetch-classifications-on-change
+            prevent-fetch-suggestions-on-change
           ></c-description-input>
         </div>
         <div

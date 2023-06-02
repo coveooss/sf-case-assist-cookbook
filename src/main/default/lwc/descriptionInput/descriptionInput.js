@@ -51,7 +51,7 @@ export default class DescriptionInput extends LightningElement {
    * @type {number}
    * @defaultValue `500`
    */
-  @api caseEditDelayMs = 500;
+  @api caseEditDelayMs = 800;
   /**
    * Whether we display the description strength indicator or not.
    * @type {boolean}

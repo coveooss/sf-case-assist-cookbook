@@ -1,5 +1,4 @@
 import { api, LightningElement } from 'lwc';
-import logIn from '@salesforce/label/c.cookbook_LogIn';
 import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
 import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
 import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
@@ -13,10 +12,6 @@ import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
 
 /** @type {ProgressStep[]} */
 const DEFAULT_STEPS = [
-  {
-    label: logIn,
-    value: 'log in'
-  },
   {
     label: describeProblem,
     value: 'describe problem'

@@ -11,7 +11,6 @@ import changedYourMind from '@salesforce/label/c.cookbook_ChangedYourMind';
 import solvedYourProblem from '@salesforce/label/c.cookbook_SolvedProblem';
 import sendYourRequest from '@salesforce/label/c.cookbook_SendYourRequest';
 import weHaveTheInformationWeNeed from '@salesforce/label/c.cookbook_WeHaveTheInformationWeNeed';
-import logIn from '@salesforce/label/c.cookbook_LogIn';
 import describeProblem from '@salesforce/label/c.cookbook_DescribeProblem';
 import provideDetails from '@salesforce/label/c.cookbook_ProvideDetails';
 import reviewResources from '@salesforce/label/c.cookbook_ReviewResources';
@@ -26,7 +25,6 @@ export default class reviewResourcesScreen extends LightningElement {
     weHaveTheInformationWeNeed,
     sendYourRequest,
     solvedYourProblem,
-    logIn,
     describeProblem,
     provideDetails,
     reviewResources
@@ -216,10 +214,6 @@ export default class reviewResourcesScreen extends LightningElement {
     if (this.flowType === 'demo_flow') {
       return [
         {
-          label: this.labels.logIn,
-          value: 'log in'
-        },
-        {
           label: this.labels.describeProblem,
           value: 'describe problem'
         },
@@ -230,10 +224,6 @@ export default class reviewResourcesScreen extends LightningElement {
       ];
     }
     return [
-      {
-        label: this.labels.logIn,
-        value: 'log in'
-      },
       {
         label: this.labels.describeProblem,
         value: 'describe problem'

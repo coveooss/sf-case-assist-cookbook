@@ -169,13 +169,6 @@
     <shortDescription>Create Case</shortDescription>
   </labels>
   <labels>
-    <fullName>cookbook_LogIn</fullName>
-    <value>Log in</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Log in</shortDescription>
-  </labels>
-  <labels>
     <fullName>cookbook_DescribeProblem</fullName>
     <value>Describe issue</value>
     <language>en_US</language>
@@ -216,62 +209,6 @@
     <language>en_US</language>
     <protected>false</protected>
     <shortDescription>Confirm</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_Password</fullName>
-    <value>Password</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Password</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_Username</fullName>
-    <value>Username</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Username</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_RememberMe</fullName>
-    <value>Remember me</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Remember me</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_ForgetYourPassword</fullName>
-    <value>Forgot your password?</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Forgot your password?</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_GetHelpDemo</fullName>
-    <value>Get help in 3 easy steps</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Get help in 3 easy steps</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_GetHelpRecommended</fullName>
-    <value>Get help in 4 easy steps</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Get help in 4 easy steps</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_LoginTitle</fullName>
-    <value>Log in to contact a support agent</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>Log in to contact a support agent</shortDescription>
-  </labels>
-  <labels>
-    <fullName>cookbook_LoginSubtitle</fullName>
-    <value>We can propose better solutions based on your account information</value>
-    <language>en_US</language>
-    <protected>false</protected>
-    <shortDescription>We can propose better solutions based on your account information</shortDescription>
   </labels>
   <labels>
     <fullName>cookbook_Previous</fullName>

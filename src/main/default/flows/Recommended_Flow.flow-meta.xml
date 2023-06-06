@@ -25,7 +25,7 @@
         <name>Describe_Problem_Screen</name>
         <label>Describe Problem Screen</label>
         <locationX>176</locationX>
-        <locationY>278</locationY>
+        <locationY>158</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -55,10 +55,10 @@
                 </value>
             </inputParameters>
             <inputParameters>
-              <name>searchHub</name>
-              <value>
-                  <elementReference>searchHub</elementReference>
-              </value>
+                <name>searchHub</name>
+                <value>
+                    <elementReference>searchHub</elementReference>
+                </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
@@ -74,7 +74,7 @@
         <name>Final_Screen</name>
         <label>Final Screen</label>
         <locationX>176</locationX>
-        <locationY>638</locationY>
+        <locationY>518</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -99,38 +99,10 @@
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>Login_Screen</name>
-        <label>Login Screen</label>
-        <locationX>176</locationX>
-        <locationY>158</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <connector>
-            <targetReference>Describe_Problem_Screen</targetReference>
-        </connector>
-        <fields>
-            <name>Login</name>
-            <extensionName>c:loginScreen</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>flowType</name>
-                <value>
-                    <stringValue>recommended_flow</stringValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>Provide_Details_Screen</name>
         <label>Provide Details Screen</label>
         <locationX>176</locationX>
-        <locationY>398</locationY>
+        <locationY>278</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -167,7 +139,7 @@
         <name>Review_Help_Screen</name>
         <label>Review Help Screen</label>
         <locationX>176</locationX>
-        <locationY>518</locationY>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -210,7 +182,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Login_Screen</targetReference>
+            <targetReference>Describe_Problem_Screen</targetReference>
         </connector>
     </start>
     <status>Active</status>
@@ -240,20 +212,20 @@
         </value>
     </variables>
     <variables>
-      <name>searchHub</name>
-      <dataType>String</dataType>
-      <isCollection>false</isCollection>
-      <isInput>true</isInput>
-      <isOutput>false</isOutput>
-      <value>
-          <stringValue>case-assist-cookbook</stringValue>
-      </value>
-    </variables>
-    <variables>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>searchHub</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>case-assist-cookbook</stringValue>
+        </value>
     </variables>
 </Flow>

@@ -7,12 +7,12 @@
     {
       "path": "src/main/default",
       "package": "Salesforce Quantic Case Assist Cookbook",
-      "versionName": "Version 1.0.7",
+      "versionName": "Version 1.0.8",
       "versionNumber": "1.0.0.NEXT",
       "default": false,
       "dependencies": [
         {
-          "package": "Quantic v2.24.3.1"
+          "package": "Quantic v2.25.0.0"
         }
       ]
     }
@@ -21,7 +21,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0",
   "packageAliases": {
-    "Quantic v2.24.3.1": "04t6g000008b3ATAAY",
+    "Quantic v2.25.0.0": "04t6g000008b3HkAAI",
     "Salesforce Quantic Case Assist Cookbook": "0Ho3s0000008OM7CAM"
   }
 }

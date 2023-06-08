@@ -57,7 +57,7 @@ export default class SubjectInput extends LightningElement {
    * @type {number}
    * @defaultValue `500`
    */
-  @api caseEditDelayMs = 500;
+  @api caseEditDelayMs = 800;
   /**
    * Wheather we want to prevent fetching classifications when the value of the input changes.
    * @type {boolean}

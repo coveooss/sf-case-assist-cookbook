@@ -11,8 +11,8 @@ private class RatingsHandlerTest {
     Rating__c result = RatingsHandler.getRating('TestDocumentId');
 
     System.assertEquals(testRating.Id, result.Id, 'The Result Id received: ' + result.Id + ' was expected to be: ' + testRating.Id);
-    System.assertEquals(testRating.Score__c, result.Score__c, 'The Result score received: ' + result.Score__c + ' was expected to be: 90');
-    System.assertEquals(testRating.Document_id__c, result.Document_id__c, 'The Result document Id received: ' + result.Document_id__c + ' was expected to be: TestDocumentId');
+    System.assertEquals(testRating.Score__c, result.Score__c, 'The Result score received: ' + result.Score__c + ' was expected to be: ' + testRating.Score__c);
+    System.assertEquals(testRating.Document_id__c, result.Document_id__c, 'The Result document Id received: ' + result.Document_id__c + ' was expected to be: ' + testRating.Document_id__c);
   }
 
   @isTest

@@ -97,10 +97,6 @@
     <name>cookbook_CreateCase</name>
   </customLabels>
   <customLabels>
-    <label>Connexion</label>
-    <name>cookbook_LogIn</name>
-  </customLabels>
-  <customLabels>
     <label>Décrire le problème</label>
     <name>cookbook_DescribeProblem</name>
   </customLabels>
@@ -123,38 +119,6 @@
   <customLabels>
     <label>Confirmer</label>
     <name>cookbook_Confirm</name>
-  </customLabels>
-  <customLabels>
-    <label>Mot de passe</label>
-    <name>cookbook_Password</name>
-  </customLabels>
-  <customLabels>
-    <label>Nom d'utilisateur</label>
-    <name>cookbook_Username</name>
-  </customLabels>
-  <customLabels>
-    <label>Se souvenir de moi</label>
-    <name>cookbook_RememberMe</name>
-  </customLabels>
-  <customLabels>
-    <label>Mot de passe oublié</label>
-    <name>cookbook_ForgetYourPassword</name>
-  </customLabels>
-  <customLabels>
-    <label>Obtenez de l'aide en 4 étapes faciles</label>
-    <name>cookbook_GetHelpRecommended</name>
-  </customLabels>
-  <customLabels>
-    <label>Obtenez de l'aide en 3 étapes faciles</label>
-    <name>cookbook_GetHelpDemo</name>
-  </customLabels>
-  <customLabels>
-    <label>Connectez-vous pour contacter un agent d'assistance</label>
-    <name>cookbook_LoginTitle</name>
-  </customLabels>
-  <customLabels>
-    <label>Nous serons en mesure de vous proposer de meilleures solutions sur la base des informations relatives à votre compte.</label>
-    <name>cookbook_LoginSubtitle</name>
   </customLabels>
   <customLabels>
     <label>Précédent</label>

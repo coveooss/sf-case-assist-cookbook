@@ -55,10 +55,9 @@ PS: A Login screen is implemented in both flows. It's just a template that you c
 
 ```
 npm install
-npm run build
 ```
 
-- Follow the steps in the [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/) Trailhead project. You will:
+- Follow the steps to setup your developement environment, for example in the [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/) Trailhead project. You will:
 
   - Enable Dev Hub in your Trailhead Playground
   - Install Salesforce CLI
@@ -71,7 +70,9 @@ npm run build
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
 
-### 3a. Deploy the Project Using the Org Development Model
+### 3. Deploying the project
+
+#### 3a. Deploy the Project Using the Org Development Model
 
 The Org Development Model allows you to connect directly to a non-source-tracked org (sandbox, Developer Edition (DE) org, Trailhead Playground, or even a production org) to retrieve and deploy code directly. This model is similar to the type of development you have done in the past using tools such as Force.com IDE or MavensMate.
 
@@ -81,7 +82,7 @@ To start developing with this model in Visual Studio Code, see [Visual Studio Co
 sfdx force:source:deploy
 ```
 
-### 3b. Push the Code in a Scratch Org
+#### 3b. Deploy the project in a Scratch Org
 
 Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX command in your CLI:
 
@@ -89,7 +90,7 @@ Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX
 sfdx force:source:push
 ```
 
-### 3c. Installing the App Using an Unlocked Package
+#### 3c. Installing the App Using an Unlocked Package
 
 Type the following SFDX command in your CLI:
 
@@ -102,24 +103,24 @@ Where you replace <USER_NAME> by your username in the target organization.
 ### 4. Enable the Case Flow in Your Community
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page and select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
-2. After selecting the name of the flow, two inputs labeled `caseAssistId` and `engineId` appear. Fill the `caseAssistId` input with your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id) retrieved from your Case Assist Configuration and fill the `engineId` input with your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties) which is the name you want to give to the engine the Quantic components will register to.
-3. In the published version of your community, users can now fill in the subject and description fields in the first screen and they can proceed to the next screens to see the proposed predictions for classifying their case and get documents suggestions that will potentially resolve their case before it is created.
+2. After selecting the name of the flow, two inputs labeled `caseAssistId` and `engineId` appear.
+   1. Fill the `caseAssistId` input with your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id) retrieved from your Case Assist Configuration
+   1. Fill the `engineId` input with your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties) which is the name you want to give to the engine the Quantic components will register to.
+   1. Leave the `caseData` blank.
+3. After linking your installed Coveo For Salesforce package with a Coveo organization, make sure to go change the content of the Apex class "CaseAssistController". By default it will try to query a Sample organization. You should replace this method with the commented method just below it to generate a Platform Token and query your selected Coveo Organization.
+4. In the published version of your community, users can now fill in the subject and description fields in the first screen and they can proceed to the next screens to see the proposed predictions for classifying their case and get documents suggestions that will potentially resolve their case before it is created.
 
 ### Dev, Build and Test
 
 1. Run `npm i`
-1. Run `npm run build`
 1. Run `npm run test`
 1. Now you can deploy with `sfdx force:source:deploy...`
 
-### Developing locally
+## Warning
 
-Unfortunately since this example is meant to be included in a flow, it has trouble running on the local dev server:
-https://developer.salesforce.com/docs/component-library/documentation/lwc/get_started_local_dev_setup
+This was originally designed to be used with an API key, that would only grant you access to Coveo results that were "public".
 
-### Testing
-
-TBD
+You can also use this with a Platform Token to use the identity of the current user to get access to content that is not necessarily just "public". Keep in mind however, that this breaks the Quickview functionality on Document Suggestions and it's not support using a Platform Token.
 
 ## How to Add New Fields for Classification
 

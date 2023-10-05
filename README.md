@@ -120,7 +120,7 @@ Where you replace <USER_NAME> by your username in the target organization.
 
 This was originally designed to be used with an API key, that would only grant you access to Coveo results that were "public".
 
-You can also use this with a Platform Token to use the identity of the current user to get access to content that is not necessarily just "public". Keep in mind however, that this breaks the Quickview functionality on Document Suggestions and it's not support using a Platform Token.
+You can also use this with a Platform Token to use the identity of the current user to get access to content that is not necessarily just "public". Keep in mind however, that this breaks the Quickview functionality on Document Suggestions as it's not supported using a Platform Token.
 
 ## How to Add New Fields for Classification
 

@@ -57,7 +57,7 @@ PS: A Login screen is implemented in both flows. It's just a template that you c
 npm install
 ```
 
-- Follow the steps to setup your developement environment, for example in the [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/) Trailhead project. You will:
+- Follow the steps to set up your development environment for example in the [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/) Trailhead project. You will:
 
   - Enable Dev Hub in your Trailhead Playground
   - Install Salesforce CLI
@@ -70,7 +70,7 @@ npm install
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
 
-### 3. Deploying the project
+### 3. Deploying the Project
 
 #### 3a. Deploy the Project Using the Org Development Model
 
@@ -90,7 +90,7 @@ Use the command `SFDX: Push Source to Org` in VS Code or type the following SFDX
 sfdx force:source:push
 ```
 
-#### 3c. Installing the App Using an Unlocked Package
+#### 3c. Install the App Using an Unlocked Package
 
 Type the following SFDX command in your CLI:
 
@@ -102,13 +102,13 @@ Where you replace <USER_NAME> by your username in the target organization.
 
 ### 4. Enable the Case Flow in Your Community
 
-1. In your Salesforce community, drag the Lightning Flow component in a Community page and select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
-2. After selecting the name of the flow, two inputs labeled `caseAssistId` and `engineId` appear.
-   1. Fill the `caseAssistId` input with your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id) retrieved from your Case Assist Configuration
-   1. Fill the `engineId` input with your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties) which is the name you want to give to the engine the Quantic components will register to.
-   1. Leave the `caseData` blank.
-3. After linking your installed Coveo For Salesforce package with a Coveo organization, make sure to go change the content of the Apex class "CaseAssistController". By default it will try to query a Sample organization. You should replace this method with the commented method just below it to generate a Platform Token and query your selected Coveo Organization.
-4. In the published version of your community, users can now fill in the subject and description fields in the first screen and they can proceed to the next screens to see the proposed predictions for classifying their case and get documents suggestions that will potentially resolve their case before it is created.
+1. In your Salesforce community, drag the Lightning Flow component in a Community page, and then select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
+2. After selecting the name of the flow, you must fill the `caseAssistId` and `engineId` fields.
+   1. In the `caseAssistId` field, enter your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration.
+   1. In the `engineId` field, enter your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties), which is the name you want to give to the engine instance the Quantic components will register to.
+   1. Leave the `caseData` field blank.
+3. After linking your installed Coveo for Salesforce package to a Coveo organization, make sure to go change the content of the Apex class `CaseAssistController`. By default it will try to query a sample organization. Replace this method with the commented method just below it to generate a Platform token and query your selected Coveo organization.
+4. In the published version of your community, users can now fill in the Subject and Description fields on the first screen. They can then proceed to the next screens to view the predicted classification values for their case, and get document suggestions to help them potentially resolve their case before submitting it.
 
 ### Dev, Build and Test
 
@@ -118,9 +118,9 @@ Where you replace <USER_NAME> by your username in the target organization.
 
 ## Warning
 
-This was originally designed to be used with an API key, that would only grant you access to Coveo results that were "public".
+This cookbook was originally designed to be used with an API key, which would only grant you access to Coveo results that were "public".
 
-You can also use this with a Platform Token to use the identity of the current user to get access to content that is not necessarily just "public". Keep in mind however, that this breaks the Quickview functionality on Document Suggestions and it's not support using a Platform Token.
+You can also use this cookbook with a Platform token to use the identity of the current user to get access to content that's not necessarily only "public". Take note that using a Platform token currently breaks the Quickview functionality on Document Suggestions. Although we're actively working on a solution, this is a tradeoff you need to consider.
 
 ## How to Add New Fields for Classification
 

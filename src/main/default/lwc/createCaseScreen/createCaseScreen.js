@@ -131,11 +131,8 @@ export default class CreateCaseScreen extends LightningElement {
   }
 
   updateCaseValues() {
-    const {
-      subjectInput,
-      descriptionInput,
-      classificationInputs
-    } = this.getInputs();
+    const { subjectInput, descriptionInput, classificationInputs } =
+      this.getInputs();
 
     if (
       this._caseData.Subject !== subjectInput.value ||
@@ -167,11 +164,8 @@ export default class CreateCaseScreen extends LightningElement {
   }
 
   inputValidity() {
-    const {
-      subjectInput,
-      descriptionInput,
-      classificationInputs
-    } = this.getInputs();
+    const { subjectInput, descriptionInput, classificationInputs } =
+      this.getInputs();
     const inputs = [...classificationInputs, subjectInput];
     inputs.forEach((input) => {
       input.reportValidity();

@@ -4,7 +4,7 @@ A pre-built example of a Lightning Flow utilizing the [Coveo Quantic Case Assist
 
 1. Predict case classification values depending on the case Subject and Description given by the customer.
 2. Suggest documents that can potentially solve the customer's case before it is created.
-3. Track user interactions with the different components and scmdcreens across the entire case assist flow through Coveo Analytics and Reports.
+3. Track user interactions with the different components and screens across the entire case assist flow through Coveo Analytics and Reports.
 
 It is distributed as an example of best practices when requesting field predictions and document suggestions from the Coveo Customer Service API.
 
@@ -15,6 +15,8 @@ It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service
 ## Table of Contents
 
 - [What Is Included in This Project](#what-is-included-in-this-project): A description of the contents of this repository.
+
+- [Prerequisites](#prerequisites): A detailed list of required installations, configurations, and dependencies necessary to set up and use the Case Assist Cookbook effectively.
 
 - [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 
@@ -44,6 +46,18 @@ The Demo Flow contains the following screens:
 3. A confirmation screen that the case has been successfully created.
 
 PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
+
+## Prerequisites
+
+### 1. Set Up a Coveo Case Assist Configuration
+
+- Create a Case Assist configuration in your Coveo Administration Console. This configuration defines the case classifications and document suggestions returned by the Case Assist API.
+
+- Follow the [Coveo Documentation on Creating a Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-a-case-assist-experience).
+
+### 2. Install and configure the Coveo for Salesforce package
+
+- Install and configure the Coveo for Salesforce managed package in your Salesforce org by following the [Coveo for Salesforce Getting Started Guide](https://docs.coveo.com/en/1158/coveo-for-salesforce/get-started-with-coveo-for-salesforcen).
 
 ## How to Deploy
 

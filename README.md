@@ -16,6 +16,8 @@ It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service
 
 - [What Is Included in This Project](#what-is-included-in-this-project): A description of the contents of this repository.
 
+- [Prerequisites](#prerequisites): A detailed list of required installations, configurations, and dependencies necessary to set up and use the Case Assist Cookbook effectively.
+
 - [How to Deploy](#how-to-deploy): This is the recommended installation option. Use this option if you want to see the app and the code in action.
 
 - [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification): A guide to specify additional fields for classification.
@@ -45,6 +47,18 @@ The Demo Flow contains the following screens:
 
 PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
 
+## Prerequisites
+
+### 1. Set Up a Coveo Case Assist Configuration
+
+- Create a Case Assist configuration in your Coveo Administration Console. This configuration defines the case classifications and document suggestions returned by the Case Assist API.
+
+- Follow the [Coveo Documentation on Creating a Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-a-case-assist-experience).
+
+### 2. Install and configure the Coveo for Salesforce package
+
+- Install and configure the Coveo for Salesforce managed package in your Salesforce org by following the [Coveo for Salesforce Getting Started Guide](https://docs.coveo.com/en/1158/coveo-for-salesforce/get-started-with-coveo-for-salesforce).
+
 ## How to Deploy
 
 ### 1. Set up Your Environment
@@ -69,6 +83,8 @@ npm install
 ### 2. Install the Quantic Library
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
+
+**Note:** The Case Assist Cookbook currently only supports Quantic v2.
 
 ### 3. Deploying the Project
 

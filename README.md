@@ -57,7 +57,7 @@ PS: A Login screen is implemented in both flows. It's just a template that you c
 
 ### 2. Install and configure the Coveo for Salesforce package
 
-- Install and configure the Coveo for Salesforce managed package in your Salesforce org by following the [Coveo for Salesforce Getting Started Guide](https://docs.coveo.com/en/1158/coveo-for-salesforce/get-started-with-coveo-for-salesforcen).
+- Install and configure the Coveo for Salesforce managed package in your Salesforce org by following the [Coveo for Salesforce Getting Started Guide](https://docs.coveo.com/en/1158/coveo-for-salesforce/get-started-with-coveo-for-salesforce).
 
 ## How to Deploy
 

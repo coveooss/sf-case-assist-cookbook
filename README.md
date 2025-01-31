@@ -84,6 +84,8 @@ npm install
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
 
+**Note:** The Case Assist Cookbook currently only supports Quantic v2.
+
 ### 3. Deploying the Project
 
 #### 3a. Deploy the Project Using the Org Development Model

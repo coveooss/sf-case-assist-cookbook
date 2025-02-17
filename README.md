@@ -109,7 +109,7 @@ sfdx force:source:push
 Type the following SFDX command in your CLI:
 
 ```
-sfdx force:package:install --package 04t3s000003X61EAAS -u <USER_NAME>
+sfdx force:package:install --package 04tKg000000kZt7IAE -u <USER_NAME>
 ```
 
 Where you replace <USER_NAME> by your username in the target organization.

@@ -18,7 +18,21 @@ export default class CaseAssistInterface extends QuanticCaseAssistInterface {
               configuration: {
                 ...JSON.parse(data),
                 caseAssistId: this.caseAssistId,
-                searchHub: this.searchHub
+                searchHub: this.searchHub,
+                analytics: {
+                  analyticsMode: 'legacy',
+                  ...(document.referrer && {
+                    originLevel3: document.referrer.substring(0, 256),
+                  }),
+                  analyticsClientMiddleware: (_event, payload) => {
+                    if (!payload.customData) {
+                      payload.customData = {};
+                    }
+                    payload.customData.coveoQuanticVersion =
+                      window.coveoQuanticVersion;
+                    return payload;
+                  },
+                },
               }
             };
             setEngineOptions(

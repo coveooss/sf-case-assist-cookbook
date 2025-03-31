@@ -10,7 +10,7 @@
     <targetConfig targets="lightning__FlowScreen">
       <property name="caseData" label="Data from the case" type="String" />
       <property name="engineId" label="The ID of the engine instance the component registers to" type="String" />
-      <property name="searchHub" label="The identifier of the graphical case assist interface" type="String" default="case-assist-cookbook" />
+      <property name="searchHub" label="The identifier of the graphical case assist interface" type="String" />
       <property name="caseAssistId" label="The Case Assist configuration ID" type="String" />
     </targetConfig>
   </targetConfigs>

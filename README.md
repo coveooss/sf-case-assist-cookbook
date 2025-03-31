@@ -117,10 +117,11 @@ Where you replace <USER_NAME> by your username in the target organization.
 ### 4. Enable the Case Flow in Your Community
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page, and then select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
-2. After selecting the name of the flow, you must fill the `caseAssistId` and `engineId` fields.
+2. After selecting the name of the flow, you must fill the `caseAssistId`, the `engineId` and the `searchHub` fields.
    1. In the `caseAssistId` field, enter your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration.
-   1. In the `engineId` field, enter your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties), which is the name you want to give to the engine instance the Quantic components will register to.
-   1. Leave the `caseData` field blank.
+   2. In the `engineId` field, enter your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties), which is the name you want to give to the engine instance the Quantic components will register to.
+   3. In the `searchHub` field, enter your Case Assist configuration name, retrieved from your Case Assist Configuration page.
+   4. Leave the `caseData` field blank.
 3. After linking your installed Coveo for Salesforce package to a Coveo organization, make sure to go change the content of the Apex class `CaseAssistController`. By default it will try to query a sample organization. Replace this method with the commented method just below it to generate a Platform token and query your selected Coveo organization.
 4. In the published version of your community, users can now fill in the Subject and Description fields on the first screen. They can then proceed to the next screens to view the predicted classification values for their case, and get document suggestions to help them potentially resolve their case before submitting it.
 

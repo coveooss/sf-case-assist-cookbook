@@ -224,8 +224,5 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <value>
-            <stringValue>case-assist-cookbook</stringValue>
-        </value>
     </variables>
 </Flow>

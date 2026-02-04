@@ -57,11 +57,12 @@ export default class CaseAssistSearch extends LightningElement {
   initialized = false;
   /** @type {object} */
   _parsedCaseData;
+  /** @type {function} */
+  unsubscribeResultList;
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
     this.template.addEventListener('show_action_slot', this.onShowActionSlot);
-    this.template.addEventListener('no_suggestions', this.onNoResults);
     
     try {
       if (this.caseData) {
@@ -75,6 +76,12 @@ export default class CaseAssistSearch extends LightningElement {
     }
 
     this.loadSearchEngine();
+  }
+
+  disconnectedCallback() {
+    if (this.unsubscribeResultList) {
+      this.unsubscribeResultList();
+    }
   }
 
   loadSearchEngine() {
@@ -129,6 +136,21 @@ export default class CaseAssistSearch extends LightningElement {
     this.contextAction = CoveoHeadless.loadContextActions(engine);
     this.searchActions = CoveoHeadless.loadSearchActions(engine);
     this.analyticsActions = CoveoHeadless.loadSearchAnalyticsActions(engine);
+
+    // Subscribe to result list state to track if there are results
+    const resultListController = CoveoHeadless.buildResultList(engine);
+    this.unsubscribeResultList = resultListController.subscribe(() => {
+      const state = resultListController.state;
+      this.hasResults = state.results && state.results.length > 0;
+      if (!this.hasResults) {
+        this.dispatchEvent(
+          new CustomEvent('no_suggestions', {
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+    });
 
     // Set case context from case data
     const caseContext = this.buildCaseContext();
@@ -217,10 +239,6 @@ export default class CaseAssistSearch extends LightningElement {
         composed: true
       })
     );
-  };
-
-  onResults = () => {
-    this.hasResults = true;
   };
 
   getSlotById(tag, id) {

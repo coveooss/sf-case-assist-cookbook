@@ -30,20 +30,22 @@
           slots-to-be-hidden={slotsToBeHidden}
           slot="quickview-footer"
         ></c-quickview-footer-wrapper>
+        <template slot="no-results">
+          <div class="slds-align_absolute-center">
+            <c-send-request-svg></c-send-request-svg>
+          </div>
+          <div class="slds-align_absolute-center slds-var-m-top_large">
+            <c-create-case-button
+              engine-id={engineId}
+              case-data={caseData}
+            ></c-create-case-button>
+          </div>
+        </template>
       </c-quantic-result-list>
     </div>
     
     <div class="slds-var-p-top_medium slds-align_absolute-center">
       <c-quantic-pager engine-id={engineId}></c-quantic-pager>
     </div>
-    
-    <template if:false={hasResults}>
-      <c-no-suggestion
-        disconnected-callback-action={onResults}
-        engine-id={engineId}
-        case-data={caseData}
-        slot="no-results"
-      ></c-no-suggestion>
-    </template>
   </c-quantic-search-interface>
 </template>

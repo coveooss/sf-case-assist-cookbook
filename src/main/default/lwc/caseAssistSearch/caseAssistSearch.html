@@ -1,0 +1,49 @@
+<template>
+  <c-quantic-search-interface
+    engine-id={engineId}
+    search-hub={searchHub}
+    pipeline={pipeline}
+    disable-state-in-url
+    skip-first-search
+  >
+    <div class="slds-var-p-top_medium">
+      <c-quantic-generated-answer engine-id={engineId}></c-quantic-generated-answer>
+    </div>
+    
+    <div class="slds-var-p-top_medium">
+      <c-quantic-smart-snippet-list engine-id={engineId}></c-quantic-smart-snippet-list>
+    </div>
+    
+    <div class="slds-var-p-top_medium">
+      <c-quantic-triggers engine-id={engineId}></c-quantic-triggers>
+    </div>
+    
+    <div class="slds-var-p-top_medium">
+      <c-quantic-result-list engine-id={engineId} fields-to-include="date,author,source,language,filetype">
+        <c-vote-count-wrapper slot="rating"></c-vote-count-wrapper>
+        <c-vote-tracker-wrapper
+          engine-id={engineId}
+          slot="actions"
+        ></c-vote-tracker-wrapper>
+        <c-quickview-footer-wrapper
+          engine-id={engineId}
+          slots-to-be-hidden={slotsToBeHidden}
+          slot="quickview-footer"
+        ></c-quickview-footer-wrapper>
+      </c-quantic-result-list>
+    </div>
+    
+    <div class="slds-var-p-top_medium slds-align_absolute-center">
+      <c-quantic-pager engine-id={engineId}></c-quantic-pager>
+    </div>
+    
+    <template if:false={hasResults}>
+      <c-no-suggestion
+        disconnected-callback-action={onResults}
+        engine-id={engineId}
+        case-data={caseData}
+        slot="no-results"
+      ></c-no-suggestion>
+    </template>
+  </c-quantic-search-interface>
+</template>

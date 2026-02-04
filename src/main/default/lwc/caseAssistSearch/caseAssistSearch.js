@@ -156,6 +156,8 @@ export default class CaseAssistSearch extends LightningElement {
     const caseContext = this.buildCaseContext();
     
     engine.dispatch(this.contextAction.setContext(caseContext));
+    // Execute search with analytics tracking
+    // The logInterfaceLoad() action is passed to track the interface load event
     engine.dispatch(
       this.searchActions.executeSearch(
         this.analyticsActions.logInterfaceLoad()
@@ -228,17 +230,6 @@ export default class CaseAssistSearch extends LightningElement {
     if (actionSlot) {
       actionSlot.show();
     }
-  };
-
-  onNoResults = () => {
-    this.hasResults = false;
-    // Bubble up the no_suggestions event for parent component
-    this.dispatchEvent(
-      new CustomEvent('no_suggestions', {
-        bubbles: true,
-        composed: true
-      })
-    );
   };
 
   getSlotById(tag, id) {

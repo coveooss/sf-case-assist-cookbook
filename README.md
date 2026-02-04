@@ -152,7 +152,7 @@ Where you replace <USER_NAME> by your username in the target organization.
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page, and then select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
 2. After selecting the name of the flow, you must fill the `caseAssistId`, the `engineId` and the `searchHub` fields.
-   1. In the `caseAssistId` field, enter your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration. This is used for case classification predictions.
+   1. In the `caseAssistId` field, enter your [Case Assist ID](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration. This is used for case classification predictions.
    2. In the `engineId` field, enter a unique identifier for the engine instance (e.g., `case-assist-engine`). This name will be used by the Quantic components to register to the correct engine instance.
    3. In the `searchHub` field, enter the search hub name you want to use for analytics tracking (e.g., `CaseAssist` or your Case Assist configuration name).
    4. Leave the `caseData` field blank.

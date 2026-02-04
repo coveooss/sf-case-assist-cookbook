@@ -1,18 +1,46 @@
 # Case Assist Flow cookbook
 
-A pre-built example of a Lightning Flow utilizing the [Coveo Quantic Case Assist components](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/) in order to:
+A pre-built example of a Lightning Flow utilizing the [Coveo Quantic components](https://docs.coveo.com/en/quantic/) in order to:
 
 1. Predict case classification values depending on the case Subject and Description given by the customer.
-2. Suggest documents that can potentially solve the customer's case before it is created.
+2. Suggest documents that can potentially solve the customer's case before it is created using the **Search API**.
 3. Track user interactions with the different components and screens across the entire case assist flow through Coveo Analytics and Reports.
 
-It is distributed as an example of best practices when requesting field predictions and document suggestions from the Coveo Customer Service API.
+It is distributed as an example of best practices when using the Coveo Search API for document suggestions and the Customer Service API for field predictions.
 
-It requires an active Coveo organization with indexed Salesforce Cases in order to provide field predictions.
+## Search API for Document Suggestions
 
-It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations) to provide [Document Suggestions](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-document-suggestion-functionality) as well as [Case Classifications](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
+This cookbook uses the **Search API** instead of the Document Suggestion API (`QuanticDocumentSuggestion`) for document suggestions. This approach provides:
+
+- **Full control over query context**: Send case fields as search context
+- **Support for Generative Answering**: Enable AI-powered answers
+- **Better analytics and debugging**: Improved observability and value measurement
+- **Advanced features**: Support for Smart Snippets, Triggers, and custom ranking strategies
+- **Future-proof architecture**: Aligns with modern Coveo search capabilities
+
+The `caseAssistSearch` component in this cookbook demonstrates how to:
+- Use `quantic-search-interface` with Headless context actions
+- Send case context (Subject, Description, and custom fields) to the Search API
+- Display search results with voting/rating functionality
+- Integrate Generative Answering and Smart Snippets
+
+### Why Search API over Document Suggestion?
+
+Based on feedback from live Case Assist deployments, the Search API approach addresses limitations of the Document Suggestion API:
+- Document Suggestion uses a restricted payload (typically limited to subject and description)
+- It automatically maps input to the `lq` parameter, reducing control over query composition
+- It provides limited context handling, mostly usable only through pipeline rules
+- It cannot support Generative Answering or advanced search features
+
+For production Case Assist implementations, the Search API approach is **recommended** over Document Suggestion.
+
+It requires an active Coveo organization with indexed content to provide document suggestions.
+
+It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations) to provide [Case Classifications](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
 
 ## Table of Contents
+
+- [Search API for Document Suggestions](#search-api-for-document-suggestions): Overview of the Search API approach used in this cookbook.
 
 - [What Is Included in This Project](#what-is-included-in-this-project): A description of the contents of this repository.
 
@@ -32,7 +60,7 @@ The Recommended Flow contains the following screens:
 
 1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description using the Description Strength Indicator.
 2. A second screen where the user can find predictions to help classify their case. This screen will predict values for the Case Priority, Case Type, and Case Reason fields as these are Standard Salesforce Case fields. See [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification) section to learn how to modify these.
-3. A third screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
+3. A third screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Triggers. The user can read more about each document with the help of the Quickview and can also leave their feedback on each document.
 4. A confirmation screen that the case has been successfully created.
 
 Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist Experience](https://youtu.be/WvHKYbiZRNI).
@@ -42,20 +70,26 @@ Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist 
 The Demo Flow contains the following screens:
 
 1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description, using the Description Strength Indicator, as well as the predictions to help classify their case. The user can see the predictions for the Case Priority, Case Type, and Case Reason fields as they type in the Subject and Description inputs. See [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification) section to learn how to modify these.
-2. A second screen where documents will be suggested to the user based on the text entered in the case Subject and Description. The user can read more about each document suggestion with the help of the Quickview and can also leave their feedback on each document.
+2. A second screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Triggers. The user can read more about each document with the help of the Quickview and can also leave their feedback on each document.
 3. A confirmation screen that the case has been successfully created.
 
 PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
 
 ## Prerequisites
 
-### 1. Set Up a Coveo Case Assist Configuration
+### 1. Set Up Coveo Organization and Content
 
-- Create a Case Assist configuration in your Coveo Administration Console. This configuration defines the case classifications and document suggestions returned by the Case Assist API.
+- You need an active Coveo organization with indexed content to provide document suggestions through the Search API.
+- Indexed content should be relevant to your support use cases (knowledge base articles, documentation, etc.).
+- Follow the [Coveo Documentation](https://docs.coveo.com/en/1546/index-content/content-sources-overview) for setting up content sources.
 
-- Follow the [Coveo Documentation on Creating a Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-a-case-assist-experience).
+### 2. Set Up a Coveo Case Assist Configuration (for Case Classifications)
 
-### 2. Install and configure the Coveo for Salesforce package
+- Create a Case Assist configuration in your Coveo Administration Console. This configuration defines the case classifications returned by the Case Assist API.
+- Note: This is only required for the **case classification** functionality (predicting Case Priority, Case Type, etc.), not for document suggestions which now use the Search API.
+- Follow the [Coveo Documentation on Creating a Case Assist Configuration](https://docs.coveo.com/en/3328/service/manage-case-assist-configurations#configuring-the-case-classification-functionality).
+
+### 3. Install and configure the Coveo for Salesforce package
 
 - Install and configure the Coveo for Salesforce managed package in your Salesforce org by following the [Coveo for Salesforce Getting Started Guide](https://docs.coveo.com/en/1158/coveo-for-salesforce/get-started-with-coveo-for-salesforce).
 
@@ -118,12 +152,12 @@ Where you replace <USER_NAME> by your username in the target organization.
 
 1. In your Salesforce community, drag the Lightning Flow component in a Community page, and then select the `Case_Assist_Recommended_Flow` or the `Case_Assist_Demo_Flow` shipped with this repository.
 2. After selecting the name of the flow, you must fill the `caseAssistId`, the `engineId` and the `searchHub` fields.
-   1. In the `caseAssistId` field, enter your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration.
-   2. In the `engineId` field, enter your [Engine Id](https://docs.coveo.com/en/quantic/latest/reference/case-assist-components/case-assist-case-assist-interface/#properties), which is the name you want to give to the engine instance the Quantic components will register to.
-   3. In the `searchHub` field, enter your Case Assist configuration name, retrieved from your Case Assist Configuration page.
+   1. In the `caseAssistId` field, enter your [Case Assist Id](https://docs.coveo.com/en/3328/#retrieving-a-case-assist-id), retrieved from your Case Assist Configuration. This is used for case classification predictions.
+   2. In the `engineId` field, enter a unique identifier for the engine instance (e.g., `case-assist-engine`). This name will be used by the Quantic components to register to the correct engine instance.
+   3. In the `searchHub` field, enter the search hub name you want to use for analytics tracking (e.g., `CaseAssist` or your Case Assist configuration name).
    4. Leave the `caseData` field blank.
 3. After linking your installed Coveo for Salesforce package to a Coveo organization, make sure to go change the content of the Apex class `CaseAssistController`. By default it will try to query a sample organization. Replace this method with the commented method just below it to generate a Platform token and query your selected Coveo organization.
-4. In the published version of your community, users can now fill in the Subject and Description fields on the first screen. They can then proceed to the next screens to view the predicted classification values for their case, and get document suggestions to help them potentially resolve their case before submitting it.
+4. In the published version of your community, users can now fill in the Subject and Description fields on the first screen. They can then proceed to the next screens to view the predicted classification values for their case, and get document suggestions powered by the Search API to help them potentially resolve their case before submitting it.
 
 ### Dev, Build and Test
 
@@ -131,11 +165,14 @@ Where you replace <USER_NAME> by your username in the target organization.
 1. Run `npm run test`
 1. Now you can deploy with `sfdx force:source:deploy...`
 
-## Warning
+## Authentication and Security
 
-This cookbook was originally designed to be used with an API key, which would only grant you access to Coveo results that were "public".
+This cookbook uses the `CaseAssistController` Apex class to generate tokens for accessing Coveo services.
 
-You can also use this cookbook with a Platform token to use the identity of the current user to get access to content that's not necessarily only "public". Take note that using a Platform token currently breaks the Quickview functionality on Document Suggestions. Although we're actively working on a solution, this is a tradeoff you need to consider.
+- **API Key**: You can use an API key which will grant access to Coveo results that are "public". This is simpler to set up but limits content to public documents.
+- **Platform Token**: You can use a Platform token to leverage the identity of the current user and get access to content that's not necessarily only "public". This provides better security and content filtering based on user permissions.
+
+The Search API approach used in this cookbook for document suggestions works with both API keys and Platform tokens, providing flexibility in your authentication strategy.
 
 ## How to Add New Fields for Classification
 

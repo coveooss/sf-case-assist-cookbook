@@ -61,11 +61,15 @@ export default class CreateCaseButton extends LightningElement {
   loading;
 
   connectedCallback() {
-    registerComponentForInit(this, this.engineId);
+    if (this.engineId) {
+      registerComponentForInit(this, this.engineId);
+    }
   }
 
   renderedCallback() {
-    initializeWithHeadless(this, this.engineId, this.initialize);
+    if (this.engineId) {
+      initializeWithHeadless(this, this.engineId, this.initialize);
+    }
   }
 
   /**
@@ -103,13 +107,16 @@ export default class CreateCaseButton extends LightningElement {
       this.loading = true;
       const newCaseId = await newCase(this.caseData);
       if (newCaseId) {
-        this.engine.dispatch(
-          this.actions.updateCaseInput({
-            fieldName: 'id',
-            fieldValue: newCaseId
-          })
-        );
-        this.engine.dispatch(this.actions.logCreateCase());
+        // Only dispatch analytics if engine is available
+        if (this.engine && this.actions) {
+          this.engine.dispatch(
+            this.actions.updateCaseInput({
+              fieldName: 'id',
+              fieldValue: newCaseId
+            })
+          );
+          this.engine.dispatch(this.actions.logCreateCase());
+        }
         const attributeChangeEvent = new FlowAttributeChangeEvent(
           'recordId',
           newCaseId

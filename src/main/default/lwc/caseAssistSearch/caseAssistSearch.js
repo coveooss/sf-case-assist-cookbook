@@ -1,40 +1,38 @@
 import { LightningElement, api } from 'lwc';
 import {
-  getHeadlessBindings,
-  loadDependencies,
-  setEngineOptions,
-  setInitializedCallback,
-  HeadlessBundleNames
+  registerComponentForInit,
+  initializeWithHeadless
 } from 'c/quanticHeadlessLoader';
-import getHeadlessConfiguration from '@salesforce/apex/CaseAssistController.getHeadlessConfiguration';
 
 /* global CoveoHeadless */
 
 /**
  * The "caseAssistSearch" component provides a search-based Case Assist experience
  * using the Search API instead of the Document Suggestion API.
+ * This component uses a c-quantic-search-interface to manage the Search engine.
  * @example
- * <c-case-assist-search engine-id={engineId} search-hub={searchHub} case-data={caseData}></c-case-assist-search>
+ * <c-case-assist-search search-hub={searchHub} case-data={caseData}></c-case-assist-search>
  */
 export default class CaseAssistSearch extends LightningElement {
   /**
-   * The ID of the engine instance the component registers to.
+   * Internal engine ID for the Search engine managed by this component.
+   * This is separate from any parent Case Assist engine.
    * @type {string}
    */
-  @api engineId;
-  
+  searchEngineId = 'case-assist-search-engine';
+
   /**
    * The search hub to use for the search interface.
    * @type {string}
    */
   @api searchHub;
-  
+
   /**
    * The pipeline to use for the search interface.
    * @type {string}
    */
   @api pipeline;
-  
+
   /**
    * A JSON-serialized object representing the current case fields.
    * @type {string}
@@ -63,68 +61,32 @@ export default class CaseAssistSearch extends LightningElement {
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
     this.template.addEventListener('show_action_slot', this.onShowActionSlot);
-    
+
     try {
       if (this.caseData) {
-        this._parsedCaseData = typeof this.caseData === 'string' 
-          ? JSON.parse(this.caseData) 
-          : this.caseData;
+        this._parsedCaseData =
+          typeof this.caseData === 'string'
+            ? JSON.parse(this.caseData)
+            : this.caseData;
       }
     } catch (err) {
       console.warn('Failed to parse caseData', err);
       this._parsedCaseData = {};
     }
 
-    this.loadSearchEngine();
+    // Register this component to be initialized when the engine is ready
+    registerComponentForInit(this, this.searchEngineId);
+  }
+
+  renderedCallback() {
+    // Initialize with the engine created by c-quantic-search-interface
+    initializeWithHeadless(this, this.searchEngineId, this.initialize);
   }
 
   disconnectedCallback() {
     if (this.unsubscribeResultList) {
       this.unsubscribeResultList();
     }
-  }
-
-  loadSearchEngine() {
-    loadDependencies(this, HeadlessBundleNames.search).then(() => {
-      if (!getHeadlessBindings(this.engineId)?.engine) {
-        getHeadlessConfiguration().then((data) => {
-          if (data) {
-            const config = JSON.parse(data);
-            this.engineOptions = {
-              configuration: {
-                ...config,
-                searchHub: this.searchHub,
-                pipeline: this.pipeline,
-                analytics: {
-                  analyticsMode: 'legacy',
-                  ...(document.referrer && {
-                    originLevel3: document.referrer.substring(0, 256),
-                  }),
-                  analyticsClientMiddleware: (_event, payload) => {
-                    if (!payload.customData) {
-                      payload.customData = {};
-                    }
-                    payload.customData.coveoQuanticVersion =
-                      window.coveoQuanticVersion;
-                    return payload;
-                  },
-                },
-              }
-            };
-            setEngineOptions(
-              this.engineOptions,
-              CoveoHeadless.buildSearchEngine,
-              this.engineId,
-              this,
-              CoveoHeadless
-            );
-            setInitializedCallback(this.initialize, this.engineId);
-          }
-        });
-      } else {
-        setInitializedCallback(this.initialize, this.engineId);
-      }
-    });
   }
 
   initialize = (engine) => {
@@ -142,7 +104,7 @@ export default class CaseAssistSearch extends LightningElement {
     this.unsubscribeResultList = resultListController.subscribe(() => {
       const state = resultListController.state;
       this.hasResults = state.results && state.results.length > 0;
-      if (!this.hasResults) {
+      if (!this.hasResults && state.firstSearchExecuted) {
         this.dispatchEvent(
           new CustomEvent('no_suggestions', {
             bubbles: true,
@@ -154,14 +116,11 @@ export default class CaseAssistSearch extends LightningElement {
 
     // Set case context from case data
     const caseContext = this.buildCaseContext();
-    
     engine.dispatch(this.contextAction.setContext(caseContext));
+
     // Execute search with analytics tracking
-    // The logInterfaceLoad() action is passed to track the interface load event
     engine.dispatch(
-      this.searchActions.executeSearch(
-        this.analyticsActions.logInterfaceLoad()
-      )
+      this.searchActions.executeSearch(this.analyticsActions.logInterfaceLoad())
     );
 
     this.initialized = true;
@@ -169,7 +128,7 @@ export default class CaseAssistSearch extends LightningElement {
 
   buildCaseContext() {
     const context = {};
-    
+
     if (this._parsedCaseData) {
       // Add standard fields
       if (this._parsedCaseData.Subject) {
@@ -178,20 +137,20 @@ export default class CaseAssistSearch extends LightningElement {
       if (this._parsedCaseData.Description) {
         context.description = this._parsedCaseData.Description;
       }
-      
+
       // Add any custom fields from case data
       // Filter out null/undefined values and standard fields already added
       Object.keys(this._parsedCaseData).forEach((key) => {
         if (
-          key !== 'Subject' && 
-          key !== 'Description' && 
+          key !== 'Subject' &&
+          key !== 'Description' &&
           this._parsedCaseData[key] != null
         ) {
-          context[key] = this._parsedCaseData[key];
+          context[key.toLowerCase()] = this._parsedCaseData[key];
         }
       });
     }
-    
+
     return context;
   }
 
@@ -202,7 +161,7 @@ export default class CaseAssistSearch extends LightningElement {
         countSlot.incrementScore();
       }
     }
-    
+
     if (evt.detail.source === 'quickview_footer') {
       const actionSlot = this.getSlotById(
         'c-vote-tracker-wrapper',
@@ -214,7 +173,7 @@ export default class CaseAssistSearch extends LightningElement {
     }
 
     this.slotsToBeHidden = [...this.slotsToBeHidden, evt.detail.id];
-    
+
     // Bubble up the rating event for parent component
     this.dispatchEvent(
       new CustomEvent('rating', {

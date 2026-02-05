@@ -146,7 +146,7 @@ export default class CaseAssistSearch extends LightningElement {
           key !== 'Description' &&
           this._parsedCaseData[key] != null
         ) {
-          context[key.toLowerCase()] = this._parsedCaseData[key];
+          context[key] = this._parsedCaseData[key];
         }
       });
     }

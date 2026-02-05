@@ -7,9 +7,17 @@
     skip-first-search
   >
     <div class="slds-var-p-top_medium">
+      <c-quantic-generated-answer engine-id={searchEngineId}></c-quantic-generated-answer>
+    </div>
+
+    <div class="slds-var-p-top_medium">
       <c-quantic-smart-snippet-suggestions
         engine-id={searchEngineId}
       ></c-quantic-smart-snippet-suggestions>
+    </div>
+
+    <div class="slds-var-p-top_medium">
+      <c-quantic-triggers engine-id={searchEngineId}></c-quantic-triggers>
     </div>
 
     <div class="slds-var-p-top_medium">

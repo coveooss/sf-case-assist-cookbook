@@ -129,6 +129,12 @@
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>searchHub</name>
+                <value>
+                    <elementReference>searchHub</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>flowType</name>
                 <value>
                     <stringValue>demo_flow</stringValue>

@@ -152,7 +152,6 @@ export default class reviewResourcesScreen extends LightningElement {
     }
 
     this.idsPreviouslyVoted = [...this.idsPreviouslyVoted, evt.detail.id];
-    this.slotsToBeHidden = [...this.slotsToBeHidden, evt.detail.id];
   };
 
   onShowActionSlot = () => {

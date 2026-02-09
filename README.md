@@ -54,6 +54,22 @@ It requires a [Case Assist Configuration](https://docs.coveo.com/en/3328/service
 
 This project contains two flows: a Recommended Flow and a Demo flow. Both are lightning flows already setup with multiple steps to create a support case.
 
+### Example Screenshots
+
+Here are examples of the Case Assist experience in action:
+
+**Case Creation Screen:**
+
+![Case Creation Screen](https://github.com/user-attachments/assets/d110b75c-11c9-414a-9cac-062b3cea3284)
+
+The initial screen where users describe their issue, with intelligent prompts to help them provide relevant details.
+
+**Resource Suggestions with Generative Answering:**
+
+![Resource Suggestions](https://github.com/user-attachments/assets/e59210a1-9025-4fde-8cfc-1966e9493b5a)
+
+The Search API-powered results screen showing Generative Answering, smart snippets, and relevant documents to help resolve the customer's issue before creating a case.
+
 ### Recommended Flow:
 
 The Recommended Flow contains the following screens:

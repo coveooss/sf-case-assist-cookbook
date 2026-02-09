@@ -7,7 +7,9 @@
     skip-first-search
   >
     <div class="slds-var-p-top_medium">
-      <c-quantic-generated-answer engine-id={searchEngineId}></c-quantic-generated-answer>
+      <c-quantic-generated-answer
+        engine-id={searchEngineId}
+      ></c-quantic-generated-answer>
     </div>
 
     <div class="slds-var-p-top_medium">
@@ -17,7 +19,9 @@
     </div>
 
     <div class="slds-var-p-top_medium">
-      <c-quantic-triggers engine-id={searchEngineId}></c-quantic-triggers>
+      <c-quantic-notifications
+        engine-id={searchEngineId}
+      ></c-quantic-notifications>
     </div>
 
     <div class="slds-var-p-top_medium">
@@ -40,7 +44,9 @@
             <c-send-request-svg></c-send-request-svg>
           </div>
           <div class="slds-align_absolute-center slds-var-m-top_large">
-            <c-create-case-button case-data={_parsedCaseData}></c-create-case-button>
+            <c-create-case-button
+              case-data={_parsedCaseData}
+            ></c-create-case-button>
           </div>
         </template>
       </c-quantic-result-list>

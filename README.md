@@ -135,7 +135,7 @@ npm install
 This cookbook requires **Quantic 3.x** or later for full functionality, including:
 - Generative Answering (`quantic-generated-answer`)
 - Smart Snippets (`quantic-smart-snippet-suggestions`)
-- Query Triggers (`quantic-triggers`)
+- Query Notifications (`quantic-notifications`, formerly `quantic-triggers` in earlier versions)
 
 [Install the Coveo Quantic Library as a Salesforce unlocked package](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic).
 

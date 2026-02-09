@@ -60,8 +60,6 @@ export default class reviewResourcesScreen extends LightningElement {
    */
   @api flowType;
 
-  /** @type {Array<string>} */
-  slotsToBeHidden = [];
   /** @type {boolean} */
   hasSuggestions = true;
   /** @type{object} */
@@ -73,7 +71,6 @@ export default class reviewResourcesScreen extends LightningElement {
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
-    this.template.addEventListener('show_action_slot', this.onShowActionSlot);
     this.template.addEventListener('no_suggestions', this.onNoSuggestions);
     this.template.addEventListener('next', this.handleNext);
     try {
@@ -152,10 +149,6 @@ export default class reviewResourcesScreen extends LightningElement {
     }
 
     this.idsPreviouslyVoted = [...this.idsPreviouslyVoted, evt.detail.id];
-  };
-
-  onShowActionSlot = () => {
-    // Handled by caseAssistSearch component
   };
 
   onNoSuggestions = () => {

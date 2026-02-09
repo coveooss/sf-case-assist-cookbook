@@ -8,13 +8,13 @@ This branch upgrades the cookbook from Quantic v2.25.0.0 to Quantic 3.x to resto
 ### 1. Quantic Dependency Update
 - **File**: `sfdx-project.json`
 - **Change**: Updated dependency from `Quantic v2.25.0.0` to `Quantic v3.x`
-- **Action Required**: Ensure that the existing Quantic 3.x dependency/alias in `sfdx-project.json` points to the correct Quantic 3.x package version for your org (update the `packageVersionId` if needed, using the values from the [Quantic installation documentation](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic)).
+- **Action Required**: The package alias is already configured. Verify that the Quantic 3.x package is installed in your Salesforce org using the [Quantic installation documentation](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic). Update the package version ID in `sfdx-project.json` if you need a specific Quantic 3.x version.
 
 ### 2. Restored Advanced Search Components
 - **File**: `src/main/default/lwc/caseAssistSearch/caseAssistSearch.html`
 - **Components Restored**:
   - `c-quantic-generated-answer`: Enables Generative AI-powered answers
-  - `c-quantic-triggers`: Provides query triggers functionality
+  - `c-quantic-notifications`: Provides query pipeline notifications (renamed from `quantic-triggers` in Quantic 3.x)
   - `c-quantic-smart-snippet-suggestions`: Enhanced smart snippet suggestions (already present)
 
 ### 3. Documentation Updates
@@ -27,7 +27,7 @@ This branch upgrades the cookbook from Quantic v2.25.0.0 to Quantic 3.x to resto
 |-----------|-------------|-------------|
 | `quantic-generated-answer` | ❌ Not available | ✅ Available |
 | `quantic-smart-snippet-suggestions` | ✅ Available | ✅ Available |
-| `quantic-triggers` | ⚠️ Limited | ✅ Enhanced |
+| `quantic-notifications` (formerly `quantic-triggers`) | ⚠️ Limited | ✅ Available |
 | `quantic-result-list` | ✅ Available | ✅ Available |
 
 ## Testing Checklist
@@ -35,12 +35,11 @@ This branch upgrades the cookbook from Quantic v2.25.0.0 to Quantic 3.x to resto
 After deploying this upgrade, verify:
 
 - [ ] Quantic 3.x package is installed in your Salesforce org
-- [ ] Package alias in `sfdx-project.json` is updated with correct package ID
 - [ ] Demo Flow loads and displays search results
 - [ ] Recommended Flow loads and displays search results
 - [ ] Generative Answer component displays (if configured)
 - [ ] Smart Snippets display correctly
-- [ ] Query Triggers work as expected
+- [ ] Query Notifications work as expected
 - [ ] Voting/rating functionality still works
 - [ ] No console errors in browser developer tools
 
@@ -52,7 +51,7 @@ Review the [Quantic changelog](https://docs.coveo.com/en/quantic/latest/change-l
 
 If you need to rollback to Quantic 2.x:
 1. Revert changes to `sfdx-project.json`
-2. Remove `c-quantic-generated-answer` and `c-quantic-triggers` from `caseAssistSearch.html`
+2. Remove `c-quantic-generated-answer` and `c-quantic-notifications` from `caseAssistSearch.html`
 3. Deploy the reverted changes
 
 ## Additional Resources

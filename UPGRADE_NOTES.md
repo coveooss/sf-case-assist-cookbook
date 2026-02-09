@@ -8,7 +8,7 @@ This branch upgrades the cookbook from Quantic v2.25.0.0 to Quantic 3.x to resto
 ### 1. Quantic Dependency Update
 - **File**: `sfdx-project.json`
 - **Change**: Updated dependency from `Quantic v2.25.0.0` to `Quantic v3.x`
-- **Action Required**: Update the package alias `UPDATE_WITH_ACTUAL_QUANTIC_3X_PACKAGE_ID` with the actual Quantic 3.x package ID from the [Quantic installation documentation](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic)
+- **Action Required**: Ensure that the existing Quantic 3.x dependency/alias in `sfdx-project.json` points to the correct Quantic 3.x package version for your org (update the `packageVersionId` if needed, using the values from the [Quantic installation documentation](https://docs.coveo.com/en/quantic/latest/usage/#install-quantic)).
 
 ### 2. Restored Advanced Search Components
 - **File**: `src/main/default/lwc/caseAssistSearch/caseAssistSearch.html`

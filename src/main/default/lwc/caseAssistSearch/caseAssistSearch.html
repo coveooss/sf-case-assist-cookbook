@@ -1,0 +1,59 @@
+<template>
+  <c-search-interface
+    engine-id={searchEngineId}
+    search-hub={searchHub}
+    pipeline={pipeline}
+    disable-state-in-url
+    skip-first-search
+  >
+    <div class="slds-var-p-top_medium">
+      <c-quantic-generated-answer
+        engine-id={searchEngineId}
+      ></c-quantic-generated-answer>
+    </div>
+
+    <div class="slds-var-p-top_medium">
+      <c-quantic-smart-snippet-suggestions
+        engine-id={searchEngineId}
+      ></c-quantic-smart-snippet-suggestions>
+    </div>
+
+    <div class="slds-var-p-top_medium">
+      <c-quantic-notifications
+        engine-id={searchEngineId}
+      ></c-quantic-notifications>
+    </div>
+
+    <div class="slds-var-p-top_medium">
+      <c-quantic-result-list
+        engine-id={searchEngineId}
+        fields-to-include="date,author,source,language,filetype"
+      >
+        <c-vote-count-wrapper slot="rating"></c-vote-count-wrapper>
+        <c-vote-tracker-wrapper
+          engine-id={searchEngineId}
+          slot="actions"
+        ></c-vote-tracker-wrapper>
+        <c-quickview-footer-wrapper
+          engine-id={searchEngineId}
+          slots-to-be-hidden={slotsToBeHidden}
+          slot="quickview-footer"
+        ></c-quickview-footer-wrapper>
+        <template slot="no-results">
+          <div class="slds-align_absolute-center">
+            <c-send-request-svg></c-send-request-svg>
+          </div>
+          <div class="slds-align_absolute-center slds-var-m-top_large">
+            <c-create-case-button
+              case-data={_parsedCaseData}
+            ></c-create-case-button>
+          </div>
+        </template>
+      </c-quantic-result-list>
+    </div>
+
+    <div class="slds-var-p-top_medium slds-align_absolute-center">
+      <c-quantic-pager engine-id={searchEngineId}></c-quantic-pager>
+    </div>
+  </c-search-interface>
+</template>

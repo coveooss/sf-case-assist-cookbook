@@ -35,6 +35,11 @@ export default class reviewResourcesScreen extends LightningElement {
    */
   @api engineId;
   /**
+   * The search hub to use for the search interface.
+   * @type {string}
+   */
+  @api searchHub;
+  /**
    * availableActions is an array that contains the available flow actions when this component is used within a flow
    * @see https://developer.salesforce.com/docs/component-library/bundle/lightning-flow-support/documentation
    */
@@ -55,8 +60,6 @@ export default class reviewResourcesScreen extends LightningElement {
    */
   @api flowType;
 
-  /** @type {Array<string>} */
-  slotsToBeHidden = [];
   /** @type {boolean} */
   hasSuggestions = true;
   /** @type{object} */
@@ -68,7 +71,6 @@ export default class reviewResourcesScreen extends LightningElement {
 
   connectedCallback() {
     this.template.addEventListener('rating', this.onRating);
-    this.template.addEventListener('show_action_slot', this.onShowActionSlot);
     this.template.addEventListener('no_suggestions', this.onNoSuggestions);
     this.template.addEventListener('next', this.handleNext);
     try {
@@ -140,34 +142,13 @@ export default class reviewResourcesScreen extends LightningElement {
 
   onRating = (evt) => {
     if (evt.detail.type === 'positive') {
-      const countSlot = this.getSlotById('c-vote-count-wrapper', evt.detail.id);
-      if (countSlot) {
-        countSlot.incrementScore();
-      }
       this.idsPreviouslyVotedPositive = [
         ...this.idsPreviouslyVotedPositive,
         evt.detail.id
       ];
     }
-    if (evt.detail.source === 'quickview_footer') {
-      const actionSlot = this.getSlotById(
-        'c-vote-tracker-wrapper',
-        evt.detail.id
-      );
-      if (actionSlot) {
-        actionSlot.hide();
-      }
-    }
 
     this.idsPreviouslyVoted = [...this.idsPreviouslyVoted, evt.detail.id];
-    this.slotsToBeHidden = [...this.slotsToBeHidden, evt.detail.id];
-  };
-
-  onShowActionSlot = (evt) => {
-    const actionSlot = this.getSlotById('c-vote-tracker-wrapper', evt.detail);
-    if (actionSlot) {
-      actionSlot.show();
-    }
   };
 
   onNoSuggestions = () => {

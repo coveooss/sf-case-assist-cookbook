@@ -1,11 +1,9 @@
 <template>
-  <template if:true={renderCaseAssistInterface}>
-    <c-case-assist-interface
-      engine-id={engineId}
-      case-assist-id={caseAssistId}
-      search-hub={searchHub}
-    ></c-case-assist-interface>
-  </template>
+  <c-case-assist-interface
+    engine-id={engineId}
+    case-assist-id={caseAssistId}
+    search-hub={searchHub}
+  ></c-case-assist-interface>
   <div class="slds-var-p-vertical_xx-large container">
     <div class="content">
       <c-flow-progress-indicator
@@ -42,6 +40,7 @@
           subtitle={labels.provideDetailsSubtitle}
         ></c-main-title>
       </div>
+
       <div class="slds-var-p-top_medium">
         <div class="slds-var-m-top_xx-large">
           <c-quantic-case-classification

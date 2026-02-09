@@ -15,18 +15,20 @@ This cookbook uses the **Search API** instead of the Document Suggestion API (`Q
 - **Full control over query context**: Send case fields as search context
 - **Support for Generative Answering**: Enable AI-powered answers
 - **Better analytics and debugging**: Improved observability and value measurement
-- **Advanced features**: Support for Smart Snippets, Triggers, and custom ranking strategies
+- **Advanced features**: Support for Smart Snippets, Notifications, and custom ranking strategies
 - **Future-proof architecture**: Aligns with modern Coveo search capabilities
 
 The `caseAssistSearch` component in this cookbook demonstrates how to:
+
 - Use `quantic-search-interface` with Headless context actions
 - Send case context (Subject, Description, and custom fields) to the Search API
-- Display search results with voting/rating functionality
+- Display search results with Quickview support
 - Integrate Generative Answering and Smart Snippets
 
 ### Why Search API over Document Suggestion?
 
 Based on feedback from live Case Assist deployments, the Search API approach addresses limitations of the Document Suggestion API:
+
 - Document Suggestion uses a restricted payload (typically limited to subject and description)
 - It automatically maps input to the `lq` parameter, reducing control over query composition
 - It provides limited context handling, mostly usable only through pipeline rules
@@ -76,7 +78,7 @@ The Recommended Flow contains the following screens:
 
 1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description using the Description Strength Indicator.
 2. A second screen where the user can find predictions to help classify their case. This screen will predict values for the Case Priority, Case Type, and Case Reason fields as these are Standard Salesforce Case fields. See [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification) section to learn how to modify these.
-3. A third screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Triggers. The user can read more about each document with the help of the Quickview and can also leave their feedback on each document.
+3. A third screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Notifications. The user can read more about each document with the help of the Quickview.
 4. A confirmation screen that the case has been successfully created.
 
 Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist Experience](https://youtu.be/WvHKYbiZRNI).
@@ -86,7 +88,7 @@ Here is a demo video of this flow in action: [Demo of the new Coveo Case Assist 
 The Demo Flow contains the following screens:
 
 1. A first screen where the user can enter a Subject and a Description for their case and can see the strength of this Description, using the Description Strength Indicator, as well as the predictions to help classify their case. The user can see the predictions for the Case Priority, Case Type, and Case Reason fields as they type in the Subject and Description inputs. See [How to Add New Fields for Classification](#how-to-add-new-fields-for-classification) section to learn how to modify these.
-2. A second screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Triggers. The user can read more about each document with the help of the Quickview and can also leave their feedback on each document.
+2. A second screen where documents will be suggested to the user based on the case context using the **Coveo Search API**. The search results include Generative Answering, Smart Snippets, and Notifications. The user can read more about each document with the help of the Quickview.
 3. A confirmation screen that the case has been successfully created.
 
 PS: A Login screen is implemented in both flows. It's just a template that you can use to provide a custom login screen to access the case assist flow.
@@ -133,6 +135,7 @@ npm install
 ### 2. Install the Quantic Library
 
 This cookbook requires **Quantic 3.x** or later for full functionality, including:
+
 - Generative Answering (`quantic-generated-answer`)
 - Smart Snippets (`quantic-smart-snippet-suggestions`)
 - Query Notifications (`quantic-notifications`, formerly `quantic-triggers` in earlier versions)
